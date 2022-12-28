@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.layout {
+  max-width: 95vw;
+  @apply mx-auto;
+}
+
 /* #region  /**=========== Datepicker =========== */
 .react-datepicker-wrapper {
   display: block;
@@ -46,6 +51,5 @@
 .react-datepicker__month-text--keyboard-selected,
 .react-datepicker__quarter-text--keyboard-selected,
 .react-datepicker__year-text--keyboard-selected {
-  @apply !bg-primary-500;
 }
 /* #endregion  /**======== Datepicker =========== */
