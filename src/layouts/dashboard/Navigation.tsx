@@ -135,7 +135,7 @@ function NavigationLink({
   const router = useRouter();
   const isActive = navigation.exactMatch
     ? router.pathname === navigation.href
-    : router.pathname.endsWith(navigation.href);
+    : router.pathname.startsWith(navigation.href);
 
   return (
     <UnstyledLink

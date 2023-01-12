@@ -1,37 +1,21 @@
 import { useRouter } from "next/router";
 import * as React from "react";
+import toast from "react-hot-toast";
 import { ImSpinner8 } from "react-icons/im";
 
 import api from "@/lib/api";
-import { getToken } from "@/lib/cookies";
+import { getToken, removeToken } from "@/lib/cookies";
 import useAuthStore from "@/store/useAuthStore";
 import { ApiReturn } from "@/types/api";
-import { User } from "@/types/entities/user";
+import { PermissionList } from "@/types/entities/permission-list";
+import { LoginRespond, User } from "@/types/entities/user";
 
 export interface WithAuthProps {
   user: User;
 }
 
-const HOME_ROUTE = "/";
-const LOGIN_ROUTE = "/login";
-
-enum RouteRole {
-  /**
-   * For authentication pages
-   * @example /login /register
-   */
-  public,
-  /**
-   * Optional authentication
-   * It doesn't push to login page if user is not authenticated
-   */
-  optional,
-  /**
-   * For all authenticated user
-   * will push to login if user is not authenticated
-   */
-  all,
-}
+const hasPermission = (user: User | null, permission: PermissionList) =>
+  permission.every((p) => user?.permissions?.includes(p));
 
 /**
  * Add role-based access control to a component
@@ -39,9 +23,13 @@ enum RouteRole {
  * @see https://react-typescript-cheatsheet.netlify.app/docs/hoc/full_example/
  * @see https://github.com/mxthevs/nextjs-auth/blob/main/src/components/withAuth.tsx
  */
+
+const HOME_ROUTE = "/dashboard";
+const LOGIN_ROUTE = "/login";
+
 export default function withAuth<T extends WithAuthProps = WithAuthProps>(
   Component: React.ComponentType<T>,
-  routeRole: keyof typeof RouteRole
+  routePermission: "auth" | PermissionList
 ) {
   const ComponentWithAuth = (props: Omit<T, keyof WithAuthProps>) => {
     const router = useRouter();
@@ -56,6 +44,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
     const user = useAuthStore.useUser();
     //#endregion  //*======== STORE ===========
 
+    // Check if user is authenticated
     const checkAuth = React.useCallback(() => {
       const token = getToken();
       if (!token) {
@@ -65,19 +54,23 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       }
       const loadUser = async () => {
         try {
-          const res = await api.get<ApiReturn<User>>("/me");
+          const res = await api.get<ApiReturn<LoginRespond>>("/me");
+          const flattenedPermissions = res.data.data.permissions
+            .flatMap((permission) => permission.features)
+            .flatMap((feature) => feature.routes);
 
           login({
             ...res.data.data,
             token: token + "",
+            permissions: Array.from(new Set(flattenedPermissions)),
+            name: "",
           });
         } catch (err) {
-          localStorage.removeItem("token");
+          removeToken();
         } finally {
           stopLoading();
         }
       };
-
       if (!isAuthenticated) {
         loadUser();
       }
@@ -98,16 +91,24 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       if (!isLoading) {
         if (isAuthenticated) {
           // Prevent authenticated user from accessing auth or other role pages
-          if (routeRole === "public") {
+          if (
+            routePermission === "auth" ||
+            !hasPermission(user, routePermission)
+          ) {
             if (query?.redirect) {
               router.replace(query.redirect as string);
             } else {
+              if (routePermission !== "auth") {
+                toast.error("Anda tidak memiliki akses ke halaman ini", {
+                  id: "unauthorized",
+                });
+              }
               router.replace(HOME_ROUTE);
             }
           }
         } else {
           // Prevent unauthenticated user from accessing protected pages
-          if (routeRole !== "public" && routeRole !== "optional") {
+          if (routePermission !== "auth") {
             router.replace(
               `${LOGIN_ROUTE}?redirect=${router.asPath}`,
               `${LOGIN_ROUTE}`
@@ -119,10 +120,10 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
 
     if (
       // If unauthenticated user want to access protected pages
-      (isLoading || !isAuthenticated) &&
-      // auth pages and optional pages are allowed to access without login
-      routeRole !== "public" &&
-      routeRole !== "optional"
+      ((isLoading || !isAuthenticated) && routePermission !== "auth") ||
+      ((isLoading || isAuthenticated) &&
+        routePermission !== "auth" &&
+        !hasPermission(user, routePermission))
     ) {
       return (
         <div className="flex min-h-screen flex-col items-center justify-center text-gray-800">

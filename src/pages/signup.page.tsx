@@ -1,6 +1,6 @@
 import withAuth from "@/components/hoc/withAuth";
 
-export default withAuth(SignupPage, "public");
+export default withAuth(SignupPage, "auth");
 
 function SignupPage() {
   return (

@@ -7,9 +7,13 @@ export const getToken = (): string => {
 };
 
 export const setToken = (token: string) => {
-  cookies.set("@itsexpo/token", token);
+  cookies.set("@spectra/token", token, {
+    path: "/",
+  });
 };
 
 export const removeToken = () => {
-  cookies.remove("@itsexpo/token");
+  cookies.remove("@spectra/token", {
+    path: "/",
+  });
 };

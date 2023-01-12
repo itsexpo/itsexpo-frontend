@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { RegisterOptions, useFormContext } from "react-hook-form";
+import { get, RegisterOptions, useFormContext } from "react-hook-form";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 
 export type PasswordInputProps = {
@@ -42,6 +42,8 @@ export default function PasswordInput({
     formState: { errors },
   } = useFormContext();
 
+  const error = get(errors, id);
+
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => setShowPassword((prev) => !prev);
 
@@ -61,7 +63,7 @@ export default function PasswordInput({
           className={clsx(
             readOnly
               ? "cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0"
-              : errors[id]
+              : error
               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
               : "border-gray-300 focus:border-primary-500 focus:ring-primary-500",
             "block w-full rounded-md shadow-sm"
@@ -84,9 +86,9 @@ export default function PasswordInput({
       </div>
       <div className="mt-1">
         {helperText && <p className="text-xs text-gray-500">{helperText}</p>}
-        {errors[id] && (
+        {error && (
           <span className="text-sm text-red-500">
-            {errors[id]?.message as unknown as string}
+            {error?.message as unknown as string}
           </span>
         )}
       </div>

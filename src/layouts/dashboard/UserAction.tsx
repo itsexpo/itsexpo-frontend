@@ -46,13 +46,13 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
                 />
                 <div className="flex min-w-0 flex-1 flex-col">
                   <Typography variant="body" className="text-neutral-1000">
-                    {user?.fullname}
+                    {user?.name}
                   </Typography>
                   <Typography
                     variant="b3"
                     className={clsxm(!open && "truncate", "text-yellow-500")}
                   >
-                    {user?.role}
+                    {user?.username}
                   </Typography>
                 </div>
               </div>

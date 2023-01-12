@@ -1,6 +1,6 @@
 export type ApiReturn<T> = {
-  code: string;
-  status: string;
+  status: boolean;
+  message: string;
   data: T;
 };
 

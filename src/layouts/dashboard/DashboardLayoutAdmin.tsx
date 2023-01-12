@@ -29,23 +29,7 @@ export default function DashboardLayoutAdmin({
         <div className="bg-secondary-300 flex flex-col lg:pl-64">
           <MobileNavigation />
 
-          <main
-            className={clsx(
-              // this is the padding-y
-              // 'mb-2 lg:my-4',
-              // 'mx-2 flex-1 overflow-y-auto rounded-2xl bg-white',
-              // /**
-              //  * 0.5rem: mobile's padding-y
-              //  * 2rem: desktop's padding-y
-              //  * 5rem: mobile header height
-              //  */
-              // 'min-h-[calc(100vh-5rem-0.5rem)] lg:min-h-[calc(100vh-2rem)]',
-              // 'max-h-[calc(100vh-5rem-0.5rem)] lg:max-h-[calc(100vh-2rem)]',
-              // 'bg-secondary-100',
-              className
-            )}
-            tabIndex={-1}
-          >
+          <main className={clsx(className)} tabIndex={-1}>
             {children}
           </main>
 

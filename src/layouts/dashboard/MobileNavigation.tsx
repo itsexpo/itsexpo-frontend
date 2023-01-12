@@ -13,9 +13,11 @@ import Typography from "@/components/typography/Typography";
 import Navigation from "@/layouts/dashboard/Navigation";
 import clsxm from "@/lib/clsxm";
 import useAuthStore from "@/store/useAuthStore";
+import useDialogStore from "@/store/useDialogStore";
 
 export default function MobileNavigation() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const open = useDialogStore.useOpen();
   const user = useAuthStore.useUser();
   const logout = useAuthStore.useLogout();
   const router = useRouter();
@@ -52,13 +54,13 @@ export default function MobileNavigation() {
                       alt="avatar"
                     />
                     <div className="flex min-w-0 flex-1 flex-col">
-                      <Typography variant="s2">{user?.fullname}</Typography>
+                      <Typography variant="s2">{user?.name}</Typography>
                       <Typography
                         variant="b3"
                         color="secondary"
                         className={clsxm(!open && "truncate")}
                       >
-                        {user?.role}
+                        {user?.username}
                       </Typography>
                     </div>
                   </div>
@@ -81,14 +83,14 @@ export default function MobileNavigation() {
               <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right divide-y divide-gray-200 rounded-md bg-background-liteCream shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="px-4 py-3">
                   <Typography variant="body" className="text-neutral-1000">
-                    {user?.fullname}
+                    {user?.name}
                   </Typography>
                   <Typography
                     variant="body"
                     color="secondary"
                     className={clsxm(!open && "truncate", "text-yellow-500")}
                   >
-                    {user?.role}
+                    {user?.username}
                   </Typography>
                 </div>
                 {/* //! Don't forget to adjust UserAction component */}

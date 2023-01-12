@@ -6,7 +6,7 @@ import withAuth from "@/components/hoc/withAuth";
 import Layout from "@/layouts/Layout";
 import { Login } from "@/types/entities/login";
 
-export default withAuth(LoginPage, "public");
+export default withAuth(LoginPage, "auth");
 
 function LoginPage() {
   const methods = useForm<Login>();
