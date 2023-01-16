@@ -23,6 +23,7 @@
     "auto-zustand-selectors-hook": "^2.0.0",
     "axios": "^1.2.1",
     "clsx": "^1.2.1",
+    "cssnano": "^5.1.14",
     "eslint": "^8.30.0",
     "immer": "^9.0.16",
     "lodash.get": "^4.4.2",
@@ -43,8 +44,8 @@
     "zustand": "^4.1.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@hookform/devtools": "^4.3.0",
     "@next/eslint-plugin-next": "^13.1.1",
     "@tailwindcss/forms": "^0.5.3",
@@ -62,6 +63,7 @@
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.20",
     "prettier": "^2.8.1",
+    "simple-zustand-devtools": "^1.1.0",
     "tailwindcss": "^3.2.4"
   }
 }
