@@ -60,7 +60,7 @@ export default function MobileNavigation() {
                         color="secondary"
                         className={clsxm(!open && "truncate")}
                       >
-                        {user?.username}
+                        {user?.role}
                       </Typography>
                     </div>
                   </div>
@@ -90,7 +90,7 @@ export default function MobileNavigation() {
                     color="secondary"
                     className={clsxm(!open && "truncate", "text-yellow-500")}
                   >
-                    {user?.username}
+                    {user?.role}
                   </Typography>
                 </div>
                 {/* //! Don't forget to adjust UserAction component */}

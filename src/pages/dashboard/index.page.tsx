@@ -1,7 +1,12 @@
 import withAuth from "@/components/hoc/withAuth";
 import DashboardLayoutAdmin from "@/layouts/dashboard/DashboardLayoutAdmin";
 
-export default withAuth(AdminPage, ["dashboard.index"]);
+/**
+ * Short
+ *
+ */
+
+export default withAuth(AdminPage, ["login_user.store"]);
 
 function AdminPage() {
   return (

@@ -4,7 +4,6 @@ export type Role = {
   id: number;
   name: string;
   permissions: Permission[];
-  // ? Used in Kelola Role
   level: Level;
 };
 
@@ -12,23 +11,23 @@ export type RoleDetail = {
   id: number;
   name: string;
   level: string;
-  permissions: {
-    name: string;
-    level: Level["id"];
-    features: { name: string; routes: number[] }[];
+  permission: {
+    role: Level["name"];
+    role_id: Level["id"];
+    routes: string[];
   }[];
 };
 
 export type Level =
   | {
-      id: "ADMIN";
-      name: "Admin Pusat";
+      id: "1";
+      name: "USER";
     }
   | {
-      id: "DIVISI";
-      name: "DIVISI";
+      id: "2";
+      name: "ADMIN";
     }
   | {
-      id: "USER";
-      name: "User";
+      id: "3";
+      name: "KADIV";
     };

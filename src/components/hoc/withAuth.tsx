@@ -14,8 +14,9 @@ export interface WithAuthProps {
   user: User;
 }
 
-const hasPermission = (user: User | null, permission: PermissionList) =>
-  permission.every((p) => user?.permissions?.includes(p));
+const hasPermission = (user: User | null, permission: PermissionList) => {
+  return permission.every((p) => user?.permissions?.includes(p));
+};
 
 /**
  * Add role-based access control to a component
@@ -54,16 +55,16 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       }
       const loadUser = async () => {
         try {
-          const res = await api.get<ApiReturn<LoginRespond>>("/me");
-          const flattenedPermissions = res.data.data.permissions
-            .flatMap((permission) => permission.features)
-            .flatMap((feature) => feature.routes);
+          const res = await api.post<ApiReturn<LoginRespond>>("/me");
+          const permissions = res.data.data.permission;
 
           login({
-            ...res.data.data,
-            token: token + "",
-            permissions: Array.from(new Set(flattenedPermissions)),
-            name: "",
+            name: res.data.data.name,
+            email: res.data.data.email,
+            role_id: permissions.role_id,
+            role: permissions.role,
+            token: token,
+            permissions: permissions.routes,
           });
         } catch (err) {
           removeToken();
@@ -77,6 +78,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
     }, [isAuthenticated, login, logout, stopLoading]);
 
     React.useEffect(() => {
+      // ComponentWillMount
       // run checkAuth every page visit
       checkAuth();
 
@@ -88,6 +90,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
     }, [checkAuth]);
 
     React.useEffect(() => {
+      // ComponentDidMount
       if (!isLoading) {
         if (isAuthenticated) {
           // Prevent authenticated user from accessing auth or other role pages
@@ -95,6 +98,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
             routePermission === "auth" ||
             !hasPermission(user, routePermission)
           ) {
+            console.log(query?.redirect);
             if (query?.redirect) {
               router.replace(query.redirect as string);
             } else {
@@ -103,7 +107,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
                   id: "unauthorized",
                 });
               }
-              router.replace(HOME_ROUTE);
+              // router.replace(HOME_ROUTE);
             }
           }
         } else {
@@ -118,6 +122,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       }
     }, [isAuthenticated, isLoading, query, router, user]);
 
+    console.log("isAuthenticated", isAuthenticated, "isLoading", isLoading);
     if (
       // If unauthenticated user want to access protected pages
       ((isLoading || !isAuthenticated) && routePermission !== "auth") ||

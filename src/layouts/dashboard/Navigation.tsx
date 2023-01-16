@@ -7,6 +7,8 @@ import { FiChevronDown, FiFileText } from "react-icons/fi";
 
 import UnstyledLink from "@/components/links/UnstyledLink";
 import clsxm from "@/lib/clsxm";
+import useAuthStore from "@/store/useAuthStore";
+import { PermissionList } from "@/types/entities/permission-list";
 
 export type Navigation = {
   name: string;
@@ -18,22 +20,34 @@ export type Navigation = {
    */
   exactMatch?: boolean;
   children?: Navigation[];
+  permissions?: PermissionList;
 };
 
 type NavigationProps = React.ComponentPropsWithoutRef<"nav">;
 
 const navigations: Navigation[] = [
-  { name: "Dashboard", href: "/my", icon: FiFileText },
   {
-    name: "Open Campus",
+    name: "Dashboard",
+    href: "/my",
+    icon: FiFileText,
+    permissions: ["login_user.store"],
+  },
+  {
+    name: "Contoh Nested Dashboard",
     href: "#",
     icon: FiFileText,
     children: [
-      { name: "Status", href: "/my/open-campus", icon: FiFileText },
+      {
+        name: "Status",
+        href: "/my/open-campus",
+        icon: FiFileText,
+        permissions: ["admin.delete", "admin.store"],
+      },
       {
         name: "Daftar",
         href: "/my/open-campus/daftar",
         icon: FiFileText,
+        permissions: ["login_user.store"],
       },
     ],
   },
@@ -136,6 +150,14 @@ function NavigationLink({
   const isActive = navigation.exactMatch
     ? router.pathname === navigation.href
     : router.pathname.startsWith(navigation.href);
+
+  // check if user has permission to access the route
+  const user = useAuthStore.useUser();
+  const hasPermission = navigation.permissions
+    ? navigation.permissions?.some((p) => user?.permissions.includes(p))
+    : true;
+
+  if (!hasPermission) return null;
 
   return (
     <UnstyledLink

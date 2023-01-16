@@ -11,10 +11,7 @@ const isServer = () => {
 let context = <GetServerSidePropsContext>{};
 
 export const api = axios.create({
-  baseURL:
-    process.env.NODE_ENV === "development"
-      ? process.env.PUBLIC_PRODUCTION_URL
-      : process.env.PUBLIC_DEVELOPMENT_URL,
+  baseURL: "https://itsexpo.robby.pw/api",
   headers: {
     "Accept-Encoding": "application/json",
     "Content-Type": "application/json",
@@ -34,8 +31,7 @@ api.interceptors.request.use(function (config) {
 
       const cookies = new Cookies(context.req?.headers.cookie);
       /** Get cookies from context if server side */
-      // get cookie from context by name @spectra/token
-      token = cookies.get("@spectra/token");
+      token = cookies.get("@itsexpo/token");
     } else {
       /** Get cookies from context if server side */
       token = getToken();

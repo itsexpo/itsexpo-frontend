@@ -52,7 +52,7 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
                     variant="b3"
                     className={clsxm(!open && "truncate", "text-yellow-500")}
                   >
-                    {user?.username}
+                    {user?.email}
                   </Typography>
                 </div>
               </div>
