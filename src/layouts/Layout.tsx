@@ -1,9 +1,21 @@
 import * as React from "react";
 
 import BaseDialog from "@/components/dialog/BaseDialog";
+import Footer from "@/layouts/Footer";
+import Navbar from "@/layouts/Navbar";
 import useDialogStore from "@/store/useDialogStore";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+type LayoutOpt = {
+  children: React.ReactNode;
+  withFooter?: boolean;
+  withNavbar?: boolean;
+} & React.ComponentPropsWithRef<"div">;
+
+export default function Layout({
+  children,
+  withFooter = true,
+  withNavbar = true,
+}: LayoutOpt) {
   //#region  //*=========== Store ===========
   const open = useDialogStore.useOpen();
   const state = useDialogStore.useState();
@@ -12,7 +24,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   //#endregion  //*======== Store ===========
 
   return (
-    <div>
+    <div className="overflow-x-hidden bg-black">
+      {withNavbar && <Navbar />}
       {children}
       <BaseDialog
         onClose={handleClose}
@@ -20,6 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         open={open}
         options={state}
       />
+      {withFooter && <Footer />}
     </div>
   );
 }
