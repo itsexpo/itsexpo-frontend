@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ["Upakarti"],
-        secondary: ["Montserrat"],
+        primary: ["Upakarti", fontFamily.sans],
+        secondary: ["Montserrat", fontFamily.sans],
       },
       colors: {
         primary: {
@@ -66,7 +66,7 @@ module.exports = {
           secondary: "#5A5D56",
           tertiary: "#989898",
           icons: "#878787",
-          tag: "##E9E9E9",
+          tag: "#E9E9E9",
         },
         outline: {
           base: "#D3D6CC",

@@ -53,11 +53,11 @@ export default function Typography<T extends React.ElementType>({
           variant === "h4" && ["text-[24px] md:text-[48px]"],
           variant === "h5" && ["text-[20px] md:text-[32px]"],
           variant === "h6" && ["text-[16px] md:text-[24px]"],
-          variant === "title" && ["text-[20px]"],
-          variant === "paragraph" && ["text-[18px]"],
-          variant === "body" && ["text-[16px]"],
-          variant === "button" && ["text-[16px]"],
-          variant === "caption" && ["text-[14px]"],
+          variant === "t" && ["text-[20px]"],
+          variant === "p" && ["text-[18px]"],
+          variant === "b1" && ["text-[16px]"],
+          variant === "b2" && ["text-[16px]"],
+          variant === "c" && ["text-[14px]"],
         ],
 
         //#region  //*=========== Color ===========
