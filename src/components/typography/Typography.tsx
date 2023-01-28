@@ -9,17 +9,11 @@ enum TypographyVariant {
   "h4",
   "h5",
   "h6",
-  "s1",
-  "s2",
-  "s3",
-  "s4",
-  "b1",
-  "b2",
-  "b3",
-  "c1",
-  "c2",
-  "l1",
-  "l2",
+  "title",
+  "paragraph",
+  "body",
+  "button",
+  "caption",
 }
 
 enum TypographyColor {
@@ -71,23 +65,19 @@ export default function Typography<T extends React.ElementType>({
       className={clsxm(
         //#region  //*=========== Variants ===========
         [
-          variant === "h1" && ["text-2xl font-semibold"],
-          variant === "h2" && ["text-xl font-semibold"],
-          variant === "h3" && ["text-lg font-semibold"],
-          variant === "h4" && ["text-base font-bold"],
-          variant === "h5" && ["text-base font-semibold"],
-          variant === "h6" && ["text-sm font-semibold"],
-          variant === "s1" && ["text-lg font-medium"],
-          variant === "s2" && ["text-base font-medium"],
-          variant === "s3" && ["text-sm font-medium"],
-          variant === "s4" && ["text-xs font-medium"],
-          variant === "b1" && ["text-lg"],
-          variant === "b2" && ["text-base"],
-          variant === "b3" && ["text-sm font-normal"],
-          variant === "c1" && ["text-xs"],
-          variant === "c2" && ["text-[11px] leading-[14px]"],
+          variant === "h1" && ["text-[80px] leading-[96px]"],
+          variant === "h2" && ["text-[72px] leading-[90px]"],
+          variant === "h3" && ["text-[64px] leading-[84px]"],
+          variant === "h4" && ["text-[48px] leading-[64px]"],
+          variant === "h5" && ["text-[32px] leading-[48px]"],
+          variant === "h6" && ["text-[24px] leading-[32px]"],
+          variant === "title" && ["text-[20px] leading-[24px]"],
+          variant === "paragraph" && ["text-[18px] leading-[24px]"],
+          variant === "body" && ["text-[16px] leading-[24px]"],
+          variant === "button" && ["text-[16px] leading-[24px]"],
+          variant === "caption" && ["text-[14px] leading-[24px]"],
         ],
-        //#endregion  //*======== Variants ===========
+
         //#region  //*=========== Color ===========
         [
           color === "primary" && ["text-typo"],

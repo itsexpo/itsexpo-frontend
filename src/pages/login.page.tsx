@@ -4,6 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import Button from "@/components/buttons/Button";
 import Input from "@/components/forms/Input";
 import withAuth from "@/components/hoc/withAuth";
+import Typography from "@/components/typography/Typography";
 import useMutationToast from "@/hooks/toast/useMutationToast";
 import Layout from "@/layouts/Layout";
 import api from "@/lib/api";
@@ -64,7 +65,20 @@ function LoginPage() {
         <section>
           <div className="layout h-screen flex justify-center items-center">
             <div className="w-3/5 h-5/6 flex flex-col space-y-3 justify-center items-center">
-              <h1 className="text-5xl">Login</h1>
+              <Typography
+                variant="h1"
+                as="h1"
+                className="text-white font-primary"
+              >
+                ITS EXPO
+              </Typography>
+              <Typography
+                variant="h1"
+                as="h1"
+                className="text-white font-secondary"
+              >
+                ITS EXPO
+              </Typography>
               <FormProvider {...methods}>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
