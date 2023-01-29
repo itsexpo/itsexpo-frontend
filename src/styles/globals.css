@@ -32,6 +32,28 @@
   }
 }
 
+
+@layer base{
+  .resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: col-resize;
+    user-select: none;
+    touch-action: none;
+  }
+
+  .code{
+    background-color: #2f3136;
+    color: #f5f5f5;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 12px;
+  }
+}
 /* #region  /**=========== Datepicker =========== */
 .react-datepicker-wrapper {
   display: block;
