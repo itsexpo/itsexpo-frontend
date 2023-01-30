@@ -1,7 +1,7 @@
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import produce from "immer";
 import { mountStoreDevtool } from "simple-zustand-devtools";
-import create from "zustand";
+import { create } from "zustand";
 
 import { removeToken, setToken } from "@/lib/cookies";
 import { User } from "@/types/entities/user";
