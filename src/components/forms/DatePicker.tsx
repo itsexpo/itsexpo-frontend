@@ -43,7 +43,7 @@ export default function DatePicker({
 
   return (
     <div className="relative">
-      <label htmlFor={id} className="block text-sm font-normal text-gray-700">
+      <label htmlFor={id} className="block text-sm font-semibold text-typo">
         {label}
       </label>
 
@@ -65,8 +65,8 @@ export default function DatePicker({
                     ? "cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0"
                     : error
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "border-gray-300 focus:border-primary-500 focus:ring-primary-500",
-                  "block w-full rounded-md shadow-sm"
+                    : "bg-surface-base border-none focus:border-snone00 focus:ring-success-500",
+                  "block w-full rounded-md"
                 )}
                 placeholderText={placeholder}
                 aria-describedby={id}

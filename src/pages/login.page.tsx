@@ -104,7 +104,7 @@ function LoginPage() {
                   />
                   <Button
                     type="submit"
-                    variant="outline"
+                    variant="red"
                     className="mt-4 flex h-14 justify-center"
                   >
                     Masuk

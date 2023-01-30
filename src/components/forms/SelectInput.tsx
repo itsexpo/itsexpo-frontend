@@ -49,7 +49,7 @@ export default function SelectInput({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-normal text-gray-700">
+      <label htmlFor={id} className="block text-sm font-semibold text-typo">
         {label}
       </label>
       <div className="relative mt-1">
@@ -65,8 +65,8 @@ export default function SelectInput({
               ? "cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0"
               : errors[id]
               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-              : "border-gray-300 focus:border-primary-500 focus:ring-primary-500",
-            "block w-full rounded-md shadow-sm",
+              : "bg-surface-base focus:border-success-500 focus:ring-success-500 border-none",
+            "block w-full rounded-md",
             { "text-gray-500": value === "" }
           )}
           aria-describedby={id}

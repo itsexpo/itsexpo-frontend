@@ -127,7 +127,7 @@ export default function DropzoneInput({
 
   return (
     <div>
-      <label className="block text-sm font-normal text-gray-700" htmlFor={id}>
+      <label className="block text-sm font-semibold text-typo" htmlFor={id}>
         {label}
       </label>
 
@@ -164,7 +164,7 @@ export default function DropzoneInput({
                     "w-full cursor-pointer rounded border-2 border-dashed border-gray-300 px-2 py-8",
                     error
                       ? "border-red-500 group-focus:border-red-500"
-                      : "group-focus:border-primary-500"
+                      : "group-focus:border-success-500"
                   )}
                 >
                   <div className="space-y-1 text-center">
@@ -183,7 +183,12 @@ export default function DropzoneInput({
                       />
                     </svg>
                     <p className="text-gray-500">
-                      Drag and drop file here, or click to choose file
+                      <span className="font-semibold underline text-success-600">
+                        Klik untuk upload
+                      </span>{" "}
+                      atau drag and drop
+                      <br />
+                      JPEG, PNG dan SVG
                     </p>
                     <p className="text-xs text-gray-500">{`${
                       maxFiles - (files?.length || 0)
@@ -203,7 +208,7 @@ export default function DropzoneInput({
                 )}
               </div>
               {!readOnly && !!files?.length && (
-                <ul className="mt-1 divide-y divide-gray-300 rounded-md border border-gray-300">
+                <ul className="mt-1 divide-y divide-gray-300 rounded-md border-none">
                   {files.map((file, index) => (
                     <FilePreview
                       key={index}

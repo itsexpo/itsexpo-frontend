@@ -1,7 +1,10 @@
 import clsx from "clsx";
 import * as React from "react";
 import { get, RegisterOptions, useFormContext } from "react-hook-form";
+import { IconType } from "react-icons";
 import { HiExclamationCircle } from "react-icons/hi";
+
+import clsxm from "@/lib/clsxm";
 
 export type InputProps = {
   /** Input label */
@@ -24,6 +27,10 @@ export type InputProps = {
   readOnly?: boolean;
   /** Disable error style (not disabling error validation) */
   hideError?: boolean;
+  leftIcon?: IconType;
+  rightIcon?: IconType;
+  leftIconClassName?: string;
+  rightIconClassName?: string;
   /** Manual validation using RHF, it is encouraged to use yup resolver instead */
   validation?: RegisterOptions;
 } & React.ComponentPropsWithoutRef<"input">;
@@ -36,6 +43,10 @@ export default function Input({
   type = "text",
   readOnly = false,
   hideError = false,
+  leftIcon: LeftIcon,
+  rightIcon: RightIcon,
+  leftIconClassName,
+  rightIconClassName,
   validation,
   ...rest
 }: InputProps) {
@@ -48,7 +59,7 @@ export default function Input({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-normal text-gray-700">
+      <label htmlFor={id} className="block text-sm font-semibold text-typo">
         {label}
       </label>
       <div className="relative mt-1">
@@ -61,26 +72,37 @@ export default function Input({
           readOnly={readOnly}
           className={clsx(
             readOnly
-              ? "bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300"
+              ? "bg-gray-100 focus:ring-0 cursor-not-allowed focus:border-gray-300"
               : error
-              ? "focus:ring-red-500 border-red-500 focus:border-red-500"
-              : "focus:ring-primary-500 border-gray-300 focus:border-primary-500",
-            "block w-full rounded-md shadow-sm"
+              ? "bg-critical-100 focus:ring-red-500 border-red-500 focus:border-red-500"
+              : "bg-surface-base focus:ring-success-500 border-none focus:border-success-500",
+            "block w-full rounded-md",
+            LeftIcon && "pl-9",
+            RightIcon && "pr-8"
           )}
           placeholder={placeholder}
           aria-describedby={id}
         />
-
-        {!hideError && error && (
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-            <HiExclamationCircle className="text-xl text-red-500" />
+        {LeftIcon && (
+          <div className="absolute top-1/2 left-0 translate-x-1/2 -translate-y-1/2">
+            <LeftIcon
+              className={clsxm("text-lg md:text-xl", leftIconClassName)}
+            />
+          </div>
+        )}
+        {RightIcon && (
+          <div className="absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2">
+            <RightIcon
+              className={clsxm("text-lg md:text-xl", rightIconClassName)}
+            />
           </div>
         )}
       </div>
       <div className="mt-1">
         {helperText && <p className="text-xs text-gray-500">{helperText}</p>}
         {!hideError && error && (
-          <span className="text-sm text-red-500">
+          <span className="text-sm text-red-500 flex gap-x-1">
+            <HiExclamationCircle className="text-xl text-red-500" />
             {error?.message as unknown as string}
           </span>
         )}

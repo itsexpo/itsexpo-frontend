@@ -7,9 +7,11 @@ export default function Home() {
     <Layout>
       <SEO title="Home" description="This is the home page" />
       <section>
-        <div className="layout py-20">
-          <p>Button</p>
+        <div className="layout py-20 space-x-2">
           <ButtonLink href="/sandbox/button">Button</ButtonLink>
+          <ButtonLink href="/sandbox/colors">Color</ButtonLink>
+          <ButtonLink href="/sandbox/form">Form</ButtonLink>
+          <ButtonLink href="/sandbox/typography">Typography</ButtonLink>
         </div>
       </section>
     </Layout>

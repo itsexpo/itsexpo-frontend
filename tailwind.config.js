@@ -61,16 +61,16 @@ module.exports = {
           800: "#936D00",
         },
         typo: {
+          DEFAULT: "#1F201D",
           white: "#FFF",
-          default: "#1F201D",
           secondary: "#5A5D56",
           tertiary: "#989898",
           icons: "#878787",
           tag: "#E9E9E9",
         },
         outline: {
+          DEFAULT: "#E6E6E5",
           base: "#D3D6CC",
-          default: "#E6E6E5",
           button: "#BCBCBC",
         },
         surface: {

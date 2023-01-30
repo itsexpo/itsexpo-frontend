@@ -65,8 +65,8 @@ export default function PasswordInput({
               ? "cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0"
               : error
               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-              : "border-gray-300 focus:border-primary-500 focus:ring-primary-500",
-            "block w-full rounded-md shadow-sm"
+              : "bg-surface-base border-none focus:border-success-500 focus:ring-success-500",
+            "block w-full rounded-md"
           )}
           placeholder={placeholder}
           aria-describedby={id}
@@ -75,7 +75,7 @@ export default function PasswordInput({
         <button
           onClick={togglePassword}
           type="button"
-          className="absolute inset-y-0 right-0 mr-3 flex items-center rounded-lg p-1 focus:outline-none focus:ring focus:ring-primary-500"
+          className="absolute inset-y-0 right-0 mr-3 flex items-center rounded-lg p-1 focus:outline-none focus:ring focus:ring-success-500"
         >
           {showPassword ? (
             <HiEyeOff className="cursor-pointer text-xl text-gray-500 hover:text-gray-600" />

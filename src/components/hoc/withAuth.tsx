@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 import { useRouter } from "next/router";
 import * as React from "react";
 import toast from "react-hot-toast";
@@ -98,7 +99,6 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
             routePermission === "auth" ||
             !hasPermission(user, routePermission)
           ) {
-            console.log(query?.redirect);
             if (query?.redirect) {
               router.replace(query.redirect as string);
             } else {
@@ -122,7 +122,6 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       }
     }, [isAuthenticated, isLoading, query, router, user]);
 
-    console.log("isAuthenticated", isAuthenticated, "isLoading", isLoading);
     if (
       // If unauthenticated user want to access protected pages
       ((isLoading || !isAuthenticated) && routePermission !== "auth") ||

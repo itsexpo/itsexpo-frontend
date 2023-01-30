@@ -70,10 +70,10 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
             className={clsx("mt-2 flex flex-col gap-1", "pl-16 pr-3.5 pb-3")}
           >
             {/* // TODO: Change this to ButtonLink */}
-            <Button className="w-full" variant="primary" disabled={true}>
+            <Button className="w-full" disabled={true}>
               Ganti Password
             </Button>
-            <Button className="w-full" variant="danger" onClick={handleLogout}>
+            <Button className="w-full" onClick={handleLogout}>
               Logout
             </Button>
           </Disclosure.Panel>

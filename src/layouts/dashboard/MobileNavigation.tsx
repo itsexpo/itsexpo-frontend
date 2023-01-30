@@ -173,10 +173,7 @@ export default function MobileNavigation() {
                 leaveTo="opacity-0"
               >
                 <div className="absolute top-0 right-0 -mr-12 pt-2">
-                  <Button
-                    variant="danger"
-                    onClick={() => setSidebarOpen(false)}
-                  >
+                  <Button onClick={() => setSidebarOpen(false)}>
                     <span className="sr-only">Close sidebar</span>
                     <FiX />
                   </Button>

@@ -1,10 +1,12 @@
 import * as React from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FiZoomIn } from "react-icons/fi";
 
 import Button from "@/components/buttons/Button";
 import DatePicker from "@/components/forms/DatePicker";
 import DropzoneInput from "@/components/forms/DropzoneInput";
 import Input from "@/components/forms/Input";
+import PasswordInput from "@/components/forms/PasswordInput";
 import SelectInput from "@/components/forms/SelectInput";
 import TextArea from "@/components/forms/TextArea";
 import SEO from "@/components/SEO";
@@ -50,6 +52,9 @@ export default function FormSandbox() {
               <Input
                 id="name"
                 label="Name"
+                placeholder="placeholder"
+                leftIcon={FiZoomIn}
+                rightIcon={FiZoomIn}
                 validation={{ required: "Name must be filled" }}
               />
               <SelectInput
@@ -83,8 +88,9 @@ export default function FormSandbox() {
                 label="Address"
                 validation={{ required: "Address must be filled" }}
               />
+              <PasswordInput label="Password" id="password" />
               <div className="flex flex-wrap gap-4">
-                <Button variant="outline">Not Submit</Button>
+                <Button>Not Submit</Button>
                 <Button type="submit">Submit</Button>
               </div>
               <p className="text-sm text-gray-800">
