@@ -1,14 +1,14 @@
-import { Disclosure } from "@headlessui/react";
-import clsx from "clsx";
-import { useRouter } from "next/router";
-import * as React from "react";
-import { IconType } from "react-icons";
-import { FiChevronDown, FiFileText } from "react-icons/fi";
+import { Disclosure } from '@headlessui/react';
+import clsx from 'clsx';
+import { useRouter } from 'next/router';
+import * as React from 'react';
+import { IconType } from 'react-icons';
+import { FiChevronDown, FiFileText } from 'react-icons/fi';
 
-import UnstyledLink from "@/components/links/UnstyledLink";
-import clsxm from "@/lib/clsxm";
-import useAuthStore from "@/store/useAuthStore";
-import { PermissionList } from "@/types/entities/permission-list";
+import UnstyledLink from '@/components/links/UnstyledLink';
+import clsxm from '@/lib/clsxm';
+import useAuthStore from '@/store/useAuthStore';
+import { PermissionList } from '@/types/entities/permission-list';
 
 export type Navigation = {
   name: string;
@@ -23,31 +23,31 @@ export type Navigation = {
   permissions?: PermissionList;
 };
 
-type NavigationProps = React.ComponentPropsWithoutRef<"nav">;
+type NavigationProps = React.ComponentPropsWithoutRef<'nav'>;
 
 const navigations: Navigation[] = [
   {
-    name: "Dashboard",
-    href: "/my",
+    name: 'Dashboard',
+    href: '/my',
     icon: FiFileText,
-    permissions: ["login_user.store"],
+    permissions: ['login_user.store'],
   },
   {
-    name: "Contoh Nested Dashboard",
-    href: "#",
+    name: 'Contoh Nested Dashboard',
+    href: '#',
     icon: FiFileText,
     children: [
       {
-        name: "Status",
-        href: "/my/open-campus",
+        name: 'Status',
+        href: '/my/open-campus',
         icon: FiFileText,
-        permissions: ["admin.delete", "admin.store"],
+        permissions: ['admin.delete', 'admin.store'],
       },
       {
-        name: "Daftar",
-        href: "/my/open-campus/daftar",
+        name: 'Daftar',
+        href: '/my/open-campus/daftar',
         icon: FiFileText,
-        permissions: ["login_user.store"],
+        permissions: ['login_user.store'],
       },
     ],
   },
@@ -55,8 +55,8 @@ const navigations: Navigation[] = [
 
 export default function Navigation({ className, ...rest }: NavigationProps) {
   return (
-    <nav className={clsxm("px-2 md:px-3", className)} {...rest}>
-      <div className="space-y-1.5">
+    <nav className={clsxm('px-2 md:px-3', className)} {...rest}>
+      <div className='space-y-1.5'>
         {navigations.map((nav) =>
           nav.children ? (
             <NestedNavigation navigation={nav} key={nav.name} />
@@ -94,37 +94,37 @@ function NestedNavigation({
   }
 
   return (
-    <Disclosure as="div" defaultOpen={checkActive(navChildren.children)}>
+    <Disclosure as='div' defaultOpen={checkActive(navChildren.children)}>
       {({ open }) => (
         <div>
           <Disclosure.Button
             className={clsx(
-              "hover:bg-orange-300/40",
-              "text-typo-secondary",
-              "group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium",
-              "focus-visible:ring-offset-secondary-500 focus:outline-none focus-visible:ring-2  focus-visible:ring-green-500"
+              'hover:bg-orange-300/40',
+              'text-typo-secondary',
+              'group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium',
+              'focus-visible:ring-offset-secondary-500 focus:outline-none focus-visible:ring-2  focus-visible:ring-green-500'
             )}
           >
             <navChildren.icon
               className={clsx(
-                "mr-1.5 flex-shrink-0",
-                "text-typo-secondary text-lg",
-                open && "mt-[1px] self-start"
+                'mr-1.5 flex-shrink-0',
+                'text-typo-secondary text-lg',
+                open && 'mt-[1px] self-start'
               )}
-              aria-hidden="true"
+              aria-hidden='true'
             />
-            <span className={clsx("text-left", !open && "truncate")}>
+            <span className={clsx('text-left', !open && 'truncate')}>
               {navChildren.name}
             </span>
             <FiChevronDown
               className={clsx(
-                "flex-shrink-0",
-                "text-typo-icons ml-auto text-lg",
-                open && "mt-[1px] rotate-180 self-start"
+                'flex-shrink-0',
+                'text-typo-icons ml-auto text-lg',
+                open && 'mt-[1px] rotate-180 self-start'
               )}
             />
           </Disclosure.Button>
-          <Disclosure.Panel className="ml-5 mt-0.5">
+          <Disclosure.Panel className='ml-5 mt-0.5'>
             {navChildren.children?.map((nav) =>
               nav.children ? (
                 <NestedNavigation key={nav.name} navigation={nav} />
@@ -163,17 +163,17 @@ function NavigationLink({
     <UnstyledLink
       href={navigation.href}
       className={clsxm(
-        isActive ? "bg-orange-500 text-neutral-100" : "hover:bg-orange-500/40",
-        "group my-0.5 flex items-center rounded-md px-2 py-4 text-sm font-medium",
+        isActive ? 'bg-orange-500 text-neutral-100' : 'hover:bg-orange-500/40',
+        'group my-0.5 flex items-center rounded-md px-2 py-4 text-sm font-medium',
         className
       )}
-      aria-current={isActive ? "page" : undefined}
+      aria-current={isActive ? 'page' : undefined}
     >
       <navigation.icon
-        className={clsx("mr-1.5 flex-shrink-0", "text-typo-secondary text-lg")}
-        aria-hidden="true"
+        className={clsx('mr-1.5 flex-shrink-0', 'text-typo-secondary text-lg')}
+        aria-hidden='true'
       />
-      <span className="truncate">{navigation.name}</span>
+      <span className='truncate'>{navigation.name}</span>
     </UnstyledLink>
   );
 }

@@ -1,20 +1,20 @@
-import { useMutation } from "@tanstack/react-query";
-import { FormProvider, useForm } from "react-hook-form";
+import { useMutation } from '@tanstack/react-query';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import Button from "@/components/buttons/Button";
-import Input from "@/components/forms/Input";
-import withAuth from "@/components/hoc/withAuth";
-import Typography from "@/components/typography/Typography";
-import useMutationToast from "@/hooks/toast/useMutationToast";
-import Layout from "@/layouts/Layout";
-import api from "@/lib/api";
-import { setToken } from "@/lib/cookies";
-import useAuthStore from "@/store/useAuthStore";
-import { ApiReturn } from "@/types/api";
-import { Login } from "@/types/entities/login";
-import { LoginRespond } from "@/types/entities/user";
+import Button from '@/components/buttons/Button';
+import Input from '@/components/forms/Input';
+import withAuth from '@/components/hoc/withAuth';
+import Typography from '@/components/typography/Typography';
+import useMutationToast from '@/hooks/toast/useMutationToast';
+import Layout from '@/layouts/Layout';
+import api from '@/lib/api';
+import { setToken } from '@/lib/cookies';
+import useAuthStore from '@/store/useAuthStore';
+import { ApiReturn } from '@/types/api';
+import { Login } from '@/types/entities/login';
+import { LoginRespond } from '@/types/entities/user';
 
-export default withAuth(LoginPage, "auth");
+export default withAuth(LoginPage, 'auth');
 
 type LoginForm = {
   email: string;
@@ -31,13 +31,13 @@ function LoginPage() {
       let tempToken: string;
 
       return api
-        .post("/login_user", data)
+        .post('/login_user', data)
         .then((res) => {
           const { token } = res.data.data;
           tempToken = token;
           setToken(token);
 
-          return api.post<ApiReturn<LoginRespond>>("/me");
+          return api.post<ApiReturn<LoginRespond>>('/me');
         })
         .then((user) => {
           const permissions = user.data.data.permission;
@@ -63,49 +63,49 @@ function LoginPage() {
     <Layout>
       <main>
         <section>
-          <div className="layout h-screen flex justify-center items-center">
-            <div className="w-3/5 h-5/6 flex flex-col space-y-3 justify-center items-center">
+          <div className='layout h-screen flex justify-center items-center'>
+            <div className='w-3/5 h-5/6 flex flex-col space-y-3 justify-center items-center'>
               <Typography
-                variant="h1"
-                as="h1"
-                className="text-white font-primary"
+                variant='h1'
+                as='h1'
+                className='text-white font-primary'
               >
                 ITS EXPO
               </Typography>
               <Typography
-                variant="h1"
-                as="h1"
-                className="text-white font-secondary"
+                variant='h1'
+                as='h1'
+                className='text-white font-secondary'
               >
                 ITS EXPO
               </Typography>
               <FormProvider {...methods}>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
-                  className="flex flex-col justify-center items-center"
+                  className='flex flex-col justify-center items-center'
                 >
                   <Input
-                    id="email"
-                    label="E-mail"
-                    type="email"
-                    placeholder="Masukkan Email"
+                    id='email'
+                    label='E-mail'
+                    type='email'
+                    placeholder='Masukkan Email'
                     validation={{
                       required: true,
                     }}
                   />
                   <Input
-                    id="password"
-                    label="Password"
-                    type="password"
-                    placeholder="Masukkan Password"
+                    id='password'
+                    label='Password'
+                    type='password'
+                    placeholder='Masukkan Password'
                     validation={{
                       required: true,
                     }}
                   />
                   <Button
-                    type="submit"
-                    variant="red"
-                    className="mt-4 flex h-14 justify-center"
+                    type='submit'
+                    variant='red'
+                    className='mt-4 flex h-14 justify-center'
                   >
                     Masuk
                   </Button>

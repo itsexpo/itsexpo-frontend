@@ -4,17 +4,17 @@ import {
   PaginationState,
   SortingState,
   useReactTable,
-} from "@tanstack/react-table";
-import * as React from "react";
-import { FiList } from "react-icons/fi";
+} from '@tanstack/react-table';
+import * as React from 'react';
+import { FiList } from 'react-icons/fi';
 
-import Filter from "@/components/table/Filter";
-import PaginationControl from "@/components/table/PaginationControl";
-import TBody from "@/components/table/TBody";
-import THead from "@/components/table/THead";
-import TOption from "@/components/table/TOption";
-import clsxm from "@/lib/clsxm";
-import { PaginatedApiResponse } from "@/types/api";
+import Filter from '@/components/table/Filter';
+import PaginationControl from '@/components/table/PaginationControl';
+import TBody from '@/components/table/TBody';
+import THead from '@/components/table/THead';
+import TOption from '@/components/table/TOption';
+import clsxm from '@/lib/clsxm';
+import { PaginatedApiResponse } from '@/types/api';
 
 type ServerTableState = {
   pagination: PaginationState;
@@ -32,12 +32,12 @@ type ServerTableProps<T extends object> = {
   columns: ColumnDef<T>[];
   data: T[];
   header?: React.ReactNode;
-  meta: PaginatedApiResponse<T>["meta"] | undefined;
+  meta: PaginatedApiResponse<T>['meta'] | undefined;
   tableState: ServerTableState;
   setTableState: SetServerTableState;
   omitSort?: boolean;
   withFilter?: boolean;
-} & React.ComponentPropsWithoutRef<"div">;
+} & React.ComponentPropsWithoutRef<'div'>;
 
 export default function ServerTable<T extends object>({
   className,
@@ -52,7 +52,7 @@ export default function ServerTable<T extends object>({
   ...rest
 }: ServerTableProps<T>) {
   // const [globalFilter, setGlobalFilter] = React.useState('');
-  const columnResizeMode = "onEnd";
+  const columnResizeMode = 'onEnd';
 
   const table = useReactTable({
     data,
@@ -72,13 +72,13 @@ export default function ServerTable<T extends object>({
   });
 
   return (
-    <div className={clsxm("flex flex-col", className)} {...rest}>
-      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:justify-between">
+    <div className={clsxm('flex flex-col', className)} {...rest}>
+      <div className='flex flex-col items-stretch gap-3 sm:flex-row sm:justify-between'>
         {withFilter && <Filter table={table} />}
-        <div className="flex items-center gap-3">
+        <div className='flex items-center gap-3'>
           {Header}
           <TOption
-            icon={<FiList className="text-typo-secondary" />}
+            icon={<FiList className='text-typo-secondary' />}
             value={table.getState().pagination.pageSize}
             onChange={(e) => {
               table.setPageSize(Number(e.target.value));
@@ -92,10 +92,10 @@ export default function ServerTable<T extends object>({
           </TOption>
         </div>
       </div>
-      <div className="-my-2 -mx-4 mt-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-          <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-300">
+      <div className='-my-2 -mx-4 mt-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
+        <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
+            <table className='min-w-full divide-y divide-gray-300'>
               <colgroup>
                 {table.getAllColumns().map((column) => (
                   <col
@@ -104,7 +104,7 @@ export default function ServerTable<T extends object>({
                     style={{
                       width: column.columnDef.size
                         ? column.columnDef.size
-                        : "auto",
+                        : 'auto',
                     }}
                   />
                 ))}
@@ -116,7 +116,7 @@ export default function ServerTable<T extends object>({
         </div>
       </div>
 
-      <PaginationControl table={table} data={data} className="mt-4" />
+      <PaginationControl table={table} data={data} className='mt-4' />
     </div>
   );
 }

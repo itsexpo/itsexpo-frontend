@@ -1,15 +1,15 @@
-import { RowData, Table } from "@tanstack/react-table";
-import * as React from "react";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { RowData, Table } from '@tanstack/react-table';
+import * as React from 'react';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
-import Button from "@/components/buttons/Button";
-import clsxm from "@/lib/clsxm";
-import { buildPaginationControl } from "@/lib/pagination";
+import Button from '@/components/buttons/Button';
+import clsxm from '@/lib/clsxm';
+import { buildPaginationControl } from '@/lib/pagination';
 
 type PaginationControlProps<T extends RowData> = {
   data: T[];
   table: Table<T>;
-} & React.ComponentPropsWithoutRef<"div">;
+} & React.ComponentPropsWithoutRef<'div'>;
 
 /**
  *
@@ -26,7 +26,7 @@ export default function PaginationControl<T extends RowData>({
   const paginationControl = buildPaginationControl(currentPage, pageCount);
 
   const handlePageControlClick = (page: string | number) => {
-    if (page !== "...") {
+    if (page !== '...') {
       table.setPageIndex((page as number) - 1);
     }
   };
@@ -34,14 +34,14 @@ export default function PaginationControl<T extends RowData>({
   return (
     <div
       className={clsxm(
-        "flex items-center justify-between gap-x-2  md:justify-end",
+        'flex items-center justify-between gap-x-2  md:justify-end',
         className
       )}
       {...rest}
     >
-      <div className="flex gap-1">
+      <div className='flex gap-1'>
         <Button
-          className="rounded-md !p-2 !font-semibold"
+          className='rounded-md !p-2 !font-semibold'
           disabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
@@ -52,8 +52,8 @@ export default function PaginationControl<T extends RowData>({
           <Button
             key={index}
             className={clsxm(
-              "flex min-w-[34px] justify-center rounded-md bg-slate-200 !p-2 !font-semibold text-primary-main hover:bg-white/70",
-              currentPage === page && "bg-white"
+              'flex min-w-[34px] justify-center rounded-md bg-slate-200 !p-2 !font-semibold text-primary-main hover:bg-white/70',
+              currentPage === page && 'bg-white'
             )}
             onClick={() => handlePageControlClick(page)}
           >
@@ -61,7 +61,7 @@ export default function PaginationControl<T extends RowData>({
           </Button>
         ))}
         <Button
-          className="rounded-md !p-2 !font-semibold"
+          className='rounded-md !p-2 !font-semibold'
           disabled={
             !table.getCanNextPage() ||
             data.length < table.getState().pagination.pageSize

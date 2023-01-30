@@ -1,13 +1,13 @@
-import { flexRender, RowData, Table } from "@tanstack/react-table";
-import * as React from "react";
-import { AiFillCaretDown } from "react-icons/ai";
+import { flexRender, RowData, Table } from '@tanstack/react-table';
+import * as React from 'react';
+import { AiFillCaretDown } from 'react-icons/ai';
 
-import clsxm from "@/lib/clsxm";
+import clsxm from '@/lib/clsxm';
 
 type THeadProps<T extends RowData> = {
   omitSort: boolean;
   table: Table<T>;
-} & React.ComponentPropsWithoutRef<"div">;
+} & React.ComponentPropsWithoutRef<'div'>;
 
 export default function THead<T extends RowData>({
   className,
@@ -16,7 +16,7 @@ export default function THead<T extends RowData>({
   ...rest
 }: THeadProps<T>) {
   return (
-    <thead className={clsxm("bg-gray-50", className)} {...rest}>
+    <thead className={clsxm('bg-gray-50', className)} {...rest}>
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((header) => (
@@ -29,11 +29,11 @@ export default function THead<T extends RowData>({
                 },
               }}
               key={header.id}
-              scope="col"
+              scope='col'
               className={clsxm(
-                "mx-auto items-center py-3 text-left text-sm font-semibold capitalize",
+                'mx-auto items-center py-3 text-left text-sm font-semibold capitalize',
                 // !omitSort && header.column.getCanSort() ? 'pl-4' : 'pl-[30px]',
-                "row-span-2"
+                'row-span-2'
               )}
             >
               {header.isPlaceholder ? null : (
@@ -41,10 +41,10 @@ export default function THead<T extends RowData>({
                   <div
                     className={clsxm(
                       // if have 2 columns in 1 header, colspan 2
-                      "relative mx-auto flex items-center justify-center gap-2 py-1",
+                      'relative mx-auto flex items-center justify-center gap-2 py-1',
                       !omitSort && header.column.getCanSort()
-                        ? "cursor-pointer select-none"
-                        : ""
+                        ? 'cursor-pointer select-none'
+                        : ''
                     )}
                     onClick={
                       omitSort
@@ -55,13 +55,13 @@ export default function THead<T extends RowData>({
                     {!omitSort &&
                     header.column.getCanSort() &&
                     !header.column.getIsSorted() ? (
-                      <AiFillCaretDown className="group-hover:fill-typo w-1.5 rotate-180 fill-transparent" />
+                      <AiFillCaretDown className='group-hover:fill-typo w-1.5 rotate-180 fill-transparent' />
                     ) : (
                       {
                         asc: (
-                          <AiFillCaretDown className="fill-typo w-1.5 rotate-180" />
+                          <AiFillCaretDown className='fill-typo w-1.5 rotate-180' />
                         ),
-                        desc: <AiFillCaretDown className="fill-typo w-1.5" />,
+                        desc: <AiFillCaretDown className='fill-typo w-1.5' />,
                       }[header.column.getIsSorted() as string] ?? null
                     )}
                     <p>
@@ -75,14 +75,14 @@ export default function THead<T extends RowData>({
                         onMouseDown: header.getResizeHandler(),
                         onTouchStart: header.getResizeHandler(),
                         className: `resizer ${
-                          header.column.getIsResizing() ? "isResizing" : ""
+                          header.column.getIsResizing() ? 'isResizing' : ''
                         }`,
                         style: {
                           transform: header.column.getIsResizing()
                             ? `translateX(${
                                 table.getState().columnSizingInfo.deltaOffset
                               }px)`
-                            : "",
+                            : '',
                         },
                       }}
                     />

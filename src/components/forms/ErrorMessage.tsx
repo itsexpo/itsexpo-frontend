@@ -1,11 +1,11 @@
-import * as React from "react";
-import { get, useFormState } from "react-hook-form";
+import * as React from 'react';
+import { get, useFormState } from 'react-hook-form';
 
-import clsxm from "@/lib/clsxm";
+import clsxm from '@/lib/clsxm';
 
 type ErrorMessageProps = {
   id: string;
-} & React.ComponentPropsWithoutRef<"p">;
+} & React.ComponentPropsWithoutRef<'p'>;
 
 export default function ErrorMessage({
   id,
@@ -16,7 +16,7 @@ export default function ErrorMessage({
   const error = get(errors, id);
 
   return (
-    <p className={clsxm("text-sm text-red-500", className)} {...rest}>
+    <p className={clsxm('text-sm text-red-500', className)} {...rest}>
       {error.message?.toString()}
     </p>
   );

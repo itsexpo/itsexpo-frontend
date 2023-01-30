@@ -1,4 +1,4 @@
-import { Permission } from "@/types/entities/permission";
+import { Permission } from '@/types/entities/permission';
 
 export type Role = {
   id: number;
@@ -12,22 +12,22 @@ export type RoleDetail = {
   name: string;
   level: string;
   permission: {
-    role: Level["name"];
-    role_id: Level["id"];
+    role: Level['name'];
+    role_id: Level['id'];
     routes: string[];
   }[];
 };
 
 export type Level =
   | {
-      id: "1";
-      name: "USER";
+      id: '1';
+      name: 'USER';
     }
   | {
-      id: "2";
-      name: "ADMIN";
+      id: '2';
+      name: 'ADMIN';
     }
   | {
-      id: "3";
-      name: "KADIV";
+      id: '3';
+      name: 'KADIV';
     };

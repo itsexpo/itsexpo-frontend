@@ -1,10 +1,10 @@
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
 
-import clsx from "clsx";
-import get from "lodash.get";
-import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker";
-import { Controller, RegisterOptions, useFormContext } from "react-hook-form";
-import { HiOutlineCalendar } from "react-icons/hi";
+import clsx from 'clsx';
+import get from 'lodash.get';
+import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
+import { Controller, RegisterOptions, useFormContext } from 'react-hook-form';
+import { HiOutlineCalendar } from 'react-icons/hi';
 
 type DatePickerProps = {
   validation?: RegisterOptions;
@@ -16,7 +16,7 @@ type DatePickerProps = {
   defaultValue?: string;
   helperText?: string;
   readOnly?: boolean;
-} & Omit<ReactDatePickerProps, "onChange">;
+} & Omit<ReactDatePickerProps, 'onChange'>;
 
 export default function DatePicker({
   validation,
@@ -42,8 +42,8 @@ export default function DatePicker({
   if (defaultMonth) defaultDate.setMonth(defaultMonth);
 
   return (
-    <div className="relative">
-      <label htmlFor={id} className="block text-sm font-semibold text-typo">
+    <div className='relative'>
+      <label htmlFor={id} className='block text-sm font-semibold text-typo'>
         {label}
       </label>
 
@@ -54,7 +54,7 @@ export default function DatePicker({
         name={id}
         render={({ field: { onChange, onBlur, value } }) => (
           <>
-            <div className="relative mt-1">
+            <div className='relative mt-1'>
               <ReactDatePicker
                 name={id}
                 onChange={onChange}
@@ -62,30 +62,30 @@ export default function DatePicker({
                 selected={value ? new Date(value) : undefined}
                 className={clsx(
                   readOnly
-                    ? "cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0"
+                    ? 'cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0'
                     : error
-                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                    : "bg-surface-base border-none focus:border-snone00 focus:ring-success-500",
-                  "block w-full rounded-md"
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                    : 'bg-surface-base border-none focus:border-snone00 focus:ring-success-500',
+                  'block w-full rounded-md'
                 )}
                 placeholderText={placeholder}
                 aria-describedby={id}
                 showMonthDropdown
                 showYearDropdown
-                dropdownMode="select"
+                dropdownMode='select'
                 openToDate={value ? new Date(value) : defaultDate}
-                dateFormat="dd/MM/yyyy"
+                dateFormat='dd/MM/yyyy'
                 readOnly={readOnly}
                 {...rest}
               />
-              <HiOutlineCalendar className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 transform text-lg text-gray-500" />
+              <HiOutlineCalendar className='pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 transform text-lg text-gray-500' />
             </div>
-            <div className="mt-1">
-              {helperText !== "" && (
-                <p className="text-xs text-gray-500">{helperText}</p>
+            <div className='mt-1'>
+              {helperText !== '' && (
+                <p className='text-xs text-gray-500'>{helperText}</p>
               )}
               {error && (
-                <span className="text-sm text-red-500">
+                <span className='text-sm text-red-500'>
                   {error.message?.toString()}
                 </span>
               )}

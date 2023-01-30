@@ -2,14 +2,14 @@ import {
   FiltersTableState,
   PaginationState,
   SortingState,
-} from "@tanstack/react-table";
-import * as React from "react";
+} from '@tanstack/react-table';
+import * as React from 'react';
 
 type useServerTableProps<T extends object> = {
   pageSize?: number;
   sort?: {
     key: Extract<keyof T, string>;
-    type: "asc" | "desc";
+    type: 'asc' | 'desc';
   };
   find?: FiltersTableState;
 };
@@ -29,7 +29,7 @@ export default function useServerTable<T extends object>({
       ? [
           {
             id: sort.key,
-            desc: sort.type === "desc",
+            desc: sort.type === 'desc',
           },
         ]
       : []
@@ -40,7 +40,7 @@ export default function useServerTable<T extends object>({
     pageSize,
   });
 
-  const [globalFilter, setGlobalFilter] = React.useState("");
+  const [globalFilter, setGlobalFilter] = React.useState('');
 
   return {
     tableState: {

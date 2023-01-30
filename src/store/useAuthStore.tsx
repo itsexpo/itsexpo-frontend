@@ -1,10 +1,10 @@
-import { createSelectorHooks } from "auto-zustand-selectors-hook";
-import produce from "immer";
-import { mountStoreDevtool } from "simple-zustand-devtools";
-import { create } from "zustand";
+import { createSelectorHooks } from 'auto-zustand-selectors-hook';
+import produce from 'immer';
+import { mountStoreDevtool } from 'simple-zustand-devtools';
+import { create } from 'zustand';
 
-import { removeToken, setToken } from "@/lib/cookies";
-import { User } from "@/types/entities/user";
+import { removeToken, setToken } from '@/lib/cookies';
+import { User } from '@/types/entities/user';
 
 type AuthStoreType = {
   user: User | null;
@@ -46,8 +46,8 @@ const useAuthStoreBase = create<AuthStoreType>((set) => ({
   },
 }));
 
-if (process.env.NODE_ENV === "development") {
-  mountStoreDevtool("AuthStore", useAuthStoreBase);
+if (process.env.NODE_ENV === 'development') {
+  mountStoreDevtool('AuthStore', useAuthStoreBase);
 }
 
 const useAuthStore = createSelectorHooks(useAuthStoreBase);

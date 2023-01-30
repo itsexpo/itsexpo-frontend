@@ -1,21 +1,21 @@
-import * as React from "react";
-import { IconType } from "react-icons";
+import * as React from 'react';
+import { IconType } from 'react-icons';
 
 import UnstyledLink, {
   UnstyledLinkProps,
-} from "@/components/links/UnstyledLink";
-import clsxm from "@/lib/clsxm";
+} from '@/components/links/UnstyledLink';
+import clsxm from '@/lib/clsxm';
 
 enum ButtonSize {
-  "small",
-  "base",
-  "large",
+  'small',
+  'base',
+  'large',
 }
 
 enum ButtonVariant {
-  "red",
-  "yellow",
-  "green",
+  'red',
+  'yellow',
+  'green',
 }
 
 type ButtonLinkProps = {
@@ -32,8 +32,8 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     {
       children,
       className,
-      variant = "red",
-      size = "base",
+      variant = 'red',
+      size = 'base',
       leftIconClassName,
       rightIconClassName,
       leftIcon: LeftIcon,
@@ -47,44 +47,44 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         ref={ref}
         {...rest}
         className={clsxm(
-          "button inline-flex items-center justify-center rounded-md md:rounded-lg",
-          "focus:outline-none focus-visible:ring focus-visible:ring-primary-500",
-          "transition-colors duration-75",
+          'button inline-flex items-center justify-center rounded-md md:rounded-lg',
+          'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
+          'transition-colors duration-75',
           //#region  //*=========== Size ===========
           [
-            size === "large" && [
-              "min-h-[34px] py-2 px-[18px] font-semibold md:min-h-[38px] md:py-2.5 md:px-6",
-              "text-base md:text-lg",
+            size === 'large' && [
+              'min-h-[34px] py-2 px-[18px] font-semibold md:min-h-[38px] md:py-2.5 md:px-6',
+              'text-base md:text-lg',
             ],
-            size === "base" && [
-              "min-h-[30px] py-1.5 px-[14px] font-semibold md:min-h-[34px] md:py-2 md:px-5",
-              "text-sm md:text-base",
+            size === 'base' && [
+              'min-h-[30px] py-1.5 px-[14px] font-semibold md:min-h-[34px] md:py-2 md:px-5',
+              'text-sm md:text-base',
             ],
-            size === "small" && [
-              "min-h-[26px] py-0.5 px-[10px] font-medium md:min-h-[30px] md:py-1.5 md:px-4",
-              "text-xs md:text-sm",
+            size === 'small' && [
+              'min-h-[26px] py-0.5 px-[10px] font-medium md:min-h-[30px] md:py-1.5 md:px-4',
+              'text-xs md:text-sm',
             ],
           ],
           //#endregion  //*======== Size ===========
           //#region  //*=========== Variants ===========
           [
-            variant === "red" && [
-              "bg-critical-600 text-white",
-              "hover:bg-critical-700",
-              "active:bg-critical-800",
-              "disabled:bg-critical-700 disabled:brightness-90 disabled:hover:bg-critical-700",
+            variant === 'red' && [
+              'bg-critical-600 text-white',
+              'hover:bg-critical-700',
+              'active:bg-critical-800',
+              'disabled:bg-critical-700 disabled:brightness-90 disabled:hover:bg-critical-700',
             ],
-            variant === "yellow" && [
-              "bg-warning-600 text-white",
-              "hover:bg-warning-700",
-              "active:bg-warning-800",
-              "disabled:bg-warning-700 disabled:brightness-90 disabled:hover:bg-warning-700",
+            variant === 'yellow' && [
+              'bg-warning-600 text-white',
+              'hover:bg-warning-700',
+              'active:bg-warning-800',
+              'disabled:bg-warning-700 disabled:brightness-90 disabled:hover:bg-warning-700',
             ],
-            variant === "green" && [
-              "bg-success-600 text-white",
-              "hover:bg-success-700",
-              "active:bg-success-800",
-              "disabled:bg-success-700 disabled:brightness-90 disabled:hover:bg-success-700",
+            variant === 'green' && [
+              'bg-success-600 text-white',
+              'hover:bg-success-700',
+              'active:bg-success-800',
+              'disabled:bg-success-700 disabled:brightness-90 disabled:hover:bg-success-700',
             ],
           ],
           //#endregion  //*======== Variants ===========
@@ -93,15 +93,15 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       >
         {/* Left Icon */}
         {LeftIcon && (
-          <div className="mr-1">
+          <div className='mr-1'>
             <LeftIcon
               className={clsxm(
                 [
-                  size === "large" && "text-xl md:text-2xl",
-                  size === "base" && "text-lg md:text-xl",
-                  size === "small" && "text-sm md:text-lg",
+                  size === 'large' && 'text-xl md:text-2xl',
+                  size === 'base' && 'text-lg md:text-xl',
+                  size === 'small' && 'text-sm md:text-lg',
                 ],
-                "text-white",
+                'text-white',
                 leftIconClassName
               )}
             />
@@ -109,15 +109,15 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         )}
         {children}
         {RightIcon && (
-          <div className="ml-1">
+          <div className='ml-1'>
             <RightIcon
               className={clsxm(
                 [
-                  size === "large" && "text-xl md:text-2xl",
-                  size === "base" && "text-lg md:text-xl",
-                  size === "small" && "text-sm md:text-lg",
+                  size === 'large' && 'text-xl md:text-2xl',
+                  size === 'base' && 'text-lg md:text-xl',
+                  size === 'small' && 'text-sm md:text-lg',
                 ],
-                "text-white",
+                'text-white',
                 rightIconClassName
               )}
             />
