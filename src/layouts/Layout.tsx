@@ -1,15 +1,15 @@
-import * as React from "react";
+import * as React from 'react';
 
-import BaseDialog from "@/components/dialog/BaseDialog";
-import Footer from "@/layouts/Footer";
-import Navbar from "@/layouts/Navbar";
-import useDialogStore from "@/store/useDialogStore";
+import BaseDialog from '@/components/dialog/BaseDialog';
+import Footer from '@/layouts/Footer';
+import Navbar from '@/layouts/Navbar';
+import useDialogStore from '@/store/useDialogStore';
 
 type LayoutOpt = {
   children: React.ReactNode;
   withFooter?: boolean;
   withNavbar?: boolean;
-} & React.ComponentPropsWithRef<"div">;
+} & React.ComponentPropsWithRef<'div'>;
 
 export default function Layout({
   children,
@@ -24,7 +24,7 @@ export default function Layout({
   //#endregion  //*======== Store ===========
 
   return (
-    <div className="overflow-x-hidden bg-black">
+    <div className='overflow-x-hidden bg-black'>
       {withNavbar && <Navbar />}
       {children}
       <BaseDialog

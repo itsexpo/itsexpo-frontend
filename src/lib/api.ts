@@ -1,20 +1,20 @@
-import axios, { AxiosError } from "axios";
-import { GetServerSidePropsContext } from "next";
-import Cookies from "universal-cookie";
+import axios, { AxiosError } from 'axios';
+import { GetServerSidePropsContext } from 'next';
+import Cookies from 'universal-cookie';
 
-import { getToken } from "@/lib/cookies";
-import { UninterceptedApiError } from "@/types/api";
+import { getToken } from '@/lib/cookies';
+import { UninterceptedApiError } from '@/types/api';
 
 const isServer = () => {
-  return typeof window === "undefined";
+  return typeof window === 'undefined';
 };
 let context = <GetServerSidePropsContext>{};
 
 export const api = axios.create({
-  baseURL: "https://itsexpo.robby.pw/api",
+  baseURL: 'https://itsexpo.robby.pw/api',
   headers: {
-    "Accept-Encoding": "application/json",
-    "Content-Type": "application/json",
+    'Accept-Encoding': 'application/json',
+    'Content-Type': 'application/json',
   },
   withCredentials: false,
 });
@@ -27,17 +27,17 @@ api.interceptors.request.use(function (config) {
 
     if (isServer()) {
       if (!context)
-        throw "Api Context not found. You must call `setApiContext(context)` before calling api on server-side";
+        throw 'Api Context not found. You must call `setApiContext(context)` before calling api on server-side';
 
       const cookies = new Cookies(context.req?.headers.cookie);
       /** Get cookies from context if server side */
-      token = cookies.get("@itsexpo/token");
+      token = cookies.get('@itsexpo/token');
     } else {
       /** Get cookies from context if server side */
       token = getToken();
     }
 
-    config.headers.Authorization = token ? `Bearer ${token}` : "";
+    config.headers.Authorization = token ? `Bearer ${token}` : '';
   }
 
   return config;
@@ -57,7 +57,7 @@ api.interceptors.response.use(
           data: {
             ...error.response.data,
             message:
-              typeof error.response.data.message === "string"
+              typeof error.response.data.message === 'string'
                 ? error.response.data.message
                 : Object.values(error.response.data.message)[0][0],
           },

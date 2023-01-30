@@ -1,10 +1,10 @@
-import { UseMutationResult } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import * as React from "react";
-import toast from "react-hot-toast";
+import { UseMutationResult } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+import * as React from 'react';
+import toast from 'react-hot-toast';
 
-import { DEFAULT_TOAST_MESSAGE } from "@/constant/toast";
-import { ApiError } from "@/types/api";
+import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
+import { ApiError } from '@/types/api';
 
 type OptionType = {
   loading?: string;
@@ -18,7 +18,7 @@ export default function useMutationToast<T, K>(
 ) {
   const { data, isError, isLoading, error } = mutation;
 
-  const toastStatus = React.useRef<string>(data ? "done" : "idle");
+  const toastStatus = React.useRef<string>(data ? 'done' : 'idle');
 
   React.useEffect(() => {
     const toastMessage = {
@@ -27,23 +27,23 @@ export default function useMutationToast<T, K>(
     };
 
     // If it is not the first render
-    if (toastStatus.current === "done" && !isLoading) return;
+    if (toastStatus.current === 'done' && !isLoading) return;
 
     if (isError) {
       toast.error(
-        typeof toastMessage.error === "string"
+        typeof toastMessage.error === 'string'
           ? toastMessage.error
           : toastMessage.error(error),
         {
           id: toastStatus.current,
         }
       );
-      toastStatus.current = "done";
+      toastStatus.current = 'done';
     } else if (isLoading) {
       toastStatus.current = toast.loading(toastMessage.loading);
     } else if (data) {
       toast.success(toastMessage.success, { id: toastStatus.current });
-      toastStatus.current = "done";
+      toastStatus.current = 'done';
     }
 
     return () => {

@@ -1,14 +1,15 @@
-import { useRouter } from "next/router";
-import * as React from "react";
-import toast from "react-hot-toast";
-import { ImSpinner8 } from "react-icons/im";
+/* eslint-disable unused-imports/no-unused-vars */
+import { useRouter } from 'next/router';
+import * as React from 'react';
+import toast from 'react-hot-toast';
+import { ImSpinner8 } from 'react-icons/im';
 
-import api from "@/lib/api";
-import { getToken, removeToken } from "@/lib/cookies";
-import useAuthStore from "@/store/useAuthStore";
-import { ApiReturn } from "@/types/api";
-import { PermissionList } from "@/types/entities/permission-list";
-import { LoginRespond, User } from "@/types/entities/user";
+import api from '@/lib/api';
+import { getToken, removeToken } from '@/lib/cookies';
+import useAuthStore from '@/store/useAuthStore';
+import { ApiReturn } from '@/types/api';
+import { PermissionList } from '@/types/entities/permission-list';
+import { LoginRespond, User } from '@/types/entities/user';
 
 export interface WithAuthProps {
   user: User;
@@ -25,12 +26,12 @@ const hasPermission = (user: User | null, permission: PermissionList) => {
  * @see https://github.com/mxthevs/nextjs-auth/blob/main/src/components/withAuth.tsx
  */
 
-const HOME_ROUTE = "/dashboard";
-const LOGIN_ROUTE = "/login";
+const HOME_ROUTE = '/dashboard';
+const LOGIN_ROUTE = '/login';
 
 export default function withAuth<T extends WithAuthProps = WithAuthProps>(
   Component: React.ComponentType<T>,
-  routePermission: "auth" | PermissionList
+  routePermission: 'auth' | PermissionList
 ) {
   const ComponentWithAuth = (props: Omit<T, keyof WithAuthProps>) => {
     const router = useRouter();
@@ -55,7 +56,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       }
       const loadUser = async () => {
         try {
-          const res = await api.post<ApiReturn<LoginRespond>>("/me");
+          const res = await api.post<ApiReturn<LoginRespond>>('/me');
           const permissions = res.data.data.permission;
 
           login({
@@ -83,9 +84,9 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       checkAuth();
 
       // run checkAuth every focus changes
-      window.addEventListener("focus", checkAuth);
+      window.addEventListener('focus', checkAuth);
       return () => {
-        window.removeEventListener("focus", checkAuth);
+        window.removeEventListener('focus', checkAuth);
       };
     }, [checkAuth]);
 
@@ -95,16 +96,15 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
         if (isAuthenticated) {
           // Prevent authenticated user from accessing auth or other role pages
           if (
-            routePermission === "auth" ||
+            routePermission === 'auth' ||
             !hasPermission(user, routePermission)
           ) {
-            console.log(query?.redirect);
             if (query?.redirect) {
               router.replace(query.redirect as string);
             } else {
-              if (routePermission !== "auth") {
-                toast.error("Anda tidak memiliki akses ke halaman ini", {
-                  id: "unauthorized",
+              if (routePermission !== 'auth') {
+                toast.error('Anda tidak memiliki akses ke halaman ini', {
+                  id: 'unauthorized',
                 });
               }
               // router.replace(HOME_ROUTE);
@@ -112,7 +112,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
           }
         } else {
           // Prevent unauthenticated user from accessing protected pages
-          if (routePermission !== "auth") {
+          if (routePermission !== 'auth') {
             router.replace(
               `${LOGIN_ROUTE}?redirect=${router.asPath}`,
               `${LOGIN_ROUTE}`
@@ -122,17 +122,16 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       }
     }, [isAuthenticated, isLoading, query, router, user]);
 
-    console.log("isAuthenticated", isAuthenticated, "isLoading", isLoading);
     if (
       // If unauthenticated user want to access protected pages
-      ((isLoading || !isAuthenticated) && routePermission !== "auth") ||
+      ((isLoading || !isAuthenticated) && routePermission !== 'auth') ||
       ((isLoading || isAuthenticated) &&
-        routePermission !== "auth" &&
+        routePermission !== 'auth' &&
         !hasPermission(user, routePermission))
     ) {
       return (
-        <div className="flex min-h-screen flex-col items-center justify-center text-gray-800">
-          <ImSpinner8 className="mb-4 animate-spin text-4xl" />
+        <div className='flex min-h-screen flex-col items-center justify-center text-gray-800'>
+          <ImSpinner8 className='mb-4 animate-spin text-4xl' />
           <p>Loading...</p>
         </div>
       );

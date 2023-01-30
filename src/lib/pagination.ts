@@ -21,7 +21,7 @@ export function buildPaginationControl(
 
   range.forEach((page, i) => {
     const previousPage = range[i - 1];
-    if (page - previousPage > 1) rangeWithDots.push("...");
+    if (page - previousPage > 1) rangeWithDots.push('...');
     rangeWithDots.push(page);
   });
 

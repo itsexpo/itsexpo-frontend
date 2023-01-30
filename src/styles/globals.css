@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: 'Upakarti';
+    src: url('/fonts/upakarti.ttf') format('truetype');
+    font-weight: normal;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/montserrat.ttf') format('truetype');
+    font-weight: normal;
+    font-display: swap;
+    font-style: normal;
+  }
+}
+
 .layout {
   max-width: 78.75rem;
   @apply mx-auto w-11/12;
@@ -32,8 +50,7 @@
   }
 }
 
-
-@layer base{
+@layer base {
   .resizer {
     position: absolute;
     right: 0;
@@ -46,7 +63,7 @@
     touch-action: none;
   }
 
-  .code{
+  .code {
     background-color: #2f3136;
     color: #f5f5f5;
     border: 2px solid black;

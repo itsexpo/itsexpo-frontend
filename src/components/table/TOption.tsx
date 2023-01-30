@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import clsxm from "@/lib/clsxm";
+import clsxm from '@/lib/clsxm';
 
 type TOptionProps = {
   children: React.ReactNode;
@@ -20,28 +20,28 @@ export default function TOption({
   return (
     <div
       className={clsxm(
-        "flex items-center",
-        "border-secondary-250 hover:border-primary-400 hover:ring-0"
+        'flex items-center',
+        'border-secondary-250 hover:border-primary-400 hover:ring-0'
       )}
     >
-      <div className="relative">
+      <div className='relative'>
         {Icon && (
-          <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+          <div className='pointer-events-none absolute inset-y-0 left-3 flex items-center'>
             {Icon}
           </div>
         )}
         <select
           className={clsxm(
-            "text-typo-secondary block rounded-md bg-transparent pl-8 pr-8 text-sm font-semibold",
-            "border-none outline-none focus:border-none focus:outline-none focus:ring-0",
-            "transition duration-200 hover:bg-white/70",
-            "active:bg-white disabled:bg-danger-main disabled:brightness-95"
+            'text-typo-secondary block rounded-md bg-transparent pl-8 pr-8 text-sm font-semibold',
+            'border-none outline-none focus:border-none focus:outline-none focus:ring-0',
+            'transition duration-200 hover:bg-white/70',
+            'active:bg-white disabled:bg-danger-main disabled:brightness-95'
           )}
           value={value}
           onChange={onChange}
         >
           {placeholder && (
-            <option value="" disabled hidden>
+            <option value='' disabled hidden>
               {placeholder}
             </option>
           )}

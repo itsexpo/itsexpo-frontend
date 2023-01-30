@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import { useState } from "react";
-import { get, RegisterOptions, useFormContext } from "react-hook-form";
-import { HiEye, HiEyeOff } from "react-icons/hi";
+import clsx from 'clsx';
+import { useState } from 'react';
+import { get, RegisterOptions, useFormContext } from 'react-hook-form';
+import { HiEye, HiEyeOff } from 'react-icons/hi';
 
 export type PasswordInputProps = {
   /** Input label */
@@ -26,11 +26,11 @@ export type PasswordInputProps = {
   hideError?: boolean;
   /** Manual validation using RHF, it is encouraged to use yup resolver instead */
   validation?: RegisterOptions;
-} & React.ComponentPropsWithoutRef<"input">;
+} & React.ComponentPropsWithoutRef<'input'>;
 
 export default function PasswordInput({
   label,
-  placeholder = "",
+  placeholder = '',
   helperText,
   id,
   readOnly = false,
@@ -49,24 +49,24 @@ export default function PasswordInput({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-normal text-gray-700">
+      <label htmlFor={id} className='block text-sm font-normal text-gray-700'>
         {label}
       </label>
-      <div className="relative mt-1">
+      <div className='relative mt-1'>
         <input
           {...register(id, validation)}
           {...rest}
-          type={showPassword ? "text" : "password"}
+          type={showPassword ? 'text' : 'password'}
           name={id}
           id={id}
           readOnly={readOnly}
           className={clsx(
             readOnly
-              ? "cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0"
+              ? 'cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0'
               : error
-              ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-              : "border-gray-300 focus:border-primary-500 focus:ring-primary-500",
-            "block w-full rounded-md shadow-sm"
+              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+              : 'bg-surface-base border-none focus:border-success-500 focus:ring-success-500',
+            'block w-full rounded-md'
           )}
           placeholder={placeholder}
           aria-describedby={id}
@@ -74,20 +74,20 @@ export default function PasswordInput({
 
         <button
           onClick={togglePassword}
-          type="button"
-          className="absolute inset-y-0 right-0 mr-3 flex items-center rounded-lg p-1 focus:outline-none focus:ring focus:ring-primary-500"
+          type='button'
+          className='absolute inset-y-0 right-0 mr-3 flex items-center rounded-lg p-1 focus:outline-none focus:ring focus:ring-success-500'
         >
           {showPassword ? (
-            <HiEyeOff className="cursor-pointer text-xl text-gray-500 hover:text-gray-600" />
+            <HiEyeOff className='cursor-pointer text-xl text-gray-500 hover:text-gray-600' />
           ) : (
-            <HiEye className="cursor-pointer text-xl text-gray-500 hover:text-gray-600" />
+            <HiEye className='cursor-pointer text-xl text-gray-500 hover:text-gray-600' />
           )}
         </button>
       </div>
-      <div className="mt-1">
-        {helperText && <p className="text-xs text-gray-500">{helperText}</p>}
+      <div className='mt-1'>
+        {helperText && <p className='text-xs text-gray-500'>{helperText}</p>}
         {error && (
-          <span className="text-sm text-red-500">
+          <span className='text-sm text-red-500'>
             {error?.message as unknown as string}
           </span>
         )}
