@@ -105,8 +105,8 @@ export default function BasicTablePage() {
 
           <ServerTable
             columns={columns}
-            data={queryData?.data ?? []}
-            meta={queryData?.meta}
+            data={queryData?.data.data_per_page ?? []}
+            meta={queryData?.data.meta}
             header={<Header setLevelFilter={setLevelFilter} />}
             tableState={tableState}
             setTableState={setTableState}

@@ -32,7 +32,7 @@ type ServerTableProps<T extends object> = {
   columns: ColumnDef<T>[];
   data: T[];
   header?: React.ReactNode;
-  meta: PaginatedApiResponse<T>['meta'] | undefined;
+  meta: PaginatedApiResponse<T>['data']['meta'] | undefined;
   tableState: ServerTableState;
   setTableState: SetServerTableState;
   omitSort?: boolean;
@@ -58,7 +58,7 @@ export default function ServerTable<T extends object>({
     data,
     columns,
     columnResizeMode,
-    pageCount: meta?.last_page,
+    pageCount: meta?.max_page,
     state: {
       ...tableState,
     },

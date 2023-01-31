@@ -15,9 +15,9 @@ export const buildPaginatedTableURL: BuildPaginationTableURL = ({
   tableState,
   additionalParam,
 }) => {
-  const pagePaginateOption = `pageSize=${
-    tableState.pagination.pageSize
-  }&pageIndex=${tableState.pagination.pageIndex + 1}`;
+  const pagePaginateOption = `page=${tableState.pagination.pageSize}&per_page=${
+    tableState.pagination.pageIndex + 1
+  }`;
 
   const pageSortOption =
     tableState.sorting.length > 0
@@ -27,7 +27,7 @@ export const buildPaginatedTableURL: BuildPaginationTableURL = ({
       : '';
 
   const filterOption = tableState.globalFilter.length
-    ? `&globalFilter=${tableState.globalFilter}`
+    ? `&search=${tableState.globalFilter}`
     : '';
 
   const additional =
