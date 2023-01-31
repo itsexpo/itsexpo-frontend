@@ -31,3 +31,8 @@ export type Level =
       id: '3';
       name: 'KADIV';
     };
+
+export type RoleColumn = {
+  id: string;
+  routes: string;
+};

@@ -15,7 +15,7 @@ export const buildPaginatedTableURL: BuildPaginationTableURL = ({
   tableState,
   additionalParam,
 }) => {
-  const pagePaginateOption = `page=${tableState.pagination.pageSize}&per_page=${
+  const pagePaginateOption = `per_page=${tableState.pagination.pageSize}&page=${
     tableState.pagination.pageIndex + 1
   }`;
 
