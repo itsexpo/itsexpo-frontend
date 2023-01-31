@@ -3,8 +3,13 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
+import PasswordInput from '@/components/forms/PasswordInput';
 import withAuth from '@/components/hoc/withAuth';
+import UnstyledLink from '@/components/links/UnstyledLink';
+import NextImage from '@/components/NextImage';
+import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
+import { REG_EMAIL } from '@/constant/regex';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import Layout from '@/layouts/Layout';
 import api from '@/lib/api';
@@ -16,102 +21,143 @@ import { LoginRespond } from '@/types/entities/user';
 
 export default withAuth(LoginPage, 'auth');
 
-type LoginForm = {
-  email: string;
-  password: string;
-};
-
 function LoginPage() {
   const methods = useForm<Login>();
   const { handleSubmit } = methods;
   const login = useAuthStore.useLogin();
 
-  const { mutate } = useMutationToast<void, LoginForm>(
-    useMutation((data) => {
-      let tempToken: string;
+  const { mutate } = useMutationToast<void, Login>(
+    useMutation(async (data) => {
+      const res = await api.post('/login_user', data);
+      const { token } = res.data.data;
+      setToken(token);
 
-      return api
-        .post('/login_user', data)
-        .then((res) => {
-          const { token } = res.data.data;
-          tempToken = token;
-          setToken(token);
+      const user = await api.get<ApiReturn<LoginRespond>>('/me');
+      const permissions = user.data.data.permission;
+      login({
+        name: user.data.data.name,
+        email: user.data.data.email,
+        role_id: permissions.role_id,
+        role: permissions.role,
+        permissions: permissions.routes,
+        token: token,
+      });
 
-          return api.get<ApiReturn<LoginRespond>>('/me');
-        })
-        .then((user) => {
-          const permissions = user.data.data.permission;
-
-          login({
-            name: user.data.data.name,
-            email: user.data.data.email,
-            role_id: permissions.role_id,
-            role: permissions.role,
-            permissions: permissions.routes,
-            token: tempToken,
-          });
-        });
+      return res;
     })
   );
 
-  const onSubmit = (data: LoginForm) => {
-    mutate(data);
+  const onSubmit = (data: Login) => mutate(data);
 
-    return;
-  };
   return (
-    <Layout>
+    <Layout withNavbar={false} withFooter={false}>
+      <SEO title='Login Page' />
       <main>
-        <section>
-          <div className='layout h-screen flex justify-center items-center'>
-            <div className='w-3/5 h-5/6 flex flex-col space-y-3 justify-center items-center'>
-              <Typography
-                variant='h1'
-                as='h1'
-                className='text-white font-primary'
+        <section className='h-screen flex flex-row justify-center items-stretch bg-warning-100 font-secondary'>
+          {/* Illustration Section */}
+          <div className='hidden md:block flex-1 max-w-full max-h-screen min-h-screen relative'>
+            <NextImage
+              src='/login/background.png'
+              alt='login illustration background'
+              width='837'
+              height='1024'
+              className='absolute w-full h-full'
+              imgClassName='max-h-full min-h-full object-cover'
+            />
+            <NextImage
+              src='/login/supergrafis-2-1.png'
+              alt='login illustration top left'
+              width='586'
+              height='586'
+              priority={true}
+              className='absolute w-3/4 h-3/5 top-0 left-0'
+              imgClassName='max-h-full min-h-full object-contain object-left-top'
+            />
+            <NextImage
+              src='/login/supergrafis-2-2.png'
+              alt='login illustration bottom right'
+              width='586'
+              height='586'
+              priority={true}
+              className='absolute w-3/4 h-3/5 bottom-0 right-0'
+              imgClassName='max-h-full min-h-full object-contain object-right-bottom'
+            />
+            <NextImage
+              src='/login/supergrafis-1-1.png'
+              alt='login illustration center'
+              width='757'
+              height='1071'
+              priority={true}
+              className='absolute w-11/12 h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+              imgClassName='max-h-full min-h-full object-contain'
+            />
+          </div>
+
+          {/* Form Section */}
+          <div className='w-full md:w-5/12 md:min-w-[400px] p-4 md:p-16 flex flex-col justify-center items-center bg-typo-white'>
+            <FormProvider {...methods}>
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className='w-full flex flex-col space-y-10'
               >
-                ITS EXPO
-              </Typography>
-              <Typography
-                variant='h1'
-                as='h1'
-                className='text-white font-secondary'
-              >
-                ITS EXPO
-              </Typography>
-              <FormProvider {...methods}>
-                <form
-                  onSubmit={handleSubmit(onSubmit)}
-                  className='flex flex-col justify-center items-center'
-                >
+                {/* Header Form */}
+                <div className='w-full flex flex-col'>
+                  <Typography variant='h5' className='font-semibold'>
+                    Masuk
+                  </Typography>
+                  <Typography variant='p' color='secondary'>
+                    Silahkan masuk dengan akun anda
+                  </Typography>
+                </div>
+                {/* Input Form */}
+                <div className='w-full flex flex-col space-y-4'>
                   <Input
                     id='email'
-                    label='E-mail'
+                    label='Email'
                     type='email'
                     placeholder='Masukkan Email'
                     validation={{
-                      required: true,
+                      required: 'Email wajib diisi',
+                      pattern: {
+                        value: REG_EMAIL,
+                        message: 'Alamat email tidak valid',
+                      },
                     }}
                   />
-                  <Input
+                  <PasswordInput
                     id='password'
-                    label='Password'
-                    type='password'
-                    placeholder='Masukkan Password'
-                    validation={{
-                      required: true,
-                    }}
+                    label='Kata Sandi'
+                    placeholder='Masukkan Kata Sandi'
+                    validation={{ required: 'Kata sandi wajib diisi' }}
                   />
-                  <Button
-                    type='submit'
-                    variant='red'
-                    className='mt-4 flex h-14 justify-center'
-                  >
+                  <Typography variant='c' className='flex justify-end'>
+                    <UnstyledLink
+                      href='/forgot-password'
+                      className='w-fit font-semibold underline underline-offset-2 text-success-500 hover:text-success-600'
+                    >
+                      Lupa Kata Sandi?
+                    </UnstyledLink>
+                  </Typography>
+                </div>
+                {/* Submit Form */}
+                <div className='flex flex-col space-y-4'>
+                  <Button type='submit' variant='green' size='large'>
                     Masuk
                   </Button>
-                </form>
-              </FormProvider>
-            </div>
+                  <div className='flex flex-row justify-center space-x-2'>
+                    <Typography variant='c'>Belum punya akun?</Typography>
+                    <Typography variant='c'>
+                      <UnstyledLink
+                        href='/signup'
+                        className='font-semibold underline underline-offset-2 text-success-500 hover:text-success-600'
+                      >
+                        Daftar
+                      </UnstyledLink>
+                    </Typography>
+                  </div>
+                </div>
+              </form>
+            </FormProvider>
           </div>
         </section>
       </main>
