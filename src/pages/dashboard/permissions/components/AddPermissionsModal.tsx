@@ -7,17 +7,13 @@ import Input from '@/components/forms/Input';
 import Modal from '@/components/modal/Modal';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import api from '@/lib/api';
+import { ApiReturn } from '@/types/api';
 import { PermissionResponse } from '@/types/entities/permission';
 
 //#region  //*======== Typing ===========
-type DefaultForm = {
-  id: string;
-  routes: string;
-};
 
 type ModalReturnType = {
   openModal: () => void;
-  defaultValues?: DefaultForm;
 };
 
 type AddPermissionsForm = {
@@ -50,15 +46,16 @@ export default function AddPermissionsModal({
 
   //#endregion  //*======== Add Mutate ===========
   const { mutate: addPermissions } = useMutationToast<
-    void,
+    ApiReturn<undefined>,
     Omit<PermissionResponse, 'id'>
   >(
-    useMutation((data) => {
-      return api.post('/permissions', data).then(() => {
+    useMutation((data) =>
+      api.post('/permissions', data).then((res) => {
         setOpen(false);
         onSuccess();
-      });
-    })
+        return res;
+      })
+    )
   );
   //#endregion  //*======== Add Mutate ===========
 
@@ -72,7 +69,7 @@ export default function AddPermissionsModal({
     <>
       {children(modalReturn)}
       <Modal open={open} setOpen={setOpen}>
-        <Modal.Title className='font-semibold'>Edit Permissions</Modal.Title>
+        <Modal.Title className='font-semibold'>Add Permissions</Modal.Title>
         <Modal.Body>
           <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)} className='space-y-3'>

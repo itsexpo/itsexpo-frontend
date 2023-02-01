@@ -1,10 +1,10 @@
 import { UseQueryResult } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import * as React from 'react';
 import toast from 'react-hot-toast';
 
 import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
-import { ApiError } from '@/types/api';
+import { ApiError, ApiReturn } from '@/types/api';
 
 type OptionType = {
   loading?: string;
@@ -13,7 +13,10 @@ type OptionType = {
 };
 
 export default function useQueryToast<T>(
-  query: UseQueryResult<T, AxiosError<ApiError>>,
+  query: UseQueryResult<
+    AxiosResponse<ApiReturn<T>> | undefined,
+    AxiosError<ApiError>
+  >,
   customMessages: OptionType = {}
 ) {
   const { data, isError, isLoading, error } = query;
@@ -42,7 +45,11 @@ export default function useQueryToast<T>(
     } else if (isLoading) {
       toastStatus.current = toast.loading(toastMessage.loading);
     } else if (data) {
-      toast.success(toastMessage.success, { id: toastStatus.current });
+      toast.success(
+        typeof toastMessage.success === 'string'
+          ? toastMessage.success
+          : toastMessage.success(data.data)
+      );
       toastStatus.current = 'done';
     }
 

@@ -37,7 +37,7 @@ function LoginPage() {
           tempToken = token;
           setToken(token);
 
-          return api.post<ApiReturn<LoginRespond>>('/me');
+          return api.get<ApiReturn<LoginRespond>>('/me');
         })
         .then((user) => {
           const permissions = user.data.data.permission;

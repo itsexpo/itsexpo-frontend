@@ -15,18 +15,19 @@ import api from '@/lib/api';
 import { buildPaginatedTableURL } from '@/lib/table';
 import AddPermissionsModal from '@/pages/dashboard/permissions/components/AddPermissionsModal';
 import EditPermissionsModal from '@/pages/dashboard/permissions/components/EditPermissionsModal';
-import { PaginatedApiResponse } from '@/types/api';
+import { ApiReturn, PaginatedApiResponse } from '@/types/api';
 import { Permission, PermissionResponse } from '@/types/entities/permission';
 import { Role, RoleColumn } from '@/types/entities/role';
-
-/**
- * Short
- *
- */
 
 export default withAuth(AdminPermissions, []);
 
 function AdminPermissions() {
+  const [editModalOpen, setEditModalOpen] = React.useState(false);
+  const [selectedData, setSelectedData] = React.useState<{
+    id: string;
+    routes: string;
+  }>();
+
   const { tableState, setTableState } = useServerTable<Role>({
     pageSize: 10,
   });
@@ -46,22 +47,20 @@ function AdminPermissions() {
       id: 'action',
       header: 'Action',
       cell: (info) => {
-        const defaultValues = {
+        const value = {
           id: info.row.original.id,
           routes: info.row.original.routes,
         };
         return (
-          <div>
-            <EditPermissionsModal
-              defaultValues={defaultValues}
-              onSuccess={refetchData}
+          <div className='flex items-center justify-center gap-x-4'>
+            <Button
+              onClick={() => {
+                setEditModalOpen(true);
+                setSelectedData(value);
+              }}
             >
-              {({ openModal }) => (
-                <Button variant='red' size='small' onClick={() => openModal()}>
-                  Edit
-                </Button>
-              )}
-            </EditPermissionsModal>
+              Edit
+            </Button>
             <Button
               leftIcon={FiEye}
               variant='red'
@@ -92,7 +91,7 @@ function AdminPermissions() {
 
   //#region  //*=========== Mutate Data ===========
   const { mutate: deletePermissions } = useMutationToast<
-    void,
+    ApiReturn<undefined>,
     Omit<Permission, 'name'>
   >(
     useMutation((data) => {
@@ -147,6 +146,14 @@ function AdminPermissions() {
               className='mt-8'
             />
           </div>
+          {selectedData && (
+            <EditPermissionsModal
+              open={editModalOpen}
+              setOpen={setEditModalOpen}
+              defaultValues={selectedData}
+              onSuccess={refetchData}
+            />
+          )}
         </section>
       </main>
     </DashboardLayoutAdmin>

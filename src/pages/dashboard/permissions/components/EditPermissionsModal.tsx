@@ -7,6 +7,7 @@ import Input from '@/components/forms/Input';
 import Modal from '@/components/modal/Modal';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import api from '@/lib/api';
+import { ApiReturn } from '@/types/api';
 import { PermissionResponse } from '@/types/entities/permission';
 
 //#region  //*======== Typing ===========
@@ -15,38 +16,70 @@ type DefaultForm = {
   routes: string;
 };
 
-type ModalReturnType = {
-  openModal: () => void;
-  defaultValues?: DefaultForm;
-};
-
-type EditPermissionsForm = {
+type EditPermissionsState = {
   id: string;
   routes: string;
 };
 //#endregion  //*======== Typing ===========
 
 export default function EditPermissionsModal({
-  children,
   defaultValues,
   onSuccess,
+  setOpen,
+  open,
 }: {
-  children: (props: ModalReturnType) => JSX.Element;
   defaultValues: DefaultForm;
   onSuccess: () => void;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  open: boolean;
 }) {
-  const [open, setOpen] = React.useState(false);
-  const modalReturn: ModalReturnType = {
-    openModal: () => setOpen(true),
-  };
+  return (
+    <>
+      <Modal open={open} setOpen={setOpen}>
+        <Modal.Title className='font-semibold'>Edit Permissions</Modal.Title>
+        <Modal.Body>
+          {defaultValues && (
+            <EditPermissionsForm
+              permissions={defaultValues}
+              setOpen={setOpen}
+              onSuccess={onSuccess}
+            />
+          )}
+        </Modal.Body>
+      </Modal>
+    </>
+  );
+}
+
+// Dipangil ketika defaultValues ada datanya
+
+function EditPermissionsForm({
+  permissions,
+  setOpen,
+  onSuccess,
+}: {
+  permissions: EditPermissionsState;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onSuccess: () => void;
+}) {
+  //#endregion  //*======== Edit Mutate ===========
+  const { mutate: updatePermissions } = useMutationToast<
+    ApiReturn<undefined>,
+    PermissionResponse
+  >(
+    useMutation(async (data) => {
+      const res = await api.post('/permissions/update', data);
+      setOpen(false);
+      onSuccess();
+      return res;
+    })
+  );
+  //#endregion  //*======== Edit Mutate ===========
 
   //#region  //*=========== Form ===========
-  const methods = useForm<EditPermissionsForm>({
+  const methods = useForm<EditPermissionsState>({
     mode: 'onTouched',
-    defaultValues: {
-      id: defaultValues.id,
-      routes: defaultValues?.routes,
-    },
+    defaultValues: permissions,
   });
 
   const {
@@ -55,69 +88,43 @@ export default function EditPermissionsModal({
   } = methods;
   //#region  //*======== Form ===========
 
-  //#endregion  //*======== Edit Mutate ===========
-  const { mutate: updatePermissions } = useMutationToast<
-    void,
-    PermissionResponse
-  >(
-    useMutation((data) => {
-      return api.post('/permissions/update', data).then(() => {
-        setOpen(false);
-        onSuccess();
-      });
-    })
-  );
-  //#endregion  //*======== Edit Mutate ===========
-
   //#region  //*=========== On Submit ===========
-  const onSubmit = (data: EditPermissionsForm) => {
+  const onSubmit = (data: EditPermissionsState) => {
     updatePermissions(data);
   };
   //#endregion  //*======== On Submit ===========
 
   return (
-    <>
-      {children(modalReturn)}
-      <Modal open={open} setOpen={setOpen}>
-        <Modal.Title className='font-semibold'>Edit Permissions</Modal.Title>
-        <Modal.Body>
-          <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(onSubmit)} className='space-y-3'>
-              <Input
-                id='id'
-                label='ID'
-                placeholder='Masukan ID Baru'
-                validation={{ required: 'ID Wajib Diisi' }}
-                disabled={true}
-              />
-              <Input
-                id='routes'
-                label='Routes Baru'
-                placeholder='Masukan Routes Baru'
-                validation={{ required: 'Routes Wajib Diisi' }}
-              />
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)} className='space-y-3'>
+        <Input
+          id='id'
+          label='ID'
+          placeholder='Masukan ID Baru'
+          validation={{ required: 'ID Wajib Diisi' }}
+          disabled={true}
+        />
+        <Input
+          id='routes'
+          label='Routes Baru'
+          placeholder='Masukan Routes Baru'
+          validation={{ required: 'Routes Wajib Diisi' }}
+        />
 
-              <div className='!mt-6 flex items-center'>
-                <Button
-                  type='button'
-                  variant='red'
-                  onClick={() => setOpen(false)}
-                >
-                  Batal
-                </Button>
-                <Button
-                  type='submit'
-                  className='ml-3 w-full'
-                  disabled={!isDirty}
-                  variant='green'
-                >
-                  Edit Permissions
-                </Button>
-              </div>
-            </form>
-          </FormProvider>
-        </Modal.Body>
-      </Modal>
-    </>
+        <div className='!mt-6 flex items-center'>
+          <Button type='button' variant='red' onClick={() => setOpen(false)}>
+            Batal
+          </Button>
+          <Button
+            type='submit'
+            className='ml-3 w-full'
+            disabled={!isDirty}
+            variant='green'
+          >
+            Edit Permissions
+          </Button>
+        </div>
+      </form>
+    </FormProvider>
   );
 }

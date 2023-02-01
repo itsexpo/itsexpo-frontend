@@ -13,7 +13,6 @@ let context = <GetServerSidePropsContext>{};
 export const api = axios.create({
   baseURL: 'https://itsexpo.robby.pw/api',
   headers: {
-    'Accept-Encoding': 'application/json',
     'Content-Type': 'application/json',
   },
   withCredentials: false,

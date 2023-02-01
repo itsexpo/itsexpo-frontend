@@ -1,5 +1,4 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import * as React from 'react';
 import toast from 'react-hot-toast';
 
@@ -9,8 +8,9 @@ import Typography from '@/components/typography/Typography';
 import useLoadingToast from '@/hooks/toast/useLoadingToast';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useQueryToast from '@/hooks/toast/useQueryToast';
+import Layout from '@/layouts/Layout';
 import api from '@/lib/api';
-import { ApiError, ApiReturn } from '@/types/api';
+import { ApiReturn } from '@/types/api';
 
 type User = {
   id: number;
@@ -35,16 +35,17 @@ export default function SandboxPage() {
     LoginData
   >(useMutation((data) => api.post('/login', data).then((res) => res.data)));
 
-  const { data: queryData } = useQueryToast(
-    useQuery<ApiReturn<User>, AxiosError<ApiError>>(['/me'])
-  );
+  const { data: queryData } = useQueryToast<User>(useQuery(['/me']));
 
   return (
-    <>
+    <Layout>
       <SEO title='Sandbox' />
 
       <section className='bg-gray-100'>
         <div className='layout flex min-h-screen flex-col items-start space-y-3 py-20'>
+          <>
+            {mutationData && <pre>{JSON.stringify(mutationData, null, 2)}</pre>}
+          </>
           <Button onClick={() => toast.success('Hello!')}>Open Toast</Button>
           <Button
             isLoading={isLoading}
@@ -61,9 +62,8 @@ export default function SandboxPage() {
           <Typography as='h3' variant='h3'>
             Mutation:
           </Typography>
-          {mutationData && <pre>{JSON.stringify(mutationData, null, 2)}</pre>}
         </div>
       </section>
-    </>
+    </Layout>
   );
 }

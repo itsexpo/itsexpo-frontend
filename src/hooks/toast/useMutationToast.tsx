@@ -1,10 +1,10 @@
 import { UseMutationResult } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import * as React from 'react';
 import toast from 'react-hot-toast';
 
 import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
-import { ApiError } from '@/types/api';
+import { ApiError, ApiReturn } from '@/types/api';
 
 type OptionType = {
   loading?: string;
@@ -13,7 +13,11 @@ type OptionType = {
 };
 
 export default function useMutationToast<T, K>(
-  mutation: UseMutationResult<T, AxiosError<ApiError>, K>,
+  mutation: UseMutationResult<
+    AxiosResponse<ApiReturn<T>> | undefined | void,
+    AxiosError<ApiError>,
+    K
+  >,
   customMessages: OptionType = {}
 ) {
   const { data, isError, isLoading, error } = mutation;
@@ -42,7 +46,11 @@ export default function useMutationToast<T, K>(
     } else if (isLoading) {
       toastStatus.current = toast.loading(toastMessage.loading);
     } else if (data) {
-      toast.success(toastMessage.success, { id: toastStatus.current });
+      toast.success(
+        typeof toastMessage.success === 'string'
+          ? toastMessage.success
+          : toastMessage.success(data.data)
+      );
       toastStatus.current = 'done';
     }
 
