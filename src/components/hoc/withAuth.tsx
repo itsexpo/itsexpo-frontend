@@ -56,7 +56,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       }
       const loadUser = async () => {
         try {
-          const res = await api.post<ApiReturn<LoginRespond>>('/me');
+          const res = await api.get<ApiReturn<LoginRespond>>('/me');
           const permissions = res.data.data.permission;
 
           login({
