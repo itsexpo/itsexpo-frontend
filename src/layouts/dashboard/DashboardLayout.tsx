@@ -10,7 +10,7 @@ type DashboardLayoutProps = {
   className?: string;
 };
 
-export default function DashboardLayoutAdmin({
+export default function DashboardLayout({
   children,
   className,
 }: DashboardLayoutProps) {

@@ -3,6 +3,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import React from 'react';
 import { FiEye } from 'react-icons/fi';
 
+import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import useServerTable from '@/components/hooks/useServerTable';
@@ -10,11 +11,11 @@ import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
-import DashboardLayoutAdmin from '@/layouts/dashboard/DashboardLayoutAdmin';
+import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api from '@/lib/api';
 import { buildPaginatedTableURL } from '@/lib/table';
-import AddPermissionsModal from '@/pages/dashboard/permissions/components/AddPermissionsModal';
-import EditPermissionsModal from '@/pages/dashboard/permissions/components/EditPermissionsModal';
+import AddPermissionsModal from '@/pages/dashboard/admin/permission/components/AddPermissionsModal';
+import EditPermissionsModal from '@/pages/dashboard/admin/permission/components/EditPermissionsModal';
 import { ApiReturn, PaginatedApiResponse } from '@/types/api';
 import {
   Permission,
@@ -119,26 +120,31 @@ function AdminPermissions() {
   //#region  //*=========== Delete Dialog ===========
 
   return (
-    <DashboardLayoutAdmin>
+    <DashboardLayout>
       <h1>Permissions</h1>
       <main>
         <section>
           <div className='layout min-h-screen py-20'>
             <div className='flex justify-between'>
-              <Typography as='h4' variant='h4' className='mt-4'>
-                Basic Table
-              </Typography>
-              <AddPermissionsModal onSuccess={refetchData}>
-                {({ openModal }) => (
-                  <Button
-                    variant='green'
-                    size='small'
-                    onClick={() => openModal()}
-                  >
-                    Add Permissions
-                  </Button>
-                )}
-              </AddPermissionsModal>
+              <div>
+                <Breadcrumb crumbs={['/admin/permission']} />
+                <Typography as='h4' variant='h4' className=''>
+                  Manajemen Permission
+                </Typography>
+              </div>
+              <div>
+                <AddPermissionsModal onSuccess={refetchData}>
+                  {({ openModal }) => (
+                    <Button
+                      variant='green'
+                      size='small'
+                      onClick={() => openModal()}
+                    >
+                      Add Permissions
+                    </Button>
+                  )}
+                </AddPermissionsModal>
+              </div>
             </div>
             <ServerTable
               columns={columns}
@@ -159,6 +165,6 @@ function AdminPermissions() {
           )}
         </section>
       </main>
-    </DashboardLayoutAdmin>
+    </DashboardLayout>
   );
 }

@@ -1,5 +1,5 @@
 import withAuth from '@/components/hoc/withAuth';
-import DashboardLayoutAdmin from '@/layouts/dashboard/DashboardLayoutAdmin';
+import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 
 /**
  * Short
@@ -10,8 +10,8 @@ export default withAuth(AdminPage, ['login_user.store']);
 
 function AdminPage() {
   return (
-    <DashboardLayoutAdmin>
+    <DashboardLayout>
       <h1>Admin Page</h1>
-    </DashboardLayoutAdmin>
+    </DashboardLayout>
   );
 }

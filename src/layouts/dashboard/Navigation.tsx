@@ -3,7 +3,13 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { IconType } from 'react-icons';
-import { FiChevronDown, FiFileText } from 'react-icons/fi';
+import {
+  FiChevronDown,
+  FiFileText,
+  FiSliders,
+  FiUserPlus,
+  FiUsers,
+} from 'react-icons/fi';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
 import clsxm from '@/lib/clsxm';
@@ -33,35 +39,23 @@ const navigations: Navigation[] = [
     permissions: ['login_user.store'],
   },
   {
-    name: 'Contoh Nested Dashboard',
+    name: 'Menejemen User',
     href: '#',
-    icon: FiFileText,
+    icon: FiUsers,
     children: [
       {
-        name: 'Status',
-        href: '/my/open-campus',
-        icon: FiFileText,
-        permissions: ['admin.delete', 'admin.store'],
+        name: 'Permissions',
+        href: '/dashboard/admin/permission',
+        icon: FiSliders,
+        // permissions: ['admin.delete', 'admin.store'],
       },
       {
-        name: 'Daftar',
-        href: '/my/open-campus/daftar',
-        icon: FiFileText,
-        permissions: ['login_user.store'],
+        name: 'Roles',
+        href: '/dashboard/admin/role',
+        icon: FiUserPlus,
+        // permissions: ['login_user.store'],
       },
     ],
-  },
-  {
-    name: 'Permissions',
-    href: '/dashboard/permissions',
-    icon: FiFileText,
-    // permissions: ["login_user.store"],
-  },
-  {
-    name: 'Roles',
-    href: '/dashboard/role',
-    icon: FiFileText,
-    // permissions: ["login_user.store"]
   },
 ];
 
