@@ -34,5 +34,10 @@ export type Level =
 
 export type RoleColumn = {
   id: string;
-  routes: string;
+  role: string;
 };
+export interface RoleResponse {
+  id: string;
+  role: string;
+  name: string;
+}

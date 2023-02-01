@@ -57,6 +57,12 @@ const navigations: Navigation[] = [
     icon: FiFileText,
     // permissions: ["login_user.store"],
   },
+  {
+    name: 'Roles',
+    href: '/dashboard/role',
+    icon: FiFileText,
+    // permissions: ["login_user.store"]
+  },
 ];
 
 export default function Navigation({ className, ...rest }: NavigationProps) {
