@@ -13,38 +13,35 @@ import useDialog from '@/hooks/useDialog';
 import DashboardLayoutAdmin from '@/layouts/dashboard/DashboardLayoutAdmin';
 import api from '@/lib/api';
 import { buildPaginatedTableURL } from '@/lib/table';
-import AddPermissionsModal from '@/pages/dashboard/permissions/components/AddPermissionsModal';
-import EditPermissionsModal from '@/pages/dashboard/permissions/components/EditPermissionsModal';
+import AddRoleModal from '@/pages/dashboard/role/components/AddRoleModal';
+import EditRolesModal from '@/pages/dashboard/role/components/EditRoleModal';
 import { ApiReturn, PaginatedApiResponse } from '@/types/api';
-import {
-  Permission,
-  PermissionColumn,
-  PermissionResponse,
-} from '@/types/entities/permission';
+import { RoleResponse } from '@/types/entities/role';
+import { Role, RoleColumn } from '@/types/entities/role';
 
-export default withAuth(AdminPermissions, []);
+export default withAuth(AdminRoles, []);
 
-function AdminPermissions() {
+function AdminRoles() {
   const [editModalOpen, setEditModalOpen] = React.useState(false);
   const [selectedData, setSelectedData] = React.useState<{
     id: string;
-    routes: string;
+    name: string;
   }>();
 
-  const { tableState, setTableState } = useServerTable<Permission>({
+  const { tableState, setTableState } = useServerTable<Role>({
     pageSize: 10,
   });
 
-  const columns: ColumnDef<PermissionColumn>[] = [
+  const columns: ColumnDef<RoleColumn>[] = [
     {
       id: 'id',
       accessorKey: 'id',
       header: 'Id',
     },
     {
-      id: 'routes',
-      accessorKey: 'routes',
-      header: 'Routes',
+      id: 'role',
+      accessorKey: 'role',
+      header: 'Roles',
     },
     {
       id: 'action',
@@ -52,7 +49,7 @@ function AdminPermissions() {
       cell: (info) => {
         const value = {
           id: info.row.original.id,
-          routes: info.row.original.routes,
+          name: info.row.original.role,
         };
         return (
           <div className='flex items-center justify-center gap-x-4'>
@@ -80,12 +77,11 @@ function AdminPermissions() {
 
   //#region  //*=========== Fetch Data ===========
   const url = buildPaginatedTableURL({
-    baseUrl: '/permissions',
+    baseUrl: '/roles',
     tableState,
   });
-
   const { data: queryData, refetch: refetchData } = useQuery<
-    PaginatedApiResponse<PermissionResponse[]>,
+    PaginatedApiResponse<RoleResponse[]>,
     Error
   >([url], {
     keepPreviousData: true,
@@ -93,12 +89,12 @@ function AdminPermissions() {
   //#endregion  //*=========== Fetch Data ===========
 
   //#region  //*=========== Mutate Data ===========
-  const { mutate: deletePermissions } = useMutationToast<
+  const { mutate: deleteRoles } = useMutationToast<
     ApiReturn<undefined>,
-    Omit<Permission, 'name'>
+    Omit<RoleResponse, 'role' | 'name'>
   >(
     useMutation((data) => {
-      return api.post('/permissions/delete', data);
+      return api.post('/roles/delete', data);
     })
   );
   //#endregion  //*=========== Mutate Data ===========
@@ -108,19 +104,19 @@ function AdminPermissions() {
   function openWarningDelete({ id }: { id: string }) {
     dialog({
       title: 'Apakah Anda Yakin!!!',
-      description: `Hapus permissions dengan ID: ${id} ?`,
+      description: `Hapus role dengan ID: ${id} ?`,
       submitText: 'Delete',
       variant: 'warning',
       catchOnCancel: true,
     })
-      .then(() => deletePermissions({ id: id }))
+      .then(() => deleteRoles({ id: id }))
       .then(() => refetchData());
   }
   //#region  //*=========== Delete Dialog ===========
 
   return (
     <DashboardLayoutAdmin>
-      <h1>Permissions</h1>
+      <h1>Roles</h1>
       <main>
         <section>
           <div className='layout min-h-screen py-20'>
@@ -128,17 +124,17 @@ function AdminPermissions() {
               <Typography as='h4' variant='h4' className='mt-4'>
                 Basic Table
               </Typography>
-              <AddPermissionsModal onSuccess={refetchData}>
+              <AddRoleModal onSuccess={refetchData}>
                 {({ openModal }) => (
                   <Button
                     variant='green'
                     size='small'
                     onClick={() => openModal()}
                   >
-                    Add Permissions
+                    Add Roles
                   </Button>
                 )}
-              </AddPermissionsModal>
+              </AddRoleModal>
             </div>
             <ServerTable
               columns={columns}
@@ -150,7 +146,7 @@ function AdminPermissions() {
             />
           </div>
           {selectedData && (
-            <EditPermissionsModal
+            <EditRolesModal
               open={editModalOpen}
               setOpen={setEditModalOpen}
               defaultValues={selectedData}
