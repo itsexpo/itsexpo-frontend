@@ -1,11 +1,19 @@
 import { AxiosError } from 'axios';
 
-import { ApiError } from '@/types/api';
+import { ApiError, ApiReturn } from '@/types/api';
 
-export const DEFAULT_TOAST_MESSAGE = {
+type ToastMessage<T> = {
+  loading: string;
+  success: (res: ApiReturn<T>) => string;
+  error: (err: AxiosError<ApiError>) => string;
+};
+
+export const DEFAULT_TOAST_MESSAGE: ToastMessage<unknown> = {
   loading: 'Loading...',
-  success: 'Berhasil',
-  error: (err: AxiosError<ApiError>) => {
+  success: (res) => {
+    return res.message || 'Berhasil';
+  },
+  error: (err) => {
     return (
       err?.response?.data?.message ||
       'Terjadi kesalahan, mohon coba beberapa saat lagi'

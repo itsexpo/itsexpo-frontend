@@ -107,7 +107,7 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
                   id: 'unauthorized',
                 });
               }
-              // router.replace(HOME_ROUTE);
+              router.replace(HOME_ROUTE);
             }
           }
         } else {
