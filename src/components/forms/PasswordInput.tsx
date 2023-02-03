@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { get, RegisterOptions, useFormContext } from 'react-hook-form';
-import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { HiExclamationCircle, HiEye, HiEyeOff } from 'react-icons/hi';
 
 export type PasswordInputProps = {
   /** Input label */
@@ -87,7 +87,8 @@ export default function PasswordInput({
       <div className='mt-1'>
         {helperText && <p className='text-xs text-gray-500'>{helperText}</p>}
         {error && (
-          <span className='text-sm text-red-500'>
+          <span className='text-sm text-red-500 flex gap-x-1'>
+            <HiExclamationCircle className='text-xl text-red-500' />
             {error?.message as unknown as string}
           </span>
         )}
