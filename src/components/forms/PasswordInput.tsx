@@ -49,7 +49,7 @@ export default function PasswordInput({
 
   return (
     <div>
-      <label htmlFor={id} className='block text-sm font-normal text-gray-700'>
+      <label htmlFor={id} className='block text-sm font-semibold text-typo'>
         {label}
       </label>
       <div className='relative mt-1'>
@@ -64,7 +64,7 @@ export default function PasswordInput({
             readOnly
               ? 'cursor-not-allowed border-gray-300 bg-gray-100 focus:border-gray-300 focus:ring-0'
               : error
-              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+              ? 'bg-critical-100 border-red-500 focus:border-red-500 focus:ring-red-500'
               : 'bg-surface-base border-none focus:border-success-500 focus:ring-success-500',
             'block w-full rounded-md'
           )}
