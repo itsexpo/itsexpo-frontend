@@ -26,7 +26,7 @@ function LoginPage() {
   const { handleSubmit } = methods;
   const login = useAuthStore.useLogin();
 
-  const { mutate } = useMutationToast<void, Login>(
+  const { mutate, isLoading } = useMutationToast<void, Login>(
     useMutation(async (data) => {
       const res = await api.post('/login_user', data);
       const { token } = res.data.data;
@@ -51,11 +51,11 @@ function LoginPage() {
 
   return (
     <Layout withNavbar={false} withFooter={false}>
-      <SEO title='Login Page' />
+      <SEO title='Login' />
       <main>
-        <section className='h-screen flex flex-row justify-center items-stretch bg-warning-100 font-secondary'>
+        <section className='font-secondary'>
           {/* Illustration Section */}
-          <div className='hidden md:block flex-1 max-w-full max-h-screen min-h-screen relative'>
+          <div className='hidden md:block w-7/12 max-w-[calc(100%-400px)] h-screen fixed left-0 bg-warning-100'>
             <NextImage
               src='/login/background.png'
               alt='login illustration background'
@@ -94,14 +94,14 @@ function LoginPage() {
           </div>
 
           {/* Form Section */}
-          <div className='w-full md:w-5/12 md:min-w-[400px] p-4 md:p-16 flex flex-col justify-center items-center bg-typo-white'>
+          <div className='w-full md:w-5/12 md:min-w-[400px] min-h-screen float-right px-4 md:px-16 py-16 flex flex-col justify-center items-center bg-typo-white'>
             <FormProvider {...methods}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className='w-full flex flex-col space-y-10'
               >
                 {/* Header Form */}
-                <div className='w-full flex flex-col'>
+                <div className='flex flex-col'>
                   <Typography variant='h5' className='font-semibold'>
                     Masuk
                   </Typography>
@@ -110,7 +110,7 @@ function LoginPage() {
                   </Typography>
                 </div>
                 {/* Input Form */}
-                <div className='w-full flex flex-col space-y-4'>
+                <div className='flex flex-col space-y-4'>
                   <Input
                     id='email'
                     label='Email'
@@ -141,7 +141,12 @@ function LoginPage() {
                 </div>
                 {/* Submit Form */}
                 <div className='flex flex-col space-y-4'>
-                  <Button type='submit' variant='green' size='large'>
+                  <Button
+                    type='submit'
+                    variant='green'
+                    size='large'
+                    isLoading={isLoading}
+                  >
                     Masuk
                   </Button>
                   <div className='flex flex-row justify-center space-x-2'>
