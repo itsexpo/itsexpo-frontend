@@ -6,6 +6,7 @@ import clsxm from '@/lib/clsxm';
 
 const breadcrumbs = {
   // Admin
+  '/admin/user': 'User',
   '/admin/role': 'Role',
   '/admin/role/detail': 'Detail Role',
   '/admin/permission': 'Permission',

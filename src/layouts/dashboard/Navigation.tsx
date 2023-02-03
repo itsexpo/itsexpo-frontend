@@ -44,6 +44,12 @@ const navigations: Navigation[] = [
     icon: FiUsers,
     children: [
       {
+        name: 'User',
+        href: '/dashboard/admin/user',
+        icon: FiUsers,
+        permissions: ['login_user.store'],
+      },
+      {
         name: 'Permissions',
         href: '/dashboard/admin/permission',
         icon: FiSliders,
