@@ -6,6 +6,8 @@ export type ApiReturn<T> = {
 
 export type ApiError = {
   message: string;
+  code: number;
+  success: boolean;
 };
 
 export type UninterceptedApiError = {
