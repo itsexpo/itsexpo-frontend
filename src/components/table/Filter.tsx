@@ -18,7 +18,7 @@ export default function Filter<T extends RowData>({
   return (
     <div className={clsxm('relative mt-1 self-start', className)} {...rest}>
       <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-        <FiSearch className='text-typo text-xl text-orange-500' />
+        <FiSearch className='text-typo text-xl' />
       </div>
       <input
         type='text'

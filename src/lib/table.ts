@@ -1,3 +1,5 @@
+import queryString, { StringifyOptions } from 'query-string';
+
 import { ServerTableState } from '@/components/hooks/useServerTable';
 type BuildPaginationTableParam = {
   /** API Base URL, with / on the front */
@@ -6,34 +8,37 @@ type BuildPaginationTableParam = {
   /** Parameter addition
    * @example ['include=user,officer']
    */
-  additionalParam?: string[];
+  option?: StringifyOptions;
+  additionalParam?: Record<string, unknown>;
 };
 type BuildPaginationTableURL = (props: BuildPaginationTableParam) => string;
 
 export const buildPaginatedTableURL: BuildPaginationTableURL = ({
   baseUrl,
   tableState,
+  option,
   additionalParam,
 }) => {
-  const pagePaginateOption = `per_page=${tableState.pagination.pageSize}&page=${
-    tableState.pagination.pageIndex + 1
-  }`;
+  const queryParams = queryString.stringify(
+    {
+      per_page: tableState.pagination.pageSize,
+      page: tableState.pagination.pageIndex + 1,
+      sort: tableState.sorting.length > 0 ? tableState.sorting[0].id : '',
+      type:
+        tableState.sorting.length > 0
+          ? tableState.sorting[0].desc
+            ? 'desc'
+            : 'asc'
+          : '',
+      search: tableState.globalFilter,
+      ...additionalParam,
+    },
+    {
+      arrayFormat: 'bracket',
+      skipEmptyString: true,
+      ...option,
+    }
+  );
 
-  const pageSortOption =
-    tableState.sorting.length > 0
-      ? `&sort=${tableState.sorting[0].id}&type=${
-          tableState.sorting[0].desc ? 'desc' : 'asc'
-        }`
-      : '';
-
-  const filterOption = tableState.globalFilter.length
-    ? `&search=${tableState.globalFilter}`
-    : '';
-
-  const additional =
-    additionalParam && additionalParam.length > 0
-      ? `&${additionalParam.join('&')}`
-      : '';
-
-  return `${baseUrl}?${pagePaginateOption}${pageSortOption}${filterOption}${additional}`;
+  return `${baseUrl}?${queryParams}`;
 };

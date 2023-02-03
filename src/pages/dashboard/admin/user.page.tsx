@@ -1,19 +1,25 @@
 import { Popover, Transition } from '@headlessui/react';
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
-import * as React from 'react';
+import React from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
-import { FiEye, FiX } from 'react-icons/fi';
+import { FiX } from 'react-icons/fi';
 
+import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import Checkbox from '@/components/forms/Checkbox';
+import withAuth from '@/components/hoc/withAuth';
 import useServerTable from '@/components/hooks/useServerTable';
 import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
-import { mockQuery } from '@/lib/apiMock';
+import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import { buildPaginatedTableURL } from '@/lib/table';
 import { PaginatedApiResponse } from '@/types/api';
-import { Role } from '@/types/entities/role';
+import {
+  Permission,
+  PermissionColumn,
+  PermissionResponse,
+} from '@/types/entities/permission';
 
 type HeaderProps = {
   setLevelFilter: React.Dispatch<React.SetStateAction<string[]>>;
@@ -21,102 +27,103 @@ type HeaderProps = {
 
 const filterOption = [
   {
-    id: 'name',
-    name: 'Nama',
+    id: 'user',
+    name: 'User',
   },
   {
-    id: 'nrp',
-    name: 'NRP',
-  },
-  {
-    id: 'fakultas',
-    name: 'Fakultas',
+    id: 'admin',
+    name: 'Admin',
   },
 ];
 
-const APIRespond = {
-  code: 200,
-  status: 'berhasil',
-  data: ['DataType'],
-  meta: {
-    last_page: 'number',
-    total: 'number',
-  },
-};
-
-export default function BasicTablePage() {
-  //#region  //*=========== Table Definition ===========
-  const { tableState, setTableState } = useServerTable<Role>({
+export default withAuth(User, []);
+function User() {
+  const { tableState, setTableState } = useServerTable<Permission>({
     pageSize: 10,
   });
-
   const [levelFilter, setLevelFilter] = React.useState<string[]>([]);
+  // const levelFilterParam =
+  //   levelFilter?.length > 0 ? `level=${levelFilter?.join(',')}` : '';
 
-  const columns: ColumnDef<Role>[] = [
+  const columns: ColumnDef<PermissionColumn>[] = [
+    {
+      id: 'index',
+      cell: (info) => info.row.index + 1,
+      header: 'No',
+      size: 20,
+    },
+    {
+      id: 'id',
+      accessorKey: 'id',
+      header: 'ID',
+    },
     {
       id: 'name',
       accessorKey: 'name',
+      header: 'Name',
+    },
+    {
+      id: 'email',
+      accessorKey: 'email',
+      header: 'Email',
+    },
+    {
+      id: 'no_telp',
+      accessorKey: 'no_telp',
+      header: 'No. Telp',
+    },
+    {
+      id: 'role',
+      accessorKey: 'role',
       header: 'Role',
-    },
-    {
-      id: 'level.name',
-      accessorKey: 'level.name',
-      header: 'Level',
-    },
-    {
-      id: 'actions',
-      header: 'Action',
-      cell: () => <Button leftIcon={FiEye}>Lihat</Button>,
     },
   ];
   //#endregion  //*======== Table Definition ===========
 
   //#region  //*=========== Fetch Data ===========
   const url = buildPaginatedTableURL({
-    baseUrl: '/hallo',
+    baseUrl: '/users',
     tableState,
     additionalParam: { filter: levelFilter },
   });
 
-  const { data: queryData } = useQuery<PaginatedApiResponse<Role[]>, Error>(
-    [url],
-    mockQuery,
-    {
-      keepPreviousData: true,
-    }
-  );
-
-  //#endregion  //*======== Fetch Data ===========
+  const { data: queryData } = useQuery<
+    PaginatedApiResponse<PermissionResponse[]>,
+    Error
+  >([url], {
+    keepPreviousData: true,
+  });
+  //#endregion  //*=========== Fetch Data ===========
 
   return (
-    <main>
-      <section>
-        <div className='layout min-h-screen py-20'>
-          <Typography as='h4' variant='h4' className='mt-4'>
-            Basic Table
-          </Typography>
-
-          <pre className='code'>
-            {JSON.stringify({ tableState, url }, null, 2)}
-          </pre>
-
-          <ServerTable
-            columns={columns}
-            data={queryData?.data.data_per_page ?? []}
-            meta={queryData?.data.meta}
-            header={<Header setLevelFilter={setLevelFilter} />}
-            tableState={tableState}
-            setTableState={setTableState}
-            className='mt-8'
-            withFilter
-          />
-          <Typography as='h3' variant='h3' className='mt-4'>
-            API Respond
-          </Typography>
-          <pre className='code'>{JSON.stringify(APIRespond, null, 2)}</pre>
-        </div>
-      </section>
-    </main>
+    <DashboardLayout>
+      <h1>Users</h1>
+      <main>
+        <section>
+          <div className='layout min-h-screen py-20'>
+            <div className='flex justify-between'>
+              <div>
+                <Breadcrumb crumbs={['/admin/user']} />
+                <Typography as='h4' variant='h4' className=''>
+                  All Users
+                </Typography>
+              </div>
+            </div>
+            <ServerTable
+              columns={columns}
+              data={queryData?.data.data_per_page ?? []}
+              meta={queryData?.data.meta}
+              tableState={tableState}
+              setTableState={setTableState}
+              header={<Header setLevelFilter={setLevelFilter} />}
+              withFilter
+              className='mt-8'
+            />
+          </div>
+        </section>
+        <pre>{JSON.stringify(url, null, 2)}</pre>
+      </main>
+    </DashboardLayout>
   );
 }
 
