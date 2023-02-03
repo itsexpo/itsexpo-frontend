@@ -70,7 +70,7 @@ function LoginPage() {
               width='586'
               height='586'
               priority={true}
-              className='absolute w-3/4 h-3/5 top-0 left-0'
+              className='absolute h-3/5 top-0 left-0'
               imgClassName='max-h-full min-h-full object-contain object-left-top'
             />
             <NextImage
@@ -79,7 +79,7 @@ function LoginPage() {
               width='586'
               height='586'
               priority={true}
-              className='absolute w-3/4 h-3/5 bottom-0 right-0'
+              className='absolute h-3/5 bottom-0 right-0'
               imgClassName='max-h-full min-h-full object-contain object-right-bottom'
             />
             <NextImage

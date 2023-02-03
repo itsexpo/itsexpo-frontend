@@ -66,7 +66,7 @@ function SignupPage() {
               alt='signup illustration spade'
               width='419'
               height='549'
-              className='absolute h-[40%] w-7/12 left-0 bottom-0'
+              className='absolute w-7/12 left-0 bottom-0'
               imgClassName='max-h-full min-h-full object-contain object-left'
             />
             <NextImage
@@ -75,7 +75,7 @@ function SignupPage() {
               width='606'
               height='829'
               priority={true}
-              className='absolute h-5/6 w-4/5 right-0 bottom-0'
+              className='absolute w-7/12 right-0 bottom-0'
               imgClassName='max-h-full min-h-full object-contain object-right-bottom'
             />
             <NextImage

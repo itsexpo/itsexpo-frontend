@@ -9,7 +9,7 @@ export default function Logo({ className }: LogoProps) {
   return (
     <NextImage
       className={clsxm('w-44 md:w-72', className)}
-      src='/images/ilits-logo.png'
+      src='/images/logo.png'
       width='100'
       height='40'
       alt='logo'

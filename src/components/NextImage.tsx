@@ -46,12 +46,11 @@ export default function NextImage({
           imgClassName,
           status === 'loading' && clsxm('animate-pulse', blurClassName)
         )}
-        src={'/dashboard' + src}
+        src={src}
         width={width}
         height={height}
         alt={alt}
         onLoadingComplete={() => setStatus('complete')}
-        layout='responsive'
         {...rest}
       />
     </figure>
