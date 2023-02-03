@@ -21,28 +21,46 @@ export default withAuth(SignupPage, 'auth');
 function SignupPage() {
   const methods = useForm<SignUp>();
   const { handleSubmit } = methods;
-  const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState('');
 
-  const { mutate, isLoading } = useMutationToast<void, SignUp>(
-    useMutation((data) => {
-      const res = api.post('/create_user', data).then(() => setSubmitted(true));
-      return res;
-    })
-  );
+  const { mutate: createUser, isLoading: createUserIsLoading } =
+    useMutationToast<void, SignUp>(
+      useMutation((data) => {
+        const res = api.post('/create_user', data);
+        return res;
+      })
+    );
 
-  const onSubmit = (data: SignUp) => {
-    mutate(data);
-    setEmail(data.email);
+  const { mutate: resendVerification, isLoading: resendVerificationIsLoading } =
+    useMutationToast<void, string>(
+      useMutation((data) => {
+        const res = api.get(`/user_verification?email=${data}`);
+        return res;
+      })
+    );
+
+  const doCreateUser = (data: SignUp) => {
+    createUser(data, {
+      onSuccess: () => setEmail(data.email),
+      onError: (error) => {
+        if (error.response?.data.code == 1022) {
+          setEmail(data.email);
+        }
+      },
+    });
+  };
+
+  const doResendVerification = (data: string) => {
+    resendVerification(data);
   };
 
   return (
     <Layout withNavbar={false} withFooter={false}>
       <SEO title='Sign Up' />
       <main>
-        <section className='min-h-screen flex flex-row justify-center items-stretch font-secondary overflow-hidden relative'>
+        <section className='min-h-screen items-stretch font-secondary'>
           {/* Illustration Section */}
-          <div className='hidden md:block h-screen flex-1 bg-gradient-to-b from-warning-200 via-critical-100 to-critical-300 relative'>
+          <div className='hidden md:block w-7/12 max-w-[calc(100%-400px)] h-screen bg-gradient-to-b from-warning-200 via-critical-100 to-critical-300 fixed'>
             <NextImage
               src='/signup/waru.png'
               alt='signup illustration spade'
@@ -62,7 +80,7 @@ function SignupPage() {
             />
             <NextImage
               src='/signup/pegunungan.png'
-              alt='signup illustration mountains'
+              alt='signup illustration mountanus'
               width='837'
               height='130'
               priority={true}
@@ -88,8 +106,8 @@ function SignupPage() {
               imgClassName='object-contain'
             />
           </div>
-          <div className='w-full md:w-5/12 md:min-w-[400px] h-screen p-4 md:p-16 justify-center items-center bg-typo-white overflow-auto'>
-            {submitted ? (
+          <div className='w-full md:w-5/12 md:min-w-[400px] min-h-screen py-16 px-4 md:p-16 flex justify-center items-center bg-typo-white md:float-right'>
+            {email && (
               <div className='w-full flex flex-col space-y-10'>
                 {/* Activate account view */}
                 <div className='flex flex-col'>
@@ -109,15 +127,23 @@ function SignupPage() {
                     lainnya.
                   </Typography>
                 </div>
-                <Button type='button' variant='green' size='large'>
+                <Button
+                  type='button'
+                  onClick={() => doResendVerification(email)}
+                  variant='green'
+                  size='base'
+                  className='py-3'
+                  isLoading={resendVerificationIsLoading}
+                >
                   Kirim Ulang Tautan?
                 </Button>
               </div>
-            ) : (
+            )}
+            {!email && (
               <FormProvider {...methods}>
                 {/* Form view */}
                 <form
-                  onSubmit={handleSubmit(onSubmit)}
+                  onSubmit={handleSubmit(doCreateUser)}
                   className='w-full flex flex-col space-y-7'
                 >
                   <div className='w-full flex flex-col'>
@@ -130,33 +156,6 @@ function SignupPage() {
                   </div>
 
                   <div className='w-full flex flex-col space-y-4'>
-                    <Input
-                      id='name'
-                      label='Nama'
-                      type='text'
-                      placeholder='Masukkan Nama'
-                      validation={{
-                        required: 'Nama wajib diisi',
-                      }}
-                    />
-                    <Input
-                      id='name'
-                      label='Nama'
-                      type='text'
-                      placeholder='Masukkan Nama'
-                      validation={{
-                        required: 'Nama wajib diisi',
-                      }}
-                    />
-                    <Input
-                      id='name'
-                      label='Nama'
-                      type='text'
-                      placeholder='Masukkan Nama'
-                      validation={{
-                        required: 'Nama wajib diisi',
-                      }}
-                    />
                     <Input
                       id='name'
                       label='Nama'
@@ -190,6 +189,7 @@ function SignupPage() {
                       label='Nomor Telepon'
                       type='tel'
                       placeholder='Masukkan Nomor Telepon'
+                      helperText='Nomor telepon harus diawali +62'
                       validation={{
                         required: 'Nomor telepon wajib diisi',
                         pattern: {
@@ -216,8 +216,9 @@ function SignupPage() {
                     <Button
                       type='submit'
                       variant='green'
-                      size='large'
-                      isLoading={isLoading}
+                      size='base'
+                      className='py-3'
+                      isLoading={createUserIsLoading}
                     >
                       Daftar
                     </Button>
