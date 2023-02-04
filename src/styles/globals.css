@@ -71,6 +71,17 @@
     padding: 12px;
   }
 }
+
+/* #region /**==== Background Gradient ==*/
+.bg-forgot-password {
+  background: linear-gradient(
+    170.25deg,
+    #ffe3a8 -47.66%,
+    #fff0e6 49.79%,
+    #f29857 126.57%
+  );
+}
+
 /* #region  /**=========== Datepicker =========== */
 .react-datepicker-wrapper {
   display: block;
