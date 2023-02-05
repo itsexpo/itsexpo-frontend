@@ -7,6 +7,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import useServerTable from '@/components/hooks/useServerTable';
+import ButtonLink from '@/components/links/ButtonLink';
 import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
@@ -74,6 +75,13 @@ function AdminRoles() {
             >
               Delete
             </Button>
+            <ButtonLink
+              variant='green'
+              target='_self'
+              href={`role/${info.row.original.id}`}
+            >
+              Detail
+            </ButtonLink>
           </div>
         );
       },
