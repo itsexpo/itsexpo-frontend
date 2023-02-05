@@ -41,3 +41,13 @@ export interface RoleResponse {
   role: string;
   name: string;
 }
+
+export type AssignRolePermission = {
+  id: string[];
+  role_permission: DetailRolePermission[];
+};
+
+export type DetailRolePermission = {
+  role_id: string;
+  permission_id: string;
+};
