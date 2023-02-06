@@ -8,6 +8,8 @@ enum ButtonVariant {
   'red',
   'yellow',
   'green',
+  'outline',
+  'basic',
 }
 enum ButtonSize {
   'small',
@@ -89,6 +91,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               'active:bg-success-800',
               'disabled:bg-success-700 disabled:brightness-90 disabled:hover:bg-success-700',
             ],
+            variant === 'outline' && [
+              'text-typo-secondary',
+              'border border-outline-base duration-250',
+              'hover:bg-surface-base active:bg-outline-base disabled:bg-outline-base',
+            ],
+            variant === 'basic' && [
+              'text-typo-secondary',
+              'shadow-none duration-250',
+              'hover:bg-surface-base active:bg-outline-base disabled:bg-outline-base',
+            ],
           ],
           //#endregion  //*======== Variants ===========
           'disabled:cursor-not-allowed',
@@ -117,6 +129,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'base' && 'text-lg md:text-xl',
                   size === 'small' && 'text-sm md:text-lg',
                 ],
+                [
+                  variant === 'outline' && 'text-typo-secondary',
+                  variant == 'basic' && 'text-typo-secondary',
+                ],
                 leftIconClassName
               )}
             />
@@ -132,7 +148,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'base' && 'text-lg md:text-xl',
                   size === 'small' && 'text-sm md:text-lg',
                 ],
-                'text-white',
+                [
+                  variant === 'outline' && 'text-typo-icon',
+                  variant == 'basic' && 'text-typo-icon',
+                ],
                 rightIconClassName
               )}
             />
