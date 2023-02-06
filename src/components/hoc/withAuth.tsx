@@ -83,7 +83,6 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       // run checkAuth every page visit
       checkAuth();
 
-      // run checkAuth every focus changes
       window.addEventListener('focus', checkAuth);
       return () => {
         window.removeEventListener('focus', checkAuth);

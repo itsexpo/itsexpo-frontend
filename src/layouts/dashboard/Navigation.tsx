@@ -47,19 +47,29 @@ const navigations: Navigation[] = [
         name: 'User',
         href: '/dashboard/admin/user',
         icon: FiUsers,
-        permissions: ['login_user.store'],
+        permissions: ['users.index'],
       },
       {
         name: 'Permissions',
         href: '/dashboard/admin/permission',
         icon: FiSliders,
-        // permissions: ['admin.delete', 'admin.store'],
+        permissions: [
+          'permissions.index',
+          'permissions.store',
+          'permissions.update',
+          'permissions.delete',
+        ],
       },
       {
         name: 'Roles',
         href: '/dashboard/admin/role',
         icon: FiUserPlus,
-        // permissions: ['login_user.store'],
+        permissions: [
+          'roles.index',
+          'roles.store',
+          'roles.update',
+          'roles.delete',
+        ],
       },
     ],
   },
@@ -88,7 +98,31 @@ function NestedNavigation({
 }) {
   const router = useRouter();
 
+  function getChildrenPermission(nav?: Navigation[]): PermissionList {
+    return (
+      nav?.flatMap((n) => {
+        const tempPermission: PermissionList = [];
+        if (n.permissions) {
+          tempPermission.push(...n.permissions);
+        }
+        if (n.children) {
+          tempPermission.push(...getChildrenPermission(n.children));
+        }
+        return tempPermission;
+      }) || []
+    );
+  }
+
+  const user = useAuthStore.useUser();
+  const navChildrenWithPermission = getChildrenPermission(navChildren.children);
+  const hasPermission =
+    navChildrenWithPermission && navChildrenWithPermission.length > 0
+      ? navChildrenWithPermission.some((p) => user?.permissions.includes(p))
+      : true;
+
+  if (!hasPermission) return null;
   // Recursively check if any children is active
+
   function checkActive(nav?: Navigation[]): boolean {
     if (!nav) return false;
 
