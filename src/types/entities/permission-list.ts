@@ -1,15 +1,21 @@
 enum PermissionEnum {
   'login_user.store',
-  'user.index',
-  'user.store',
-  'user.show',
-  'user.update',
-  'user.delete',
+  'users.index',
+  'users.store',
+  'users.update',
+  'users.delete',
   'admin.index',
   'admin.store',
-  'admin.show',
   'admin.update',
   'admin.delete',
+  'permissions.index',
+  'permissions.delete',
+  'permissions.store',
+  'permissions.update',
+  'roles.index',
+  'roles.delete',
+  'roles.store',
+  'roles.update',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

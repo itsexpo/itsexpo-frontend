@@ -23,7 +23,12 @@ import {
   PermissionResponse,
 } from '@/types/entities/permission';
 
-export default withAuth(AdminPermissions, []);
+export default withAuth(AdminPermissions, [
+  'permissions.index',
+  'permissions.delete',
+  'permissions.store',
+  'permissions.update',
+]);
 
 function AdminPermissions() {
   const [editModalOpen, setEditModalOpen] = React.useState(false);

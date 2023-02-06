@@ -18,7 +18,7 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
   const router = useRouter();
   const handleLogout = () => {
     logout();
-    router.replace('/');
+    router.replace('/login');
   };
 
   return (

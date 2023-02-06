@@ -20,7 +20,12 @@ import { ApiReturn, PaginatedApiResponse } from '@/types/api';
 import { RoleResponse } from '@/types/entities/role';
 import { Role, RoleColumn } from '@/types/entities/role';
 
-export default withAuth(AdminRoles, []);
+export default withAuth(AdminRoles, [
+  'roles.index',
+  'roles.delete',
+  'roles.store',
+  'roles.update',
+]);
 
 function AdminRoles() {
   const [editModalOpen, setEditModalOpen] = React.useState(false);

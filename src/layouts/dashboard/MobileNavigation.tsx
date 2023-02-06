@@ -23,7 +23,7 @@ export default function MobileNavigation() {
   const router = useRouter();
   const handleLogout = () => {
     logout();
-    router.replace('/');
+    router.replace('/login');
   };
 
   return (

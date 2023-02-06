@@ -36,21 +36,19 @@ const filterOption = [
   },
 ];
 
-export default withAuth(User, []);
+export default withAuth(User, ['users.index']);
 function User() {
   const { tableState, setTableState } = useServerTable<Permission>({
     pageSize: 10,
   });
   const [levelFilter, setLevelFilter] = React.useState<string[]>([]);
-  // const levelFilterParam =
-  //   levelFilter?.length > 0 ? `level=${levelFilter?.join(',')}` : '';
 
   const columns: ColumnDef<PermissionColumn>[] = [
     {
       id: 'index',
       cell: (info) => info.row.index + 1,
       header: 'No',
-      size: 20,
+      size: 30,
     },
     {
       id: 'id',
@@ -121,7 +119,6 @@ function User() {
             />
           </div>
         </section>
-        <pre>{JSON.stringify(url, null, 2)}</pre>
       </main>
     </DashboardLayout>
   );
