@@ -5,6 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
 import PasswordInput from '@/components/forms/PasswordInput';
+import SelectInput from '@/components/forms/SelectInput';
 import withAuth from '@/components/hoc/withAuth';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
@@ -66,7 +67,7 @@ function SignupPage() {
               alt='signup illustration spade'
               width='419'
               height='549'
-              className='absolute w-7/12 left-0 bottom-0'
+              className='absolute w-2/5 left-0 bottom-0'
               imgClassName='max-h-full min-h-full object-contain object-left'
             />
             <NextImage
@@ -75,8 +76,8 @@ function SignupPage() {
               width='606'
               height='829'
               priority={true}
-              className='absolute w-7/12 right-0 bottom-0'
-              imgClassName='max-h-full min-h-full object-contain object-right-bottom'
+              className='absolute w-1/2 right-0 bottom-0'
+              imgClassName='object-contain object-right-bottom'
             />
             <NextImage
               src='/signup/pegunungan.png'
@@ -84,8 +85,8 @@ function SignupPage() {
               width='837'
               height='130'
               priority={true}
-              className='absolute h-1/6 w-full bottom-0'
-              imgClassName='max-h-full min-h-full object-bottom'
+              className='absolute w-full bottom-0'
+              imgClassName='object-bottom'
             />
             <NextImage
               src='/signup/cloud-left.png'
@@ -144,7 +145,7 @@ function SignupPage() {
                 {/* Form view */}
                 <form
                   onSubmit={handleSubmit(doCreateUser)}
-                  className='w-full flex flex-col space-y-7'
+                  className='w-full flex flex-col space-y-10'
                 >
                   <div className='w-full flex flex-col'>
                     <Typography variant='h5' className='font-semibold'>
@@ -198,18 +199,17 @@ function SignupPage() {
                         },
                       }}
                     />
-                    {/* Status belum diimplementasi di api */}
-                    {/* <SelectInput
+                    <SelectInput
                       id='status'
-                      label='Status'                    
+                      label='Status'
                       placeholder='Pilih Status'
                       validation={{ required: 'Status wajib diisi' }}
                     >
-                      <option value='mahasiswa'>Mahasiswa</option>
-                      <option value="smp">SMP/Sederajat</option>
-                      <option value="sma">SMA/Sederajat</option>
-                      <option value="umum">Umum</option>
-                    </SelectInput> */}
+                      <option value='5'>Mahasiswa</option>
+                      <option value='3'>SMP/Sederajat</option>
+                      <option value='4'>SMA/Sederajat</option>
+                      <option value='6'>Umum</option>
+                    </SelectInput>
                   </div>
 
                   <div className='flex flex-col space-y-4'>
