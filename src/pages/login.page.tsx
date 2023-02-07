@@ -55,14 +55,13 @@ function LoginPage() {
       <main>
         <section className='font-secondary'>
           {/* Illustration Section */}
-          <div className='hidden md:block w-7/12 max-w-[calc(100%-400px)] h-screen fixed left-0 bg-warning-100'>
+          <div className='hidden md:block w-7/12 max-w-[calc(100%-400px)] h-screen fixed left-0 overflow-hidden bg-warning-100'>
             <NextImage
               src='/login/background.png'
               alt='login illustration background'
               width='837'
               height='1024'
-              className='absolute w-full h-full'
-              imgClassName='max-h-full min-h-full object-cover'
+              className='absolute w-full min-w-[100vh]'
             />
             <NextImage
               src='/login/supergrafis-2-1.png'
@@ -70,8 +69,7 @@ function LoginPage() {
               width='586'
               height='586'
               priority={true}
-              className='absolute h-3/5 top-0 left-0'
-              imgClassName='max-h-full min-h-full object-contain object-left-top'
+              className='absolute w-8/12 max-w-[60vh] top-0 left-0'
             />
             <NextImage
               src='/login/supergrafis-2-2.png'
@@ -79,8 +77,7 @@ function LoginPage() {
               width='586'
               height='586'
               priority={true}
-              className='absolute h-3/5 bottom-0 right-0'
-              imgClassName='max-h-full min-h-full object-contain object-right-bottom'
+              className='absolute w-8/12 max-w-[60vh] bottom-0 right-0'
             />
             <NextImage
               src='/login/supergrafis-1-1.png'
@@ -88,8 +85,7 @@ function LoginPage() {
               width='757'
               height='1071'
               priority={true}
-              className='absolute w-11/12 h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
-              imgClassName='max-h-full min-h-full object-contain'
+              className='absolute w-11/12 max-w-[calc(100vh*757/1071)] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
             />
           </div>
 
