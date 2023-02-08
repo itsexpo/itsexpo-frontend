@@ -3,5 +3,5 @@ export type SignUp = {
   email: string;
   password: string;
   no_telp: string;
-  // status: 'mahasiswa' | 'smp' | 'sma' | 'umum';
+  status: string;
 };
