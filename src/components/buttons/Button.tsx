@@ -92,14 +92,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               'disabled:bg-success-700 disabled:brightness-90 disabled:hover:bg-success-700',
             ],
             variant === 'outline' && [
-              'text-typo-secondary',
+              '!text-base-secondary',
               'border border-outline-base duration-250',
-              'hover:bg-surface-base active:bg-outline-base disabled:bg-outline-base',
+              'hover:bg-base-surface active:bg-base-outline disabled:bg-base-outline',
             ],
             variant === 'basic' && [
-              'text-typo-secondary',
+              '!text-base-secondary',
               'shadow-none duration-250',
-              'hover:bg-surface-base active:bg-outline-base disabled:bg-outline-base',
+              'hover:bg-base-surface active:bg-base-outline disabled:bg-base-outline',
             ],
           ],
           //#endregion  //*======== Variants ===========
@@ -130,8 +130,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'small' && 'text-sm md:text-lg',
                 ],
                 [
-                  variant === 'outline' && 'text-typo-secondary',
-                  variant == 'basic' && 'text-typo-secondary',
+                  variant === 'outline' && 'text-base-secondary',
+                  variant == 'basic' && 'text-base-secondary',
                 ],
                 leftIconClassName
               )}
@@ -149,8 +149,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'small' && 'text-sm md:text-lg',
                 ],
                 [
-                  variant === 'outline' && 'text-typo-icon',
-                  variant == 'basic' && 'text-typo-icon',
+                  variant === 'outline' && 'text-base-icon',
+                  variant == 'basic' && 'text-base-icon',
                 ],
                 rightIconClassName
               )}
