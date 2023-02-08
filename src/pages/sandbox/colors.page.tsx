@@ -80,39 +80,39 @@ export default function Colors() {
         </div>
       </div>
       <div className='p-4'>
-        <h1>Theme</h1>
+        <h1>Tainted</h1>
         <div className='flex gap-2'>
           <div>
-            <div className='w-32 h-24 bg-theme-100'></div>
+            <div className='w-32 h-24 bg-tainted-100'></div>
             <p>100</p>
           </div>
           <div>
-            <div className='w-32 h-24 bg-theme-200'></div>
+            <div className='w-32 h-24 bg-tainted-200'></div>
             <p>200</p>
           </div>
 
           <div>
-            <div className='w-32 h-24 bg-theme-300'></div>
+            <div className='w-32 h-24 bg-tainted-300'></div>
             <p>300</p>
           </div>
           <div>
-            <div className='w-32 h-24 bg-theme-400'></div>
+            <div className='w-32 h-24 bg-tainted-400'></div>
             <p>400</p>
           </div>
           <div>
-            <div className='w-32 h-24 bg-theme-500'></div>
+            <div className='w-32 h-24 bg-tainted-500'></div>
             <p>500</p>
           </div>
           <div>
-            <div className='w-32 h-24 bg-theme-600'></div>
+            <div className='w-32 h-24 bg-tainted-600'></div>
             <p>600</p>
           </div>
           <div>
-            <div className='w-32 h-24 bg-theme-700'></div>
+            <div className='w-32 h-24 bg-tainted-700'></div>
             <p>700</p>
           </div>
           <div>
-            <div className='w-32 h-24 bg-theme-800'></div>
+            <div className='w-32 h-24 bg-tainted-800'></div>
             <p>800</p>
           </div>
         </div>
