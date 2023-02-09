@@ -5,6 +5,7 @@ import 'swiper/css/autoplay';
 import AOS from 'aos';
 import { useEffect } from 'react';
 import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
+import { FaChrome } from 'react-icons/fa';
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
@@ -15,6 +16,7 @@ import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
 import Layout from '@/layouts/Layout';
+import clsxm from '@/lib/clsxm';
 
 function SwiperButton({ direction }: { direction: 'prev' | 'next' }) {
   const swiper = useSwiper();
@@ -507,6 +509,524 @@ export default function Home() {
             width='140'
             height='57'
           />
+        </section>
+
+        {/* PreEvent Section */}
+        <section
+          id='pre-event'
+          className='w-full h-full flex flex-col justify-center items-center bg-gradient-to-b from-[#445F64] to-[#586B61]'
+        >
+          <div className='relative w-full mb-[100px]'>
+            {/* PreEvent Content */}
+            <div
+              className='
+              relative flex flex-col items-center p-4 z-10'
+            >
+              <div
+                className='flex flex-col items-center -space-y-6'
+                data-aos='fade-up'
+              >
+                <div className='flex flex-row space-x-4'>
+                  <NextImage
+                    src='/landing/preevent-title-left.png'
+                    alt='content gallery'
+                    width='157.85'
+                    height='101.63'
+                  />
+                  <Typography
+                    variant='h1'
+                    className='font-primary text-typo-white mb-10'
+                  >
+                    Pre-Event its expo 2023
+                  </Typography>
+                  <NextImage
+                    src='/landing/preevent-title-right.png'
+                    alt='content gallery'
+                    width='157.85'
+                    height='101.63'
+                  />
+                </div>
+              </div>
+
+              <div className='flex flex-row space-x-4 mb-[40px]'>
+                <ButtonLink
+                  href='/'
+                  variant='green'
+                  size='large'
+                  data-aos='fade-up'
+                >
+                  Robot in Action
+                </ButtonLink>
+
+                <ButtonLink
+                  href='/'
+                  variant='green'
+                  size='large'
+                  data-aos='fade-up'
+                >
+                  Karya Tulis Ilmiah
+                </ButtonLink>
+
+                <ButtonLink
+                  href='/'
+                  variant='green'
+                  size='large'
+                  data-aos='fade-up'
+                >
+                  Jurnalistik
+                </ButtonLink>
+
+                <ButtonLink
+                  href='/'
+                  variant='green'
+                  size='large'
+                  data-aos='fade-up'
+                >
+                  Talkshow
+                </ButtonLink>
+              </div>
+
+              {/* <div className='h-[40px]'></div> */}
+
+              <div className='flex flex-col space-y-4'>
+                <div
+                  className='bg-white w-[1240px] h-[380px] rounded-3xl '
+                  data-aos='fade-up'
+                >
+                  <div className='flex space-x-4'>
+                    <div className='w-[396px] flex flex-col space-y-4'>
+                      <NextImage
+                        src='/landing/preevent-frame.png'
+                        alt='content gallery'
+                        width='396'
+                        height='380'
+                      />
+                    </div>
+
+                    <div className='flex flex-col'>
+                      <div className='h-[10px]'></div>
+                      <Typography
+                        variant='h5'
+                        className='font-secondary font-semibold text-black'
+                      >
+                        Karya Tulis Ilmiah
+                      </Typography>
+                      <Typography
+                        variant='b1'
+                        color='tertiary'
+                        className='font-secondary max-w-2xl'
+                      >
+                        Consequat donec risus mollis feugiat. Imperdiet vitae
+                        suspendisse at massa. Maecenas nec sed habitant cras.
+                        Mauris pellentesque turpis sed mi et pulvinar tortor
+                        elementum. Eu tincidunt urna id mattis. Fermentum et ut
+                        a ut tortor aliquam. In mi porttitor imperdiet dignissim
+                        sed tristique lectus et. Consectetur in eu augue eget.
+                        Dolor nec pellentesque at est suspendisse cursus elit.
+                        Sodales faucibus vulputate euismod magna eget nulla
+                        ornare. Egestas scelerisque porttitor integer sit auctor
+                        dolor gravida. Vitae nulla enim posuere et vestibulum
+                        mauris. Ut ligula dis habitasse id ipsum eget donec
+                        semper sollicitudin. Mauris nibh at morbi netus elit
+                        morbi egestas lectus risus. Pharetra arcu enim eget
+                        pretium morbi justo pulvinar tristique arcu.
+                      </Typography>
+                      <UnstyledLink href='/'>
+                        <Typography
+                          variant='c'
+                          color='theme'
+                          className='font-secondary font-semibold underline text-success-500'
+                        >
+                          Baca Selengkapnya
+                        </Typography>
+                      </UnstyledLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Preevent Illustration */}
+          <div className='absolute w-full h-full'>
+            <NextImage
+              src='/landing/preevent-bg-left.png'
+              alt='landing preevent left background'
+              width='462'
+              height='690'
+              priority={true}
+              className='absolute w-4/12 left-0 bottom-0'
+            />
+            <NextImage
+              src='/landing/preevent-bg-right.png'
+              alt='landing preevent right background'
+              width='559'
+              height='675'
+              priority={true}
+              className='absolute w-5/12 right-0 bottom-0'
+            />
+          </div>
+        </section>
+
+        {/* Pattern Section */}
+        <section id='pattern' className='w-full h-full bg-[#586B61]'>
+          <NextImage
+            src='/landing/preevent-footer.png'
+            alt='preevent-footer'
+            width='1440'
+            height='260'
+            className='w-full'
+          />
+        </section>
+
+        {/* About Section */}
+        <section
+          id='about'
+          className='w-full h-full flex flex-col justify-center items-center'
+        >
+          <div className='relative w-full'>
+            {/* About Content */}
+            <div className='relative flex flex-col items-center p-4 z-10'>
+              <div className='flex flex-row space-x-4'>
+                <NextImage
+                  src='/landing/about-ctn-left.png'
+                  alt='about content left'
+                  width='103'
+                  height='290'
+                  className='absolute left-0 top-50%'
+                  data-aos='fade-right'
+                />
+                {/* Three Card entitled opening its expo, exhibition its expo, gebyar its expo */}
+                <div className='flex flex-row space-x-9'>
+                  <div
+                    className='bg-gradient-to-b from-tainted-600 to-warning-800 w-[397px] h-[432px] rounded-xl'
+                    data-aos='fade-up'
+                  >
+                    <div className='h-[30px]'></div>
+                    <Typography
+                      variant='h5'
+                      className='font-primary text-center text-white'
+                    >
+                      Opening its expo
+                    </Typography>
+                    <Typography
+                      variant='b1'
+                      color='tertiary'
+                      className='font-secondary max-w-2xl text-white ml-[20px] mr-[20px]'
+                      // style={{ marginLeft: '20px', marginRight: '20px' }}
+                    >
+                      Eu hendrerit turpis purus venenatis nibh id vitae quis.
+                      Viverra mi in morbi turpis tristique mi ut. Vehicula
+                      gravida pellentesque vestibulum nisi fames faucibus.
+                      Ornare lectus nisl diam euismod tristique quam egestas.
+                      Condimentum ut volutpat tempus.
+                    </Typography>
+
+                    <div className='h-[30px]'></div>
+                    <ButtonLink
+                      href='/'
+                      variant='yellow'
+                      size='base'
+                      data-aos='flip-left'
+                      className='mx-[20px]'
+                      // style={{ marginLeft: '20px', marginRight: '20px' }}
+                    >
+                      Baca Selengkapnya
+                    </ButtonLink>
+                  </div>
+
+                  {/* <div className='w-[15px]'></div> */}
+
+                  <div
+                    className='bg-surface-base w-[397px] h-[432px] rounded-xl'
+                    data-aos='fade-up'
+                  >
+                    <div className='h-[30px]'></div>
+                    <Typography
+                      variant='h5'
+                      className='font-primary text-center'
+                    >
+                      Exhibition its expo
+                    </Typography>
+                    <Typography
+                      variant='b1'
+                      color='tertiary'
+                      className='font-secondary max-w-2xl mx-[20px]'
+                      // style={{ marginLeft: '20px', marginRight: '20px' }}
+                    >
+                      Eu hendrerit turpis purus venenatis nibh id vitae quis.
+                      Viverra mi in morbi turpis tristique mi ut. Vehicula
+                      gravida pellentesque vestibulum nisi fames faucibus.
+                      Ornare lectus nisl diam euismod tristique quam egestas.
+                      Condimentum ut volutpat tempus.
+                    </Typography>
+
+                    <div className='h-[30px]'></div>
+                    {/* <ButtonLink href='/' variant='yellow' size='base' data-aos="flip-left" style={{ marginLeft: '20px',marginRight: '20px' }}>
+                      Baca Selengkapnya
+                    </ButtonLink> */}
+                  </div>
+
+                  {/* <div className='w-[15px]'></div> */}
+
+                  <div
+                    className='bg-surface-base w-[397px] h-[432px] rounded-xl'
+                    data-aos='fade-up'
+                  >
+                    <div className='h-[30px]'></div>
+                    <Typography
+                      variant='h5'
+                      className='font-primary text-center'
+                    >
+                      Gebyar its expo
+                    </Typography>
+                    <Typography
+                      variant='b1'
+                      color='tertiary'
+                      className='font-secondary max-w-2xl text'
+                      style={{ marginLeft: '20px', marginRight: '20px' }}
+                    >
+                      Eu hendrerit turpis purus venenatis nibh id vitae quis.
+                      Viverra mi in morbi turpis tristique mi ut. Vehicula
+                      gravida pellentesque vestibulum nisi fames faucibus.
+                      Ornare lectus nisl diam euismod tristique quam egestas.
+                      Condimentum ut volutpat tempus.
+                    </Typography>
+
+                    <div className='h-[30px]'></div>
+                    {/* <ButtonLink href='/' variant='yellow' size='base' data-aos="flip-left" style={{ marginLeft: '20px',marginRight: '20px' }}>
+                      Baca Selengkapnya
+                    </ButtonLink> */}
+                  </div>
+                </div>
+
+                <NextImage
+                  src='/landing/about-ctn-right.png'
+                  alt='about content right'
+                  width='103'
+                  height='290'
+                  className='absolute right-0 bottom-0'
+                  data-aos='fade-left'
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Support Section */}
+        <section
+          id='contact-support'
+          className='w-full h-full flex flex-col justify-center items-center mt-14'
+        >
+          {/* Title Contact Support */}
+          <div className='flex flex-row space-x-4'>
+            <NextImage
+              src='/landing/contact-title-left.png'
+              alt='contact title left'
+              width='103'
+              height='180'
+              className='responsive'
+              data-aos='fade-right'
+            />
+            <Typography
+              variant='h1'
+              className='font-primary text-center'
+              data-aos='fade-up'
+            >
+              Contact Support
+            </Typography>
+            <NextImage
+              src='/landing/contact-title-right.png'
+              alt='contact title right'
+              width='103'
+              height='180'
+              className='responsive'
+              data-aos='fade-left'
+            />
+          </div>
+
+          {/* Card Contact Support */}
+          <div className='flex flex-col space-y-4'>
+            <div className='flex flex-col space-y-9'>
+              <div
+                className='bg-[#FAF2DD] w-[1240px] h-[500px] rounded-xl'
+                data-aos='zoom-in'
+              >
+                <div className='flex flex-row space-x-4'>
+                  <div
+                    className='w-[406px] flex flex-col space-y-4 mt-[30px] ml-[50px]'
+                    // style={{ marginLeft: '70px' }}
+                  >
+                    <div className='w-[291px] flex flex-col space-y-4'>
+                      {/* <div className='h-[30px]'></div> */}
+                      <Typography
+                        variant='h4'
+                        className='font-primary text-center'
+                        data-aos='flip-left'
+                      >
+                        Pre-event
+                      </Typography>
+                      <ButtonLink
+                        href='/'
+                        variant='yellow'
+                        size='base'
+                        leftIcon={FaChrome}
+                        data-aos='flip-left'
+                      >
+                        Robot in Action
+                      </ButtonLink>
+                      <ButtonLink
+                        href='/'
+                        variant='yellow'
+                        size='base'
+                        leftIcon={FaChrome}
+                        data-aos='flip-left'
+                      >
+                        Karya Tulis Ilmiah
+                      </ButtonLink>
+                      <ButtonLink
+                        href='/'
+                        variant='yellow'
+                        size='base'
+                        leftIcon={FaChrome}
+                        data-aos='flip-left'
+                      >
+                        Jurnalistik
+                      </ButtonLink>
+                      <ButtonLink
+                        href='/'
+                        variant='yellow'
+                        size='base'
+                        leftIcon={FaChrome}
+                        data-aos='flip-left'
+                      >
+                        Talkshow
+                      </ButtonLink>
+                    </div>
+                  </div>
+
+                  <div
+                    className='w-[406px] flex flex-col space-y-4 ml-[60px] mt-[40px]'
+                    // style={{ marginLeft: '60px' }}
+                  >
+                    {/* <div className='h-[30px]'></div> */}
+                    <NextImage
+                      src='/landing/Contact-img.png'
+                      alt='contact image'
+                      width='231.03'
+                      height='440.4'
+                      objectPosition={'center center'}
+                      data-aos='flip-up'
+                    />
+                  </div>
+
+                  <div className='w-[406px] flex flex-col space-y-4'>
+                    <div className='w-[291px] flex flex-col space-y-4 mt-[30px]'>
+                      {/* <div className='h-[30px]'></div> */}
+                      <Typography
+                        variant='h4'
+                        className='font-primary text-center'
+                        data-aos='flip-right'
+                      >
+                        Main Event
+                      </Typography>
+                      <ButtonLink
+                        href='/'
+                        variant='yellow'
+                        size='base'
+                        leftIcon={FaChrome}
+                        data-aos='flip-right'
+                      >
+                        Opening ITS EXPO
+                      </ButtonLink>
+                      <ButtonLink
+                        href='/'
+                        variant='yellow'
+                        size='base'
+                        leftIcon={FaChrome}
+                        data-aos='flip-right'
+                      >
+                        Exhibition ITS EXPO
+                      </ButtonLink>
+                      <ButtonLink
+                        href='/'
+                        variant='yellow'
+                        size='base'
+                        leftIcon={FaChrome}
+                        data-aos='flip-right'
+                      >
+                        Gebyar ITS EXPO
+                      </ButtonLink>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* make some space for footer */}
+          <div className='h-[40px]'></div>
+        </section>
+
+        {/* Pattern Section */}
+        <section id='pattern' className='w-full'>
+          <NextImage
+            src='/landing/contact-footer.png'
+            alt='contact-footer'
+            width='1440'
+            height='370'
+            className='w-full'
+          />
+        </section>
+
+        {/* Sponsor Section */}
+        <section
+          id='sponsor'
+          className={clsxm(
+            'w-full h-full flex flex-col justify-center items-center',
+            // Custom Tailwind Class
+            ' bg-[#00587A]'
+          )}
+        >
+          <div className='absolute w-full h-full flex justify-center overflow-y-hidden'>
+            <div className='absolute w-full top-0 flex justify-between'>
+              <NextImage
+                src='/landing/sponsor bg left.png'
+                alt='sponsor left background'
+                width='286'
+                height='829'
+                data-aos='fade-right'
+              />
+              <NextImage
+                src='/landing/sponsor bg right.png'
+                alt='sponsor right background'
+                width='277'
+                height='745'
+                data-aos='fade-left'
+              />
+            </div>
+          </div>
+
+          <div className='flex flex-row space-x-4'>
+            <Typography
+              variant='h1'
+              className='font-primary text-typo-white mb-10'
+              data-aos='fade-up'
+            >
+              Sponsor
+            </Typography>
+          </div>
+
+          <div className='relative flex flex-col items-center p-4 z-10'>
+            <div className='flex flex-row space-x-4'>
+              <div className='flex flex-col space-y-9'>
+                <div
+                  className='bg-[#FAF2DD] w-[1240px] h-[500px] rounded-xl'
+                  data-aos='zoom-in'
+                ></div>
+              </div>
+            </div>
+            <div className='h-[100px]'></div>
+          </div>
         </section>
       </main>
     </Layout>
