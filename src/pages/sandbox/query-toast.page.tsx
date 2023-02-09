@@ -4,6 +4,12 @@ import toast from 'react-hot-toast';
 
 import Button from '@/components/buttons/Button';
 import SEO from '@/components/SEO';
+import {
+  DANGER_TOAST,
+  showToast,
+  SUCCESS_TOAST,
+  WARNING_TOAST,
+} from '@/components/Toast';
 import Typography from '@/components/typography/Typography';
 import useLoadingToast from '@/hooks/toast/useLoadingToast';
 import useMutationToast from '@/hooks/toast/useMutationToast';
@@ -46,7 +52,41 @@ export default function SandboxPage() {
           <>
             {mutationData && <pre>{JSON.stringify(mutationData, null, 2)}</pre>}
           </>
-          <Button onClick={() => toast.success('Hello!')}>Open Toast</Button>
+          <Button variant='green' onClick={() => toast.success('Success!')}>
+            Success
+          </Button>
+          <Button variant='red' onClick={() => toast.error('Error!')}>
+            Error
+          </Button>
+          <Button variant='outline' onClick={() => toast.custom('Custom!')}>
+            Custom
+          </Button>
+          <Button variant='basic' onClick={() => toast.loading('Loading!')}>
+            Loading
+          </Button>
+
+          <Button variant='outline' onClick={() => showToast('Toast Message')}>
+            Default
+          </Button>
+          <Button
+            variant='red'
+            onClick={() => showToast('Toast Message', DANGER_TOAST)}
+          >
+            Danger
+          </Button>
+          <Button
+            variant='green'
+            onClick={() => showToast('Toast Message', SUCCESS_TOAST)}
+          >
+            Success
+          </Button>
+          <Button
+            variant='yellow'
+            onClick={() => showToast('Toast Message', WARNING_TOAST)}
+          >
+            Warning
+          </Button>
+
           <Button
             isLoading={isLoading}
             onClick={() =>

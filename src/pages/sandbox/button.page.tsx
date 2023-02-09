@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FaChrome } from 'react-icons/fa';
+import { FiArrowRight, FiPlus } from 'react-icons/fi';
 
 import Button from '@/components/buttons/Button';
 import IconButton from '@/components/buttons/IconButton';
@@ -122,9 +123,9 @@ export default function ButtonSandbox() {
         </div>
 
         <Typography variant='h4' className='layout text-white pt-10'>
-          IconButton
+          Icon Button
         </Typography>
-        <div className='layout min-h-screen py-10 flex flex-wrap justify-between'>
+        <div className='layout py-10 flex flex-wrap justify-between'>
           <div className='space-y-3 h-fit'>
             <div className='space-x-3'>
               <IconButton variant='red' size='large' icon={FaChrome} />
@@ -147,7 +148,87 @@ export default function ButtonSandbox() {
             </div>
           </div>
         </div>
+
+        <section id='outline-button'>
+          <Typography variant='h4' className='layout text-white pt-10'>
+            Outline Button
+          </Typography>
+          <div className='layout py-10 flex flex-wrap justify-between'>
+            <div className='space-y-3 h-fit'>
+              <div className='space-x-3 space-y-1'>
+                <Button
+                  variant='outline'
+                  size='large'
+                  leftIcon={FiPlus}
+                  rightIcon={FiArrowRight}
+                >
+                  Outline Button
+                </Button>
+                <Button
+                  variant='outline'
+                  size='base'
+                  leftIcon={FiPlus}
+                  rightIcon={FiArrowRight}
+                >
+                  Outline Button
+                </Button>
+                <Button
+                  variant='outline'
+                  size='small'
+                  leftIcon={FiPlus}
+                  rightIcon={FiArrowRight}
+                >
+                  Outline Button
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id='basic-button'>
+          <Typography variant='h4' className='layout text-white pt-10'>
+            Basic Button
+          </Typography>
+          <div className='layout py-10 flex flex-wrap justify-between'>
+            <div className='space-y-3 h-fit'>
+              <div className='space-x-3 space-y-1'>
+                <Button
+                  variant='basic'
+                  size='large'
+                  leftIcon={FiPlus}
+                  rightIcon={FiArrowRight}
+                >
+                  Basic Button
+                </Button>
+                <Button
+                  variant='basic'
+                  size='base'
+                  leftIcon={FiPlus}
+                  rightIcon={FiArrowRight}
+                >
+                  Basic Button
+                </Button>
+                <Button
+                  variant='basic'
+                  size='small'
+                  leftIcon={FiPlus}
+                  rightIcon={FiArrowRight}
+                >
+                  Basic Button
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
+
+      {/* <section id='outline-button' className=''>
+      <div className='layout py-10'>
+        <Typography variant='h4' className='layout text-white pt-10'>
+          Outline Button
+        </Typography>
+      </div>
+    </section> */}
     </Layout>
   );
 }
