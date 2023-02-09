@@ -57,7 +57,8 @@ export default function useMutationToast<T, K>(
     return () => {
       toast.dismiss(toastStatus.current);
     };
-  }, [customMessages, data, error, isError, isLoading]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, error, isError, isLoading]);
 
   return { ...mutation };
 }
