@@ -54,7 +54,7 @@ function LoginPage() {
       <SEO title='Login' />
       <main>
         <section className='font-secondary'>
-          {/* Illustration Section */}
+          {/* Illustration Section  */}
           <div className='hidden md:block w-7/12 max-w-[calc(100%-400px)] h-screen fixed left-0 overflow-hidden bg-warning-100'>
             <NextImage
               src='/login/background.png'
