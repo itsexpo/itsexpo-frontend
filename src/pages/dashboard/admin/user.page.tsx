@@ -1,5 +1,5 @@
 import { Popover, Transition } from '@headlessui/react';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import React from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
@@ -12,17 +12,20 @@ import withAuth from '@/components/hoc/withAuth';
 import useServerTable from '@/components/hooks/useServerTable';
 import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
+import useMutationToast from '@/hooks/toast/useMutationToast';
+import useDialog from '@/hooks/useDialog';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
+import api from '@/lib/api';
 import { buildPaginatedTableURL } from '@/lib/table';
-import { PaginatedApiResponse } from '@/types/api';
-import {
-  Permission,
-  PermissionColumn,
-  PermissionResponse,
-} from '@/types/entities/permission';
+import { ApiReturn, PaginatedApiResponse } from '@/types/api';
+import { UserColumn } from '@/types/entities/user';
 
 type HeaderProps = {
   setLevelFilter: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+type UserForm = {
+  user_id: string;
 };
 
 const filterOption = [
@@ -38,12 +41,12 @@ const filterOption = [
 
 export default withAuth(User, ['users.index']);
 function User() {
-  const { tableState, setTableState } = useServerTable<Permission>({
+  const { tableState, setTableState } = useServerTable<UserColumn>({
     pageSize: 10,
   });
   const [levelFilter, setLevelFilter] = React.useState<string[]>([]);
 
-  const columns: ColumnDef<PermissionColumn>[] = [
+  const columns: ColumnDef<UserColumn>[] = [
     {
       id: 'index',
       cell: (info) => info.row.index + 1,
@@ -75,8 +78,55 @@ function User() {
       accessorKey: 'role',
       header: 'Role',
     },
+    {
+      id: 'action',
+      header: 'Action',
+      cell: (info) => {
+        return (
+          <div className='flex items-center justify-center'>
+            <Button
+              variant='red'
+              onClick={() =>
+                openWarningDelete({
+                  id: info.row.original.id,
+                  name: info.row.original.name,
+                })
+              }
+            >
+              Delete
+            </Button>
+          </div>
+        );
+      },
+    },
   ];
   //#endregion  //*======== Table Definition ===========
+
+  //#region  //*=========== Mutate Data ===========
+  const { mutate: deleteUser } = useMutationToast<
+    ApiReturn<undefined>,
+    UserForm
+  >(
+    useMutation((data) => {
+      return api.delete('/users', { data });
+    })
+  );
+  //#endregion  //*=========== Mutate Data ===========
+
+  //#region  //*=========== Delete Dialog ===========
+  const dialog = useDialog();
+  function openWarningDelete({ id, name }: { id: string; name: string }) {
+    dialog({
+      title: 'Apakah Anda Yakin!!!',
+      description: `Hapus user dengan nama ${name} ?`,
+      submitText: 'Delete',
+      variant: 'danger',
+      catchOnCancel: true,
+    })
+      .then(() => deleteUser({ user_id: id }))
+      .then(() => refetchData());
+  }
+  //#region  //*=========== Delete Dialog ===========
 
   //#region  //*=========== Fetch Data ===========
   const url = buildPaginatedTableURL({
@@ -85,8 +135,8 @@ function User() {
     additionalParam: { filter: levelFilter },
   });
 
-  const { data: queryData } = useQuery<
-    PaginatedApiResponse<PermissionResponse[]>,
+  const { data: queryData, refetch: refetchData } = useQuery<
+    PaginatedApiResponse<UserColumn[]>,
     Error
   >([url], {
     keepPreviousData: true,

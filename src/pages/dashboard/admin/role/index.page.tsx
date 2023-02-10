@@ -108,7 +108,7 @@ function AdminRoles() {
     Omit<RoleResponse, 'role' | 'name'>
   >(
     useMutation((data) => {
-      return api.post('/roles/delete', data);
+      return api.delete('/roles', { data });
     })
   );
   //#endregion  //*=========== Mutate Data ===========

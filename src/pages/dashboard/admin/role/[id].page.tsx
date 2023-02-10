@@ -70,9 +70,7 @@ function DetailRolePage() {
   const { mutate: unassignPermission, isLoading: unassignPermissionLoading } =
     useMutationToast<ApiReturn<undefined>, FormData>(
       useMutation((data) => {
-        return api.post('/roles_unassign', data, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        });
+        return api.delete('/roles_unassign', { data });
       })
     );
 

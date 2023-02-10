@@ -104,7 +104,7 @@ function AdminPermissions() {
     Omit<Permission, 'name'>
   >(
     useMutation((data) => {
-      return api.post('/permissions/delete', data);
+      return api.delete('/permissions', { data });
     })
   );
   //#endregion  //*=========== Mutate Data ===========
