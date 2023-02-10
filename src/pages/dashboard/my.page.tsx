@@ -1,17 +1,14 @@
+import * as React from 'react';
+
 import withAuth from '@/components/hoc/withAuth';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 
-/**
- * Short
- *
- */
+export default withAuth(DashboardUserPage, 'USER');
 
-export default withAuth(DashboardAdminPage, 'ADMIN');
-
-function DashboardAdminPage() {
+function DashboardUserPage() {
   return (
     <DashboardLayout>
-      <h1>Admin Page</h1>
+      <h1>Dashboard Layout</h1>
     </DashboardLayout>
   );
 }
