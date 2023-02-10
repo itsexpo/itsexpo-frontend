@@ -6,7 +6,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
  *
  */
 
-export default withAuth(AdminPage, ['login_user.store']);
+export default withAuth(AdminPage, []);
 
 function AdminPage() {
   return (

@@ -68,7 +68,7 @@ function EditRoleForm({
     Omit<RoleResponse, 'name' | 'role'>
   >(
     useMutation(async (data) => {
-      const res = await api.post('/roles/update', data);
+      const res = await api.put('/roles', data);
       setOpen(false);
       onSuccess();
       return res;

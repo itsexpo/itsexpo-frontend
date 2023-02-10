@@ -19,3 +19,12 @@ export type LoginRespond = {
     routes: PermissionList;
   };
 };
+
+// User page
+export type UserColumn = {
+  id: string;
+  name: string;
+  email: string;
+  no_telp: string;
+  role: string;
+};

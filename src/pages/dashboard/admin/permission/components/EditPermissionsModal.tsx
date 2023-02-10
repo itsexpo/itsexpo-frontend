@@ -68,7 +68,7 @@ function EditPermissionsForm({
     PermissionResponse
   >(
     useMutation(async (data) => {
-      const res = await api.post('/permissions/update', data);
+      const res = await api.put('/permissions', data);
       setOpen(false);
       onSuccess();
       return res;
