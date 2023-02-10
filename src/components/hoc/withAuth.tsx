@@ -15,6 +15,8 @@ export interface WithAuthProps {
   user: User;
 }
 
+type GeneralPermission = 'ADMIN' | 'USER' | 'auth';
+
 const hasPermission = (user: User | null, permission: PermissionList) => {
   return permission.every((p) => user?.permissions?.includes(p));
 };
@@ -26,12 +28,13 @@ const hasPermission = (user: User | null, permission: PermissionList) => {
  * @see https://github.com/mxthevs/nextjs-auth/blob/main/src/components/withAuth.tsx
  */
 
-const HOME_ROUTE = '/dashboard';
+const ADMIN_ROUTE = '/dashboard';
+const USER_ROUTE = '/my';
 const LOGIN_ROUTE = '/login';
 
 export default function withAuth<T extends WithAuthProps = WithAuthProps>(
   Component: React.ComponentType<T>,
-  routePermission: 'auth' | PermissionList
+  routePermission: PermissionList | GeneralPermission
 ) {
   const ComponentWithAuth = (props: Omit<T, keyof WithAuthProps>) => {
     const router = useRouter();
@@ -96,17 +99,31 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
           // Prevent authenticated user from accessing auth or other role pages
           if (
             routePermission === 'auth' ||
+            routePermission === 'ADMIN' ||
+            routePermission === 'USER' ||
             !hasPermission(user, routePermission)
           ) {
             if (query?.redirect) {
-              router.replace(query.redirect as string);
+              if (user?.role === 'ADMIN' && routePermission === 'USER') {
+                router.replace(ADMIN_ROUTE);
+              } else if (user?.role === 'USER' && routePermission === 'ADMIN') {
+                router.replace(USER_ROUTE);
+              } else router.replace(query.redirect as string);
             } else {
-              if (routePermission !== 'auth') {
+              if (
+                routePermission !== 'auth' &&
+                routePermission !== 'ADMIN' &&
+                routePermission !== 'USER'
+              ) {
                 toast.error('Anda tidak memiliki akses ke halaman ini', {
                   id: 'unauthorized',
                 });
               }
-              router.replace(HOME_ROUTE);
+              if (user?.role === 'ADMIN') {
+                router.replace(ADMIN_ROUTE);
+              } else {
+                router.replace(USER_ROUTE);
+              }
             }
           }
         } else {
@@ -126,6 +143,8 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
       ((isLoading || !isAuthenticated) && routePermission !== 'auth') ||
       ((isLoading || isAuthenticated) &&
         routePermission !== 'auth' &&
+        routePermission !== 'ADMIN' &&
+        routePermission !== 'USER' &&
         !hasPermission(user, routePermission))
     ) {
       return (
