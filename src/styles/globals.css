@@ -82,12 +82,12 @@
   );
 }
 
-.bg-landing-medpar {
-  background: linear-gradient(180deg, #53823f 0%, #445f64 100%);
+.bg-landing-slider {
+  background: linear-gradient(180deg, #2a607b 0%, #2a607b 100%);
 }
 
 .bg-landing-preevent {
-  background: linear-gradient(180deg, #445f64 0%, #586b61 100%);
+  background: linear-gradient(180deg, #53823f 0%, #445f64 20%, #586b61 100%);
 }
 
 /* #region  /**=========== Datepicker =========== */

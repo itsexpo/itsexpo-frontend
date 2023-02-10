@@ -4,40 +4,25 @@ import 'swiper/css/autoplay';
 
 import AOS from 'aos';
 import { useEffect } from 'react';
-import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
 import { FaChrome } from 'react-icons/fa';
-import { IoIosArrowDropdownCircle } from 'react-icons/io';
-import { Autoplay } from 'swiper';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { IoIosArrowDown } from 'react-icons/io';
+import { Autoplay, FreeMode } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+import SwiperButton from '@/components/buttons/SwiperButton';
 import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
+import {
+  landingHeroIllustration,
+  landingTimelineIllustration,
+} from '@/contents/pre-event/landing-illustration';
+import landingSwiperContents from '@/contents/pre-event/landing-swiper';
+import landingTimelineContents from '@/contents/pre-event/landing-timeline';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
-
-function SwiperButton({ direction }: { direction: 'prev' | 'next' }) {
-  const swiper = useSwiper();
-  return (
-    <button className='w-10 h-10 flex justify-center items-center cursor-pointer rounded-full bg-warning-200'>
-      {direction === 'prev' && (
-        <BsArrowLeftShort
-          className='w-7 h-7 fill-warning-800'
-          onClick={() => swiper.slidePrev()}
-        />
-      )}
-
-      {direction === 'next' && (
-        <BsArrowRightShort
-          className='w-7 h-7 fill-warning-800'
-          onClick={() => swiper.slideNext()}
-        />
-      )}
-    </button>
-  );
-}
 
 export default function Home() {
   useEffect(() => {
@@ -55,56 +40,89 @@ export default function Home() {
           className='relative w-full h-screen flex flex-col justify-center items-center'
         >
           {/* Hero Illustration */}
-          <div className='absolute w-full h-full'>
+          <div className='absolute flex flex-col w-full h-full border'>
+            <div className='relative flex-1'>
+              <NextImage
+                priority={true}
+                className='absolute hidden md:block w-1/2 left-0 bottom-0'
+                {...landingHeroIllustration.bgLeft}
+              />
+              <NextImage
+                priority={true}
+                className='absolute hidden md:block w-1/2 right-0 bottom-0'
+                {...landingHeroIllustration.bgRight}
+              />
+              <NextImage
+                className='absolute w-full md:w-1/2 left-0 bottom-0 -translate-x-10'
+                data-aos='fade-right'
+                data-aos-delay='500'
+                {...landingHeroIllustration.figureLeft}
+              />
+              <NextImage
+                className='absolute block md:hidden w-1/2 left-0 top-0 mt-16'
+                data-aos='fade-right'
+                data-aos-delay='700'
+                {...landingHeroIllustration.cloudLeft}
+              />
+              <NextImage
+                className='absolute hidden md:block w-1/2 left-0 top-0 mt-16'
+                data-aos='fade-right'
+                data-aos-delay='700'
+                {...landingHeroIllustration.cloudsLeft}
+              />
+              <NextImage
+                className='absolute hidden md:block w-1/2 left-0 top-0 mt-16'
+                data-aos='fade-right'
+                data-aos-delay='800'
+                {...landingHeroIllustration.birdLeft}
+              />
+              <NextImage
+                className='absolute hidden md:block w-1/2 left-0 bottom-0'
+                data-aos='fade-right'
+                data-aos-delay='1000'
+                {...landingHeroIllustration.particlesLeft}
+              />
+              <NextImage
+                className='absolute w-full md:w-1/2 right-0 bottom-0 translate-x-10'
+                data-aos='fade-left'
+                data-aos-delay='500'
+                {...landingHeroIllustration.figureRight}
+              />
+              <NextImage
+                className='absolute block md:hidden w-1/2 right-0 top-0 mt-16'
+                data-aos='fade-left'
+                data-aos-delay='700'
+                {...landingHeroIllustration.cloudRight}
+              />
+              <NextImage
+                className='absolute hidden md:block w-1/2 right-0 top-0 mt-16'
+                data-aos='fade-left'
+                data-aos-delay='700'
+                {...landingHeroIllustration.cloudsRight}
+              />
+              <NextImage
+                className='absolute hidden md:block w-1/2 right-0 top-0 mt-16'
+                data-aos='fade-left'
+                data-aos-delay='800'
+                {...landingHeroIllustration.birdRight}
+              />
+              <NextImage
+                className='absolute hidden md:block w-1/2 right-0 bottom-0'
+                data-aos='fade-left'
+                data-aos-delay='1000'
+                {...landingHeroIllustration.particlesRight}
+              />
+            </div>
             <NextImage
-              src='/landing/hero-bg-left.png'
-              alt='landing hero left background'
-              width='462'
-              height='690'
-              priority={true}
-              className='absolute w-4/12 left-0 bottom-0'
-            />
-            <NextImage
-              src='/landing/hero-bg-right.png'
-              alt='landing hero right background'
-              width='559'
-              height='675'
-              priority={true}
-              className='absolute w-5/12 right-0 bottom-0'
-            />
-            <NextImage
-              src='/landing/hero-figure-left.png'
-              alt='landing hero left figure'
-              width='501'
-              height='618'
-              className='absolute w-4/12 left-0 bottom-0'
-              data-aos='fade-right'
-              data-aos-delay='500'
-            />
-            <NextImage
-              src='/landing/hero-figure-right.png'
-              alt='landing hero right figure'
-              width='485'
-              height='604'
-              className='absolute w-4/12 right-0 bottom-0'
-              data-aos='fade-left'
-              data-aos-delay='500'
-            />
-            <NextImage
-              src='/landing/hero-particles.png'
-              alt='landing hero particles'
-              width='524'
-              height='578'
-              className='absolute w-4/12 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
-              data-aos='zoom-out'
-              data-aos-delay='600'
+              className='w-[1440px] min-w-full'
+              {...landingHeroIllustration.pattern}
             />
           </div>
 
           {/* Hero Content */}
-          <div className='flex flex-col items-center p-4'>
+          <div className='flex flex-col items-center p-4 gap-y-2'>
             <div
-              className='flex flex-col items-center -space-y-6'
+              className='flex flex-col items-center -space-y-4 md:-space-y-6'
               data-aos='fade-up'
             >
               <Typography variant='h1' className='font-primary'>
@@ -120,7 +138,7 @@ export default function Home() {
             <Typography
               variant='b1'
               color='tertiary'
-              className='font-secondary max-w-xl mt-6 text-justify'
+              className='font-secondary max-w-xl mt-6 text-center md:text-justify'
               data-aos='fade-up'
               data-aos-delay='100'
             >
@@ -130,25 +148,17 @@ export default function Home() {
               libero vitae erat.
             </Typography>
             <UnstyledLink
-              href='#pattern'
-              className='mt-10'
+              href='#about'
+              className={clsxm(
+                'mt-10 w-10 h-10 flex justify-center items-center rounded-full bg-success-600',
+                'animate-bounce'
+              )}
               data-aos='fade-up'
               data-aos-delay='200'
             >
-              <IoIosArrowDropdownCircle className='fill-success-500 w-10 h-10' />
+              <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
             </UnstyledLink>
           </div>
-        </section>
-
-        {/* Pattern Section */}
-        <section id='pattern' className='w-full'>
-          <NextImage
-            src='/landing/pattern.png'
-            alt='pattern illustration'
-            width='1440'
-            height='88'
-            className='w-full'
-          />
         </section>
 
         {/* About Section */}
@@ -158,7 +168,14 @@ export default function Home() {
         >
           <div className='relative w-full'>
             {/* About Illustration */}
-            <div className='absolute top-0 w-full h-full flex justify-between'>
+            <NextImage
+              src='/landing/about-bg-mobile.png'
+              alt='landing about mobile background'
+              width='67'
+              height='336'
+              className='absolute top-0 right-0 block md:hidden pt-10'
+            />
+            <div className='absolute top-0 w-full h-full hidden md:flex justify-between'>
               <NextImage
                 src='/landing/about-bg-left.png'
                 alt='landing about left background'
@@ -177,7 +194,11 @@ export default function Home() {
 
             {/* About Content */}
             <div
-              className='w-full flex flex-row justify-between items-center px-24 pt-10 pb-48'
+              className={clsxm(
+                'w-full flex flex-col md:flex-row',
+                'justify-between items-start md:items-center',
+                'space-y-6 px-4 md:px-24 pt-10 pb-48'
+              )}
               data-aos='fade-up'
             >
               <div className='flex flex-col space-y-4'>
@@ -204,7 +225,7 @@ export default function Home() {
 
           {/* About Slider */}
           <div className='relative w-full pb-20'>
-            <div className='absolute w-full h-full bg-gradient-to-b from-primary-800 to-primary-700' />
+            <div className='absolute w-full h-full bg-landing-slider' />
 
             <Swiper
               spaceBetween={24}
@@ -213,62 +234,33 @@ export default function Home() {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-              modules={[Autoplay]}
-              className='w-full -mt-36'
+              loop
+              freeMode
+              modules={[Autoplay, FreeMode]}
+              className='md:w-full -mt-20 md:-mt-32'
               data-aos='fade-left'
             >
-              <div className='absolute top-0 w-full h-full flex justify-between items-center px-4 z-10'>
-                <SwiperButton direction='prev' />
-                <SwiperButton direction='next' />
+              <div
+                className={clsxm(
+                  'absolute top-0 w-full h-full',
+                  'flex justify-between items-center px-4 z-10'
+                )}
+              >
+                <SwiperButton direction='prev' size='large' />
+                <SwiperButton direction='next' size='large' />
               </div>
-              <SwiperSlide className='max-w-fit'>
-                <NextImage
-                  src='/landing/about-content-1.png'
-                  alt='content gallery'
-                  width='496'
-                  height='344'
-                />
-              </SwiperSlide>
-              <SwiperSlide className='max-w-fit'>
-                <NextImage
-                  src='/landing/about-content-2.png'
-                  alt='content gallery'
-                  width='496'
-                  height='344'
-                />
-              </SwiperSlide>
-              <SwiperSlide className='max-w-fit'>
-                <NextImage
-                  src='/landing/about-content-3.png'
-                  alt='content gallery'
-                  width='496'
-                  height='344'
-                />
-              </SwiperSlide>
-              <SwiperSlide className='max-w-fit'>
-                <NextImage
-                  src='/landing/about-content-1.png'
-                  alt='content gallery'
-                  width='496'
-                  height='344'
-                />
-              </SwiperSlide>
-              <SwiperSlide className='max-w-fit'>
-                <NextImage
-                  src='/landing/about-content-2.png'
-                  alt='content gallery'
-                  width='496'
-                  height='344'
-                />
-              </SwiperSlide>
-              <SwiperSlide className='max-w-fit'>
-                <NextImage
-                  src='/landing/about-content-3.png'
-                  alt='content gallery'
-                  width='496'
-                  height='344'
-                />
-              </SwiperSlide>
+
+              {landingSwiperContents.map((content, index) => (
+                <SwiperSlide key={index} className='md:max-w-fit'>
+                  <div className='w-full flex justify-center'>
+                    <NextImage
+                      className='w-3/5 md:w-96'
+                      imgClassName='rounded-lg'
+                      {...content}
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </section>
@@ -276,245 +268,147 @@ export default function Home() {
         {/* Timeline Section */}
         <section
           id='timeline'
-          className='relative w-full flex flex-col items-center bg-primary-700'
+          className='relative w-full flex flex-col items-center bg-[#2A607B]'
         >
           {/* Timeline Background */}
           <div className='absolute w-full h-full flex justify-center overflow-y-hidden'>
             <NextImage
-              src='/landing/timeline-bg-main.png'
-              alt='timeline main background'
-              width='665'
-              height='2000'
-              className='absolute top-0'
+              className='absolute hidden md:block top-0'
+              {...landingTimelineIllustration.bgDesktop}
             />
-            <div className='absolute w-full top-0 flex justify-between'>
-              <NextImage
-                src='/landing/timeline-bg-left.png'
-                alt='timeline left background'
-                width='363'
-                height='1294'
-              />
-              <NextImage
-                src='/landing/timeline-bg-right.png'
-                alt='timeline right background'
-                width='535'
-                height='754'
-              />
+            <NextImage
+              className='absolute block md:hidden top-0'
+              {...landingTimelineIllustration.bgMobile}
+            />
+            <div className='absolute w-full top-0 hidden md:flex md:justify-between'>
+              <NextImage {...landingTimelineIllustration.bgLeft} />
+              <NextImage {...landingTimelineIllustration.bgRight} />
             </div>
           </div>
 
           <Typography
             variant='h2'
-            className='font-primary text-typo-white mb-40'
+            className='font-primary text-typo-white my-16 md:mt-0 md:mb-40'
             data-aos='fade-up'
           >
             timeline
           </Typography>
 
           {/* Timeline Content */}
-          <div className='relative w-5/12 h-fit grid grid-cols-5 gap-x-8 gap-y-20 font-secondary'>
-            <div className='absolute w-1 h-5/6 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-typo' />
+          <div
+            className={clsxm(
+              'relative w-full md:w-8/12 lg:w-5/12',
+              'flex flex-col gap-y-10 md:gap-y-20 p-7 md:p-0',
+              'font-secondary'
+            )}
+          >
+            <div
+              className={clsxm(
+                'absolute w-1 h-5/6 left-1/2 top-8 md:top-1/2',
+                '-translate-x-1/2 md:-translate-y-1/2 bg-typo'
+              )}
+            />
 
-            {/* #1 timeline */}
-            <div
-              className='col-start-3 flex flex-col justify-center items-center'
-              data-aos='fade-up'
-            >
-              <NextImage
-                src='/landing/timeline-1.png'
-                alt='timeline illustration 1'
-                width='121'
-                height='51'
-              />
-            </div>
-            <div
-              className='col-span-2 flex flex-col space-y-2'
-              data-aos='fade-right'
-              data-aos-delay='300'
-            >
-              <Typography variant='h6' className='font-bold text-typo-white'>
-                12 Februari 2022
-              </Typography>
-              <Typography variant='t' className='text-typo-white max-w-xs'>
-                Open Recruitment Brand Ambasador
-              </Typography>
-            </div>
+            {landingTimelineContents.map((content, index) => {
+              const parity = index % 2 === 0 ? 'even' : 'odd';
 
-            {/* #2 timeline */}
-            <div
-              className='col-span-2 flex flex-col items-end space-y-2 text-right'
-              data-aos='fade-left'
-              data-aos-delay='300'
-            >
-              <Typography variant='h6' className='font-bold text-typo-white'>
-                12 Februari 2022
-              </Typography>
-              <Typography variant='t' className='text-typo-white max-w-xs'>
-                Open Recruitment Brand Ambasador
-              </Typography>
-            </div>
-            <div
-              className='col-start-3 flex flex-col justify-center items-center'
-              data-aos='fade-up'
-            >
-              <NextImage
-                src='/landing/timeline-2.png'
-                alt='timeline illustration 2'
-                width='107'
-                height='53'
-              />
-            </div>
-
-            {/* #3 timeline */}
-            <div
-              className='col-start-3 flex flex-col justify-center items-center'
-              data-aos='fade-up'
-            >
-              <NextImage
-                src='/landing/timeline-3.png'
-                alt='timeline illustration 3'
-                width='108'
-                height='54'
-              />
-            </div>
-            <div
-              className='col-span-2 flex flex-col space-y-2'
-              data-aos='fade-left'
-              data-aos-delay='300'
-            >
-              <Typography variant='h6' className='font-bold text-typo-white'>
-                12 Februari 2022
-              </Typography>
-              <Typography variant='t' className='text-typo-white max-w-xs'>
-                Open Recruitment Brand Ambasador
-              </Typography>
-            </div>
-
-            {/* #4 timeline */}
-            <div
-              className='col-span-2 flex flex-col items-end space-y-2 text-right'
-              data-aos='fade-right'
-              data-aos-delay='300'
-            >
-              <Typography variant='h6' className='font-bold text-typo-white'>
-                12 Februari 2022
-              </Typography>
-              <Typography variant='t' className='text-typo-white max-w-xs'>
-                Open Recruitment Brand Ambasador
-              </Typography>
-            </div>
-            <div
-              className='col-start-3 flex flex-col justify-center items-center'
-              data-aos='fade-up'
-            >
-              <NextImage
-                src='/landing/timeline-4.png'
-                alt='timeline illustration 4'
-                width='67'
-                height='66'
-              />
-            </div>
-
-            {/* #5 timeline */}
-            <div
-              className='col-start-3 flex flex-col justify-center items-center'
-              data-aos='fade-up'
-            >
-              <NextImage
-                src='/landing/timeline-1.png'
-                alt='timeline illustration 1'
-                width='121'
-                height='51'
-              />
-            </div>
-            <div
-              className='col-span-2 flex flex-col space-y-2'
-              data-aos='fade-left'
-              data-aos-delay='300'
-            >
-              <Typography variant='h6' className='font-bold text-typo-white'>
-                12 Februari 2022
-              </Typography>
-              <Typography variant='t' className='text-typo-white max-w-xs'>
-                Open Recruitment Brand Ambasador
-              </Typography>
-            </div>
+              return (
+                <div
+                  key={index}
+                  className={clsxm(
+                    'grid grid-rows-1 md:grid-cols-5',
+                    'md:gap-x-8 gap-y-2 md:gap-y-0',
+                    'md:grid-flow-col-dense'
+                  )}
+                >
+                  <div
+                    className='md:col-start-3 flex justify-center items-center'
+                    data-aos='fade-up'
+                  >
+                    <NextImage {...content.img} />
+                  </div>
+                  <div
+                    className={clsxm(
+                      'flex flex-col items-center gap-y-2 md:gap-y-0',
+                      'text-center md:col-span-2',
+                      [
+                        parity === 'odd' && 'md:col-start-1 md:text-right',
+                        parity === 'even' && 'md:col-start-4 md:text-left',
+                      ]
+                    )}
+                    data-aos={
+                      (parity === 'odd' && 'fade-left') ||
+                      (parity === 'even' && 'fade-right')
+                    }
+                    data-aos-delay='300'
+                  >
+                    <Typography
+                      variant='h6'
+                      className='w-full font-bold text-typo-white'
+                    >
+                      {content.date}
+                    </Typography>
+                    <Typography
+                      variant='t'
+                      className='text-typo-white w-48 md:w-full md:max-w-xs'
+                    >
+                      {content.caption}
+                    </Typography>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <ButtonLink
             href='/'
+            size='large'
             variant='green'
-            className='mt-6'
+            className='hidden md:block mt-6'
             data-aos='fade-up'
           >
             Lihat Selengkapnya
           </ButtonLink>
 
           {/* Timeline Illustration */}
-          <div className='w-full mt-20'>
+          <div className='relative min-h-fit w-full mt-20'>
             <NextImage
-              src='/landing/timeline-illustration.png'
-              alt='timeline bottom illustration'
-              width='1440'
-              height='756'
+              {...landingTimelineIllustration.bottom0}
               className='w-full'
             />
+            <NextImage
+              {...landingTimelineIllustration.bottom1}
+              className='absolute bottom-0 w-full'
+              data-aos='fade-up'
+            />
+            <NextImage
+              {...landingTimelineIllustration.bottom2}
+              className='absolute bottom-0 w-full'
+              data-aos='fade-up'
+            />
+            <NextImage
+              {...landingTimelineIllustration.bottom3}
+              className='absolute bottom-0 w-full'
+              data-aos='fade-up'
+              data-aos-delay='200'
+            />
+            <NextImage
+              {...landingTimelineIllustration.bottom4}
+              className='absolute bottom-0 w-full'
+              data-aos='fade-up'
+              data-aos-delay='400'
+            />
+            <NextImage
+              {...landingTimelineIllustration.bottom5}
+              className='absolute bottom-0 w-full'
+            />
           </div>
-        </section>
-
-        {/* Media Partner Section */}
-        <section
-          id='media-partner'
-          className='flex flex-row justify-center items-center space-x-12 py-16 bg-landing-medpar'
-        >
-          <NextImage
-            src='/landing/medpar-1.png'
-            alt='media partner relume'
-            width='140'
-            height='57'
-          />
-          <NextImage
-            src='/landing/medpar-2.png'
-            alt='media partner webflow'
-            width='120'
-            height='49'
-          />
-          <NextImage
-            src='/landing/medpar-1.png'
-            alt='media partner relume'
-            width='140'
-            height='57'
-          />
-          <NextImage
-            src='/landing/medpar-2.png'
-            alt='media partner webflow'
-            width='120'
-            height='49'
-          />
-          <NextImage
-            src='/landing/medpar-1.png'
-            alt='media partner relume'
-            width='140'
-            height='57'
-          />
-          <NextImage
-            src='/landing/medpar-2.png'
-            alt='media partner webflow'
-            width='120'
-            height='49'
-          />
-          <NextImage
-            src='/landing/medpar-1.png'
-            alt='media partner relume'
-            width='140'
-            height='57'
-          />
         </section>
 
         {/* PreEvent Section */}
         <section
           id='pre-event'
-          className='w-full h-full flex flex-col justify-center items-center bg-gradient-to-b from-[#445F64] to-[#586B61]'
+          className='w-full h-full flex flex-col justify-center items-center bg-landing-preevent pt-20'
         >
           <div className='relative w-full mb-[100px]'>
             {/* PreEvent Content */}
