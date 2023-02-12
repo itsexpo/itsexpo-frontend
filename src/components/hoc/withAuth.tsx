@@ -29,7 +29,7 @@ const hasPermission = (user: User | null, permission: PermissionList) => {
  */
 
 const ADMIN_ROUTE = '/dashboard';
-const USER_ROUTE = '/my';
+const USER_ROUTE = '/dashboard/my';
 const LOGIN_ROUTE = '/login';
 
 export default function withAuth<T extends WithAuthProps = WithAuthProps>(
@@ -104,31 +104,46 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
             !hasPermission(user, routePermission)
           ) {
             if (query?.redirect) {
-              if (user?.role === 'ADMIN' && routePermission === 'USER') {
-                router.replace(ADMIN_ROUTE);
-              } else if (user?.role === 'USER' && routePermission === 'ADMIN') {
-                router.replace(USER_ROUTE);
-              } else router.replace(query.redirect as string);
+              router.replace(query.redirect as string);
             } else {
               if (
                 routePermission !== 'auth' &&
                 routePermission !== 'ADMIN' &&
                 routePermission !== 'USER'
               ) {
-                toast.error('Anda tidak memiliki akses ke halaman ini', {
+                toast.error('Anda tidak memiliki akses ke halaman tersebut', {
+                  id: 'unauthorized',
+                });
+              } else if (
+                (routePermission === 'ADMIN' && user?.role !== 'ADMIN') ||
+                (routePermission === 'USER' && user?.role !== 'USER')
+              ) {
+                toast.error('Anda tidak memiliki akses ke halaman tersebut', {
                   id: 'unauthorized',
                 });
               }
               if (user?.role === 'ADMIN') {
                 router.replace(ADMIN_ROUTE);
-              } else {
+              } else if (user?.role === 'USER') {
                 router.replace(USER_ROUTE);
               }
             }
           }
         } else {
           // Prevent unauthenticated user from accessing protected pages
-          if (routePermission !== 'auth') {
+          if (
+            routePermission !== 'auth' &&
+            routePermission !== 'ADMIN' &&
+            routePermission !== 'USER'
+          ) {
+            router.replace(
+              `${LOGIN_ROUTE}?redirect=${router.asPath}`,
+              `${LOGIN_ROUTE}`
+            );
+          } else if (
+            routePermission === 'ADMIN' ||
+            routePermission === 'USER'
+          ) {
             router.replace(
               `${LOGIN_ROUTE}?redirect=${router.asPath}`,
               `${LOGIN_ROUTE}`
@@ -141,6 +156,15 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
     if (
       // If unauthenticated user want to access protected pages
       ((isLoading || !isAuthenticated) && routePermission !== 'auth') ||
+      // If authenticated user want to access auth pages
+      ((isLoading || isAuthenticated) && routePermission === 'auth') ||
+      ((isLoading || isAuthenticated) &&
+        routePermission === 'ADMIN' &&
+        user?.role !== 'ADMIN') ||
+      ((isLoading || isAuthenticated) &&
+        routePermission === 'USER' &&
+        user?.role !== 'USER') ||
+      // If authenticated user want to access other role pages
       ((isLoading || isAuthenticated) &&
         routePermission !== 'auth' &&
         routePermission !== 'ADMIN' &&
