@@ -6,7 +6,7 @@ import AOS from 'aos';
 import { useEffect } from 'react';
 import { FaChrome } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
-import { Autoplay, FreeMode } from 'swiper';
+import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import SwiperButton from '@/components/buttons/SwiperButton';
@@ -15,10 +15,6 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
-import {
-  landingHeroIllustration,
-  landingTimelineIllustration,
-} from '@/contents/pre-event/landing-illustration';
 import landingSwiperContents from '@/contents/pre-event/landing-swiper';
 import landingTimelineContents from '@/contents/pre-event/landing-timeline';
 import Layout from '@/layouts/Layout';
@@ -43,79 +39,119 @@ export default function Home() {
           <div className='absolute flex flex-col w-full h-full border'>
             <div className='relative flex-1'>
               <NextImage
+                src='/landing/hero-bg-left.png'
+                alt='landing hero left background'
+                width='720'
+                height='690'
                 priority={true}
                 className='absolute hidden md:block w-1/2 left-0 bottom-0'
-                {...landingHeroIllustration.bgLeft}
               />
               <NextImage
+                src='/landing/hero-bg-right.png'
+                alt='landing hero right background'
+                width='720'
+                height='675'
                 priority={true}
                 className='absolute hidden md:block w-1/2 right-0 bottom-0'
-                {...landingHeroIllustration.bgRight}
               />
               <NextImage
+                src='/landing/hero-figure-left.png'
+                alt='landing hero left figure'
+                width='720'
+                height='457'
                 className='absolute w-full md:w-1/2 left-0 bottom-0 -translate-x-10'
                 data-aos='fade-right'
                 data-aos-delay='500'
-                {...landingHeroIllustration.figureLeft}
               />
               <NextImage
+                src='/landing/hero-cloud-left.png'
+                alt='landing hero left figure'
+                width='195'
+                height='135'
                 className='absolute block md:hidden w-1/2 left-0 top-0 mt-16'
                 data-aos='fade-right'
                 data-aos-delay='700'
-                {...landingHeroIllustration.cloudLeft}
               />
               <NextImage
+                src='/landing/hero-clouds-left.png'
+                alt='landing hero left figure'
+                width='720'
+                height='618'
                 className='absolute hidden md:block w-1/2 left-0 top-0 mt-16'
                 data-aos='fade-right'
                 data-aos-delay='700'
-                {...landingHeroIllustration.cloudsLeft}
               />
               <NextImage
+                src='/landing/hero-bird-left.png'
+                alt='landing hero left figure'
+                width='720'
+                height='607'
                 className='absolute hidden md:block w-1/2 left-0 top-0 mt-16'
                 data-aos='fade-right'
                 data-aos-delay='800'
-                {...landingHeroIllustration.birdLeft}
               />
               <NextImage
+                src='/landing/hero-particles-left.png'
+                alt='landing hero particles'
+                width='720'
+                height='170'
                 className='absolute hidden md:block w-1/2 left-0 bottom-0'
                 data-aos='fade-right'
                 data-aos-delay='1000'
-                {...landingHeroIllustration.particlesLeft}
               />
               <NextImage
+                src='/landing/hero-figure-right.png'
+                alt='landing hero right figure'
+                width='720'
+                height='462'
                 className='absolute w-full md:w-1/2 right-0 bottom-0 translate-x-10'
                 data-aos='fade-left'
                 data-aos-delay='500'
-                {...landingHeroIllustration.figureRight}
               />
               <NextImage
+                src='/landing/hero-cloud-right.png'
+                alt='landing hero right figure'
+                width='195'
+                height='141'
                 className='absolute block md:hidden w-1/2 right-0 top-0 mt-16'
                 data-aos='fade-left'
                 data-aos-delay='700'
-                {...landingHeroIllustration.cloudRight}
               />
               <NextImage
+                src='/landing/hero-clouds-right.png'
+                alt='landing hero right figure'
+                width='720'
+                height='618'
                 className='absolute hidden md:block w-1/2 right-0 top-0 mt-16'
                 data-aos='fade-left'
                 data-aos-delay='700'
-                {...landingHeroIllustration.cloudsRight}
               />
               <NextImage
+                src='/landing/hero-bird-right.png'
+                alt='landing hero right figure'
+                width='720'
+                height='604'
                 className='absolute hidden md:block w-1/2 right-0 top-0 mt-16'
                 data-aos='fade-left'
                 data-aos-delay='800'
-                {...landingHeroIllustration.birdRight}
               />
               <NextImage
+                src='/landing/hero-particles-left.png'
+                alt='landing hero particles'
+                width='720'
+                height='170'
                 className='absolute hidden md:block w-1/2 right-0 bottom-0'
                 data-aos='fade-left'
                 data-aos-delay='1000'
-                {...landingHeroIllustration.particlesRight}
               />
             </div>
             <NextImage
+              src='/landing/hero-pattern.png'
+              alt='pattern illustration'
+              width='1440'
+              height='88'
               className='w-[1440px] min-w-full'
-              {...landingHeroIllustration.pattern}
+              priority={true}
             />
           </div>
 
@@ -235,18 +271,14 @@ export default function Home() {
                 disableOnInteraction: false,
               }}
               loop
-              freeMode
-              modules={[Autoplay, FreeMode]}
+              modules={[Autoplay]}
               className='md:w-full -mt-20 md:-mt-32'
               data-aos='fade-left'
             >
-              <div
-                className={clsxm(
-                  'absolute top-0 w-full h-full',
-                  'flex justify-between items-center px-4 z-10'
-                )}
-              >
+              <div className='absolute top-0 left-0 h-full flex items-center px-4 z-10'>
                 <SwiperButton direction='prev' size='large' />
+              </div>
+              <div className='absolute top-0 right-0 h-full flex items-center px-4 z-10'>
                 <SwiperButton direction='next' size='large' />
               </div>
 
@@ -273,16 +305,32 @@ export default function Home() {
           {/* Timeline Background */}
           <div className='absolute w-full h-full flex justify-center overflow-y-hidden'>
             <NextImage
+              src='/landing/timeline-bg-desktop.png'
+              alt='timeline desktop background'
+              width='665'
+              height='2000'
               className='absolute hidden md:block top-0'
-              {...landingTimelineIllustration.bgDesktop}
             />
             <NextImage
+              src='/landing/timeline-bg-mobile.png'
+              alt='timeline mobile background'
+              width='390'
+              height='1116'
               className='absolute block md:hidden top-0'
-              {...landingTimelineIllustration.bgMobile}
             />
             <div className='absolute w-full top-0 hidden md:flex md:justify-between'>
-              <NextImage {...landingTimelineIllustration.bgLeft} />
-              <NextImage {...landingTimelineIllustration.bgRight} />
+              <NextImage
+                src='/landing/timeline-bg-left.png'
+                alt='timeline left background'
+                width='363'
+                height='1294'
+              />
+              <NextImage
+                src='/landing/timeline-bg-right.png'
+                alt='timeline right background'
+                width='535'
+                height='754'
+              />
             </div>
           </div>
 
@@ -298,16 +346,20 @@ export default function Home() {
           <div
             className={clsxm(
               'relative w-full md:w-8/12 lg:w-5/12',
-              'flex flex-col gap-y-10 md:gap-y-20 p-7 md:p-0',
-              'font-secondary'
+              'flex flex-col items-center gap-y-10 md:gap-y-20',
+              'p-7 md:p-0 font-secondary'
             )}
           >
             <div
               className={clsxm(
-                'absolute w-1 h-5/6 left-1/2 top-8 md:top-1/2',
-                '-translate-x-1/2 md:-translate-y-1/2 bg-typo'
+                'absolute top-0 w-full h-full flex justify-center',
+                'pt-10 md:pt-14 pb-40 md:pb-14'
               )}
-            />
+              data-aos='fade-up'
+              data-aos-offset='200'
+            >
+              <div className='w-1 h-full bg-typo' />
+            </div>
 
             {landingTimelineContents.map((content, index) => {
               const parity = index % 2 === 0 ? 'even' : 'odd';
@@ -316,7 +368,7 @@ export default function Home() {
                 <div
                   key={index}
                   className={clsxm(
-                    'grid grid-rows-1 md:grid-cols-5',
+                    'last:hidden last:md:grid grid grid-rows-1 md:grid-cols-5',
                     'md:gap-x-8 gap-y-2 md:gap-y-0',
                     'md:grid-flow-col-dense'
                   )}
@@ -373,33 +425,51 @@ export default function Home() {
           {/* Timeline Illustration */}
           <div className='relative min-h-fit w-full mt-20'>
             <NextImage
-              {...landingTimelineIllustration.bottom0}
+              src='/landing/timeline-illustration-0.png'
+              alt='timeline bottom illustration'
+              width='2880'
+              height='1522'
               className='w-full'
             />
             <NextImage
-              {...landingTimelineIllustration.bottom1}
+              src='/landing/timeline-illustration-1.png'
+              alt='timeline bottom illustration'
+              width='2880'
+              height='1522'
               className='absolute bottom-0 w-full'
               data-aos='fade-up'
             />
             <NextImage
-              {...landingTimelineIllustration.bottom2}
+              src='/landing/timeline-illustration-2.png'
+              alt='timeline bottom illustration'
+              width='2879'
+              height='718'
               className='absolute bottom-0 w-full'
               data-aos='fade-up'
             />
             <NextImage
-              {...landingTimelineIllustration.bottom3}
+              src='/landing/timeline-illustration-3.png'
+              alt='timeline bottom illustration'
+              width='2880'
+              height='554'
               className='absolute bottom-0 w-full'
               data-aos='fade-up'
               data-aos-delay='200'
             />
             <NextImage
-              {...landingTimelineIllustration.bottom4}
+              src='/landing/timeline-illustration-4.png'
+              alt='timeline bottom illustration'
+              width='2880'
+              height='1219'
               className='absolute bottom-0 w-full'
               data-aos='fade-up'
-              data-aos-delay='400'
+              data-aos-offset='300'
             />
             <NextImage
-              {...landingTimelineIllustration.bottom5}
+              src='/landing/timeline-illustration-5.png'
+              alt='timeline bottom illustration'
+              width='2880'
+              height='497'
               className='absolute bottom-0 w-full'
             />
           </div>
