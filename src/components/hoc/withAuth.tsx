@@ -15,6 +15,8 @@ export interface WithAuthProps {
   user: User;
 }
 
+type GeneralPermission = 'ADMIN' | 'USER' | 'auth';
+
 const hasPermission = (user: User | null, permission: PermissionList) => {
   return permission.every((p) => user?.permissions?.includes(p));
 };
@@ -26,12 +28,13 @@ const hasPermission = (user: User | null, permission: PermissionList) => {
  * @see https://github.com/mxthevs/nextjs-auth/blob/main/src/components/withAuth.tsx
  */
 
-const HOME_ROUTE = '/dashboard';
+const ADMIN_ROUTE = '/dashboard';
+const USER_ROUTE = '/dashboard/my';
 const LOGIN_ROUTE = '/login';
 
 export default function withAuth<T extends WithAuthProps = WithAuthProps>(
   Component: React.ComponentType<T>,
-  routePermission: 'auth' | PermissionList
+  routePermission: PermissionList | GeneralPermission
 ) {
   const ComponentWithAuth = (props: Omit<T, keyof WithAuthProps>) => {
     const router = useRouter();
@@ -96,22 +99,51 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
           // Prevent authenticated user from accessing auth or other role pages
           if (
             routePermission === 'auth' ||
+            routePermission === 'ADMIN' ||
+            routePermission === 'USER' ||
             !hasPermission(user, routePermission)
           ) {
             if (query?.redirect) {
               router.replace(query.redirect as string);
             } else {
-              if (routePermission !== 'auth') {
-                toast.error('Anda tidak memiliki akses ke halaman ini', {
+              if (
+                routePermission !== 'auth' &&
+                routePermission !== 'ADMIN' &&
+                routePermission !== 'USER'
+              ) {
+                toast.error('Anda tidak memiliki akses ke halaman tersebut', {
+                  id: 'unauthorized',
+                });
+              } else if (
+                (routePermission === 'ADMIN' && user?.role !== 'ADMIN') ||
+                (routePermission === 'USER' && user?.role !== 'USER')
+              ) {
+                toast.error('Anda tidak memiliki akses ke halaman tersebut', {
                   id: 'unauthorized',
                 });
               }
-              router.replace(HOME_ROUTE);
+              if (user?.role === 'ADMIN') {
+                router.replace(ADMIN_ROUTE);
+              } else if (user?.role === 'USER') {
+                router.replace(USER_ROUTE);
+              }
             }
           }
         } else {
           // Prevent unauthenticated user from accessing protected pages
-          if (routePermission !== 'auth') {
+          if (
+            routePermission !== 'auth' &&
+            routePermission !== 'ADMIN' &&
+            routePermission !== 'USER'
+          ) {
+            router.replace(
+              `${LOGIN_ROUTE}?redirect=${router.asPath}`,
+              `${LOGIN_ROUTE}`
+            );
+          } else if (
+            routePermission === 'ADMIN' ||
+            routePermission === 'USER'
+          ) {
             router.replace(
               `${LOGIN_ROUTE}?redirect=${router.asPath}`,
               `${LOGIN_ROUTE}`
@@ -124,8 +156,19 @@ export default function withAuth<T extends WithAuthProps = WithAuthProps>(
     if (
       // If unauthenticated user want to access protected pages
       ((isLoading || !isAuthenticated) && routePermission !== 'auth') ||
+      // If authenticated user want to access auth pages
+      ((isLoading || isAuthenticated) && routePermission === 'auth') ||
+      ((isLoading || isAuthenticated) &&
+        routePermission === 'ADMIN' &&
+        user?.role !== 'ADMIN') ||
+      ((isLoading || isAuthenticated) &&
+        routePermission === 'USER' &&
+        user?.role !== 'USER') ||
+      // If authenticated user want to access other role pages
       ((isLoading || isAuthenticated) &&
         routePermission !== 'auth' &&
+        routePermission !== 'ADMIN' &&
+        routePermission !== 'USER' &&
         !hasPermission(user, routePermission))
     ) {
       return (
