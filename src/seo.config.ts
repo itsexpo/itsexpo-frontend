@@ -6,7 +6,7 @@ const config: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://www.its-expo.com/',
+    url: 'https://www.expo-its.com/',
     siteName: 'SiteName',
   },
   twitter: {
