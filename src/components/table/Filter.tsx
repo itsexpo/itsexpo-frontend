@@ -13,7 +13,19 @@ export default function Filter<T extends RowData>({
   table,
   ...rest
 }: FilterProps<T>) {
-  const handleClearFilter = () => table.setGlobalFilter('');
+  const [filter, setFilter] = React.useState('');
+
+  const handleClearFilter = () => {
+    table.setGlobalFilter('');
+    setFilter('');
+  };
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      table.setGlobalFilter(filter);
+    }, 360);
+    return () => clearTimeout(timeout);
+  }, [filter, table]);
 
   return (
     <div className={clsxm('relative mt-1 self-start', className)} {...rest}>
@@ -22,9 +34,9 @@ export default function Filter<T extends RowData>({
       </div>
       <input
         type='text'
-        value={table.getState().globalFilter ?? ''}
+        value={filter ?? ''}
         onChange={(e) => {
-          table.setGlobalFilter(String(e.target.value));
+          setFilter(String(e.target.value));
         }}
         className={clsxm(
           'block rounded-lg pl-9 text-sm shadow-sm',
