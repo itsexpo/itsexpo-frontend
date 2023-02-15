@@ -23,12 +23,17 @@ enum TypographyColor {
   'danger',
 }
 
+enum FontVarinat {
+  'upakarti',
+  'montserrat',
+}
+
 type TypographyProps<T extends React.ElementType> = {
   /** @default <p> tag */
   as?: T;
   className?: string;
   color?: keyof typeof TypographyColor;
-
+  font: keyof typeof FontVarinat;
   variant: keyof typeof TypographyVariant;
   children: React.ReactNode;
 } & React.ComponentProps<T>;
@@ -38,6 +43,7 @@ export default function Typography<T extends React.ElementType>({
   children,
   className,
   color = 'primary',
+  font = 'montserrat',
   variant,
   ...rest
 }: TypographyProps<T>) {
@@ -68,6 +74,10 @@ export default function Typography<T extends React.ElementType>({
           color === 'danger' && ['text-danger-400'],
         ],
         //#endregion  //*======== Color ===========
+        [
+          font === 'upakarti' && ['font-primary leading-none'],
+          font === 'montserrat' && ['font-secondary'],
+        ],
         className
       )}
       {...rest}

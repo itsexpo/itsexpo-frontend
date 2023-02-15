@@ -32,7 +32,7 @@ const ADMIN_ROUTE = '/dashboard';
 const USER_ROUTE = '/dashboard/my';
 const LOGIN_ROUTE = '/login';
 
-export default function withAuth<T extends WithAuthProps = WithAuthProps>(
+export default function withAuth<T>(
   Component: React.ComponentType<T>,
   routePermission: PermissionList | GeneralPermission
 ) {

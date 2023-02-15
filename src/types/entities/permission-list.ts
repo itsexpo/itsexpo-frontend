@@ -16,6 +16,9 @@ enum PermissionEnum {
   'roles.delete',
   'roles.store',
   'roles.update',
+  'roles_unassign.store',
+  'roles_assign.store',
+  'roles.detail',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

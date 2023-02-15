@@ -8,13 +8,9 @@ export type Role = {
 };
 
 export type RoleDetail = {
-  id: number;
-  name: string;
-  level: string;
   permission: {
-    role: Level['name'];
-    role_id: Level['id'];
-    routes: string[];
+    id: string;
+    routes: string;
   }[];
 };
 
