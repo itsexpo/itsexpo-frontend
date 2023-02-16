@@ -11,7 +11,10 @@ const isServer = () => {
 let context = <GetServerSidePropsContext>{};
 
 export const api = axios.create({
-  baseURL: 'https://itsexpo.robby.pw/api',
+  baseURL:
+    process.env.NODE_ENV === 'development'
+      ? process.env.NEXT_PUBLIC_API_DEVELOPMENT_URL
+      : process.env.NEXT_PUBLIC_API_PRODUCTION_URL,
   headers: {
     'Content-Type': 'application/json',
   },
