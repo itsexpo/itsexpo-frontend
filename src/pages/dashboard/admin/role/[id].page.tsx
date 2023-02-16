@@ -60,12 +60,13 @@ function DetailRolePage({
   const {
     handleSubmit,
     getValues,
-    register,
     formState: { isDirty },
+    reset: resetDelete,
   } = methodsDelete;
   const {
     handleSubmit: handleSubmitAssign,
     formState: { isDirty: assignIsDirty },
+    reset: resetAssign,
   } = methodsAssign;
 
   //#region  //*=========== Dialog ===========
@@ -93,7 +94,10 @@ function DetailRolePage({
           .post('/roles_assign', data, {
             headers: { 'Content-Type': 'multipart/form-data' },
           })
-          .then(() => refetchData());
+          .then(() => {
+            refetchData();
+            resetAssign({ id: [] });
+          });
       })
     );
   //#end region  //*=========== Mutate Assign Permission ===========
@@ -105,7 +109,10 @@ function DetailRolePage({
     DetailRolePermission
   >(
     useMutation(async (data) => {
-      await api.delete('/roles_unassign', { data }).then(() => refetchData());
+      await api.delete('/roles_unassign', { data }).then(() => {
+        refetchData();
+        resetDelete();
+      });
     })
   );
 
@@ -123,7 +130,7 @@ function DetailRolePage({
 
   //#region  //*=========== OnSubmit ===========
 
-  const OnSubmit: SubmitHandler<AssignRolePermission> = async (_data) => {
+  const OnSubmit = (_data: AssignRolePermission) => {
     const data: Omit<AssignRolePermission, 'id'> = {
       role_permission: [],
     };
@@ -134,7 +141,6 @@ function DetailRolePage({
       };
       data.role_permission.push(obj);
     });
-
     const formData = serialize(data, { indices: true });
     assignPermission(formData);
   };
@@ -182,7 +188,6 @@ function DetailRolePage({
                           id='permission_id'
                           label='UNASSIGN PERMISSION'
                           placeholder='select permission'
-                          {...register('permission_id')}
                         >
                           {queryData?.data.permission.map(
                             ({ id, routes }, index) => (
@@ -217,7 +222,7 @@ function DetailRolePage({
               ALL ROLES
             </Typography>
             <div className='grid md:grid-cols-2 gap-y-2 lg:grid-cols-3'>
-              {res.map(({ routes }, index) => (
+              {unselectedRoles.map(({ routes }, index) => (
                 <div className='flex items-center gap-x-6' key={index}>
                   <BsCheckCircle className='text-slate-300' />
                   <Typography>{routes}</Typography>

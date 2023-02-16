@@ -13,13 +13,13 @@ export default function SEO({ title, description, ...rest }: SEOProps) {
       {...rest}
       openGraph={{
         type: 'website',
-        url: 'https://expo-its.com',
+        url: process.env.NEXT_PUBLIC_URL,
         title: 'ITS EXPO 2023',
         description:
           "Rangkaian Kreativitas Keluarga Mahasiswa ITS dalam Acara 'Salam Seni, Ilmu, dan Budaya'",
         images: [
           {
-            url: 'https://expo-its.com/images/og-itsexpo.png',
+            url: `${process.env.NEXT_PUBLIC_URL}/images/og-itsexpo.png`,
             width: 1200,
             height: 627,
             alt: 'ITS EXPO 2023',
