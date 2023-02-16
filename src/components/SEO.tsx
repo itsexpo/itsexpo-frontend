@@ -15,6 +15,7 @@ export default function SEO({ title, description, ...rest }: SEOProps) {
         type: 'website',
         url: process.env.NEXT_PUBLIC_URL,
         title: 'ITS EXPO 2023',
+        siteName: 'ITS EXPO 2023',
         description:
           "Rangkaian Kreativitas Keluarga Mahasiswa ITS dalam Acara 'Salam Seni, Ilmu, dan Budaya'",
         images: [

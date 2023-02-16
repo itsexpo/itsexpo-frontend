@@ -7,7 +7,7 @@ const config: DefaultSeoProps = {
     type: 'website',
     locale: 'en_IE',
     url: 'https://www.expo-its.com/',
-    siteName: 'SiteName',
+    siteName: 'ITS Expo 2023',
   },
   twitter: {
     handle: '@handle',
@@ -20,7 +20,7 @@ const config: DefaultSeoProps = {
   additionalLinkTags: [
     {
       rel: 'icon',
-      href: '/favicon.ico',
+      href: '/images/favicon.ico',
     },
   ],
 };
