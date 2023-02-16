@@ -75,7 +75,7 @@ function DetailRolePage({
       title: 'Apakah Anda Yakin ?!',
       description: `Hapus Permission ${id} pada Role ini`,
       submitText: 'Delete',
-      variant: 'warning',
+      variant: 'danger',
       catchOnCancel: true,
     }).then(() =>
       OnDelete({
@@ -145,7 +145,9 @@ function DetailRolePage({
       <main className='bg-surface-background py-5'>
         <section id='header' className='layout bg-surface-background pb-4'>
           <div>
-            <Breadcrumb crumbs={['/admin/role', '/admin/role/detail']} />
+            <Breadcrumb
+              crumbs={['/dashboard/admin/role', '/dashboard/admin/role/detail']}
+            />
           </div>
         </section>
         <section
