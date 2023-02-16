@@ -3,17 +3,18 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import React from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
-import { FiX } from 'react-icons/fi';
+import { FiTrash, FiX } from 'react-icons/fi';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
+import IconButton from '@/components/buttons/IconButton';
 import Checkbox from '@/components/forms/Checkbox';
 import withAuth from '@/components/hoc/withAuth';
-import useServerTable from '@/components/hooks/useServerTable';
 import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
+import useServerTable from '@/hooks/useServerTable';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api from '@/lib/api';
 import { buildPaginatedTableURL } from '@/lib/table';
@@ -37,6 +38,22 @@ const filterOption = [
     id: 'admin',
     name: 'Admin',
   },
+  {
+    id: 'SMP/Sederajat',
+    name: 'SMP/Sederajat',
+  },
+  {
+    id: 'SMA/Sederajat',
+    name: 'SMA/Sederajat',
+  },
+  {
+    id: 'Mahasiswa',
+    name: 'Mahasiswa',
+  },
+  {
+    id: 'Umum',
+    name: 'Umum',
+  },
 ];
 
 export default withAuth(User, ['users.index']);
@@ -51,7 +68,6 @@ function User() {
       id: 'index',
       cell: (info) => info.row.index + 1,
       header: 'No',
-      size: 30,
     },
     {
       id: 'id',
@@ -84,17 +100,16 @@ function User() {
       cell: (info) => {
         return (
           <div className='flex items-center justify-center'>
-            <Button
+            <IconButton
               variant='red'
+              icon={FiTrash}
               onClick={() =>
                 openWarningDelete({
                   id: info.row.original.id,
                   name: info.row.original.name,
                 })
               }
-            >
-              Delete
-            </Button>
+            />
           </div>
         );
       },
@@ -151,9 +166,9 @@ function User() {
           <div className='layout min-h-screen py-20'>
             <div className='flex justify-between'>
               <div>
-                <Breadcrumb crumbs={['/admin/user']} />
+                <Breadcrumb crumbs={['/dashboard/admin/user']} />
                 <Typography as='h4' variant='h4' className=''>
-                  All Users
+                  List Users
                 </Typography>
               </div>
             </div>

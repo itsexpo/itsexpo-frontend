@@ -1,17 +1,18 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import React from 'react';
-import { FiEye } from 'react-icons/fi';
+import { FiEdit, FiEye, FiTrash } from 'react-icons/fi';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
+import IconButton from '@/components/buttons/IconButton';
 import withAuth from '@/components/hoc/withAuth';
-import useServerTable from '@/components/hooks/useServerTable';
-import ButtonLink from '@/components/links/ButtonLink';
+import IconLink from '@/components/links/IconLink';
 import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
+import useServerTable from '@/hooks/useServerTable';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api from '@/lib/api';
 import { buildPaginatedTableURL } from '@/lib/table';
@@ -60,28 +61,26 @@ function AdminRoles() {
         };
         return (
           <div className='flex items-center justify-center gap-x-4'>
-            <Button
+            <IconButton
               onClick={() => {
                 setEditModalOpen(true);
                 setSelectedData(value);
               }}
-            >
-              Edit
-            </Button>
-            <Button
-              leftIcon={FiEye}
+              icon={FiEdit}
+              variant='yellow'
+            />
+
+            <IconButton
+              icon={FiTrash}
               variant='red'
               onClick={() => openWarningDelete({ id: info.row.original.id })}
-            >
-              Delete
-            </Button>
-            <ButtonLink
+            />
+            <IconLink
               variant='green'
               target='_self'
               href={`role/${info.row.original.id}`}
-            >
-              Detail
-            </ButtonLink>
+              icon={FiEye}
+            />
           </div>
         );
       },
@@ -136,7 +135,7 @@ function AdminRoles() {
           <div className='layout min-h-screen py-20'>
             <div className='flex justify-between'>
               <div>
-                <Breadcrumb crumbs={['/admin/role']} />
+                <Breadcrumb crumbs={['/dashboard/admin/role']} />
                 <Typography as='h4' variant='h4' className=''>
                   Manajemen Role
                 </Typography>

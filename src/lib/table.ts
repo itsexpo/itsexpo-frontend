@@ -1,6 +1,6 @@
 import queryString, { StringifyOptions } from 'query-string';
 
-import { ServerTableState } from '@/components/hooks/useServerTable';
+import { ServerTableState } from '@/hooks/useServerTable';
 type BuildPaginationTableParam = {
   /** API Base URL, with / on the front */
   baseUrl: string;

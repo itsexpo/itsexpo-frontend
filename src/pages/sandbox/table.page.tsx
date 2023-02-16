@@ -7,9 +7,9 @@ import { FiEye, FiX } from 'react-icons/fi';
 
 import Button from '@/components/buttons/Button';
 import Checkbox from '@/components/forms/Checkbox';
-import useServerTable from '@/components/hooks/useServerTable';
 import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
+import useServerTable from '@/hooks/useServerTable';
 import { mockQuery } from '@/lib/apiMock';
 import { buildPaginatedTableURL } from '@/lib/table';
 import { PaginatedApiResponse } from '@/types/api';

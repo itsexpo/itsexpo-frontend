@@ -1,9 +1,9 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import toast from 'react-hot-toast';
 import { ImSpinner8 } from 'react-icons/im';
 
+import { showToast, WARNING_TOAST } from '@/components/Toast';
 import api from '@/lib/api';
 import { getToken, removeToken } from '@/lib/cookies';
 import useAuthStore from '@/store/useAuthStore';
@@ -80,21 +80,8 @@ export default function withAuth<T>(
         loadUser();
       }
     }, [isAuthenticated, login, logout, stopLoading]);
-
     React.useEffect(() => {
-      // ComponentWillMount
-      // run checkAuth every page visit
-      checkAuth();
-
-      window.addEventListener('focus', checkAuth);
-      return () => {
-        window.removeEventListener('focus', checkAuth);
-      };
-    }, [checkAuth]);
-
-    React.useEffect(() => {
-      // ComponentDidMount
-      if (!isLoading) {
+      if (!isLoading || user?.role) {
         if (isAuthenticated) {
           // Prevent authenticated user from accessing auth or other role pages
           if (
@@ -105,45 +92,35 @@ export default function withAuth<T>(
           ) {
             if (query?.redirect) {
               router.replace(query.redirect as string);
-            } else {
+            } else if (
+              routePermission === 'ADMIN' ||
+              routePermission === 'USER'
+            ) {
               if (
-                routePermission !== 'auth' &&
-                routePermission !== 'ADMIN' &&
-                routePermission !== 'USER'
+                (user?.role === 'ADMIN' && routePermission === 'USER') ||
+                (user?.role === 'USER' && routePermission === 'ADMIN')
               ) {
-                toast.error('Anda tidak memiliki akses ke halaman tersebut', {
-                  id: 'unauthorized',
-                });
-              } else if (
-                (routePermission === 'ADMIN' && user?.role !== 'ADMIN') ||
-                (routePermission === 'USER' && user?.role !== 'USER')
-              ) {
-                toast.error('Anda tidak memiliki akses ke halaman tersebut', {
-                  id: 'unauthorized',
-                });
+                showToast(
+                  'Anda tidak memiliki akses ke halaman tersebut',
+                  WARNING_TOAST
+                );
+                router.replace(
+                  user?.role === 'ADMIN' ? ADMIN_ROUTE : USER_ROUTE
+                );
               }
-              if (user?.role === 'ADMIN') {
-                router.replace(ADMIN_ROUTE);
-              } else if (user?.role === 'USER') {
-                router.replace(USER_ROUTE);
+            } else {
+              if (routePermission !== 'auth') {
+                showToast(
+                  'Anda tidak memiliki akses ke halaman tersebut',
+                  WARNING_TOAST
+                );
               }
+              router.replace(user?.role === 'ADMIN' ? ADMIN_ROUTE : USER_ROUTE);
             }
           }
         } else {
           // Prevent unauthenticated user from accessing protected pages
-          if (
-            routePermission !== 'auth' &&
-            routePermission !== 'ADMIN' &&
-            routePermission !== 'USER'
-          ) {
-            router.replace(
-              `${LOGIN_ROUTE}?redirect=${router.asPath}`,
-              `${LOGIN_ROUTE}`
-            );
-          } else if (
-            routePermission === 'ADMIN' ||
-            routePermission === 'USER'
-          ) {
+          if (routePermission !== 'auth') {
             router.replace(
               `${LOGIN_ROUTE}?redirect=${router.asPath}`,
               `${LOGIN_ROUTE}`
@@ -151,20 +128,27 @@ export default function withAuth<T>(
           }
         }
       }
-    }, [isAuthenticated, isLoading, query, router, user]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAuthenticated, router, query, isLoading]);
+
+    React.useEffect(() => {
+      checkAuth();
+
+      window.addEventListener('focus', checkAuth);
+      return () => {
+        window.removeEventListener('focus', checkAuth);
+      };
+    }, [checkAuth]);
 
     if (
       // If unauthenticated user want to access protected pages
       ((isLoading || !isAuthenticated) && routePermission !== 'auth') ||
-      // If authenticated user want to access auth pages
-      ((isLoading || isAuthenticated) && routePermission === 'auth') ||
       ((isLoading || isAuthenticated) &&
         routePermission === 'ADMIN' &&
-        user?.role !== 'ADMIN') ||
+        user?.role === 'USER') ||
       ((isLoading || isAuthenticated) &&
         routePermission === 'USER' &&
-        user?.role !== 'USER') ||
-      // If authenticated user want to access other role pages
+        user?.role === 'ADMIN') ||
       ((isLoading || isAuthenticated) &&
         routePermission !== 'auth' &&
         routePermission !== 'ADMIN' &&

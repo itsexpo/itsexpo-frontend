@@ -1,33 +1,35 @@
 import * as React from 'react';
 import { IconType } from 'react-icons';
 
+import UnstyledLink, {
+  UnstyledLinkProps,
+} from '@/components/links/UnstyledLink';
 import clsxm from '@/lib/clsxm';
 
-enum ButtonVariant {
+enum IconLinkVariant {
   'red',
   'yellow',
   'green',
 }
-enum ButtonSize {
+enum IconLinkSize {
   'small',
   'base',
   'large',
 }
 
-type IconButtonProps = {
-  variant?: keyof typeof ButtonVariant;
-  size?: keyof typeof ButtonSize;
+type IconLinkProps = {
+  variant?: keyof typeof IconLinkVariant;
+  size?: keyof typeof IconLinkSize;
   icon?: IconType;
   iconClassName?: string;
-} & React.ComponentPropsWithRef<'button'>;
+} & Omit<UnstyledLinkProps, 'children'>;
 
-const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+const IconLink = React.forwardRef<HTMLAnchorElement, IconLinkProps>(
   (
     {
       className,
       icon: Icon,
       variant = 'outline',
-      disabled: buttonDisabled,
       iconClassName,
       size = 'base',
       ...rest
@@ -35,12 +37,11 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     ref
   ) => {
     return (
-      <button
+      <UnstyledLink
         ref={ref}
-        type='button'
-        disabled={buttonDisabled}
+        {...rest}
         className={clsxm(
-          'button inline-flex items-center justify-center font-semibold',
+          'inline-flex items-center justify-center font-semibold',
           'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
           'transition duration-100',
           'min-h-[28px] min-w-[28px] rounded-lg p-1 md:min-h-[34px] md:min-w-[34px] md:p-2',
@@ -93,9 +94,9 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
             )}
           />
         )}
-      </button>
+      </UnstyledLink>
     );
   }
 );
 
-export default IconButton;
+export default IconLink;
