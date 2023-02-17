@@ -644,7 +644,7 @@ export default function Home() {
           <div className='layout mt-4'>
             <div
               className={clsxm(
-                'grid md:grid-col-1 md:grid-cols-3 md:gap-2 gap-4',
+                'grid md:grid-col-1 md:grid-cols-3 md:gap-2 gap-10',
                 'z-20'
               )}
             >
@@ -661,14 +661,14 @@ export default function Home() {
                   <Typography
                     variant='h4'
                     as='h4'
-                    className='font-primary text-left group-hover:text-white'
+                    className='font-primary text-left text-4xl md:text-5xl mb-4 group-hover:text-white'
                   >
                     opening its expo
                   </Typography>
                   <Typography
                     variant='b'
                     as='b'
-                    className='group-hover:text-white font-normal'
+                    className='group-hover:text-white font-normal text-sm md:text-lg'
                   >
                     Eu hendrerit turpis purus venenatis nibh id vitae quis.
                     Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
@@ -701,14 +701,14 @@ export default function Home() {
                   <Typography
                     variant='h4'
                     as='h4'
-                    className='font-primary text-left group-hover:text-white'
+                    className='font-primary text-left text-4xl md:text-5xl mb-4 group-hover:text-white'
                   >
                     exhibition its expo
                   </Typography>
                   <Typography
                     variant='b'
                     as='b'
-                    className='group-hover:text-white font-normal'
+                    className='group-hover:text-white font-normal text-sm md:text-lg'
                   >
                     Eu hendrerit turpis purus venenatis nibh id vitae quis.
                     Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
@@ -741,14 +741,14 @@ export default function Home() {
                   <Typography
                     variant='h4'
                     as='h4'
-                    className='font-primary text-left group-hover:text-white'
+                    className='font-primary text-left text-4xl md:text-5xl mb-4 group-hover:text-white'
                   >
                     gebyar its expo
                   </Typography>
                   <Typography
                     variant='b'
                     as='b'
-                    className='group-hover:text-white font-normal'
+                    className='group-hover:text-white font-normal text-sm md:text-lg'
                   >
                     Eu hendrerit turpis purus venenatis nibh id vitae quis.
                     Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
@@ -781,7 +781,7 @@ export default function Home() {
                 alt='contact support title left'
                 width='834'
                 height='721'
-                className='absolute -left-10 md:-left-14 lg:-left-3 md:top-0 top-1/4 md:w-1/5 sm:w-1/5 lg:w-1/5 w-1/5'
+                className='absolute left-13 md:-left-14 lg:-left-3 md:top-0 top-1/4 md:w-1/5 sm:w-1/5 lg:w-1/5 w-1/5'
                 data-aos='fade-right'
               />
               <Typography
@@ -797,7 +797,7 @@ export default function Home() {
                 alt='contact support title left'
                 width='834'
                 height='721'
-                className='absolute -right-10 md:-right-14 lg:-right-3 md:top-0 top-1/4 md:w-1/5 sm:w-1/5 lg:w-1/5 w-1/5'
+                className='absolute right-2 md:-right-14 lg:-right-3 md:top-0 top-1/4 md:w-1/5 sm:w-1/5 lg:w-1/5 w-1/5'
                 data-aos='fade-left'
               />
             </div>
@@ -810,7 +810,7 @@ export default function Home() {
               <Typography
                 variant='h3'
                 as='h3'
-                className='font-primary text-center'
+                className='font-primary text-center text-5xl md:text-6xl'
                 data-aos='fade-up'
               >
                 Pre Event
@@ -823,6 +823,7 @@ export default function Home() {
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
                   data-aos-delay='100'
+                  className='py-3'
                 >
                   Robot in Action
                 </ButtonLink>
@@ -833,6 +834,7 @@ export default function Home() {
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
                   data-aos-delay='200'
+                  className='py-3'
                 >
                   Karya Tulis Ilmiah
                 </ButtonLink>
@@ -843,6 +845,7 @@ export default function Home() {
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
                   data-aos-delay='300'
+                  className='py-3'
                 >
                   Jurnalistik
                 </ButtonLink>
@@ -853,6 +856,7 @@ export default function Home() {
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
                   data-aos-delay='400'
+                  className='py-3'
                 >
                   Talkshow
                 </ButtonLink>
@@ -864,7 +868,7 @@ export default function Home() {
                 alt='contact-img'
                 width='232'
                 height='428'
-                className='w-[40%] md:w-[60%] object-contain'
+                className='w-[50%] md:w-[60%] object-contain'
                 data-aos='fade-up'
               />
             </div>
@@ -872,7 +876,7 @@ export default function Home() {
               <Typography
                 variant='h3'
                 as='h3'
-                className='font-primary text-center'
+                className='font-primary text-center text-5xl md:text-6xl'
                 data-aos='fade-up'
               >
                 main event
@@ -885,6 +889,7 @@ export default function Home() {
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
                   data-aos-delay='100'
+                  className='py-3'
                 >
                   Opening ITS EXPO
                 </ButtonLink>
@@ -895,6 +900,7 @@ export default function Home() {
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
                   data-aos-delay='200'
+                  className='py-3'
                 >
                   Exhibition ITS EXPO
                 </ButtonLink>
@@ -905,6 +911,7 @@ export default function Home() {
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
                   data-aos-delay='300'
+                  className='py-3'
                 >
                   Gebyar ITS EXPO
                 </ButtonLink>
