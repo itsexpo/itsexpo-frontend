@@ -787,11 +787,20 @@ export default function Home() {
               <Typography
                 variant='h1'
                 as='h1'
-                className='font-primary text-center leading-none'
+                className='font-primary text-center leading-none hidden md:block'
                 data-aos='zoom-in'
               >
                 Contact Support
               </Typography>
+              <Typography
+                variant='h1'
+                as='h1'
+                className='font-primary text-center leading-none block md:hidden'
+                data-aos='zoom-in'
+              >
+                Contact <br /> Support
+              </Typography>
+
               <NextImage
                 src='/landing/contact-title-right.png'
                 alt='contact support title left'

@@ -93,7 +93,7 @@
   border: 2px solid white;
 }
 .bg-pattern-card-1 {
-  background: linear-gradient(180deg, #936836 0%, #5C3D18 46.67%, #351F05 100%);
+  background: linear-gradient(180deg, #936836 0%, #5c3d18 46.67%, #351f05 100%);
 }
 /* #region  /**=========== Datepicker =========== */
 .react-datepicker-wrapper {

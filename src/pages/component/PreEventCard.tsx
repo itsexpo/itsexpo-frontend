@@ -16,7 +16,6 @@ export default function PreEventCard({
   description,
   link,
   image,
-  ...props
 }: PreEventCardProps) {
   return (
     <div className='relative mx-auto mt-8 z-[1] bg-white rounded-3xl overflow-hidden'>
