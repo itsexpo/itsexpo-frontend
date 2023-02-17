@@ -518,7 +518,9 @@ export default function Home() {
               <Button
                 variant='green'
                 size='large'
-                className={preEvent == 1 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                className={
+                  preEvent == 1 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                }
                 onClick={() => setPreEvent(1)}
                 data-aos='zoom-in'
               >
@@ -527,7 +529,9 @@ export default function Home() {
               <Button
                 variant='green'
                 size='large'
-                className={preEvent == 2 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                className={
+                  preEvent == 2 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                }
                 onClick={() => setPreEvent(2)}
                 data-aos='zoom-in'
               >
@@ -536,7 +540,9 @@ export default function Home() {
               <Button
                 variant='green'
                 size='large'
-                className={preEvent == 3 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                className={
+                  preEvent == 3 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                }
                 onClick={() => setPreEvent(3)}
                 data-aos='zoom-in'
               >
@@ -545,7 +551,9 @@ export default function Home() {
               <Button
                 variant='green'
                 size='large'
-                className={preEvent == 4 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                className={
+                  preEvent == 4 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                }
                 onClick={() => setPreEvent(4)}
                 data-aos='zoom-in'
               >
@@ -623,17 +631,17 @@ export default function Home() {
             alt='about ctn left'
             width='123'
             height='512'
-            className='absolute z-0 top-[31%] md:top-1/2 transform -translate-y-1/2 w-[5%]'
+            className='absolute z-0 top-[31%] md:top-1/2 transform -translate-y-1/2 w-[9%] md:w-[5%]'
           />
           <NextImage
             src='/landing/about-ctn-right.png'
             alt='about ctn right'
             width='127'
             height='512'
-            className='absolute z-0 right-0 top-[90%] md:top-[60%] transform -translate-y-1/2 w-[5%]'
+            className='absolute z-0 right-0 top-[90%] md:top-[60%] transform -translate-y-1/2 w-[8%] md:w-[5%]'
           />
 
-          <div className='layout mt-4 '>
+          <div className='layout mt-4'>
             <div
               className={clsxm(
                 'grid md:grid-col-1 md:grid-cols-3 md:gap-2 gap-4',
@@ -647,8 +655,7 @@ export default function Home() {
                 <div
                   className={clsxm(
                     'flex flex-col justify-start px-10 py-8 rounded-lg group',
-                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[380px]',
-                    'bg-tainted-100 transition-all'
+                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[350px] md:min-h-[380px]'
                   )}
                 >
                   <Typography
@@ -674,7 +681,7 @@ export default function Home() {
                       href='#'
                       variant='yellow'
                       size='base'
-                      className='mt-4'
+                      className='md:mt-4 mt-11'
                     >
                       Baca Selengkapnya
                     </ButtonLink>
@@ -688,8 +695,7 @@ export default function Home() {
                 <div
                   className={clsxm(
                     'flex flex-col justify-start px-10 py-8 rounded-lg group',
-                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[380px]',
-                    'bg-tainted-100 transition-all'
+                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[350px] md:min-h-[380px]'
                   )}
                 >
                   <Typography
@@ -715,7 +721,7 @@ export default function Home() {
                       href='#'
                       variant='yellow'
                       size='base'
-                      className='mt-4'
+                      className='md:mt-4 mt-11'
                     >
                       Baca Selengkapnya
                     </ButtonLink>
@@ -729,7 +735,7 @@ export default function Home() {
                 <div
                   className={clsxm(
                     'flex flex-col justify-start px-10 py-8 rounded-lg group',
-                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[380px] '
+                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[350px] md:min-h-[380px]'
                   )}
                 >
                   <Typography
@@ -755,7 +761,7 @@ export default function Home() {
                       href='#'
                       variant='yellow'
                       size='base'
-                      className='mt-4'
+                      className='md:mt-4 mt-11'
                     >
                       Baca Selengkapnya
                     </ButtonLink>
@@ -931,14 +937,14 @@ export default function Home() {
             alt='about sponsor-bg-left'
             width='286'
             height='829'
-            className='absolute z-0 lg:top-[40%] md:top-[30%] top-[20%] md:w-[20%] w-[14%] transform -translate-y-1/2 object-contain'
+            className='absolute z-0 lg:top-[40%] md:top-[30%] top-[17%] md:w-[18%] w-[20%] transform -translate-y-1/2 object-contain'
           />
           <NextImage
             src='/landing/sponsor-bg-right.png'
             alt='about sponsor-bg-right'
             width='277'
             height='745'
-            className='absolute z-0 right-0 lg:top-[48%] md:top-[68%] top-[75%] md:w-[20%] w-[14%] transform -translate-y-1/2 object-containt'
+            className='absolute z-0 right-0 lg:top-[48%] md:top-[68%] top-[70%] md:w-[18%] w-[20%] transform -translate-y-1/2 object-containt'
           />
 
           <div className='layout my-12'>
@@ -951,7 +957,7 @@ export default function Home() {
               sponsor
             </Typography>
             <div
-              className='grid md:grid-cols-1 grid-cols-1 min-h-[500px] bg-tainted-100 rounded-lg p-8 mt-8'
+              className='grid md:grid-cols-1 grid-cols-1 z-[1] min-h-[500px] bg-tainted-100 rounded-lg p-8 mt-8'
               data-aos='fade-up'
             ></div>
           </div>
