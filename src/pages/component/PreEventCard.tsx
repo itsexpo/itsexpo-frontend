@@ -33,14 +33,21 @@ export default function PreEventCard({
         <div className='p-8'>
           <Typography
             variant='h5'
-            className='text-left font-semibold text-typo-black mb-6'
+            className='text-left hidden md:block md:font-semibold text-typo-black mb-6'
+            data-aos='fade-up'
+          >
+            {title}
+          </Typography>
+          <Typography
+            variant='h4'
+            className='text-left font-semibold md:hidden text-typo-black mb-6'
             data-aos='fade-up'
           >
             {title}
           </Typography>
           <Typography
             variant='p'
-            className='text-left text-typo-black'
+            className='text-left text-typo-secondary font-[14px] md:font-[18px]'
             data-aos='fade-up'
             data-aos-delay='200'
           >
@@ -51,6 +58,8 @@ export default function PreEventCard({
               variant='c'
               color='theme'
               className='font-secondary font-semibold underline mt-6 text-success-500'
+              data-aos='fade-up'
+              data-aos-delay='200'
             >
               Baca Selengkapnya
             </Typography>
