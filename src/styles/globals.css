@@ -89,7 +89,12 @@
 .bg-landing-preevent {
   background: linear-gradient(180deg, #53823f 0%, #445f64 20%, #586b61 100%);
 }
-
+.with-border {
+  border: 2px solid white;
+}
+.bg-pattern-card-1 {
+  background: linear-gradient(180deg, #936836 0%, #5C3D18 46.67%, #351F05 100%);
+}
 /* #region  /**=========== Datepicker =========== */
 .react-datepicker-wrapper {
   display: block;

@@ -3,28 +3,33 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 
 import AOS from 'aos';
-import { useEffect } from 'react';
-import { FaChrome } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { FiGlobe } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import Button from '@/components/buttons/Button';
 import SwiperButton from '@/components/buttons/SwiperButton';
 import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
+import { PreEvent } from '@/contents/pre-event/event';
 import landingSwiperContents from '@/contents/pre-event/landing-swiper';
 import landingTimelineContents from '@/contents/pre-event/landing-timeline';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
+import PreEventCard from '@/pages/component/PreEventCard';
 
 export default function Home() {
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+
+  const [preEvent, setPreEvent] = useState<number>(1);
 
   return (
     <Layout>
@@ -36,7 +41,7 @@ export default function Home() {
           className='relative w-full h-screen flex flex-col justify-center items-center'
         >
           {/* Hero Illustration */}
-          <div className='absolute flex flex-col w-full h-full border'>
+          <div className='absolute flex flex-col w-full h-full'>
             <div className='relative flex-1'>
               <NextImage
                 src='/landing/hero-bg-left.png'
@@ -476,157 +481,126 @@ export default function Home() {
         </section>
 
         {/* PreEvent Section */}
-        <section
-          id='pre-event'
-          className='w-full h-full flex flex-col justify-center items-center bg-landing-preevent pt-20'
-        >
-          <div className='relative w-full mb-[100px]'>
-            {/* PreEvent Content */}
-            <div
-              className='
-              relative flex flex-col items-center p-4 z-10'
+        <section id='pre-event' className='relative bg-landing-preevent pt-20'>
+          <NextImage
+            src='/landing/preevent-title-left.png'
+            alt='pre-event title left'
+            width='793'
+            height='512'
+            className='absolute left-[7%] lg:left-[13%] md:left-[4%] top-[13%] lg:top-[20%] md:top-[12%] transform -translate-y-1/2 w-[15%] md:w-[10%]'
+            data-aos='fade-right'
+          />
+
+          <NextImage
+            src='/landing/preevent-title-right.png'
+            alt='about ctn right'
+            width='793'
+            height='512'
+            className='absolute right-[7%] lg:right-[13%] md:right-[4%] top-[13%] lg:top-[20%] md:top-[12%] transform -translate-y-1/2 w-[15%] md:w-[10%]'
+            data-aos='fade-left'
+          />
+          <div className='layout my-12'>
+            <Typography
+              variant='h2'
+              className='font-primary text-center text-typo-white hidden md:block sm:text-center'
+              data-aos='fade-down'
             >
-              <div
-                className='flex flex-col items-center -space-y-6'
-                data-aos='fade-up'
+              Pre-Event its expo 2023
+            </Typography>
+            <Typography
+              variant='h2'
+              className='font-primary text-center text-typo-white block md:hidden sm:text-center'
+              data-aos='fade-down'
+            >
+              Pre-Event <br /> its expo 2023
+            </Typography>
+            <div className='grid grid-cols-2 lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-4 mt-8 '>
+              <Button
+                variant='green'
+                size='large'
+                className={preEvent == 1 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                onClick={() => setPreEvent(1)}
+                data-aos='zoom-in'
               >
-                <div className='flex flex-row space-x-4'>
-                  <NextImage
-                    src='/landing/preevent-title-left.png'
-                    alt='content gallery'
-                    width='157.85'
-                    height='101.63'
-                  />
-                  <Typography
-                    variant='h1'
-                    className='font-primary text-typo-white mb-10'
-                  >
-                    Pre-Event its expo 2023
-                  </Typography>
-                  <NextImage
-                    src='/landing/preevent-title-right.png'
-                    alt='content gallery'
-                    width='157.85'
-                    height='101.63'
-                  />
-                </div>
-              </div>
-
-              <div className='flex flex-row space-x-4 mb-[40px]'>
-                <ButtonLink
-                  href='/'
-                  variant='green'
-                  size='large'
-                  data-aos='fade-up'
-                >
-                  Robot in Action
-                </ButtonLink>
-
-                <ButtonLink
-                  href='/'
-                  variant='green'
-                  size='large'
-                  data-aos='fade-up'
-                >
-                  Karya Tulis Ilmiah
-                </ButtonLink>
-
-                <ButtonLink
-                  href='/'
-                  variant='green'
-                  size='large'
-                  data-aos='fade-up'
-                >
-                  Jurnalistik
-                </ButtonLink>
-
-                <ButtonLink
-                  href='/'
-                  variant='green'
-                  size='large'
-                  data-aos='fade-up'
-                >
-                  Talkshow
-                </ButtonLink>
-              </div>
-
-              {/* <div className='h-[40px]'></div> */}
-
-              <div className='flex flex-col space-y-4'>
-                <div
-                  className='bg-white w-[1240px] h-[380px] rounded-3xl '
-                  data-aos='fade-up'
-                >
-                  <div className='flex space-x-4'>
-                    <div className='w-[396px] flex flex-col space-y-4'>
-                      <NextImage
-                        src='/landing/preevent-frame.png'
-                        alt='content gallery'
-                        width='396'
-                        height='380'
-                      />
-                    </div>
-
-                    <div className='flex flex-col'>
-                      <div className='h-[10px]'></div>
-                      <Typography
-                        variant='h5'
-                        className='font-secondary font-semibold text-black'
-                      >
-                        Karya Tulis Ilmiah
-                      </Typography>
-                      <Typography
-                        variant='b1'
-                        color='tertiary'
-                        className='font-secondary max-w-2xl'
-                      >
-                        Consequat donec risus mollis feugiat. Imperdiet vitae
-                        suspendisse at massa. Maecenas nec sed habitant cras.
-                        Mauris pellentesque turpis sed mi et pulvinar tortor
-                        elementum. Eu tincidunt urna id mattis. Fermentum et ut
-                        a ut tortor aliquam. In mi porttitor imperdiet dignissim
-                        sed tristique lectus et. Consectetur in eu augue eget.
-                        Dolor nec pellentesque at est suspendisse cursus elit.
-                        Sodales faucibus vulputate euismod magna eget nulla
-                        ornare. Egestas scelerisque porttitor integer sit auctor
-                        dolor gravida. Vitae nulla enim posuere et vestibulum
-                        mauris. Ut ligula dis habitasse id ipsum eget donec
-                        semper sollicitudin. Mauris nibh at morbi netus elit
-                        morbi egestas lectus risus. Pharetra arcu enim eget
-                        pretium morbi justo pulvinar tristique arcu.
-                      </Typography>
-                      <UnstyledLink href='/'>
-                        <Typography
-                          variant='c'
-                          color='theme'
-                          className='font-secondary font-semibold underline text-success-500'
-                        >
-                          Baca Selengkapnya
-                        </Typography>
-                      </UnstyledLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                Robot in Action
+              </Button>
+              <Button
+                variant='green'
+                size='large'
+                className={preEvent == 2 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                onClick={() => setPreEvent(2)}
+                data-aos='zoom-in'
+              >
+                Karya Tulis Ilmiah
+              </Button>
+              <Button
+                variant='green'
+                size='large'
+                className={preEvent == 3 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                onClick={() => setPreEvent(3)}
+                data-aos='zoom-in'
+              >
+                Jurnalistik
+              </Button>
+              <Button
+                variant='green'
+                size='large'
+                className={preEvent == 4 ? 'with-border' : 'bg-[#9DBF7D90]'}
+                onClick={() => setPreEvent(4)}
+                data-aos='zoom-in'
+              >
+                Talkshow
+              </Button>
             </div>
-          </div>
-          {/* Preevent Illustration */}
-          <div className='absolute w-full h-full'>
+
+            {preEvent == 1 && (
+              <PreEventCard
+                title={PreEvent[0].title}
+                description={PreEvent[0].description}
+                link={PreEvent[0].link}
+                image={PreEvent[0].image}
+              />
+            )}
+            {preEvent == 2 && (
+              <PreEventCard
+                title={PreEvent[1].title}
+                description={PreEvent[1].description}
+                link={PreEvent[1].link}
+                image={PreEvent[1].image}
+              />
+            )}
+            {preEvent == 3 && (
+              <PreEventCard
+                title={PreEvent[2].title}
+                description={PreEvent[2].description}
+                link={PreEvent[2].link}
+                image={PreEvent[2].image}
+              />
+            )}
+            {preEvent == 4 && (
+              <PreEventCard
+                title={PreEvent[3].title}
+                description={PreEvent[3].description}
+                link={PreEvent[3].link}
+                image={PreEvent[3].image}
+              />
+            )}
+            {/* PreEvent Background */}
             <NextImage
               src='/landing/preevent-bg-left.png'
-              alt='landing preevent left background'
-              width='462'
-              height='690'
-              priority={true}
-              className='absolute w-4/12 left-0 bottom-0'
+              alt='preevent-bg-left'
+              width='400'
+              height='780'
+              imgClassName='object-contain'
+              className='absolute z-0 -bottom-[10vw] -left-20 md:-left-0'
             />
             <NextImage
               src='/landing/preevent-bg-right.png'
-              alt='landing preevent right background'
-              width='559'
-              height='675'
-              priority={true}
-              className='absolute w-5/12 right-0 bottom-0'
+              alt='preevent-bg-right'
+              width='400'
+              height='780'
+              imgClassName='object-contain'
+              className='absolute z-0 -bottom-[10vw] -right-20 md:-right-0'
             />
           </div>
         </section>
@@ -643,292 +617,294 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section
-          id='about'
-          className='w-full h-full flex flex-col justify-center items-center'
-        >
-          <div className='relative w-full'>
-            {/* About Content */}
-            <div className='relative flex flex-col items-center p-4 z-10'>
-              <div className='flex flex-row space-x-4'>
-                <NextImage
-                  src='/landing/about-ctn-left.png'
-                  alt='about content left'
-                  width='103'
-                  height='290'
-                  className='absolute left-0 top-50%'
-                  data-aos='fade-right'
-                />
-                {/* Three Card entitled opening its expo, exhibition its expo, gebyar its expo */}
-                <div className='flex flex-row space-x-9'>
-                  <div
-                    className='bg-gradient-to-b from-tainted-600 to-warning-800 w-[397px] h-[432px] rounded-xl'
-                    data-aos='fade-up'
-                  >
-                    <div className='h-[30px]'></div>
-                    <Typography
-                      variant='h5'
-                      className='font-primary text-center text-white'
-                    >
-                      Opening its expo
-                    </Typography>
-                    <Typography
-                      variant='b1'
-                      color='tertiary'
-                      className='font-secondary max-w-2xl text-white ml-[20px] mr-[20px]'
-                      // style={{ marginLeft: '20px', marginRight: '20px' }}
-                    >
-                      Eu hendrerit turpis purus venenatis nibh id vitae quis.
-                      Viverra mi in morbi turpis tristique mi ut. Vehicula
-                      gravida pellentesque vestibulum nisi fames faucibus.
-                      Ornare lectus nisl diam euismod tristique quam egestas.
-                      Condimentum ut volutpat tempus.
-                    </Typography>
+        <section id='about' className='relative w-full pb-48 md:pb-0'>
+          <NextImage
+            src='/landing/about-ctn-left.png'
+            alt='about ctn left'
+            width='123'
+            height='512'
+            className='absolute z-0 top-[31%] md:top-1/2 transform -translate-y-1/2 w-[5%]'
+          />
+          <NextImage
+            src='/landing/about-ctn-right.png'
+            alt='about ctn right'
+            width='127'
+            height='512'
+            className='absolute z-0 right-0 top-[90%] md:top-[60%] transform -translate-y-1/2 w-[5%]'
+          />
 
-                    <div className='h-[30px]'></div>
+          <div className='layout mt-4 '>
+            <div
+              className={clsxm(
+                'grid md:grid-col-1 md:grid-cols-3 md:gap-2 gap-4',
+                'z-20'
+              )}
+            >
+              <div
+                className='bg-tainted-100 z-[1] md:max-w-[380px] rounded-lg'
+                data-aos='fade-up'
+              >
+                <div
+                  className={clsxm(
+                    'flex flex-col justify-start px-10 py-8 rounded-lg group',
+                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[380px]',
+                    'bg-tainted-100 transition-all'
+                  )}
+                >
+                  <Typography
+                    variant='h4'
+                    as='h4'
+                    className='font-primary text-left group-hover:text-white'
+                  >
+                    opening its expo
+                  </Typography>
+                  <Typography
+                    variant='b'
+                    as='b'
+                    className='group-hover:text-white font-normal'
+                  >
+                    Eu hendrerit turpis purus venenatis nibh id vitae quis.
+                    Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
+                    pellentesque vestibulum nisi fames faucibus. Ornare lectus
+                    nisl diam euismod tristique quam egestas. Condimentum ut
+                    volutpat tempus.
+                  </Typography>
+                  <div className='hidden group-hover:block'>
                     <ButtonLink
-                      href='/'
+                      href='#'
                       variant='yellow'
                       size='base'
-                      data-aos='flip-left'
-                      className='mx-[20px]'
-                      // style={{ marginLeft: '20px', marginRight: '20px' }}
+                      className='mt-4'
                     >
                       Baca Selengkapnya
                     </ButtonLink>
                   </div>
-
-                  {/* <div className='w-[15px]'></div> */}
-
-                  <div
-                    className='bg-surface-base w-[397px] h-[432px] rounded-xl'
-                    data-aos='fade-up'
+                </div>
+              </div>
+              <div
+                className='bg-tainted-100 z-[1] md:max-w-[380px] rounded-lg'
+                data-aos='fade-up'
+              >
+                <div
+                  className={clsxm(
+                    'flex flex-col justify-start px-10 py-8 rounded-lg group',
+                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[380px]',
+                    'bg-tainted-100 transition-all'
+                  )}
+                >
+                  <Typography
+                    variant='h4'
+                    as='h4'
+                    className='font-primary text-left group-hover:text-white'
                   >
-                    <div className='h-[30px]'></div>
-                    <Typography
-                      variant='h5'
-                      className='font-primary text-center'
-                    >
-                      Exhibition its expo
-                    </Typography>
-                    <Typography
-                      variant='b1'
-                      color='tertiary'
-                      className='font-secondary max-w-2xl mx-[20px]'
-                      // style={{ marginLeft: '20px', marginRight: '20px' }}
-                    >
-                      Eu hendrerit turpis purus venenatis nibh id vitae quis.
-                      Viverra mi in morbi turpis tristique mi ut. Vehicula
-                      gravida pellentesque vestibulum nisi fames faucibus.
-                      Ornare lectus nisl diam euismod tristique quam egestas.
-                      Condimentum ut volutpat tempus.
-                    </Typography>
-
-                    <div className='h-[30px]'></div>
-                    {/* <ButtonLink href='/' variant='yellow' size='base' data-aos="flip-left" style={{ marginLeft: '20px',marginRight: '20px' }}>
-                      Baca Selengkapnya
-                    </ButtonLink> */}
-                  </div>
-
-                  {/* <div className='w-[15px]'></div> */}
-
-                  <div
-                    className='bg-surface-base w-[397px] h-[432px] rounded-xl'
-                    data-aos='fade-up'
+                    exhibition its expo
+                  </Typography>
+                  <Typography
+                    variant='b'
+                    as='b'
+                    className='group-hover:text-white font-normal'
                   >
-                    <div className='h-[30px]'></div>
-                    <Typography
-                      variant='h5'
-                      className='font-primary text-center'
+                    Eu hendrerit turpis purus venenatis nibh id vitae quis.
+                    Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
+                    pellentesque vestibulum nisi fames faucibus. Ornare lectus
+                    nisl diam euismod tristique quam egestas. Condimentum ut
+                    volutpat tempus.
+                  </Typography>
+                  <div className='hidden group-hover:block'>
+                    <ButtonLink
+                      href='#'
+                      variant='yellow'
+                      size='base'
+                      className='mt-4'
                     >
-                      Gebyar its expo
-                    </Typography>
-                    <Typography
-                      variant='b1'
-                      color='tertiary'
-                      className='font-secondary max-w-2xl text'
-                      style={{ marginLeft: '20px', marginRight: '20px' }}
-                    >
-                      Eu hendrerit turpis purus venenatis nibh id vitae quis.
-                      Viverra mi in morbi turpis tristique mi ut. Vehicula
-                      gravida pellentesque vestibulum nisi fames faucibus.
-                      Ornare lectus nisl diam euismod tristique quam egestas.
-                      Condimentum ut volutpat tempus.
-                    </Typography>
-
-                    <div className='h-[30px]'></div>
-                    {/* <ButtonLink href='/' variant='yellow' size='base' data-aos="flip-left" style={{ marginLeft: '20px',marginRight: '20px' }}>
                       Baca Selengkapnya
-                    </ButtonLink> */}
+                    </ButtonLink>
                   </div>
                 </div>
-
-                <NextImage
-                  src='/landing/about-ctn-right.png'
-                  alt='about content right'
-                  width='103'
-                  height='290'
-                  className='absolute right-0 bottom-0'
-                  data-aos='fade-left'
-                />
+              </div>
+              <div
+                className='bg-tainted-100 z-[1] md:max-w-[380px] rounded-lg'
+                data-aos='fade-up'
+              >
+                <div
+                  className={clsxm(
+                    'flex flex-col justify-start px-10 py-8 rounded-lg group',
+                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[380px] '
+                  )}
+                >
+                  <Typography
+                    variant='h4'
+                    as='h4'
+                    className='font-primary text-left group-hover:text-white'
+                  >
+                    gebyar its expo
+                  </Typography>
+                  <Typography
+                    variant='b'
+                    as='b'
+                    className='group-hover:text-white font-normal'
+                  >
+                    Eu hendrerit turpis purus venenatis nibh id vitae quis.
+                    Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
+                    pellentesque vestibulum nisi fames faucibus. Ornare lectus
+                    nisl diam euismod tristique quam egestas. Condimentum ut
+                    volutpat tempus.
+                  </Typography>
+                  <div className='hidden group-hover:block'>
+                    <ButtonLink
+                      href='#'
+                      variant='yellow'
+                      size='base'
+                      className='mt-4'
+                    >
+                      Baca Selengkapnya
+                    </ButtonLink>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Contact Support Section */}
-        <section
-          id='contact-support'
-          className='w-full h-full flex flex-col justify-center items-center mt-14'
-        >
-          {/* Title Contact Support */}
-          <div className='flex flex-row space-x-4'>
-            <NextImage
-              src='/landing/contact-title-left.png'
-              alt='contact title left'
-              width='103'
-              height='180'
-              className='responsive'
-              data-aos='fade-right'
-            />
-            <Typography
-              variant='h1'
-              className='font-primary text-center'
-              data-aos='fade-up'
-            >
-              Contact Support
-            </Typography>
-            <NextImage
-              src='/landing/contact-title-right.png'
-              alt='contact title right'
-              width='103'
-              height='180'
-              className='responsive'
-              data-aos='fade-left'
-            />
-          </div>
-
-          {/* Card Contact Support */}
-          <div className='flex flex-col space-y-4'>
-            <div className='flex flex-col space-y-9'>
-              <div
-                className='bg-[#FAF2DD] w-[1240px] h-[500px] rounded-xl'
+        <section id='contact-support' className='layout my-12 '>
+          <div className='flex justify-center items-center'>
+            <div className='relative md:w-4/6 w-5/6'>
+              <NextImage
+                src='/landing/contact-title-left.png'
+                alt='contact support title left'
+                width='834'
+                height='721'
+                className='absolute -left-10 md:-left-14 lg:-left-3 md:top-0 top-1/4 md:w-1/5 sm:w-1/5 lg:w-1/5 w-1/5'
+                data-aos='fade-right'
+              />
+              <Typography
+                variant='h1'
+                as='h1'
+                className='font-primary text-center leading-none'
                 data-aos='zoom-in'
               >
-                <div className='flex flex-row space-x-4'>
-                  <div
-                    className='w-[406px] flex flex-col space-y-4 mt-[30px] ml-[50px]'
-                    // style={{ marginLeft: '70px' }}
-                  >
-                    <div className='w-[291px] flex flex-col space-y-4'>
-                      {/* <div className='h-[30px]'></div> */}
-                      <Typography
-                        variant='h4'
-                        className='font-primary text-center'
-                        data-aos='flip-left'
-                      >
-                        Pre-event
-                      </Typography>
-                      <ButtonLink
-                        href='/'
-                        variant='yellow'
-                        size='base'
-                        leftIcon={FaChrome}
-                        data-aos='flip-left'
-                      >
-                        Robot in Action
-                      </ButtonLink>
-                      <ButtonLink
-                        href='/'
-                        variant='yellow'
-                        size='base'
-                        leftIcon={FaChrome}
-                        data-aos='flip-left'
-                      >
-                        Karya Tulis Ilmiah
-                      </ButtonLink>
-                      <ButtonLink
-                        href='/'
-                        variant='yellow'
-                        size='base'
-                        leftIcon={FaChrome}
-                        data-aos='flip-left'
-                      >
-                        Jurnalistik
-                      </ButtonLink>
-                      <ButtonLink
-                        href='/'
-                        variant='yellow'
-                        size='base'
-                        leftIcon={FaChrome}
-                        data-aos='flip-left'
-                      >
-                        Talkshow
-                      </ButtonLink>
-                    </div>
-                  </div>
-
-                  <div
-                    className='w-[406px] flex flex-col space-y-4 ml-[60px] mt-[40px]'
-                    // style={{ marginLeft: '60px' }}
-                  >
-                    {/* <div className='h-[30px]'></div> */}
-                    <NextImage
-                      src='/landing/Contact-img.png'
-                      alt='contact image'
-                      width='231.03'
-                      height='440.4'
-                      objectPosition={'center center'}
-                      data-aos='flip-up'
-                    />
-                  </div>
-
-                  <div className='w-[406px] flex flex-col space-y-4'>
-                    <div className='w-[291px] flex flex-col space-y-4 mt-[30px]'>
-                      {/* <div className='h-[30px]'></div> */}
-                      <Typography
-                        variant='h4'
-                        className='font-primary text-center'
-                        data-aos='flip-right'
-                      >
-                        Main Event
-                      </Typography>
-                      <ButtonLink
-                        href='/'
-                        variant='yellow'
-                        size='base'
-                        leftIcon={FaChrome}
-                        data-aos='flip-right'
-                      >
-                        Opening ITS EXPO
-                      </ButtonLink>
-                      <ButtonLink
-                        href='/'
-                        variant='yellow'
-                        size='base'
-                        leftIcon={FaChrome}
-                        data-aos='flip-right'
-                      >
-                        Exhibition ITS EXPO
-                      </ButtonLink>
-                      <ButtonLink
-                        href='/'
-                        variant='yellow'
-                        size='base'
-                        leftIcon={FaChrome}
-                        data-aos='flip-right'
-                      >
-                        Gebyar ITS EXPO
-                      </ButtonLink>
-                    </div>
-                  </div>
-                </div>
+                Contact Support
+              </Typography>
+              <NextImage
+                src='/landing/contact-title-right.png'
+                alt='contact support title left'
+                width='834'
+                height='721'
+                className='absolute -right-10 md:-right-14 lg:-right-3 md:top-0 top-1/4 md:w-1/5 sm:w-1/5 lg:w-1/5 w-1/5'
+                data-aos='fade-left'
+              />
+            </div>
+          </div>
+          <div
+            className='grid grid-col-1 md:grid-cols-3 px-14 lg:px-28 py-16 bg-tainted-100 mt-8 rounded-lg'
+            data-aos='zoom-in'
+          >
+            <div className='flex items-center justify-start flex-col'>
+              <Typography
+                variant='h3'
+                as='h3'
+                className='font-primary text-center'
+                data-aos='fade-up'
+              >
+                Pre Event
+              </Typography>
+              <div className='flex flex-col space-y-5 w-11/12 md:w-4/5'>
+                <ButtonLink
+                  href='/'
+                  variant='yellow'
+                  size='base'
+                  leftIcon={FiGlobe}
+                  data-aos='fade-up'
+                  data-aos-delay='100'
+                >
+                  Robot in Action
+                </ButtonLink>
+                <ButtonLink
+                  href='/'
+                  variant='yellow'
+                  size='base'
+                  leftIcon={FiGlobe}
+                  data-aos='fade-up'
+                  data-aos-delay='200'
+                >
+                  Karya Tulis Ilmiah
+                </ButtonLink>
+                <ButtonLink
+                  href='/'
+                  variant='yellow'
+                  size='base'
+                  leftIcon={FiGlobe}
+                  data-aos='fade-up'
+                  data-aos-delay='300'
+                >
+                  Jurnalistik
+                </ButtonLink>
+                <ButtonLink
+                  href='/'
+                  variant='yellow'
+                  size='base'
+                  leftIcon={FiGlobe}
+                  data-aos='fade-up'
+                  data-aos-delay='400'
+                >
+                  Talkshow
+                </ButtonLink>
+              </div>
+            </div>
+            <div className='mt-7 flex flex-col items-center justify-center'>
+              <NextImage
+                src='/landing/Contact-img.png'
+                alt='contact-img'
+                width='232'
+                height='428'
+                className='w-[40%] md:w-[60%] object-contain'
+                data-aos='fade-up'
+              />
+            </div>
+            <div className='flex justify-start items-center flex-col'>
+              <Typography
+                variant='h3'
+                as='h3'
+                className='font-primary text-center'
+                data-aos='fade-up'
+              >
+                main event
+              </Typography>
+              <div className='flex flex-col space-y-5 w-11/12 md:w-4/5'>
+                <ButtonLink
+                  href='/'
+                  variant='yellow'
+                  size='base'
+                  leftIcon={FiGlobe}
+                  data-aos='fade-up'
+                  data-aos-delay='100'
+                >
+                  Opening ITS EXPO
+                </ButtonLink>
+                <ButtonLink
+                  href='/'
+                  variant='yellow'
+                  size='base'
+                  leftIcon={FiGlobe}
+                  data-aos='fade-up'
+                  data-aos-delay='200'
+                >
+                  Exhibition ITS EXPO
+                </ButtonLink>
+                <ButtonLink
+                  href='/'
+                  variant='yellow'
+                  size='base'
+                  leftIcon={FiGlobe}
+                  data-aos='fade-up'
+                  data-aos-delay='300'
+                >
+                  Gebyar ITS EXPO
+                </ButtonLink>
               </div>
             </div>
           </div>
-
-          {/* make some space for footer */}
-          <div className='h-[40px]'></div>
         </section>
 
         {/* Pattern Section */}
@@ -946,50 +922,38 @@ export default function Home() {
         <section
           id='sponsor'
           className={clsxm(
-            'w-full h-full flex flex-col justify-center items-center',
             // Custom Tailwind Class
-            ' bg-[#00587A]'
+            'relative bg-[#00587A] pb-44'
           )}
         >
-          <div className='absolute w-full h-full flex justify-center overflow-y-hidden'>
-            <div className='absolute w-full top-0 flex justify-between'>
-              <NextImage
-                src='/landing/sponsor bg left.png'
-                alt='sponsor left background'
-                width='286'
-                height='829'
-                data-aos='fade-right'
-              />
-              <NextImage
-                src='/landing/sponsor bg right.png'
-                alt='sponsor right background'
-                width='277'
-                height='745'
-                data-aos='fade-left'
-              />
-            </div>
-          </div>
+          <NextImage
+            src='/landing/sponsor-bg-left.png'
+            alt='about sponsor-bg-left'
+            width='286'
+            height='829'
+            className='absolute z-0 lg:top-[40%] md:top-[30%] top-[20%] md:w-[20%] w-[14%] transform -translate-y-1/2 object-contain'
+          />
+          <NextImage
+            src='/landing/sponsor-bg-right.png'
+            alt='about sponsor-bg-right'
+            width='277'
+            height='745'
+            className='absolute z-0 right-0 lg:top-[48%] md:top-[68%] top-[75%] md:w-[20%] w-[14%] transform -translate-y-1/2 object-containt'
+          />
 
-          <div className='flex flex-row space-x-4'>
+          <div className='layout my-12'>
             <Typography
               variant='h1'
-              className='font-primary text-typo-white mb-10'
+              as='h1'
+              className='font-primary text-center text-white leading-none'
               data-aos='fade-up'
             >
-              Sponsor
+              sponsor
             </Typography>
-          </div>
-
-          <div className='relative flex flex-col items-center p-4 z-10'>
-            <div className='flex flex-row space-x-4'>
-              <div className='flex flex-col space-y-9'>
-                <div
-                  className='bg-[#FAF2DD] w-[1240px] h-[500px] rounded-xl'
-                  data-aos='zoom-in'
-                ></div>
-              </div>
-            </div>
-            <div className='h-[100px]'></div>
+            <div
+              className='grid md:grid-cols-1 grid-cols-1 min-h-[500px] bg-tainted-100 rounded-lg p-8 mt-8'
+              data-aos='fade-up'
+            ></div>
           </div>
         </section>
       </main>
