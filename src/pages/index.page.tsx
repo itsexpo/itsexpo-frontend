@@ -810,7 +810,7 @@ export default function Home() {
               <Typography
                 variant='h3'
                 as='h3'
-                className='font-primary text-center text-5xl md:text-6xl'
+                className='font-primary text-center text-5xl md:text-6xl mb-6'
                 data-aos='fade-up'
               >
                 Pre Event
@@ -876,7 +876,7 @@ export default function Home() {
               <Typography
                 variant='h3'
                 as='h3'
-                className='font-primary text-center text-5xl md:text-6xl'
+                className='font-primary text-center text-5xl md:text-6xl mb-6'
                 data-aos='fade-up'
               >
                 main event
