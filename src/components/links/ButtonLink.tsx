@@ -16,6 +16,7 @@ enum ButtonVariant {
   'red',
   'yellow',
   'green',
+  'black',
 }
 
 type ButtonLinkProps = {
@@ -85,6 +86,12 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
               'hover:bg-success-700',
               'active:bg-success-800',
               'disabled:bg-success-700 disabled:brightness-90 disabled:hover:bg-success-700',
+            ],
+            variant === 'black' && [
+              'bg-black text-white',
+              'hover:bg-gray-800',
+              'active:bg-gray-900',
+              'disabled:bg-gray-800 disabled:brightness-90 disabled:hover:bg-gray-800',
             ],
           ],
           //#endregion  //*======== Variants ===========
