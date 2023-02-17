@@ -27,7 +27,7 @@ export default function PreEventCard({
             alt='preevent frame'
             width='478'
             height='512'
-            className='object-cover md:h-full'
+            className='h-full w-full object-cover md:h-full md:w-96'
           />
         </div>
         <div className='p-8'>
