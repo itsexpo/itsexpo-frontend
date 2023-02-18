@@ -319,22 +319,38 @@ export default function Home() {
             <NextImage
               src='/landing/timeline-bg-mobile.png'
               alt='timeline mobile background'
-              width='390'
-              height='1116'
+              width='334'
+              height='1034'
               className='absolute block md:hidden top-0'
             />
-            <div className='absolute w-full top-0 hidden md:flex md:justify-between'>
+            <div className='absolute w-full top-0 flex justify-between items-end'>
               <NextImage
                 src='/landing/timeline-bg-left.png'
                 alt='timeline left background'
                 width='363'
                 height='1294'
+                className='hidden md:block'
               />
               <NextImage
                 src='/landing/timeline-bg-right.png'
                 alt='timeline right background'
                 width='535'
                 height='754'
+                className='hidden md:block'
+              />
+              <NextImage
+                src='/landing/timeline-bg-mobile-left.png'
+                alt='timeline mobile background'
+                width='91'
+                height='624'
+                className='block md:hidden'
+              />
+              <NextImage
+                src='/landing/timeline-bg-mobile-right.png'
+                alt='timeline mobile background'
+                width='112'
+                height='1092'
+                className='block md:hidden'
               />
             </div>
           </div>
