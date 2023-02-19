@@ -9,7 +9,7 @@ export default function ImageFetchSandbox() {
         Image Fetch
       </Typography>
       <div className='md:w-1/2 w-full'>
-        <ImageFetch imgPath={path} tag='' label='contoh' alt='' />
+        <ImageFetch imgPath={path} label='contoh' alt='' />
       </div>
     </div>
   );

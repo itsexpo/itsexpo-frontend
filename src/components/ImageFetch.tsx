@@ -1,24 +1,29 @@
-/* eslint-disable @next/next/no-img-element */
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
+import 'react-image-lightbox/style.css';
 
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-import LightGallery from 'lightgallery/react';
+import Image from 'next/legacy/image';
 import * as React from 'react';
+import Lightbox from 'react-image-lightbox';
 
 import api from '@/lib/api';
 
 type ImageFetchProps = {
   imgPath: string;
-  tag: string;
   label: string;
+  width?: number;
+  height?: number;
   alt: string;
 } & React.ComponentPropsWithoutRef<'div'>;
 
-const ImageFetch = ({ imgPath, label, alt, ...props }: ImageFetchProps) => {
-  const [imgSrc, setImgSrc] = React.useState<string>('');
+const ImageFetch = ({
+  imgPath,
+  label,
+  alt,
+  width = 300,
+  height = 160,
+  ...props
+}: ImageFetchProps) => {
+  const [imgSrc, setImgSrc] = React.useState<string>();
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const getImageURL = React.useCallback(async ({ url }: { url: string }) => {
     api
@@ -26,11 +31,12 @@ const ImageFetch = ({ imgPath, label, alt, ...props }: ImageFetchProps) => {
         responseType: 'arraybuffer',
       })
       .then((res) => {
-        const base64string = btoa(
+        const base64string = Buffer.from(
           new Uint8Array(res.data).reduce(function (data, byte) {
             return data + String.fromCharCode(byte);
-          }, '')
-        );
+          }, ''),
+          'binary'
+        ).toString('base64');
 
         const contentType = res.headers['content-type'];
         return {
@@ -52,15 +58,24 @@ const ImageFetch = ({ imgPath, label, alt, ...props }: ImageFetchProps) => {
     <>
       <div {...props} className='cursor-pointer'>
         {imgSrc && (
-          <div className='w-full'>
-            <label className='block text-sm font-semibold text-typo pb-2'>
-              {label}
-            </label>
-
-            <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
-              <img src={imgSrc} alt={alt} className='w-full' />
-            </LightGallery>
+          <div className=''>
+            <label className='block font-bold text-lg pb-2'>{label}</label>
+            <Image
+              src={imgSrc as string}
+              layout='responsive'
+              width={width}
+              height={height}
+              alt={alt}
+              objectFit='contain'
+              onClick={() => setIsOpen(true)}
+            />
           </div>
+        )}
+        {isOpen && (
+          <Lightbox
+            mainSrc={imgSrc as string}
+            onCloseRequest={() => setIsOpen(false)}
+          />
         )}
       </div>
     </>
