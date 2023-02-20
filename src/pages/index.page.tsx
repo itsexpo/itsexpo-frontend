@@ -16,12 +16,18 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
-import { PreEvent } from '@/contents/pre-event/event';
+import { MainEvent, PreEvent } from '@/contents/pre-event/event';
 import landingSwiperContents from '@/contents/pre-event/landing-swiper';
 import landingTimelineContents from '@/contents/pre-event/landing-timeline';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
-import PreEventCard from '@/pages/component/PreEventCard';
+import MainEventCard from '@/pages/landing/component/MainEventCard';
+import PreEventCard from '@/pages/landing/component/PreEventCard';
+import { HeroBackground } from '@/pages/landing/container/HeroBackground';
+import {
+  TimelineBackground1,
+  TimelineBackground2,
+} from '@/pages/landing/container/TimelineBackground';
 
 export default function Home() {
   useEffect(() => {
@@ -29,7 +35,7 @@ export default function Home() {
     AOS.refresh();
   }, []);
 
-  const [preEvent, setPreEvent] = useState<number>(1);
+  const [preEvent, setPreEvent] = useState<number>(0);
 
   return (
     <Layout>
@@ -40,125 +46,7 @@ export default function Home() {
           id='hero'
           className='relative w-full h-screen flex flex-col justify-center items-center'
         >
-          {/* Hero Illustration */}
-          <div className='absolute flex flex-col w-full h-full'>
-            <div className='relative flex-1'>
-              <NextImage
-                src='/landing/hero-bg-left.png'
-                alt='landing hero left background'
-                width='720'
-                height='690'
-                priority={true}
-                className='absolute hidden md:block w-1/2 left-0 bottom-0'
-              />
-              <NextImage
-                src='/landing/hero-bg-right.png'
-                alt='landing hero right background'
-                width='720'
-                height='675'
-                priority={true}
-                className='absolute hidden md:block w-1/2 right-0 bottom-0'
-              />
-              <NextImage
-                src='/landing/hero-figure-left.png'
-                alt='landing hero left figure'
-                width='720'
-                height='457'
-                className='absolute w-full md:w-1/2 left-0 bottom-0 -translate-x-10'
-                data-aos='fade-right'
-                data-aos-delay='500'
-              />
-              <NextImage
-                src='/landing/hero-cloud-left.png'
-                alt='landing hero left figure'
-                width='195'
-                height='135'
-                className='absolute block md:hidden w-1/2 left-0 top-0 mt-16'
-                data-aos='fade-right'
-                data-aos-delay='700'
-              />
-              <NextImage
-                src='/landing/hero-clouds-left.png'
-                alt='landing hero left figure'
-                width='720'
-                height='618'
-                className='absolute hidden md:block w-1/2 left-0 top-0 mt-16'
-                data-aos='fade-right'
-                data-aos-delay='700'
-              />
-              <NextImage
-                src='/landing/hero-bird-left.png'
-                alt='landing hero left figure'
-                width='720'
-                height='607'
-                className='absolute hidden md:block w-1/2 left-0 top-0 mt-16'
-                data-aos='fade-right'
-                data-aos-delay='800'
-              />
-              <NextImage
-                src='/landing/hero-particles-left.png'
-                alt='landing hero particles'
-                width='720'
-                height='170'
-                className='absolute hidden md:block w-1/2 left-0 bottom-0'
-                data-aos='fade-right'
-                data-aos-delay='1000'
-              />
-              <NextImage
-                src='/landing/hero-figure-right.png'
-                alt='landing hero right figure'
-                width='720'
-                height='462'
-                className='absolute w-full md:w-1/2 right-0 bottom-0 translate-x-10'
-                data-aos='fade-left'
-                data-aos-delay='500'
-              />
-              <NextImage
-                src='/landing/hero-cloud-right.png'
-                alt='landing hero right figure'
-                width='195'
-                height='141'
-                className='absolute block md:hidden w-1/2 right-0 top-0 mt-16'
-                data-aos='fade-left'
-                data-aos-delay='700'
-              />
-              <NextImage
-                src='/landing/hero-clouds-right.png'
-                alt='landing hero right figure'
-                width='720'
-                height='618'
-                className='absolute hidden md:block w-1/2 right-0 top-0 mt-16'
-                data-aos='fade-left'
-                data-aos-delay='700'
-              />
-              <NextImage
-                src='/landing/hero-bird-right.png'
-                alt='landing hero right figure'
-                width='720'
-                height='604'
-                className='absolute hidden md:block w-1/2 right-0 top-0 mt-16'
-                data-aos='fade-left'
-                data-aos-delay='800'
-              />
-              <NextImage
-                src='/landing/hero-particles-left.png'
-                alt='landing hero particles'
-                width='720'
-                height='170'
-                className='absolute hidden md:block w-1/2 right-0 bottom-0'
-                data-aos='fade-left'
-                data-aos-delay='1000'
-              />
-            </div>
-            <NextImage
-              src='/landing/hero-pattern.png'
-              alt='pattern illustration'
-              width='1440'
-              height='88'
-              className='w-[1440px] min-w-full'
-              priority={true}
-            />
-          </div>
+          <HeroBackground />
 
           {/* Hero Content */}
           <div className='flex flex-col items-center p-4 gap-y-2'>
@@ -308,52 +196,7 @@ export default function Home() {
           className='relative w-full flex flex-col items-center bg-[#2A607B]'
         >
           {/* Timeline Background */}
-          <div className='absolute w-full h-full flex justify-center overflow-y-hidden'>
-            <NextImage
-              src='/landing/timeline-bg-desktop.png'
-              alt='timeline desktop background'
-              width='665'
-              height='2000'
-              className='absolute hidden md:block top-0'
-            />
-            <NextImage
-              src='/landing/timeline-bg-mobile.png'
-              alt='timeline mobile background'
-              width='334'
-              height='1034'
-              className='absolute block md:hidden top-0'
-            />
-            <div className='absolute w-full top-0 flex justify-between items-end'>
-              <NextImage
-                src='/landing/timeline-bg-left.png'
-                alt='timeline left background'
-                width='363'
-                height='1294'
-                className='hidden md:block'
-              />
-              <NextImage
-                src='/landing/timeline-bg-right.png'
-                alt='timeline right background'
-                width='535'
-                height='754'
-                className='hidden md:block'
-              />
-              <NextImage
-                src='/landing/timeline-bg-mobile-left.png'
-                alt='timeline mobile background'
-                width='91'
-                height='624'
-                className='block md:hidden'
-              />
-              <NextImage
-                src='/landing/timeline-bg-mobile-right.png'
-                alt='timeline mobile background'
-                width='112'
-                height='1092'
-                className='block md:hidden'
-              />
-            </div>
-          </div>
+          <TimelineBackground1 />
 
           <Typography
             variant='h2'
@@ -444,56 +287,7 @@ export default function Home() {
           </ButtonLink>
 
           {/* Timeline Illustration */}
-          <div className='relative min-h-fit w-full mt-20'>
-            <NextImage
-              src='/landing/timeline-illustration-0.png'
-              alt='timeline bottom illustration'
-              width='2880'
-              height='1522'
-              className='w-full'
-            />
-            <NextImage
-              src='/landing/timeline-illustration-1.png'
-              alt='timeline bottom illustration'
-              width='2880'
-              height='1522'
-              className='absolute bottom-0 w-full'
-              data-aos='fade-up'
-            />
-            <NextImage
-              src='/landing/timeline-illustration-2.png'
-              alt='timeline bottom illustration'
-              width='2879'
-              height='718'
-              className='absolute bottom-0 w-full'
-              data-aos='fade-up'
-            />
-            <NextImage
-              src='/landing/timeline-illustration-3.png'
-              alt='timeline bottom illustration'
-              width='2880'
-              height='554'
-              className='absolute bottom-0 w-full'
-              data-aos='fade-up'
-              data-aos-delay='200'
-            />
-            <NextImage
-              src='/landing/timeline-illustration-4.png'
-              alt='timeline bottom illustration'
-              width='2880'
-              height='1219'
-              className='absolute bottom-0 w-full'
-              data-aos='fade-up'
-              data-aos-offset='300'
-            />
-            <NextImage
-              src='/landing/timeline-illustration-5.png'
-              alt='timeline bottom illustration'
-              width='2880'
-              height='497'
-              className='absolute bottom-0 w-full'
-            />
-          </div>
+          <TimelineBackground2 />
         </section>
 
         {/* PreEvent Section */}
@@ -535,10 +329,11 @@ export default function Home() {
                 variant='green'
                 size='large'
                 className={
-                  preEvent == 1 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                  preEvent === 0
+                    ? 'border border-white'
+                    : 'bg-[#9DBF7D90] z-[1]'
                 }
-                onClick={() => setPreEvent(1)}
-                data-aos='zoom-in'
+                onClick={() => setPreEvent(0)}
               >
                 Robot in Action
               </Button>
@@ -546,10 +341,11 @@ export default function Home() {
                 variant='green'
                 size='large'
                 className={
-                  preEvent == 2 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                  preEvent === 1
+                    ? 'border border-white'
+                    : 'bg-[#9DBF7D90] z-[1]'
                 }
-                onClick={() => setPreEvent(2)}
-                data-aos='zoom-in'
+                onClick={() => setPreEvent(1)}
               >
                 Karya Tulis Ilmiah
               </Button>
@@ -557,10 +353,11 @@ export default function Home() {
                 variant='green'
                 size='large'
                 className={
-                  preEvent == 3 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                  preEvent === 2
+                    ? 'border border-white'
+                    : 'bg-[#9DBF7D90] z-[1]'
                 }
-                onClick={() => setPreEvent(3)}
-                data-aos='zoom-in'
+                onClick={() => setPreEvent(2)}
               >
                 Jurnalistik
               </Button>
@@ -568,47 +365,23 @@ export default function Home() {
                 variant='green'
                 size='large'
                 className={
-                  preEvent == 4 ? 'with-border' : 'bg-[#9DBF7D90] z-[1]'
+                  preEvent === 3
+                    ? 'border border-white'
+                    : 'bg-[#9DBF7D90] z-[1]'
                 }
-                onClick={() => setPreEvent(4)}
-                data-aos='zoom-in'
+                onClick={() => setPreEvent(3)}
               >
                 Talkshow
               </Button>
             </div>
 
-            {preEvent == 1 && (
-              <PreEventCard
-                title={PreEvent[0].title}
-                description={PreEvent[0].description}
-                link={PreEvent[0].link}
-                image={PreEvent[0].image}
-              />
-            )}
-            {preEvent == 2 && (
-              <PreEventCard
-                title={PreEvent[1].title}
-                description={PreEvent[1].description}
-                link={PreEvent[1].link}
-                image={PreEvent[1].image}
-              />
-            )}
-            {preEvent == 3 && (
-              <PreEventCard
-                title={PreEvent[2].title}
-                description={PreEvent[2].description}
-                link={PreEvent[2].link}
-                image={PreEvent[2].image}
-              />
-            )}
-            {preEvent == 4 && (
-              <PreEventCard
-                title={PreEvent[3].title}
-                description={PreEvent[3].description}
-                link={PreEvent[3].link}
-                image={PreEvent[3].image}
-              />
-            )}
+            <PreEventCard
+              title={PreEvent[preEvent].title}
+              description={PreEvent[preEvent].description}
+              link={PreEvent[preEvent].link}
+              image={PreEvent[preEvent].image}
+            />
+
             {/* PreEvent Background */}
             <NextImage
               src='/landing/preevent-bg-left.png'
@@ -664,126 +437,9 @@ export default function Home() {
                 'z-20'
               )}
             >
-              <div
-                className='bg-tainted-100 z-[1] md:max-w-[380px] rounded-lg'
-                data-aos='fade-up'
-              >
-                <div
-                  className={clsxm(
-                    'flex flex-col justify-start px-10 py-8 rounded-lg group',
-                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[350px] md:min-h-[380px]'
-                  )}
-                >
-                  <Typography
-                    variant='h4'
-                    as='h4'
-                    className='font-primary text-left text-4xl md:text-5xl mb-4 group-hover:text-white'
-                  >
-                    opening its expo
-                  </Typography>
-                  <Typography
-                    variant='b'
-                    as='b'
-                    className='group-hover:text-white font-normal text-sm md:text-lg'
-                  >
-                    Eu hendrerit turpis purus venenatis nibh id vitae quis.
-                    Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
-                    pellentesque vestibulum nisi fames faucibus. Ornare lectus
-                    nisl diam euismod tristique quam egestas. Condimentum ut
-                    volutpat tempus.
-                  </Typography>
-                  <div className='hidden group-hover:block'>
-                    <ButtonLink
-                      href='#'
-                      variant='yellow'
-                      size='base'
-                      className='md:mt-4 mt-11'
-                    >
-                      Baca Selengkapnya
-                    </ButtonLink>
-                  </div>
-                </div>
-              </div>
-              <div
-                className='bg-tainted-100 z-[1] md:max-w-[380px] rounded-lg'
-                data-aos='fade-up'
-              >
-                <div
-                  className={clsxm(
-                    'flex flex-col justify-start px-10 py-8 rounded-lg group',
-                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[350px] md:min-h-[380px]'
-                  )}
-                >
-                  <Typography
-                    variant='h4'
-                    as='h4'
-                    className='font-primary text-left text-4xl md:text-5xl mb-4 group-hover:text-white'
-                  >
-                    exhibition its expo
-                  </Typography>
-                  <Typography
-                    variant='b'
-                    as='b'
-                    className='group-hover:text-white font-normal text-sm md:text-lg'
-                  >
-                    Eu hendrerit turpis purus venenatis nibh id vitae quis.
-                    Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
-                    pellentesque vestibulum nisi fames faucibus. Ornare lectus
-                    nisl diam euismod tristique quam egestas. Condimentum ut
-                    volutpat tempus.
-                  </Typography>
-                  <div className='hidden group-hover:block'>
-                    <ButtonLink
-                      href='#'
-                      variant='yellow'
-                      size='base'
-                      className='md:mt-4 mt-11'
-                    >
-                      Baca Selengkapnya
-                    </ButtonLink>
-                  </div>
-                </div>
-              </div>
-              <div
-                className='bg-tainted-100 z-[1] md:max-w-[380px] rounded-lg'
-                data-aos='fade-up'
-              >
-                <div
-                  className={clsxm(
-                    'flex flex-col justify-start px-10 py-8 rounded-lg group',
-                    'hover:bg-[url(/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat min-h-[350px] md:min-h-[380px]'
-                  )}
-                >
-                  <Typography
-                    variant='h4'
-                    as='h4'
-                    className='font-primary text-left text-4xl md:text-5xl mb-4 group-hover:text-white'
-                  >
-                    gebyar its expo
-                  </Typography>
-                  <Typography
-                    variant='b'
-                    as='b'
-                    className='group-hover:text-white font-normal text-sm md:text-lg'
-                  >
-                    Eu hendrerit turpis purus venenatis nibh id vitae quis.
-                    Viverra mi in morbi turpis tristique mi ut. Vehicula gravida
-                    pellentesque vestibulum nisi fames faucibus. Ornare lectus
-                    nisl diam euismod tristique quam egestas. Condimentum ut
-                    volutpat tempus.
-                  </Typography>
-                  <div className='hidden group-hover:block'>
-                    <ButtonLink
-                      href='#'
-                      variant='yellow'
-                      size='base'
-                      className='md:mt-4 mt-11'
-                    >
-                      Baca Selengkapnya
-                    </ButtonLink>
-                  </div>
-                </div>
-              </div>
+              {MainEvent.map((item, index) => (
+                <MainEventCard key={index} {...item} />
+              ))}
             </div>
           </div>
         </section>

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
   @font-face {
     font-family: 'Upakarti';
     src: url('/fonts/upakarti.ttf') format('truetype');
@@ -18,7 +18,7 @@
     font-display: swap;
     font-style: normal;
   }
-}
+} */
 
 .layout {
   max-width: 78.75rem;
@@ -89,9 +89,7 @@
 .bg-landing-preevent {
   background: linear-gradient(180deg, #53823f 0%, #445f64 20%, #586b61 100%);
 }
-.with-border {
-  border: 2px solid white;
-}
+
 .bg-pattern-card-1 {
   background: linear-gradient(180deg, #936836 0%, #5c3d18 46.67%, #351f05 100%);
 }

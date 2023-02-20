@@ -40,3 +40,33 @@ export const PreEvent: PreEventData[] = [
     image: '/landing/preevent-frame.png',
   },
 ];
+
+export const MainEvent = [
+  {
+    title: 'opening its expo',
+    description:
+      'Eu hendrerit turpis purus venenatis nibh id vitae quis. Viverra mi in\
+    morbi turpis tristique mi ut. Vehicula gravida pellentesque vestibulum\
+    nisi fames faucibus. Ornare lectus nisl diam euismod tristique quam\
+    egestas. Condimentum ut volutpat tempus.',
+    link: '#',
+  },
+  {
+    title: 'exhibition its expo',
+    description:
+      'Eu hendrerit turpis purus venenatis nibh id vitae quis. Viverra mi in\
+    morbi turpis tristique mi ut. Vehicula gravida pellentesque vestibulum\
+    nisi fames faucibus. Ornare lectus nisl diam euismod tristique quam\
+    egestas. Condimentum ut volutpat tempus.',
+    link: '#',
+  },
+  {
+    title: 'gebyar its expo',
+    description:
+      'Eu hendrerit turpis purus venenatis nibh id vitae quis. Viverra mi in\
+    morbi turpis tristique mi ut. Vehicula gravida pellentesque vestibulum\
+    nisi fames faucibus. Ornare lectus nisl diam euismod tristique quam\
+    egestas. Condimentum ut volutpat tempus.',
+    link: '#',
+  },
+];

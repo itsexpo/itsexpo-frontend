@@ -3,6 +3,7 @@ import * as React from 'react';
 import clsxm from '@/lib/clsxm';
 
 enum TypographyVariant {
+  'h0',
   'h1',
   'h2',
   'h3',
@@ -53,6 +54,9 @@ export default function Typography<T extends React.ElementType>({
       className={clsxm(
         //#region  //*=========== Variants ===========
         [
+          variant === 'h0' && [
+            'font-bold text-[96px] sm:text-[128px] md:text-[196px]',
+          ],
           variant === 'h1' && ['text-[64px] md:text-[80px]'],
           variant === 'h2' && ['text-[48px] md:text-[72px]'],
           variant === 'h3' && ['text-[32px] md:text-[64px]'],
