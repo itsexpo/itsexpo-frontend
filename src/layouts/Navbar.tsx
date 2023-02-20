@@ -1,24 +1,36 @@
+import { Menu, Transition } from '@headlessui/react';
 import * as React from 'react';
+import { BiChevronDown } from 'react-icons/bi';
 import { FaTimes } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import NextImage from '@/components/NextImage';
 import clsxm from '@/lib/clsxm';
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/', label: 'Lorem' },
-  { href: '/', label: 'Lorem' },
-  { href: '/', label: 'Lorem' },
-  { href: '/', label: 'Lorem' },
-  { href: '/', label: 'Lorem' },
-  { href: '/', label: 'Lorem' },
+  { href: '/coming-soon', label: 'Tentang Kami' },
+  { href: '/coming-soon', label: 'Produk' },
+  {
+    href: '/coming-soon',
+    label: 'Acara',
+    children: [
+      { href: '/coming-soon', label: 'Main Event' },
+      { href: '/coming-soon', label: 'Pre Event' },
+    ],
+  },
+  { href: '/coming-soon', label: 'Privacy Policy' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [colorChange, setColorChange] = React.useState(false);
+  const [showAcara, setShowAcara] = React.useState(false);
+
+  const toogleShowAcara = () => {
+    setShowAcara((prev) => !prev);
+  };
+
   React.useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -42,34 +54,87 @@ export default function Navbar() {
   return (
     <header
       className={clsxm(
-        'fixed top-0 z-[100] w-full bg-transparent',
-        colorChange && 'bg-bone-500'
+        'fixed top-0 z-[100] w-full bg-transparent font-secondary',
+        colorChange && 'bg-tainted-100'
       )}
     >
       {/* Desktop Nav Start */}
-      <div className='mx-auto flex h-16 w-11/12 items-center justify-between gap-x-1 md:h-24 md:w-[98%] lg:w-11/12'>
-        <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
-          Home
+      <div className='mx-auto flex flex-row-reverse md:flex-row h-20 w-11/12 items-center justify-between gap-x-1 md:h-24 md:w-[98%] lg:w-11/12'>
+        <UnstyledLink href='/' className='font-bold hover:text-brown-500'>
+          <NextImage
+            src='/logo-navbar.png'
+            alt='footer logo'
+            width='98'
+            height='68'
+            priority={true}
+            className=''
+          />
         </UnstyledLink>
         <nav className='hidden md:block'>
-          <ul className='hidden items-center justify-between space-x-2 font-semibold md:flex lg:space-x-6 xl:space-x-10'>
-            {links.map(({ href, label }) => (
-              <li key={`${href}${label}`}>
-                <UnstyledLink href={href} className='hover:text-gray-600'>
-                  {label}
-                </UnstyledLink>
-              </li>
-            ))}
+          <ul className='hidden items-center justify-between md:flex space-x-6 xl:space-x-10 text-base'>
+            {links.map(({ href, label, children }) => {
+              if (children) {
+                return (
+                  <Menu key={`${href}${label}`} as='div' className='relative'>
+                    <Menu.Button className='hover:text-brown-500 flex items-center gap-1 text-brown-1000 font-medium'>
+                      {label} <BiChevronDown size={18} />
+                    </Menu.Button>
+                    <Transition
+                      as={React.Fragment}
+                      enter='transition ease-out duration-100'
+                      enterFrom='transform opacity-0 scale-95'
+                      enterTo='transform opacity-100 scale-100'
+                      leave='transition ease-in duration-75'
+                      leaveFrom='transform opacity-100 scale-100'
+                      leaveTo='transform opacity-0 scale-95'
+                    >
+                      <Menu.Items className='absolute w-max bg-tainted-200 rounded-b-md p-2 mt-2 -translate-x-5'>
+                        {children.map(({ href, label }) => (
+                          <Menu.Item
+                            key={`${href}${label}`}
+                            as='a'
+                            className='py-2 text-brown-1000 font-medium'
+                          >
+                            {({ active }) => (
+                              <UnstyledLink
+                                href={href}
+                                className={`${
+                                  active
+                                    ? 'bg-tainted-400 text-typo'
+                                    : 'text-brown-1000'
+                                } group flex w-full items-center rounded-md px-2 py-2 text-sm  mt-1`}
+                              >
+                                {label}
+                              </UnstyledLink>
+                            )}
+                          </Menu.Item>
+                        ))}
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                );
+              } else {
+                return (
+                  <li key={`${href}${label}`}>
+                    <UnstyledLink
+                      href={href}
+                      className='hover:text-brown-500 text-brown-1000 font-medium'
+                    >
+                      {label}
+                    </UnstyledLink>
+                  </li>
+                );
+              }
+            })}
+            <UnstyledLink
+              href='/'
+              className='bg-tainted-300 px-5 py-1.5 rounded-lg text-brown-700 hover:bg-tainted-400 font-semibold'
+            >
+              Masuk
+            </UnstyledLink>
           </ul>
         </nav>
-        <div className='hidden md:block'>
-          <UnstyledLink
-            href='/'
-            className='bg-blue-500 px-4 py-2 rounded-3xl border-2 border-black text-black'
-          >
-            Action
-          </UnstyledLink>
-        </div>
+
         <div className='relative z-50 mr-0 flex md:hidden'>
           {!isOpen && (
             <GiHamburgerMenu
@@ -82,38 +147,79 @@ export default function Navbar() {
       {/* Desktop Nav End */}
       {/* Mobile Nav Start */}
       <div
-        className={`flex translate-y-[calc(100%-4rem)] md:hidden ${
-          isOpen ? 'translate-x-0' : 'translate-x-full opacity-0'
-        } absolute bottom-0 left-0 h-screen w-full flex-col bg-purple-600 pt-[6vh] text-white transition duration-300`}
+        className={`flex translate-y-[calc(100%-5rem)] md:hidden ${
+          isOpen ? 'translate-x-0' : '-translate-x-full opacity-0'
+        } absolute bottom-0 left-0 h-screen w-full flex-col bg-brown-1000 pt-[6vh] text-white transition duration-300`}
       >
         <nav className='relative z-20 flex h-screen w-full flex-col'>
-          <ul>
+          <UnstyledLink href='/' className='font-bold hover:text-brown-500'>
+            <NextImage
+              src='/logo-navbar.png'
+              alt='footer logo'
+              width='98'
+              height='68'
+              priority={true}
+              className=' mx-auto'
+            />
+          </UnstyledLink>
+
+          <ul className='flex flex-col items-center justify-center mx-auto font-medium space-y-6 text-white text-base mt-10'>
+            {links.map(({ href, label, children }) => {
+              if (children) {
+                return (
+                  <li key={`${href}${label}`}>
+                    <button
+                      onClick={toogleShowAcara}
+                      className='hover:text-brown-500 flex items-center gap-1'
+                    >
+                      {label}{' '}
+                      <BiChevronDown
+                        size={18}
+                        className={`inline-flex ${
+                          showAcara ? 'rotate-180' : 'rotate-0'
+                        }  transition duration-200`}
+                      />
+                    </button>
+                    {showAcara && (
+                      <ul className='mt-2'>
+                        {children.map(({ href, label }) => (
+                          <li
+                            key={`${href}${label}`}
+                            className='text-sm font-normal py-2'
+                          >
+                            {' '}
+                            <UnstyledLink
+                              href={href}
+                              className='hover:text-brown-500'
+                            >
+                              {label}
+                            </UnstyledLink>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={`${href}${label}`}>
+                    <UnstyledLink href={href} className='hover:text-brown-500'>
+                      {label}
+                    </UnstyledLink>
+                  </li>
+                );
+              }
+            })}
             <UnstyledLink
               href='/'
-              className='font-bold hover:text-gray-600 flex justify-center'
+              className='bg-tainted-300 px-5 py-1.5 rounded-lg text-brown-700 hover:bg-tainted-400 font-semibold'
             >
-              ITS EXPO
+              Masuk
             </UnstyledLink>
-            {links.map(({ href, label }) => (
-              <li key={`${href}${label}`} className='py-3 px-7'>
-                <UnstyledLink
-                  href={href}
-                  className='flex w-full items-center justify-center font-semibold hover:text-gray-600'
-                >
-                  {label}
-                </UnstyledLink>
-              </li>
-            ))}
           </ul>
-          <ButtonLink
-            href='/welcome-forda'
-            className='mx-auto mt-3 font-semibold'
-          >
-            Action
-          </ButtonLink>
           {isOpen && (
             <FaTimes
-              className='absolute bottom-20 right-1/2 mx-auto h-12 w-12 translate-x-1/2 rounded-full border-[2px] border-black bg-white p-3 text-3xl font-thin text-black'
+              className='absolute bottom-20 right-1/2 mx-auto h-12 w-12 translate-x-1/2 rounded-lg bg-red-500 p-3 text-3xl font-thin text-brown-900'
               onClick={toggleShowNav}
             />
           )}
