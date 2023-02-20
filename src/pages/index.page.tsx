@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <Layout>
       <SEO title='Home' description='This is the home page' />
-      <main className='flex flex-col bg-warning-100 scroll-smooth'>
+      <main className='flex flex-col bg-tainted-100 scroll-smooth'>
         {/* Hero Section */}
         <section
           id='hero'
@@ -124,8 +124,8 @@ export default function Home() {
             {/* About Content */}
             <div
               className={clsxm(
-                'w-full flex flex-col md:flex-row',
-                'justify-between items-start md:items-center',
+                'w-full flex flex-col xl:flex-row',
+                'justify-between items-start lg:items-center',
                 'space-y-6 px-4 md:px-24 pt-10 pb-48'
               )}
               data-aos='fade-up'
@@ -496,7 +496,7 @@ export default function Home() {
               >
                 Pre Event
               </Typography>
-              <div className='flex flex-col space-y-5 w-11/12 md:w-4/5'>
+              <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
                 <ButtonLink
                   href='/'
                   variant='yellow'
@@ -562,7 +562,7 @@ export default function Home() {
               >
                 main event
               </Typography>
-              <div className='flex flex-col space-y-5 w-11/12 md:w-4/5'>
+              <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
                 <ButtonLink
                   href='/'
                   variant='yellow'
