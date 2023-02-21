@@ -17,6 +17,7 @@ enum ButtonVariant {
   'yellow',
   'green',
   'black',
+  'discolored',
 }
 
 type ButtonLinkProps = {
@@ -55,11 +56,11 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           [
             size === 'large' && [
               'min-h-[34px] py-2 px-[18px] font-semibold md:min-h-[38px] md:py-2.5 md:px-6',
-              'text-base md:text-lg',
+              'text-type-secondary md:text-lg',
             ],
             size === 'base' && [
               'min-h-[30px] py-1.5 px-[14px] font-semibold md:min-h-[34px] md:py-2 md:px-5',
-              'text-sm md:text-base',
+              'text-sm md:text-type-secondary',
             ],
             size === 'small' && [
               'min-h-[26px] py-0.5 px-[10px] font-medium md:min-h-[30px] md:py-1.5 md:px-4',
@@ -93,6 +94,12 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
               'active:bg-gray-900',
               'disabled:bg-gray-800 disabled:brightness-90 disabled:hover:bg-gray-800',
             ],
+            variant === 'discolored' && [
+              'bg-tainted-200 text-discolored-1000',
+              'hover:bg-tainted-600',
+              'active:bg-tainted-700',
+              'disabled:bg-tainted-600 disabled:brightness-90 disabled:hover:bg-tainted-700',
+            ],
           ],
           //#endregion  //*======== Variants ===========
           className
@@ -107,8 +114,9 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
                   size === 'large' && 'text-xl md:text-2xl',
                   size === 'base' && 'text-lg md:text-xl',
                   size === 'small' && 'text-sm md:text-lg',
+                  variant === 'discolored' && 'text-discolored-1000',
                 ],
-                'text-white',
+                'text-typo',
                 leftIconClassName
               )}
             />
@@ -123,8 +131,9 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
                   size === 'large' && 'text-xl md:text-2xl',
                   size === 'base' && 'text-lg md:text-xl',
                   size === 'small' && 'text-sm md:text-lg',
+                  variant === 'discolored' && 'text-discolored-1000',
                 ],
-                'text-white',
+                'text-typo',
                 rightIconClassName
               )}
             />

@@ -3,7 +3,7 @@ import { AiFillCaretDown } from 'react-icons/ai';
 import { FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
 import { SiLine } from 'react-icons/si';
 
-import UnstyledLink from '@/components/links/UnstyledLink';
+import PrimaryLink from '@/components/links/PrimaryLink';
 import NextImage from '@/components/NextImage';
 import Typography from '@/components/typography/Typography';
 
@@ -20,7 +20,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className='relative z-50 w-full bg-brown-1000 font-secondary'>
+    <footer className='relative z-50 w-full bg-discolored-1000 font-secondary'>
       <div className='mx-auto w-[95%] md:w-10/12'>
         <div className='flex flex-col justify-between md:flex-row md:items-center  pt-10 md:pt-16'>
           <div className='flex flex-col items-center justify-center'>
@@ -43,10 +43,9 @@ export default function Footer() {
           <div className='flex flex-col md:flex-row space-y-5 md:space-y-0 space-x-0 md:space-x-6 lg:space-x-[60px] items-start justify-center mx-auto md:mx-0 mt-10 md:mt-0'>
             {/* Pre Event Start */}
             <div className='flex flex-col'>
-              <Typography
+              <button
                 onClick={toggleShowPreEvent}
-                variant='t'
-                className='mx-auto flex items-center md:mx-0 text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] cursor-pointer gap-5 md:cursor-normal'
+                className='mx-auto flex items-center md:mx-0 text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] cursor-pointer gap-5 md:cursor-default'
               >
                 Pre Event
                 <AiFillCaretDown
@@ -55,7 +54,7 @@ export default function Footer() {
                     showPreEvent ? 'rotate-180' : 'rotate-0'
                   } block text-2xl transition duration-200 md:hidden`}
                 />
-              </Typography>
+              </button>
               <div
                 className={`${
                   showPreEvent
@@ -64,54 +63,53 @@ export default function Footer() {
                 } w-full flex-col transition-all duration-1000 md:w-fit mt-5 space-y-5 `}
               >
                 <div>
-                  <UnstyledLink href='/coming-soon'>
-                    <Typography
-                      variant='b1'
-                      className='text-brown-500 font-medium text-sm lg:text-base'
-                    >
-                      Robot in Action
-                    </Typography>
-                  </UnstyledLink>
+                  <PrimaryLink
+                    href='/coming-soon'
+                    variant='discolored'
+                    underline={false}
+                    className='font-medium text-sm lg:text-base'
+                  >
+                    Robot in Action
+                  </PrimaryLink>
                 </div>
                 <div>
-                  <UnstyledLink href='/coming-soon'>
-                    <Typography
-                      variant='b1'
-                      className='text-brown-500 font-medium text-sm lg:text-base'
-                    >
-                      Karya Tulis Ilmiah
-                    </Typography>
-                  </UnstyledLink>
+                  <PrimaryLink
+                    href='/coming-soon'
+                    variant='discolored'
+                    underline={false}
+                    className='font-medium text-sm lg:text-base'
+                  >
+                    karya Tulis Ilmiah
+                  </PrimaryLink>
                 </div>
                 <div>
-                  <UnstyledLink href='/coming-soon'>
-                    <Typography
-                      variant='b1'
-                      className='text-brown-500 font-medium text-sm lg:text-base'
-                    >
-                      Jurnalistik
-                    </Typography>
-                  </UnstyledLink>
+                  <PrimaryLink
+                    href='/coming-soon'
+                    variant='discolored'
+                    underline={false}
+                    className='font-medium text-sm lg:text-base'
+                  >
+                    Jurnalistik
+                  </PrimaryLink>
                 </div>
                 <div>
-                  <UnstyledLink href='/coming-soon'>
-                    <Typography
-                      variant='b1'
-                      className='text-brown-500 font-medium text-sm lg:text-base'
-                    >
-                      Talkshow
-                    </Typography>
-                  </UnstyledLink>
+                  <PrimaryLink
+                    href='/coming-soon'
+                    variant='discolored'
+                    underline={false}
+                    className='font-medium text-sm lg:text-base'
+                  >
+                    Talkshow
+                  </PrimaryLink>
                 </div>
               </div>
             </div>
             {/* Pre Event End */}
             {/* Main Event Start */}
             <div className='flex flex-col justify-center items-center'>
-              <Typography
+              <button
                 onClick={toggleShowMainEvent}
-                variant='t'
-                className='mx-auto flex items-center md:mx-0 text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] cursor-pointer gap-5 md:cursor-normal'
+                className='mx-auto flex items-center md:mx-0 text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] cursor-pointer gap-5 md:cursor-default'
               >
                 Main Event
                 <AiFillCaretDown
@@ -120,7 +118,7 @@ export default function Footer() {
                     showMainEvent ? 'rotate-180' : 'rotate-0'
                   } block text-2xl transition duration-200 md:hidden`}
                 />
-              </Typography>
+              </button>
               <div
                 className={`${
                   showMainEvent
@@ -129,34 +127,34 @@ export default function Footer() {
                 } w-full flex-col transition-all duration-1000 md:w-fit mt-5 space-y-5 `}
               >
                 <div>
-                  <UnstyledLink href='/coming-soon'>
-                    <Typography
-                      variant='b1'
-                      className='text-brown-500 font-medium text-sm lg:text-base'
-                    >
-                      Opening
-                    </Typography>
-                  </UnstyledLink>
+                  <PrimaryLink
+                    href='/coming-soon'
+                    variant='discolored'
+                    underline={false}
+                    className='font-medium text-sm lg:text-base'
+                  >
+                    Opening{' '}
+                  </PrimaryLink>
                 </div>
                 <div>
-                  <UnstyledLink href='/coming-soon'>
-                    <Typography
-                      variant='b1'
-                      className='text-brown-500 font-medium text-sm lg:text-base'
-                    >
-                      Exhibition
-                    </Typography>
-                  </UnstyledLink>
+                  <PrimaryLink
+                    href='/coming-soon'
+                    variant='discolored'
+                    underline={false}
+                    className='font-medium text-sm lg:text-base'
+                  >
+                    Exhibition{' '}
+                  </PrimaryLink>
                 </div>
                 <div>
-                  <UnstyledLink href='/coming-soon'>
-                    <Typography
-                      variant='b1'
-                      className='text-brown-500 font-medium text-sm lg:text-base'
-                    >
-                      Closing
-                    </Typography>
-                  </UnstyledLink>
+                  <PrimaryLink
+                    href='/coming-soon'
+                    variant='discolored'
+                    underline={false}
+                    className='font-medium text-sm lg:text-base'
+                  >
+                    Closing{' '}
+                  </PrimaryLink>
                 </div>
               </div>
             </div>
@@ -169,30 +167,39 @@ export default function Footer() {
               >
                 Social Media
               </Typography>
-              <div className='flex flex-col lg:flex-row items-center justify-between space-y-5 space-x-0 lg:space-y-0 text-brown-300 lg:space-x-5 mt-5'>
-                <UnstyledLink href='https://www.instagram.com/its_expo/?hl=en'>
+              <div className='flex flex-col lg:flex-row items-center justify-between space-y-5 space-x-0 lg:space-y-0 text-discolored-300 lg:space-x-5 mt-5'>
+                <PrimaryLink
+                  variant='discolored'
+                  href='https://www.instagram.com/its_expo/?hl=en'
+                >
                   <FaInstagram className='w-6 md:w-fit' size={28} />
-                </UnstyledLink>
-                <UnstyledLink href='https://www.tiktok.com/@its_expo'>
+                </PrimaryLink>
+                <PrimaryLink
+                  variant='discolored'
+                  href='https://www.tiktok.com/@its_expo'
+                >
                   <FaTiktok className='w-6 md:w-fit' size={28} />
-                </UnstyledLink>
-                <UnstyledLink href='https://www.youtube.com/@ITSEXPO2021'>
+                </PrimaryLink>
+                <PrimaryLink
+                  variant='discolored'
+                  href='https://www.youtube.com/@ITSEXPO2021'
+                >
                   <FaYoutube className='w-6 md:w-fit' size={28} />
-                </UnstyledLink>
-                <UnstyledLink href='#'>
+                </PrimaryLink>
+                <PrimaryLink variant='discolored' href='#'>
                   <SiLine className='w-6 md:w-fit' size={28} />
-                </UnstyledLink>
+                </PrimaryLink>
               </div>
             </div>
             {/* Social Media End */}
           </div>
         </div>
-        <hr className='h-[1px] bg-white md:bg-brown-800 mt-10 md:mt-[67px]' />
+        <hr className='h-[1px] bg-white md:bg-discolored-800 mt-10 md:mt-[67px]' />
         {/* Copy Right Start */}
         <div>
           <Typography
             variant='b2'
-            className='text-brown-700 font-semibold text-[14px] md:text-[16px] mt-3 pb-3 md:mt-5 md:pb-10'
+            className='text-discolored-700 font-semibold text-[14px] md:text-[16px] mt-3 pb-3 md:mt-5 md:pb-10'
           >
             &copy; 2023 ITS EXPO. All rights reserved.
           </Typography>

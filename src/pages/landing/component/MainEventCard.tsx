@@ -18,7 +18,7 @@ export default function MainEventCard({
     >
       <div
         className={clsxm(
-          'flex flex-col justify-start px-10 py-8 rounded-lg group duration-200',
+          'flex flex-col justify-start px-10 py-8 rounded-lg group transition duration-200',
           'hover:bg-[url(/images/landing/pattern-background.png)] hover:bg-cover hover:bg-no-repeat h-full'
         )}
       >
@@ -38,7 +38,12 @@ export default function MainEventCard({
         </Typography>
         <div className='md:mt-4 mt-11'>
           <div className='opacity-0 group-hover:opacity-100'>
-            <ButtonLink href={link} variant='yellow' size='base' className=''>
+            <ButtonLink
+              href={link}
+              variant='discolored'
+              size='base'
+              className=''
+            >
               Baca Selengkapnya
             </ButtonLink>
           </div>

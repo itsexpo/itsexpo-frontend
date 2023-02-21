@@ -7,6 +7,7 @@ enum ButtonVariant {
   'red',
   'yellow',
   'green',
+  'discolored',
 }
 enum ButtonSize {
   'small',
@@ -77,6 +78,12 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
               'hover:bg-success-700',
               'active:bg-success-800',
               'disabled:bg-success-700 disabled:brightness-90 disabled:hover:bg-success-700',
+            ],
+            variant === 'discolored' && [
+              'bg-tainted-200 text-discolored-1000',
+              'hover:bg-tainted-600',
+              'active:bg-tainted-700',
+              'disabled:bg-tainted-600 disabled:brightness-90 disabled:hover:bg-tainted-700',
             ],
           ],
           //#endregion  //*======== Variant ===========
