@@ -11,32 +11,32 @@ export const PreEvent: PreEventData[] = [
     id: 1,
     title: 'Robot in Action',
     description:
-      'Consequat donec risus mollis feugiat. Imperdiet vitae suspendisse at massa. Maecenas nec sed habitant cras. Mauris pellentesque turpis sed mi et pulvinar tortor elementum. Eu tincidunt urna id mattis. Fermentum et ut a ut tortor aliquam. In mi porttitor imperdiet dignissim sed tristique lectus et. Consectetur in eu augue eget. Dolor nec pellentesque at est suspendisse cursus elit. Sodales faucibus vulputate euismod magna eget nulla ornare. Egestas scelerisque porttitor integer sit auctor dolor gravida. Vitae nulla enim posuere et vestibulum mauris. Ut ligula dis habitasse id ipsum eget donec semper sollicitudin. Mauris nibh at morbi netus elit morbi egestas lectus risus. Pharetra arcu enim eget pretium morbi justo pulvinar tristique arcu.',
-    link: 'https://www.google.com',
+      'Robot In Action adalah ajang kompetisi robotik untuk siswa SMP/MTS/Sederajat dan SMA/MA/Sederajat di Jawa Timur, dengan tujuan memperkenalkan IPTEK dan meningkatkan kreativitas dan bakat di bidang teknologi. Kompetisi ini juga menghadirkan kegiatan untuk mempertemukan stakeholder seni dan IPTEK. Para peserta akan memamerkan kemampuan robotik mereka melalui beberapa kategori lomba yang menantang, menciptakan wadah bagi siswa untuk mengekspresikan kreativitas dan bakat mereka. Ikuti Robot In Action dan saksikan inovasi dan teknologi masa depan yang diciptakan oleh para siswa berbakat di Jawa Timur!',
+    link: '/coming-soon',
     image: '/landing/preevent-frame.png',
   },
   {
     id: 2,
     title: 'Karya Tulis Ilmiah',
     description:
-      'Consequat donec risus mollis feugiat. Imperdiet vitae suspendisse at massa. Maecenas nec sed habitant cras. Mauris pellentesque turpis sed mi et pulvinar tortor elementum. Eu tincidunt urna id mattis. Fermentum et ut a ut tortor aliquam. In mi porttitor imperdiet dignissim sed tristique lectus et. Consectetur in eu augue eget. Dolor nec pellentesque at est suspendisse cursus elit. Sodales faucibus vulputate euismod magna eget nulla ornare. Egestas scelerisque porttitor integer sit auctor dolor gravida. Vitae nulla enim posuere et vestibulum mauris. Ut ligula dis habitasse id ipsum eget donec semper sollicitudin. Mauris nibh at morbi netus elit morbi egestas lectus risus. Pharetra arcu enim eget pretium morbi justo pulvinar tristique arcu.',
-    link: 'https://www.google.com',
+      'Jangan lewatkan kesempatan untuk mengekspresikan pemikiran kreatif dan sistematis dalam ajang kompetisi Karya Tulis Ilmiah! Kampus ITS yang dikenal sebagai pusat teknologi, menyadari pentingnya pengembangan keilmiahan di kalangan generasi muda. Oleh karena itu, acara ini diadakan untuk memberikan wadah bagi para siswa untuk mengekspresikan kreativitas dan meningkatkan etos keilmiahan. Dalam kompetisi ini, siswa dapat mengembangkan ide dan wawasan di bidang keilmiahan, dan mengasah kemampuan menulis secara sistematis. Jadi, tunjukkan bakatmu dan hadirilah ajang kompetisi Karya Tulis Ilmiah ini, dan siapkan diri untuk menjadi bagian dari masa depan cerdas dan inovatif!',
+    link: '/coming-soon',
     image: '/landing/preevent-frame.png',
   },
   {
     id: 3,
     title: 'Jurnalistik',
     description:
-      'Consequat donec risus mollis feugiat. Imperdiet vitae suspendisse at massa. Maecenas nec sed habitant cras. Mauris pellentesque turpis sed mi et pulvinar tortor elementum. Eu tincidunt urna id mattis. Fermentum et ut a ut tortor aliquam. In mi porttitor imperdiet dignissim sed tristique lectus et. Consectetur in eu augue eget. Dolor nec pellentesque at est suspendisse cursus elit. Sodales faucibus vulputate euismod magna eget nulla ornare. Egestas scelerisque porttitor integer sit auctor dolor gravida. Vitae nulla enim posuere et vestibulum mauris. Ut ligula dis habitasse id ipsum eget donec semper sollicitudin. Mauris nibh at morbi netus elit morbi egestas lectus risus. Pharetra arcu enim eget pretium morbi justo pulvinar tristique arcu.',
-    link: 'https://www.google.com',
+      'Kini saatnya para pelajar dan mahasiswa di seluruh Indonesia menunjukkan bakat dan kemampuan jurnalistik online mereka di ajang kompetisi yang diadakan oleh ITS Expo 2023! Meskipun dikenal sebagai kampus yang bergerak di bidang teknologi, ITS juga memiliki keahlian di bidang seni visual dan jurnalistik. Kompetisi ini merupakan kesempatan emas bagi para penerus bangsa untuk mengasah kemampuan fotografi, vidiorafi, dan penulisan serta memperluas wawasan di bidang jurnalistik. Jadilah bagian dari generasi muda kreatif dan inovatif dengan mendaftar dan mengikuti kompetisi jurnalistik ini!',
+    link: '/coming-soon',
     image: '/landing/preevent-frame.png',
   },
   {
     id: 4,
     title: 'Talkshow',
     description:
-      'Consequat donec risus mollis feugiat. Imperdiet vitae suspendisse at massa. Maecenas nec sed habitant cras. Mauris pellentesque turpis sed mi et pulvinar tortor elementum. Eu tincidunt urna id mattis. Fermentum et ut a ut tortor aliquam. In mi porttitor imperdiet dignissim sed tristique lectus et. Consectetur in eu augue eget. Dolor nec pellentesque at est suspendisse cursus elit. Sodales faucibus vulputate euismod magna eget nulla ornare. Egestas scelerisque porttitor integer sit auctor dolor gravida. Vitae nulla enim posuere et vestibulum mauris. Ut ligula dis habitasse id ipsum eget donec semper sollicitudin. Mauris nibh at morbi netus elit morbi egestas lectus risus. Pharetra arcu enim eget pretium morbi justo pulvinar tristique arcu.',
-    link: 'https://www.google.com',
+      'Jangan lewatkan Talkshow spektakuler ITS EXPO 2023! Hadirkan inspirasi dan motivasi baru dengan public figure yang sukses dan penuh prestasi. Diskusi menarik yang akan merubah pandanganmu tentang masa depan Indonesia. Ayo, bergabunglah dengan kami dan jadilah bagian dari perubahan!',
+    link: '/coming-soon',
     image: '/landing/preevent-frame.png',
   },
 ];
@@ -45,28 +45,19 @@ export const MainEvent = [
   {
     title: 'opening its expo',
     description:
-      'Eu hendrerit turpis purus venenatis nibh id vitae quis. Viverra mi in\
-    morbi turpis tristique mi ut. Vehicula gravida pellentesque vestibulum\
-    nisi fames faucibus. Ornare lectus nisl diam euismod tristique quam\
-    egestas. Condimentum ut volutpat tempus.',
-    link: '#',
+      'Jangan lewatkan acara spektakuler pada opening! Saksikan pentas kolosal dan parade budaya yang menampilkan keragaman budaya Indonesia dalam satu panggung yang sama.',
+    link: '/coming-soon',
   },
   {
     title: 'exhibition its expo',
     description:
-      'Eu hendrerit turpis purus venenatis nibh id vitae quis. Viverra mi in\
-    morbi turpis tristique mi ut. Vehicula gravida pellentesque vestibulum\
-    nisi fames faucibus. Ornare lectus nisl diam euismod tristique quam\
-    egestas. Condimentum ut volutpat tempus.',
-    link: '#',
+      'Jelajahi inovasi teknologi, rasakan kesenian nusantara, kenali budaya Indonesia, dan lihat karya mahasiswa ITS dalam acara utama yang tak boleh terlewatkan.',
+    link: '/coming-soon',
   },
   {
     title: 'gebyar its expo',
     description:
-      'Eu hendrerit turpis purus venenatis nibh id vitae quis. Viverra mi in\
-    morbi turpis tristique mi ut. Vehicula gravida pellentesque vestibulum\
-    nisi fames faucibus. Ornare lectus nisl diam euismod tristique quam\
-    egestas. Condimentum ut volutpat tempus.',
-    link: '#',
+      'Gebyar ITS EXPO 2023 merupakan suatu kegiatan atau acara pucak sebagai penutupan atau closing ITS EXPO 2023 secara simbolis oleh Rektor ITS yang nantinya juga akan dimeriahkan oleh pertunjukan seni yang dibalut dengan budaya.',
+    link: '/coming-soon',
   },
 ];

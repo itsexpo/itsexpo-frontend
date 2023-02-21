@@ -32,7 +32,6 @@ import {
 export default function Home() {
   useEffect(() => {
     AOS.init();
-    AOS.refresh();
   }, []);
 
   const [preEvent, setPreEvent] = useState<number>(0);
@@ -40,11 +39,11 @@ export default function Home() {
   return (
     <Layout>
       <SEO title='Home' description='This is the home page' />
-      <main className='flex flex-col bg-tainted-100 scroll-smooth'>
+      <main className='flex flex-col scroll-smooth bg-tainted-200'>
         {/* Hero Section */}
         <section
           id='hero'
-          className='relative w-full h-screen flex flex-col justify-center items-center'
+          className='relative w-full h-screen flex flex-col justify-center items-center bg-tainted-100'
         >
           <HeroBackground />
 
@@ -71,10 +70,7 @@ export default function Home() {
               data-aos='fade-up'
               data-aos-delay='100'
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique. Duis cursus,
-              mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam
-              libero vitae erat.
+              Salam Seni, Ilmu, dan Budaya
             </Typography>
             <UnstyledLink
               href='#about'
@@ -93,7 +89,7 @@ export default function Home() {
         {/* About Section */}
         <section
           id='about'
-          className='w-full flex flex-col justify-center items-center'
+          className='w-full flex flex-col justify-center items-center bg-tainted-100'
         >
           <div className='relative w-full'>
             {/* About Illustration */}
@@ -139,14 +135,14 @@ export default function Home() {
                   color='tertiary'
                   className='font-secondary max-w-2xl'
                 >
-                  ITS EXPO merupakan sebuah wadah yang diperuntukkan untuk
-                  mewadahi seluruh kelauarga Mahasiswa ITS guna mempertunjukkan
-                  hasil pemikirannya kepada masyarakat yang diharapkan dapat
-                  membawa kebermanfaatan yang nyata
+                  Sebuah acara yang mewadahi seluruh Keluarga Mahasiswa ITS
+                  untuk mempertunjukan hasil pemikirannya kepada masyarakat umum
+                  yang diharapkan membawa kebermanfaatan nyata untuk masyarakat.
+                  Tagline “Salam Seni, Ilmu, dan Budaya”
                 </Typography>
               </div>
 
-              <ButtonLink href='/' variant='yellow'>
+              <ButtonLink href='/coming-soon' variant='discolored'>
                 Baca Selengkapnya
               </ButtonLink>
             </div>
@@ -277,7 +273,7 @@ export default function Home() {
           </div>
 
           <ButtonLink
-            href='/'
+            href='/coming-soon'
             size='large'
             variant='green'
             className='hidden md:block mt-6'
@@ -445,7 +441,7 @@ export default function Home() {
         </section>
 
         {/* Contact Support Section */}
-        <section id='contact-support' className='layout my-12 '>
+        <section id='contact-support' className='layout my-12'>
           <div className='flex justify-center items-center'>
             <div className='relative md:w-4/6 w-5/6'>
               <NextImage
@@ -498,8 +494,8 @@ export default function Home() {
               </Typography>
               <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
                 <ButtonLink
-                  href='/'
-                  variant='yellow'
+                  href='/coming-soon'
+                  variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
@@ -509,8 +505,8 @@ export default function Home() {
                   Robot in Action
                 </ButtonLink>
                 <ButtonLink
-                  href='/'
-                  variant='yellow'
+                  href='/coming-soon'
+                  variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
@@ -520,8 +516,8 @@ export default function Home() {
                   Karya Tulis Ilmiah
                 </ButtonLink>
                 <ButtonLink
-                  href='/'
-                  variant='yellow'
+                  href='/coming-soon'
+                  variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
@@ -531,8 +527,8 @@ export default function Home() {
                   Jurnalistik
                 </ButtonLink>
                 <ButtonLink
-                  href='/'
-                  variant='yellow'
+                  href='/coming-soon'
+                  variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
@@ -564,8 +560,8 @@ export default function Home() {
               </Typography>
               <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
                 <ButtonLink
-                  href='/'
-                  variant='yellow'
+                  href='/coming-soon'
+                  variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
@@ -575,8 +571,8 @@ export default function Home() {
                   Opening ITS EXPO
                 </ButtonLink>
                 <ButtonLink
-                  href='/'
-                  variant='yellow'
+                  href='/coming-soon'
+                  variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
                   data-aos='fade-up'
@@ -586,8 +582,8 @@ export default function Home() {
                   Exhibition ITS EXPO
                 </ButtonLink>
                 <ButtonLink
-                  href='/'
-                  variant='yellow'
+                  href='/coming-soon'
+                  variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
                   data-aos='fade-up'

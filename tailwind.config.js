@@ -82,6 +82,7 @@ module.exports = {
           900: '#383d26',
           1000: '#252919',
         },
+
         turquoise: {
           100: '#d9dee0',
           200: '#c0c9cb',
@@ -106,20 +107,9 @@ module.exports = {
           900: '#333f51',
           1000: '#222a36',
         },
-        brown: {
-          100: '#E5E3E0',
-          200: '#D5D1CB',
-          300: '#C0BAB2',
-          400: '#ABA398',
-          500: '#968C7E',
-          600: '#667da1',
-          700: '#6B6254',
-          800: '#564E43',
-          900: '#403B32',
-          1000: '#2b2721',
-        },
-        base: {
-          DEFAULT: '#FFFFFF',
+
+        typo: {
+          DEFAULT: 'black',
           surface: '#F9FAFB',
           light: '#F0F2F5',
           outline: '#E4E7EB',
@@ -128,6 +118,7 @@ module.exports = {
           secondary: '#687083',
           label: '#1A3650',
           primary: '#092540',
+          white: '#fff',
         },
 
         // Bertahap akan dihapus
@@ -140,14 +131,6 @@ module.exports = {
           600: '#5555D3',
           700: '#504FC5',
           800: '#3F3EAD',
-        },
-        typo: {
-          DEFAULT: '#1F201D',
-          white: '#FFF',
-          secondary: '#5A5D56',
-          tertiary: '#989898',
-          icons: '#878787',
-          tag: '#E9E9E9',
         },
         outline: {
           DEFAULT: '#E6E6E5',

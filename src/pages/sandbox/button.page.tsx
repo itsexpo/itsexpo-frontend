@@ -49,6 +49,17 @@ export default function ButtonSandbox() {
                 Text Only
               </Button>
             </div>
+            <div className='space-x-3'>
+              <Button variant='discolored' size='large'>
+                Text Only
+              </Button>
+              <Button variant='discolored' size='base'>
+                Text Only
+              </Button>
+              <Button variant='discolored' size='small'>
+                Text Only
+              </Button>
+            </div>
           </div>
           <div className='space-y-3 h-fit'>
             <div className='space-x-3'>
@@ -81,6 +92,17 @@ export default function ButtonSandbox() {
                 Text Only
               </Button>
               <Button variant='green' size='small' leftIcon={FaChrome}>
+                Text Only
+              </Button>
+            </div>
+            <div className='space-x-3'>
+              <Button variant='discolored' size='large' leftIcon={FaChrome}>
+                Text Only
+              </Button>
+              <Button variant='discolored' size='base' leftIcon={FaChrome}>
+                Text Only
+              </Button>
+              <Button variant='discolored' size='small' leftIcon={FaChrome}>
                 Text Only
               </Button>
             </div>
@@ -119,6 +141,17 @@ export default function ButtonSandbox() {
                 Text Only
               </Button>
             </div>
+            <div className='space-x-3'>
+              <Button variant='discolored' size='large' rightIcon={FaChrome}>
+                Text Only
+              </Button>
+              <Button variant='discolored' size='base' rightIcon={FaChrome}>
+                Text Only
+              </Button>
+              <Button variant='discolored' size='small' rightIcon={FaChrome}>
+                Text Only
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -142,6 +175,15 @@ export default function ButtonSandbox() {
               <IconButton variant='green' size='base' icon={FaChrome} />
               <IconButton
                 variant='green'
+                size='small'
+                icon={FaChrome}
+              ></IconButton>
+            </div>
+            <div className='space-x-3'>
+              <IconButton variant='discolored' size='large' icon={FaChrome} />
+              <IconButton variant='discolored' size='base' icon={FaChrome} />
+              <IconButton
+                variant='discolored'
                 size='small'
                 icon={FaChrome}
               ></IconButton>

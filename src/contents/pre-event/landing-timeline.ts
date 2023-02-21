@@ -15,8 +15,8 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '51',
     },
-    date: '12 Februari 2023',
-    caption: 'Open Recruitment Brand Ambasador',
+    date: 'Mei - Juni',
+    caption: 'Pre Event ITS EXPO',
   },
   {
     img: {
@@ -25,8 +25,8 @@ const landingTimelineContents: Timeline[] = [
       width: '107',
       height: '53',
     },
-    date: '12 Februari 2023',
-    caption: 'Open Recruitment Brand Ambasador',
+    date: '3 - 4 Juni',
+    caption: 'Opening ITS EXPO',
   },
   {
     img: {
@@ -35,8 +35,8 @@ const landingTimelineContents: Timeline[] = [
       width: '108',
       height: '54',
     },
-    date: '12 Februari 2023',
-    caption: 'Open Recruitment Brand Ambasador',
+    date: '9 - 10 Juni',
+    caption: 'Main Event ITS EXPO',
   },
   {
     img: {
@@ -45,8 +45,8 @@ const landingTimelineContents: Timeline[] = [
       width: '67',
       height: '66',
     },
-    date: '12 Februari 2023',
-    caption: 'Open Recruitment Brand Ambasador',
+    date: '11 Juni',
+    caption: 'Gebyar ITS EXPO 2023',
   },
   {
     img: {
@@ -55,7 +55,7 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '51',
     },
-    date: '12 Februari 2023',
+    date: '12 Februari 2022',
     caption: 'Open Recruitment Brand Ambasador',
   },
 ];

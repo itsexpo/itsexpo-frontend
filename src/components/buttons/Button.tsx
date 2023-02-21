@@ -10,6 +10,7 @@ enum ButtonVariant {
   'green',
   'outline',
   'basic',
+  'discolored',
 }
 enum ButtonSize {
   'small',
@@ -59,11 +60,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           [
             size === 'large' && [
               'min-h-[34px] py-2 px-[18px] font-semibold md:min-h-[38px] md:py-2.5 md:px-6',
-              'text-base md:text-lg',
+              'text-typo-secondary md:text-lg',
             ],
             size === 'base' && [
               'min-h-[30px] py-1.5 px-[14px] font-semibold md:min-h-[34px] md:py-2 md:px-5',
-              'text-sm md:text-base',
+              'text-sm md:text-typo-secondary',
             ],
             size === 'small' && [
               'min-h-[26px] py-0.5 px-[10px] font-medium md:min-h-[30px] md:py-1.5 md:px-4',
@@ -92,14 +93,20 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               'disabled:bg-success-700 disabled:brightness-90 disabled:hover:bg-success-700',
             ],
             variant === 'outline' && [
-              '!text-base-secondary',
+              '!text-typo-secondary',
               'border border-outline-base duration-250',
               'hover:bg-base-surface active:bg-base-outline disabled:bg-base-outline',
             ],
             variant === 'basic' && [
-              '!text-base-secondary',
+              '!text-typo-secondary',
               'shadow-none duration-250',
               'hover:bg-base-surface active:bg-base-outline disabled:bg-base-outline',
+            ],
+            variant === 'discolored' && [
+              'bg-tainted-200 text-discolored-1000',
+              'hover:bg-tainted-600',
+              'active:bg-tainted-700',
+              'disabled:bg-tainted-600 disabled:brightness-90 disabled:hover:bg-tainted-700',
             ],
           ],
           //#endregion  //*======== Variants ===========
@@ -130,8 +137,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'small' && 'text-sm md:text-lg',
                 ],
                 [
-                  variant === 'outline' && 'text-base-secondary',
-                  variant == 'basic' && 'text-base-secondary',
+                  variant === 'outline' && 'text-typo-secondary',
+                  variant == 'basic' && 'text-typo-secondary',
                 ],
                 leftIconClassName
               )}
@@ -149,8 +156,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'small' && 'text-sm md:text-lg',
                 ],
                 [
-                  variant === 'outline' && 'text-base-icon',
-                  variant == 'basic' && 'text-base-icon',
+                  variant === 'outline' && 'text-typo-icon',
+                  variant == 'basic' && 'text-typo-icon',
                 ],
                 rightIconClassName
               )}

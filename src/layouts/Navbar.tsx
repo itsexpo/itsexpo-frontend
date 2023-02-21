@@ -54,13 +54,13 @@ export default function Navbar() {
   return (
     <header
       className={clsxm(
-        'fixed top-0 z-[100] w-full bg-transparent font-secondary',
+        'fixed top-0 z-[100] w-full bg-transparent font-secondary transition-colors duration-300',
         colorChange && 'bg-tainted-100'
       )}
     >
       {/* Desktop Nav Start */}
       <div className='mx-auto flex flex-row-reverse md:flex-row h-20 w-11/12 items-center justify-between gap-x-1 md:h-24 md:w-[98%] lg:w-11/12'>
-        <UnstyledLink href='/' className='font-bold hover:text-brown-500'>
+        <UnstyledLink href='/' className='font-bold hover:text-discolored-500'>
           <NextImage
             src='/logo-navbar.png'
             alt='footer logo'
@@ -76,7 +76,7 @@ export default function Navbar() {
               if (children) {
                 return (
                   <Menu key={`${href}${label}`} as='div' className='relative'>
-                    <Menu.Button className='hover:text-brown-500 flex items-center gap-1 text-brown-1000 font-medium'>
+                    <Menu.Button className='hover:text-discolored-500 flex items-center gap-1 text-discolored-1000 font-medium'>
                       {label} <BiChevronDown size={18} />
                     </Menu.Button>
                     <Transition
@@ -93,7 +93,7 @@ export default function Navbar() {
                           <Menu.Item
                             key={`${href}${label}`}
                             as='a'
-                            className='py-2 text-brown-1000 font-medium'
+                            className='py-2 text-discolored-1000 font-medium'
                           >
                             {({ active }) => (
                               <UnstyledLink
@@ -101,7 +101,7 @@ export default function Navbar() {
                                 className={`${
                                   active
                                     ? 'bg-tainted-400 text-typo'
-                                    : 'text-brown-1000'
+                                    : 'text-discolored-1000'
                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm  mt-1`}
                               >
                                 {label}
@@ -118,7 +118,7 @@ export default function Navbar() {
                   <li key={`${href}${label}`}>
                     <UnstyledLink
                       href={href}
-                      className='hover:text-brown-500 text-brown-1000 font-medium'
+                      className='hover:text-discolored-500 text-discolored-1000 font-medium'
                     >
                       {label}
                     </UnstyledLink>
@@ -128,7 +128,7 @@ export default function Navbar() {
             })}
             <UnstyledLink
               href='/'
-              className='bg-tainted-300 px-5 py-1.5 rounded-lg text-brown-700 hover:bg-tainted-400 font-semibold'
+              className='bg-tainted-300 px-5 py-1.5 rounded-lg text-discolored-700 hover:bg-tainted-400 font-semibold'
             >
               Masuk
             </UnstyledLink>
@@ -149,10 +149,13 @@ export default function Navbar() {
       <div
         className={`flex translate-y-[calc(100%-5rem)] md:hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full opacity-0'
-        } absolute bottom-0 left-0 h-screen w-full flex-col bg-brown-1000 pt-[6vh] text-white transition duration-300`}
+        } absolute bottom-0 left-0 h-screen w-full flex-col bg-discolored-1000 pt-[6vh] text-white transition duration-300`}
       >
         <nav className='relative z-20 flex h-screen w-full flex-col'>
-          <UnstyledLink href='/' className='font-bold hover:text-brown-500'>
+          <UnstyledLink
+            href='/'
+            className='font-bold hover:text-discolored-500'
+          >
             <NextImage
               src='/logo-navbar.png'
               alt='footer logo'
@@ -170,7 +173,7 @@ export default function Navbar() {
                   <li key={`${href}${label}`}>
                     <button
                       onClick={toogleShowAcara}
-                      className='hover:text-brown-500 flex items-center gap-1'
+                      className='hover:text-discolored-500 flex items-center gap-1'
                     >
                       {label}{' '}
                       <BiChevronDown
@@ -190,7 +193,7 @@ export default function Navbar() {
                             {' '}
                             <UnstyledLink
                               href={href}
-                              className='hover:text-brown-500'
+                              className='hover:text-discolored-500'
                             >
                               {label}
                             </UnstyledLink>
@@ -203,7 +206,10 @@ export default function Navbar() {
               } else {
                 return (
                   <li key={`${href}${label}`}>
-                    <UnstyledLink href={href} className='hover:text-brown-500'>
+                    <UnstyledLink
+                      href={href}
+                      className='hover:text-discolored-500'
+                    >
                       {label}
                     </UnstyledLink>
                   </li>
@@ -212,14 +218,14 @@ export default function Navbar() {
             })}
             <UnstyledLink
               href='/'
-              className='bg-tainted-300 px-5 py-1.5 rounded-lg text-brown-700 hover:bg-tainted-400 font-semibold'
+              className='bg-tainted-300 px-5 py-1.5 rounded-lg text-discolored-700 hover:bg-tainted-400 font-semibold'
             >
               Masuk
             </UnstyledLink>
           </ul>
           {isOpen && (
             <FaTimes
-              className='absolute bottom-20 right-1/2 mx-auto h-12 w-12 translate-x-1/2 rounded-lg bg-red-500 p-3 text-3xl font-thin text-brown-900'
+              className='absolute bottom-20 right-1/2 mx-auto h-12 w-12 translate-x-1/2 rounded-lg bg-red-500 p-3 text-3xl font-thin text-discolored-900'
               onClick={toggleShowNav}
             />
           )}
