@@ -10,6 +10,8 @@ const breadcrumbs = {
   '/dashboard/admin/role': 'Role',
   '/dashboard/admin/role/detail': 'Detail Role',
   '/dashboard/admin/permission': 'Permission',
+  '/dashboard/admin/url-shortener': 'URL Shortener',
+  '/dashboard/admin/url-shortener/generate': 'Generate',
 };
 type BreadcrumbProps = {
   crumbs: Array<keyof typeof breadcrumbs>;
