@@ -19,6 +19,10 @@ enum PermissionEnum {
   'roles_unassign.store',
   'roles_assign.store',
   'roles.detail',
+  'all_url_shortener.index',
+  'url_shortener.delete',
+  'url_shortener.store',
+  'url_shortener.update',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;
