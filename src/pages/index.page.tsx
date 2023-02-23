@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <SEO title='Home' description='This is the home page' />
+      <SEO />
       <main className='flex flex-col scroll-smooth bg-tainted-200'>
         {/* Hero Section */}
         <section

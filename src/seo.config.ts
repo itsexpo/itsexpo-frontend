@@ -5,8 +5,8 @@ import { DefaultSeoProps } from 'next-seo';
 const config: DefaultSeoProps = {
   openGraph: {
     type: 'website',
-    locale: 'en_IE',
-    url: 'https://www.expo-its.com/',
+    locale: 'in_ID',
+    url: 'https://www.expo-its.com',
     siteName: 'ITS Expo 2023',
   },
   twitter: {
@@ -15,7 +15,8 @@ const config: DefaultSeoProps = {
     cardType: 'summary_large_image',
   },
   titleTemplate: '%s | ITS EXPO 2023',
-  description: 'this is a description',
+  description:
+    "Rangkaian Kreativitas Keluarga Mahasiswa ITS dalam Acara 'Salam Seni, Ilmu, dan Budaya'",
   defaultTitle: 'ITS EXPO 2023',
   additionalLinkTags: [
     {
