@@ -36,10 +36,10 @@ const navigations: Navigation[] = [
     name: 'Dashboard',
     href: '/my',
     icon: FiFileText,
-    permissions: ['login_user.store'],
+    permissions: ['login_user.store', 'users.index'],
   },
   {
-    name: 'Menejemen User',
+    name: 'Manajemen User',
     href: '#',
     icon: FiUsers,
     children: [
@@ -145,8 +145,8 @@ function NestedNavigation({
         <div>
           <Disclosure.Button
             className={clsx(
-              'hover:bg-orange-300/40',
-              'text-typo-secondary',
+              'hover:bg-white/10',
+              'text-typo-white',
               'group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium',
               'focus-visible:ring-offset-secondary-500 focus:outline-none focus-visible:ring-2  focus-visible:ring-green-500'
             )}
@@ -154,7 +154,7 @@ function NestedNavigation({
             <navChildren.icon
               className={clsx(
                 'mr-1.5 flex-shrink-0',
-                'text-typo-secondary text-lg',
+                'text-typo-white text-lg',
                 open && 'mt-[1px] self-start'
               )}
               aria-hidden='true'
@@ -165,7 +165,7 @@ function NestedNavigation({
             <FiChevronDown
               className={clsx(
                 'flex-shrink-0',
-                'text-typo-icons ml-auto text-lg',
+                'text-typo-white ml-auto text-lg',
                 open && 'mt-[1px] rotate-180 self-start'
               )}
             />
@@ -209,17 +209,17 @@ function NavigationLink({
     <UnstyledLink
       href={navigation.href}
       className={clsxm(
-        isActive ? 'bg-orange-500 text-neutral-100' : 'hover:bg-orange-500/40',
+        isActive ? 'bg-white/20 text-typo-white' : 'hover:bg-white/10',
         'group my-0.5 flex items-center rounded-md px-2 py-4 text-sm font-medium',
         className
       )}
       aria-current={isActive ? 'page' : undefined}
     >
       <navigation.icon
-        className={clsx('mr-1.5 flex-shrink-0', 'text-typo-secondary text-lg')}
+        className={clsx('mr-1.5 flex-shrink-0', 'text-typo-white text-lg')}
         aria-hidden='true'
       />
-      <span className='truncate'>{navigation.name}</span>
+      <span className='truncate text-typo-white'>{navigation.name}</span>
     </UnstyledLink>
   );
 }

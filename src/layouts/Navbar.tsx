@@ -59,7 +59,13 @@ export default function Navbar() {
       )}
     >
       {/* Desktop Nav Start */}
-      <div className='mx-auto flex flex-row-reverse md:flex-row h-20 w-11/12 items-center justify-between gap-x-1 md:h-24 md:w-[98%] lg:w-11/12'>
+      <div
+        className={`${
+          colorChange
+            ? 'h-16 transition-all duration-200 ease-in-out'
+            : 'transition-all duration-200 ease-in-out h-16 md:h-20'
+        } mx-auto flex flex-row-reverse md:flex-row items-center justify-between gap-x-1 layout`}
+      >
         <UnstyledLink href='/' className='font-bold hover:text-discolored-500'>
           <NextImage
             src='/logo-navbar.png'
@@ -67,7 +73,7 @@ export default function Navbar() {
             width='98'
             height='68'
             priority={true}
-            className=''
+            className='w-20'
           />
         </UnstyledLink>
         <nav className='hidden md:block'>
