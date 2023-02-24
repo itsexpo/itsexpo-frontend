@@ -72,6 +72,11 @@
   }
 }
 
+.shadow-navbar-dashboard {
+  box-shadow: 0px 2px 4px rgba(65, 78, 98, 0.12),
+    0px 0px 1px rgba(65, 78, 98, 0.05);
+}
+
 /* #region /**==== Background Gradient ==*/
 .bg-forgot-password {
   background: linear-gradient(
@@ -93,6 +98,15 @@
 .bg-pattern-card-1 {
   background: linear-gradient(180deg, #936836 0%, #5c3d18 46.67%, #351f05 100%);
 }
+
+.bg-dashboard {
+  background: linear-gradient(176.98deg, #092540 -17.9%, #8ab364 117.02%);
+}
+
+.bg-dashboard-mobile {
+  background: linear-gradient(180deg, #092540 -25%, #8ab364 264.84%);
+}
+
 /* #region  /**=========== Datepicker =========== */
 .react-datepicker-wrapper {
   display: block;

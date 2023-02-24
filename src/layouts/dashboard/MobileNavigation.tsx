@@ -2,7 +2,7 @@ import { Dialog, Menu, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { FiChevronDown, FiLogOut, FiX } from 'react-icons/fi';
+import { FiChevronDown, FiLogOut } from 'react-icons/fi';
 import { HiOutlineMenu } from 'react-icons/hi';
 
 import Button from '@/components/buttons/Button';
@@ -11,13 +11,10 @@ import Logo from '@/components/Logo';
 import NextImage from '@/components/NextImage';
 import Typography from '@/components/typography/Typography';
 import Navigation from '@/layouts/dashboard/Navigation';
-import clsxm from '@/lib/clsxm';
 import useAuthStore from '@/store/useAuthStore';
-import useDialogStore from '@/store/useDialogStore';
 
 export default function MobileNavigation() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const open = useDialogStore.useOpen();
   const user = useAuthStore.useUser();
   const logout = useAuthStore.useLogout();
   const router = useRouter();
@@ -28,15 +25,21 @@ export default function MobileNavigation() {
 
   return (
     <>
-      <div className='sticky top-0 z-10 flex h-20 flex-shrink-0 justify-between bg-background-liteCream lg:hidden'>
+      <div className='bg-dashboard-mobile sticky top-0 z-10 flex h-20 flex-shrink-0 justify-between lg:hidden'>
         <button
           type='button'
           className='text-typo-icons px-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-main lg:hidden'
           onClick={() => setSidebarOpen(true)}
         >
           <span className='sr-only'>Open sidebar</span>
-          <HiOutlineMenu className='h-6 w-6' aria-hidden='true' />
+          <HiOutlineMenu
+            className='h-6 w-6 text-typo-white'
+            aria-hidden='true'
+          />
         </button>
+        <div className='flex items-center justify-center flex-1 px-2'>
+          <Logo className='w-16' />
+        </div>
         <div className='flex items-center px-2'>
           {/* Profile dropdown */}
           <Menu as='div' className='relative ml-3'>
@@ -48,24 +51,14 @@ export default function MobileNavigation() {
                   <div className='flex min-w-0 items-center justify-between space-x-3'>
                     <NextImage
                       className='h-10 w-10 flex-shrink-0 overflow-hidden rounded-full'
-                      src='/images/ilits-logo-square.png'
+                      src='/dashboard/avatar.png'
                       width={256}
                       height={256}
                       alt='avatar'
                     />
-                    <div className='flex min-w-0 flex-1 flex-col'>
-                      <Typography variant='s2'>{user?.name}</Typography>
-                      <Typography
-                        variant='b3'
-                        color='secondary'
-                        className={clsxm(!open && 'truncate')}
-                      >
-                        {user?.role}
-                      </Typography>
-                    </div>
                   </div>
                   <FiChevronDown
-                    className='h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500'
+                    className='h-5 w-5 flex-shrink-0 text-typo-white group-hover:text-gray-500'
                     aria-hidden='true'
                   />
                 </div>
@@ -85,13 +78,6 @@ export default function MobileNavigation() {
                   <Typography variant='body' className='text-neutral-1000'>
                     {user?.name}
                   </Typography>
-                  <Typography
-                    variant='body'
-                    color='secondary'
-                    className={clsxm(!open && 'truncate', 'text-yellow-500')}
-                  >
-                    {user?.role}
-                  </Typography>
                 </div>
                 {/* //! Don't forget to adjust UserAction component */}
                 <div className='py-1'>
@@ -107,7 +93,7 @@ export default function MobileNavigation() {
                           'flex items-center gap-1.5'
                         )}
                       >
-                        Ganti Password
+                        Change Password
                       </UnstyledLink>
                     )}
                   </Menu.Item>
@@ -139,7 +125,7 @@ export default function MobileNavigation() {
       <Transition.Root show={sidebarOpen} as={React.Fragment}>
         <Dialog
           as='div'
-          className='fixed inset-0 z-40 flex lg:hidden'
+          className='fixed inset-0 z-40 flex lg:hidden bg-dashboard'
           onClose={setSidebarOpen}
         >
           <Transition.Child
@@ -162,7 +148,7 @@ export default function MobileNavigation() {
             leaveFrom='translate-x-0'
             leaveTo='-translate-x-full'
           >
-            <div className='bg-secondary-300 relative flex w-full max-w-[85%] flex-1 flex-col pt-5 pb-4'>
+            <div className='relative flex w-full max-w-full flex-1 flex-col pt-5 pb-4'>
               <Transition.Child
                 as={React.Fragment}
                 enter='ease-in-out duration-300'
@@ -172,10 +158,14 @@ export default function MobileNavigation() {
                 leaveFrom='opacity-100'
                 leaveTo='opacity-0'
               >
-                <div className='absolute top-0 right-0 -mr-12 pt-2'>
-                  <Button onClick={() => setSidebarOpen(false)}>
+                <div className='absolute top-0 right-0 mr-0 pt-8'>
+                  <Button
+                    variant='basic'
+                    className='hover:bg-transparent active:bg-transparent'
+                    onClick={() => setSidebarOpen(false)}
+                  >
+                    <FiChevronDown className='text-xl text-typo-white -rotate-90' />
                     <span className='sr-only'>Close sidebar</span>
-                    <FiX />
                   </Button>
                 </div>
               </Transition.Child>
@@ -187,9 +177,6 @@ export default function MobileNavigation() {
               </div>
             </div>
           </Transition.Child>
-          <div className='w-14 flex-shrink-0' aria-hidden='true'>
-            {/* Dummy element to force sidebar to shrink to fit close icon */}
-          </div>
         </Dialog>
       </Transition.Root>
     </>

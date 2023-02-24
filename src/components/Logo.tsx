@@ -8,10 +8,10 @@ type LogoProps = { className?: string };
 export default function Logo({ className }: LogoProps) {
   return (
     <NextImage
-      className={clsxm('w-44 md:w-72', className)}
-      src='/images/logo.png'
-      width='100'
-      height='40'
+      className={clsxm('w-20', className)}
+      src='/logo.png'
+      width='152'
+      height='108'
       alt='logo'
     />
   );
