@@ -5,6 +5,7 @@ import * as React from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 
 import Button from '@/components/buttons/Button';
+import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
@@ -69,16 +70,13 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
           <Disclosure.Panel
             className={clsx('mt-2 flex flex-col gap-1', 'pl-14 pr-3.5 pb-3')}
           >
-            {/* <Typography
-              variant='b3'
-              className={clsxm(!open && 'truncate', 'text-yellow-500')}
+            <ButtonLink
+              href='/change-password'
+              className='w-full'
+              variant='discolored'
             >
-              {user?.email}
-            </Typography> */}
-            {/* // TODO: Change this to ButtonLink */}
-            <Button className='w-full' variant='outline' disabled={true}>
               Change Password
-            </Button>
+            </ButtonLink>
             <Button
               className='w-full !text-critical-500 bg-white'
               variant='outline'

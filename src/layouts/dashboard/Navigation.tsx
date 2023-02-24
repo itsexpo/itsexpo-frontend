@@ -39,42 +39,7 @@ const navigations: Navigation[] = [
     permissions: ['login_user.store', 'users.index'],
   },
   {
-    name: 'Menu 2',
-    href: '#',
-    icon: FiUsers,
-    children: [
-      {
-        name: 'User',
-        href: '/dashboard/admin/user',
-        icon: FiUsers,
-        permissions: ['users.index'],
-      },
-      {
-        name: 'Permissions',
-        href: '/dashboard/admin/permission',
-        icon: FiSliders,
-        permissions: [
-          'permissions.index',
-          'permissions.store',
-          'permissions.update',
-          'permissions.delete',
-        ],
-      },
-      {
-        name: 'Roles',
-        href: '/dashboard/admin/role',
-        icon: FiUserPlus,
-        permissions: [
-          'roles.index',
-          'roles.store',
-          'roles.update',
-          'roles.delete',
-        ],
-      },
-    ],
-  },
-  {
-    name: 'Menu 3',
+    name: 'Manajemen User',
     href: '#',
     icon: FiUsers,
     children: [
