@@ -5,7 +5,6 @@ import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
-import ButtonLink from '@/components/links/ButtonLink';
 import ServerTable from '@/components/table/ServerTable';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
@@ -147,17 +146,9 @@ function AdminShortener() {
               <div>
                 <Breadcrumb crumbs={['/dashboard/admin/url-shortener']} />
                 <Typography as='h5' variant='h5' className='font-bold'>
-                  Shorten Link Generate
+                  List Shorten Link
                 </Typography>
               </div>
-              <ButtonLink
-                target='_self'
-                href='url-shortener/generate'
-                variant='green'
-                size='small'
-              >
-                Add URL Shortener
-              </ButtonLink>
             </div>
             <ServerTable
               columns={columns}

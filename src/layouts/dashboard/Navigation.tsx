@@ -2,78 +2,16 @@ import { Disclosure } from '@headlessui/react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { IconType } from 'react-icons';
-import {
-  FiChevronDown,
-  FiFileText,
-  FiSliders,
-  FiUserPlus,
-  FiUsers,
-} from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 
 import UnstyledLink from '@/components/links/UnstyledLink';
+import { navigations } from '@/constant/navigations';
 import clsxm from '@/lib/clsxm';
 import useAuthStore from '@/store/useAuthStore';
 import { PermissionList } from '@/types/entities/permission-list';
-
-export type Navigation = {
-  name: string;
-  href: string;
-  icon: IconType;
-  /**
-   * Use this when the route is also used as a nested route
-   * @example Use exactMatch for '/dashboard' to avoid both navigation links active when visiting '/dashboard/edit'
-   */
-  exactMatch?: boolean;
-  children?: Navigation[];
-  permissions?: PermissionList;
-};
+import type { Navigation } from '@/types/navigate';
 
 type NavigationProps = React.ComponentPropsWithoutRef<'nav'>;
-
-const navigations: Navigation[] = [
-  {
-    name: 'Dashboard',
-    href: '/my',
-    icon: FiFileText,
-    permissions: ['login_user.store', 'users.index'],
-  },
-  {
-    name: 'Manajemen User',
-    href: '#',
-    icon: FiUsers,
-    children: [
-      {
-        name: 'User',
-        href: '/dashboard/admin/user',
-        icon: FiUsers,
-        permissions: ['users.index'],
-      },
-      {
-        name: 'Permissions',
-        href: '/dashboard/admin/permission',
-        icon: FiSliders,
-        permissions: [
-          'permissions.index',
-          'permissions.store',
-          'permissions.update',
-          'permissions.delete',
-        ],
-      },
-      {
-        name: 'Roles',
-        href: '/dashboard/admin/role',
-        icon: FiUserPlus,
-        permissions: [
-          'roles.index',
-          'roles.store',
-          'roles.update',
-          'roles.delete',
-        ],
-      },
-    ],
-  },
-];
 
 export default function Navigation({ className, ...rest }: NavigationProps) {
   return (
@@ -147,8 +85,8 @@ function NestedNavigation({
             className={clsx(
               'hover:bg-white/10',
               'text-typo-white',
-              'group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium',
-              'focus-visible:ring-offset-secondary-500 focus:outline-none focus-visible:ring-2  focus-visible:ring-green-500'
+              'group flex w-full items-center rounded-md px-2 py-4 text-sm font-medium',
+              'focus-visible:ring-offset-secondary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500'
             )}
           >
             <navChildren.icon

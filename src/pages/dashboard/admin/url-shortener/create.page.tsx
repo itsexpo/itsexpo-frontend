@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { FormProvider, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { FiLink2 } from 'react-icons/fi';
 import { MdContentPaste } from 'react-icons/md';
 
@@ -8,6 +9,7 @@ import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
 import withAuth from '@/components/hoc/withAuth';
 import NextImage from '@/components/NextImage';
+import { WARNING_TOAST } from '@/components/Toast';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
@@ -15,7 +17,7 @@ import api from '@/lib/api';
 import { ApiReturn } from '@/types/api';
 import { Shortener } from '@/types/entities/shortener';
 
-export default withAuth(AdminGenerateShortener, ['url_shortener.store']);
+export default withAuth(CreateUrlShortenerPage, ['url_shortener.store']);
 
 //#region  //*=========== Typing ===========
 type AddShortenerForm = {
@@ -24,7 +26,7 @@ type AddShortenerForm = {
 };
 //#endregion  //*======== Typing ===========
 
-function AdminGenerateShortener() {
+function CreateUrlShortenerPage() {
   //#region  //*=========== Form ===========
   const methods = useForm<AddShortenerForm>();
   const { handleSubmit, setValue } = methods;
@@ -48,9 +50,17 @@ function AdminGenerateShortener() {
 
   //#region  //*=========== On Click ===========
   const pasteOnClick = () => {
-    navigator.clipboard.readText().then((text) => {
-      setValue('long_url', text, { shouldValidate: true });
-    });
+    if (navigator.clipboard) {
+      if (navigator.clipboard.readText === undefined) {
+        toast('Pastikan anda sudah mengizinkan akses clipboard', WARNING_TOAST);
+        return;
+      }
+      navigator.clipboard.readText().then((text) => {
+        setValue('long_url', text, { shouldValidate: true });
+      });
+    } else {
+      toast('Browser tidak mendukung fitur ini', WARNING_TOAST);
+    }
   };
   //#endregion  //*======== On Click ===========
 
@@ -106,6 +116,9 @@ function AdminGenerateShortener() {
                             label=''
                             type='url'
                             placeholder='Masukkan link yang panjang di sini yaaa'
+                            validation={{
+                              required: 'Link tidak boleh kosong',
+                            }}
                           />
                         </div>
                         <Button
@@ -137,6 +150,9 @@ function AdminGenerateShortener() {
                             id='short_url'
                             label=''
                             type='text'
+                            validation={{
+                              required: 'Custom url tidak boleh kosong',
+                            }}
                             placeholder='masukkan url custom'
                           />
                         </div>

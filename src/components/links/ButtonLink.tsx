@@ -116,7 +116,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
                   size === 'small' && 'text-sm md:text-lg',
                   variant === 'discolored' && 'text-discolored-1000',
                 ],
-                'text-typo',
+                'text-white',
                 leftIconClassName
               )}
             />
@@ -133,7 +133,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
                   size === 'small' && 'text-sm md:text-lg',
                   variant === 'discolored' && 'text-discolored-1000',
                 ],
-                'text-typo',
+                'text-white',
                 rightIconClassName
               )}
             />

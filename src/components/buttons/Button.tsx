@@ -60,11 +60,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           [
             size === 'large' && [
               'min-h-[34px] py-2 px-[18px] font-semibold md:min-h-[38px] md:py-2.5 md:px-6',
-              'text-typo-secondary md:text-lg',
+              'md:text-lg',
             ],
             size === 'base' && [
               'min-h-[30px] py-1.5 px-[14px] font-semibold md:min-h-[34px] md:py-2 md:px-5',
-              'text-sm md:text-typo-secondary',
+              'text-sm ',
             ],
             size === 'small' && [
               'min-h-[26px] py-0.5 px-[10px] font-medium md:min-h-[30px] md:py-1.5 md:px-4',
@@ -137,8 +137,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                   size === 'small' && 'text-sm md:text-lg',
                 ],
                 [
-                  variant === 'outline' && 'text-typo-secondary',
-                  variant == 'basic' && 'text-typo-secondary',
+                  variant === 'outline' && 'text-typo-white',
+                  variant == 'basic' && 'text-typo-white',
                 ],
                 leftIconClassName
               )}

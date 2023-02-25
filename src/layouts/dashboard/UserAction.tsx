@@ -25,10 +25,7 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
   return (
     <Disclosure
       as='div'
-      className={clsxm(
-        'relative inline-block px-3 text-left mt-1 bg-white',
-        className
-      )}
+      className={clsxm('relative inline-block px-3 text-left mt-1', className)}
       {...rest}
     >
       {({ open }) => (
@@ -36,7 +33,7 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
           <Disclosure.Button
             className={clsx(
               'hover:bg-secondary-100 group w-full rounded-md px-3.5 py-2 text-left font-medium',
-              'focus:outline-none'
+              'focus:outline-none hover:border hover:border-tainted-100 delay-100'
             )}
           >
             <div className='flex w-full items-center justify-between gap-2'>
@@ -66,24 +63,23 @@ export default function UserAction({ className, ...rest }: UserActionProps) {
               />
             </div>
           </Disclosure.Button>
-          {/* //! Don't forget to adjust MobileNavigation component */}
-          <Disclosure.Panel
-            className={clsx('mt-2 flex flex-col gap-1', 'pl-14 pr-3.5 pb-3')}
-          >
-            <ButtonLink
-              href='/change-password'
-              className='w-full'
-              variant='discolored'
+          <Disclosure.Panel className={clsx('mt-2')}>
+            <div
+              className={clsxm(
+                'border border-tainted-10 flex flex-col gap-1 px-6 py-3',
+                'backdrop-blur-md rounded-md'
+              )}
             >
-              Change Password
-            </ButtonLink>
-            <Button
-              className='w-full !text-critical-500 bg-white'
-              variant='outline'
-              onClick={handleLogout}
-            >
-              Logout
-            </Button>
+              <ButtonLink
+                href='/dashboard/change-password'
+                variant='discolored'
+              >
+                Change Password
+              </ButtonLink>
+              <Button className='' variant='red' onClick={handleLogout}>
+                Logout
+              </Button>
+            </div>
           </Disclosure.Panel>
         </div>
       )}

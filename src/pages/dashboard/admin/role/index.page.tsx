@@ -129,50 +129,47 @@ function AdminRoles() {
 
   return (
     <DashboardLayout>
-      <h1>Roles</h1>
-      <main>
-        <section>
-          <div className='layout min-h-screen py-20'>
-            <div className='flex justify-between'>
-              <div>
-                <Breadcrumb crumbs={['/dashboard/admin/role']} />
-                <Typography as='h4' variant='h4' className=''>
-                  Manajemen Role
-                </Typography>
-              </div>
-              <div>
-                <AddRoleModal onSuccess={refetchData}>
-                  {({ openModal }) => (
-                    <Button
-                      variant='green'
-                      size='small'
-                      onClick={() => openModal()}
-                    >
-                      Add Roles
-                    </Button>
-                  )}
-                </AddRoleModal>
-              </div>
+      <section>
+        <div className='layout min-h-screen py-20'>
+          <div className='flex justify-between'>
+            <div>
+              <Breadcrumb crumbs={['/dashboard/admin/role']} />
+              <Typography as='h4' variant='h4' className=''>
+                Manajemen Role
+              </Typography>
             </div>
-            <ServerTable
-              columns={columns}
-              data={queryData?.data.data_per_page ?? []}
-              meta={queryData?.data.meta}
-              tableState={tableState}
-              setTableState={setTableState}
-              className='mt-8'
-            />
+            <div>
+              <AddRoleModal onSuccess={refetchData}>
+                {({ openModal }) => (
+                  <Button
+                    variant='green'
+                    size='small'
+                    onClick={() => openModal()}
+                  >
+                    Add Roles
+                  </Button>
+                )}
+              </AddRoleModal>
+            </div>
           </div>
-          {selectedData && (
-            <EditRolesModal
-              open={editModalOpen}
-              setOpen={setEditModalOpen}
-              defaultValues={selectedData}
-              onSuccess={refetchData}
-            />
-          )}
-        </section>
-      </main>
+          <ServerTable
+            columns={columns}
+            data={queryData?.data.data_per_page ?? []}
+            meta={queryData?.data.meta}
+            tableState={tableState}
+            setTableState={setTableState}
+            className='mt-8'
+          />
+        </div>
+        {selectedData && (
+          <EditRolesModal
+            open={editModalOpen}
+            setOpen={setEditModalOpen}
+            defaultValues={selectedData}
+            onSuccess={refetchData}
+          />
+        )}
+      </section>
     </DashboardLayout>
   );
 }

@@ -148,7 +148,7 @@ function DetailRolePage({
 
   return (
     <DashboardLayout>
-      <main className='bg-surface-background py-5'>
+      <div className='bg-surface-background py-5'>
         <section id='header' className='layout bg-surface-background pb-4'>
           <div>
             <Breadcrumb
@@ -260,7 +260,7 @@ function DetailRolePage({
             </FormProvider>
           </section>
         </section>
-      </main>
+      </div>
     </DashboardLayout>
   );
 }
