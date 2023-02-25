@@ -125,50 +125,47 @@ function AdminPermissions() {
 
   return (
     <DashboardLayout>
-      <h1>Permissions</h1>
-      <main>
-        <section>
-          <div className='layout min-h-screen py-20'>
-            <div className='flex justify-between'>
-              <div>
-                <Breadcrumb crumbs={['/dashboard/admin/permission']} />
-                <Typography as='h4' variant='h4' className=''>
-                  Manajemen Permission
-                </Typography>
-              </div>
-              <div>
-                <AddPermissionsModal onSuccess={refetchData}>
-                  {({ openModal }) => (
-                    <Button
-                      variant='green'
-                      size='small'
-                      onClick={() => openModal()}
-                    >
-                      Add Permissions
-                    </Button>
-                  )}
-                </AddPermissionsModal>
-              </div>
+      <section>
+        <div className='layout min-h-screen py-20'>
+          <div className='flex justify-between'>
+            <div>
+              <Breadcrumb crumbs={['/dashboard/admin/permission']} />
+              <Typography as='h4' variant='h4' className=''>
+                Manajemen Permission
+              </Typography>
             </div>
-            <ServerTable
-              columns={columns}
-              data={queryData?.data.data_per_page ?? []}
-              meta={queryData?.data.meta}
-              tableState={tableState}
-              setTableState={setTableState}
-              className='mt-8'
-            />
+            <div>
+              <AddPermissionsModal onSuccess={refetchData}>
+                {({ openModal }) => (
+                  <Button
+                    variant='green'
+                    size='small'
+                    onClick={() => openModal()}
+                  >
+                    Add Permissions
+                  </Button>
+                )}
+              </AddPermissionsModal>
+            </div>
           </div>
-          {selectedData && (
-            <EditPermissionsModal
-              open={editModalOpen}
-              setOpen={setEditModalOpen}
-              defaultValues={selectedData}
-              onSuccess={refetchData}
-            />
-          )}
-        </section>
-      </main>
+          <ServerTable
+            columns={columns}
+            data={queryData?.data.data_per_page ?? []}
+            meta={queryData?.data.meta}
+            tableState={tableState}
+            setTableState={setTableState}
+            className='mt-8'
+          />
+        </div>
+        {selectedData && (
+          <EditPermissionsModal
+            open={editModalOpen}
+            setOpen={setEditModalOpen}
+            defaultValues={selectedData}
+            onSuccess={refetchData}
+          />
+        )}
+      </section>
     </DashboardLayout>
   );
 }

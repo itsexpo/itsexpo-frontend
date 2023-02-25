@@ -133,7 +133,7 @@ export default function Navbar() {
               }
             })}
             <UnstyledLink
-              href='/'
+              href='/login'
               className='bg-tainted-300 px-5 py-1.5 rounded-lg text-discolored-700 hover:bg-tainted-400 font-semibold'
             >
               Masuk
@@ -223,7 +223,7 @@ export default function Navbar() {
               }
             })}
             <UnstyledLink
-              href='/'
+              href='/login'
               className='bg-tainted-300 px-5 py-1.5 rounded-lg text-discolored-700 hover:bg-tainted-400 font-semibold'
             >
               Masuk

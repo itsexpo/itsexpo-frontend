@@ -160,31 +160,28 @@ function User() {
 
   return (
     <DashboardLayout>
-      <h1>Users</h1>
-      <main>
-        <section>
-          <div className='layout min-h-screen py-20'>
-            <div className='flex justify-between'>
-              <div>
-                <Breadcrumb crumbs={['/dashboard/admin/user']} />
-                <Typography as='h4' variant='h4' className=''>
-                  List Users
-                </Typography>
-              </div>
+      <section>
+        <div className='layout min-h-screen py-20'>
+          <div className='flex justify-between'>
+            <div>
+              <Breadcrumb crumbs={['/dashboard/admin/user']} />
+              <Typography as='h4' variant='h4' className=''>
+                List Users
+              </Typography>
             </div>
-            <ServerTable
-              columns={columns}
-              data={queryData?.data.data_per_page ?? []}
-              meta={queryData?.data.meta}
-              tableState={tableState}
-              setTableState={setTableState}
-              header={<Header setLevelFilter={setLevelFilter} />}
-              withFilter
-              className='mt-8'
-            />
           </div>
-        </section>
-      </main>
+          <ServerTable
+            columns={columns}
+            data={queryData?.data.data_per_page ?? []}
+            meta={queryData?.data.meta}
+            tableState={tableState}
+            setTableState={setTableState}
+            header={<Header setLevelFilter={setLevelFilter} />}
+            withFilter
+            className='mt-8'
+          />
+        </div>
+      </section>
     </DashboardLayout>
   );
 }

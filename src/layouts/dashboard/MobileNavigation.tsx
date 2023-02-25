@@ -73,9 +73,9 @@ export default function MobileNavigation() {
               leaveFrom='transform opacity-100 scale-100'
               leaveTo='transform opacity-0 scale-95'
             >
-              <Menu.Items className='absolute right-0 mt-2 w-48 origin-top-right divide-y divide-gray-200 rounded-md bg-background-liteCream shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+              <Menu.Items className='absolute right-0 mt-4 w-48 z-50 backdrop-blur origin-top-right divide-y divide-gray-200 rounded-md bg-background-liteCream shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                 <div className='px-4 py-3'>
-                  <Typography variant='body' className='text-neutral-1000'>
+                  <Typography variant='body' className='text-neutral-1000 '>
                     {user?.name}
                   </Typography>
                 </div>
@@ -84,12 +84,12 @@ export default function MobileNavigation() {
                   <Menu.Item>
                     {({ active }) => (
                       <UnstyledLink
-                        href='#'
+                        href='/dashboard/change-password'
                         className={clsx(
                           active
-                            ? 'text-typo bg-gray-100 text-primary-main'
-                            : 'text-typo-secondary text-primary-main',
-                          'px-4 py-2 text-sm',
+                            ? 'bg-gray-100 text-primary-main'
+                            : 'text-primary-main',
+                          'px-4 py-2 text-sm text-typo',
                           'flex items-center gap-1.5'
                         )}
                       >

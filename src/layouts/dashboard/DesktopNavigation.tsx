@@ -1,7 +1,9 @@
+import { format } from 'date-fns';
 import * as React from 'react';
 
 import Logo from '@/components/Logo';
 import NextImage from '@/components/NextImage';
+import Typography from '@/components/typography/Typography';
 import Navigation from '@/layouts/dashboard/Navigation';
 import UserAction from '@/layouts/dashboard/UserAction';
 
@@ -33,7 +35,10 @@ export default function DesktopNavigation() {
           <Navigation className='mt-6' />
         </div>
       </div>
-      <div className='hidden lg:fixed right-0 top-0 w-[calc(100%-16rem)] h-16 bg-white shadow-navbar-dashboard lg:flex justify-end z-[99]'>
+      <div className='hidden lg:fixed right-0 top-0 w-[calc(100%-16rem)] h-16 bg-white shadow-navbar-dashboard lg:flex justify-between z-[99]'>
+        <Typography className='my-auto pl-10'>
+          {format(new Date(), 'EEEE, dd MMMM yyyy')}
+        </Typography>
         <UserAction />
       </div>
     </>

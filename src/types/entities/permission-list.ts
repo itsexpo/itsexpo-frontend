@@ -1,4 +1,6 @@
 enum PermissionEnum {
+  'dashboard_admin',
+  'dashboard_user',
   'login_user.store',
   'users.index',
   'users.store',
