@@ -1,5 +1,6 @@
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import 'aos/dist/aos.css';
 
 import AOS from 'aos';
 import clsx from 'clsx';
@@ -15,7 +16,11 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
-import { aboutUsSwiperContents, slogan } from '@/contents/about-us';
+import {
+  aboutUsSwiperContents,
+  sejarahITSExpo,
+  slogan,
+} from '@/contents/about-us';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
 import {
@@ -23,9 +28,9 @@ import {
   HeroCaptionBackground,
 } from '@/pages/about-us/container/HeroBackground';
 import MascotBackground from '@/pages/about-us/container/MascotBackground';
+import { SejarahBackground2 } from '@/pages/about-us/container/SejarahBackground';
 function AboutUs() {
   useEffect(() => {
-    AOS.init();
     AOS.refresh();
   }, []);
   const [tema, setTema] = useState<number>(0);
@@ -38,11 +43,15 @@ function AboutUs() {
           <div className='relative overflow-hidden min-h-screen'>
             <div className='relative justify-center space-x-10 w-fit mx-auto items-center hidden md:flex pt-24 z-10'>
               <div className='flex-col pt-28 hidden md:flex'>
-                <Typography variant='h1' className='font-primary text-center'>
+                <Typography
+                  variant='h1'
+                  className='font-primary text-center'
+                  data-aos='fade-up'
+                >
                   about its expo
                 </Typography>
                 <UnstyledLink
-                  href='#about'
+                  href='#about-itsexpo'
                   className={clsxm(
                     'mt-10 w-10 h-10 flex mx-auto justify-center items-center rounded-full bg-success-600',
                     'animate-bounce'
@@ -58,14 +67,18 @@ function AboutUs() {
                 alt='Hero Left Bird Image'
                 width={200}
                 height={250}
-                className='pt-10 -left-60 absolute'
+                className='pt-10 -left-72 absolute'
+                data-aos='fade-right'
+                data-aos-delay='400'
               />
               <NextImage
                 src='/aboutus/hero-right-bird.png'
                 alt='Hero Right Bird Image'
                 width={190}
                 height={250}
-                className='pt-10 -right-44 absolute'
+                className='pt-10 -right-56 absolute'
+                data-aos='fade-left'
+                data-aos-delay='400'
               />
             </div>
             <div className='flex flex-col md:hidden pt-44'>
@@ -87,25 +100,33 @@ function AboutUs() {
             {/* Hero Background */}
             <HeroBackground />
           </div>
+        </section>
 
-          {/* Apa itu ITS EXPO ? */}
-
+        {/* Apa itu ITS EXPO ? */}
+        <section id='about-itsexpo'>
           <div className='bg-gradient-to-b from-[#DD8D00] to-[#804400] pt-10  md:py-16 relative'>
             <div
               className='w-full h-full relative pb-20 md:pb-36
             '
             >
               <HeroCaptionBackground />
-              <div className='flex flex-col space-y-4 px-10 md:space-y-10 md:pt-10'>
+              <div
+                className='flex flex-col space-y-4 layout md:space-y-10 md:pt-10'
+                data-aos='fade-down'
+              >
                 <Typography
                   variant='h4'
                   className='text-typo-white font-primary text-center '
+                  data-aos='fade-down'
+                  data-aos-delay='200'
                 >
                   apa itu its expo
                 </Typography>
                 <Typography
-                  variant='c'
-                  className='text-typo-white font-normal text-justify md:text-center md:max-w-4xl mx-auto'
+                  variant='h6'
+                  className='text-typo-white font-normal text-justify md:text-center md:max-w-7xl px-2 mx-auto '
+                  data-aos='fade-down'
+                  data-aos-delay='300'
                 >
                   ITS Expo merupakan sebuah acara yang mewadahi seluruh Keluarga
                   Mahasiswa ITS untuk mempertunjukan hasil pemikirannya kepada
@@ -155,70 +176,71 @@ function AboutUs() {
             </div>
           </div>
         </section>
-
-        {/* <section
+        {/* Sejarah */}
+        <section
           id='sejarah'
           className='relative w-full flex flex-col items-center bg-[#2A607B] overflow-hidden'
         >
           <Typography
             variant='h4'
-            className='text-typo-white font-primary pb-11'
+            className='text-typo-white font-primary mb-11 mt-52'
           >
             sejarah its expo
-          </Typography> */}
-        {/* Sejarah Background */}
-        {/* <div className='w-full h-full flex justify-center overflow-y-hidden'>
+          </Typography>
+
+          {/* Sejarah Background */}
+          <div className='w-full h-full flex justify-center overflow-y-hidden'>
             <NextImage
-              src='/landing/sejarah-bg-desktop.png'
-              alt='timeline desktop background'
-              width='665'
-              height='1000'
-              className='absolute hidden md:block top-0'
-            />
-            <NextImage
-              src='/aboutus/sejarah-bg-mobile.png'
-              alt='timeline mobile background'
+              src='/aboutus/background-sejarah-mobile.png'
+              alt='sejarah mobile background'
               width='334'
               height='2000'
-              className='absolute block h-full md:hidden top-16'
+              className='absolute block h-full md:hidden'
             />
-            <div className='absolute w-full top-0 flex justify-between items-end'>
+            <NextImage
+              src='/aboutus/background-sejarah-desktop.png'
+              alt='sejarah desktop background'
+              width='688'
+              height='2401'
+              className='absolute hidden md:block h-full'
+            />
+            <div className='absolute w-full top-[12%] h-full md:top-[15%] flex justify-between items-end'>
               <NextImage
-                src='/landing/timeline-bg-left.png'
-                alt='timeline left background'
-                width='363'
-                height='1294'
-                className='hidden md:block'
+                src='/aboutus/sejarah-desktop-left-decoration.png'
+                alt='sejarah left background'
+                width='350'
+                height='2000'
+                className='hidden md:block h-full'
               />
               <NextImage
-                src='/landing/timeline-bg-right.png'
-                alt='timeline right background'
-                width='535'
-                height='754'
-                className='hidden md:block'
+                src='/aboutus/sejarah-desktop-right-decoration.png'
+                alt='sejarah right background'
+                width='300'
+                height='1600'
+                className='hidden md:block h-full'
               />
               <NextImage
-                src='/landing/timeline-bg-mobile-left.png'
-                alt='timeline mobile background'
-                width='91'
-                height='624'
-                className='block md:hidden'
+                src='/aboutus/sejarah-mobile-left-decoration.png'
+                alt='sejarah left mobile background '
+                width='550'
+                height='2000'
+                className='block md:hidden h-full'
               />
               <NextImage
-                src='/landing/timeline-bg-mobile-right.png'
-                alt='timeline mobile background'
-                width='112'
-                height='1092'
-                className='block md:hidden'
+                src='/aboutus/sejarah-mobile-right-decoration.png'
+                alt='sejarah right mobile background '
+                width='500'
+                height='2000'
+                className='block md:hidden h-full'
               />
-            </div> */}
+            </div>
 
-        {/* Sejarah Content */}
-        {/* <div
+            {/* Sejarah Content */}
+            <div
               className={clsxm(
                 'relative w-full md:w-8/12 lg:w-5/12',
                 'flex flex-col items-center gap-y-10 md:gap-y-20',
-                'p-7 md:p-0 font-secondary'
+                'p-7 md:p-0 font-secondary pt-10'
               )}
             >
               <div
@@ -239,13 +261,13 @@ function AboutUs() {
                   <div
                     key={index}
                     className={clsxm(
-                      'grid grid-rows-1 md:grid-cols-5',
+                      'grid grid-rows-1 md:grid-cols-5 overflow-hidden md:overflow-visible',
                       'md:gap-x-8 gap-y-2 md:gap-y-0',
                       'md:grid-flow-col-dense'
                     )}
                   >
                     <div
-                      className='md:col-start-3 flex justify-center items-center'
+                      className='md:col-start-3 flex justify-center items-center '
                       data-aos='fade-up'
                     >
                       <NextImage {...content.img} />
@@ -253,10 +275,10 @@ function AboutUs() {
                     <div
                       className={clsxm(
                         'flex flex-col items-center gap-y-2 md:gap-y-0',
-                        'text-center md:col-span-2',
+                        'text-center md:col-span-1 ',
                         [
                           parity === 'odd' && 'md:col-start-1 md:text-right',
-                          parity === 'even' && 'md:col-start-4 md:text-left',
+                          parity === 'even' && 'md:col-start-5 md:text-left',
                         ]
                       )}
                       data-aos={
@@ -267,13 +289,13 @@ function AboutUs() {
                     >
                       <Typography
                         variant='h6'
-                        className='w-full font-bold text-typo-white'
+                        className='w-full font-bold text-typo-white md:w-96'
                       >
                         {content.year}
                       </Typography>
                       <Typography
                         variant='b2'
-                        className='text-typo-white w-72 md:w-full md:max-w-xs'
+                        className='text-typo-white w-72 md:w-96'
                       >
                         {content.caption}
                       </Typography>
@@ -282,24 +304,15 @@ function AboutUs() {
                 );
               })}
             </div>
-          </div> */}
+          </div>
+          {/* Sejarah Illustration */}
+          <SejarahBackground2 />
+        </section>
 
-        {/* <ButtonLink
-            href='/'
-            size='large'
-            variant='green'
-            className='hidden md:block mt-6'
-            data-aos='fade-up'
-          >
-            Lihat Selengkapnya
-          </ButtonLink> */}
-        {/* Timeline Illustration */}
-        {/* <TimelineBackground2 />
-        </section> */}
         {/* Tema section */}
         <section
           id='tema'
-          className='relative bg-landing-preevent pt-32 sm:pt-40 md:pt-44 overflow-hidden'
+          className='relative bg-landing-preevent pt-20 md:pt-8 overflow-hidden'
         >
           <div className='layout my-12'>
             <Typography
@@ -316,14 +329,17 @@ function AboutUs() {
             >
               tema its expo
             </Typography>
-            <div className='w-full flex flex-col gap-4 mt-8 mb-4 md:flex-row-reverse max-w-lg mx-auto md:max-w-7xl md:gap-x-16 md:pt-16 md:pb-28 '>
-              <div className='flex flex-col gap-y-4 md:w-1/2 md:gap-y-9'>
-                <div className='flex gap-x-6 z-10'>
+            <div className='w-full flex flex-col gap-4 mt-8 mb-4 md:flex-row-reverse max-w-lg mx-auto md:max-w-7xl md:gap-x-16 md:pt-16 md:pb-28 z-50'>
+              <div
+                className='flex flex-col gap-y-4 md:w-1/2 md:gap-y-9 z-50'
+                data-aos='fade-left'
+              >
+                <div className='flex gap-x-6 z-50'>
                   <Button
                     variant='green'
                     size='large'
                     className={clsx([
-                      'bg-turquoise-500 text-typo-white  w-1/2',
+                      'bg-turquoise-500 text-typo-white  w-1/2  ',
                       tema === 0 && 'border border-white',
                     ])}
                     onClick={() => setTema(0)}
@@ -334,7 +350,7 @@ function AboutUs() {
                     variant='green'
                     size='large'
                     className={clsx([
-                      'bg-turquoise-500 text-typo-white w-1/2',
+                      'bg-turquoise-500 text-typo-white w-1/2 z-50',
                       tema === 1 && 'border border-white',
                     ])}
                     onClick={() => setTema(1)}
@@ -351,7 +367,7 @@ function AboutUs() {
                     className='absolute w-full h-full'
                   />
                   {tema && (
-                    <div className='px-5 py-7 flex flex-col md:justify-around justify-between h-full w-full'>
+                    <div className='px-5 py-7 flex flex-col md:justify-around justify-between sm:justify-around h-full w-full'>
                       <Typography
                         variant='t'
                         className='font-secondary md:hidden font-bold text-navy-100'
@@ -395,7 +411,10 @@ function AboutUs() {
                   )}
                 </div>
               </div>
-              <div className='sm:w-full gap-x-4 flex gap-y-4 md:w-1/2 md:gap-x-10'>
+              <div
+                className='sm:w-full gap-x-4 flex gap-y-4 md:w-1/2 md:gap-x-10'
+                data-aos='fade-right'
+              >
                 <NextImage
                   src='/aboutus/tema-figure.png'
                   alt='tema figure'
@@ -416,7 +435,7 @@ function AboutUs() {
             {/* Tema Background */}
             <NextImage
               src='/aboutus/tema-bg-left.png'
-              alt='preevent-bg-left'
+              alt='tema-bg-left'
               width='260'
               height='471'
               imgClassName='object-contain'
@@ -424,7 +443,7 @@ function AboutUs() {
             />
             <NextImage
               src='/aboutus/tema-bg-right.png'
-              alt='preevent-bg-right'
+              alt='tema-bg-right'
               width='260'
               height='471'
               imgClassName='object-contain'
@@ -441,16 +460,19 @@ function AboutUs() {
           />
         </section>
 
+        {/* Mascot */}
         <section id='mascot' className='relative'>
           <Typography
             variant='h4'
             className='font-primary md:hidden text-center pt-10'
+            data-aos='fade-down'
           >
             meet our mascot
           </Typography>
           <Typography
             variant='h1'
             className='font-primary hidden md:block text-center pt-10'
+            data-aos='fade-down'
           >
             meet our mascot
           </Typography>
@@ -465,6 +487,8 @@ function AboutUs() {
               width={70}
               className='absolute left-32 -top-16 hidden md:block'
               alt='particle'
+              data-aos='fade-right'
+              data-aos-delay='100'
             />
             <NextImage
               src='/aboutus/particle3.png'
@@ -472,6 +496,8 @@ function AboutUs() {
               width={50}
               className='absolute left-[40%] top-14 hidden md:block'
               alt='particle'
+              data-aos='fade-up'
+              data-aos-delay='100'
             />
             <div className='flex flex-col justify-center px-6 md:py-10'>
               <NextImage
@@ -480,18 +506,24 @@ function AboutUs() {
                 height={370}
                 width={365}
                 alt='cloud'
+                data-aos='fade-up'
+                data-aos-delay='300'
               />
               <div className='flex flex-col pt-10 md:max-w-lg'>
                 <div className='relative w-fit mx-auto px-28 md:px-40'>
                   <Typography
                     variant='h4'
                     className='font-primary text-center py-5 md:hidden'
+                    data-aos='fade-up'
+                    data-aos-delay='200'
                   >
                     saka
                   </Typography>
                   <Typography
                     variant='h3'
                     className='font-primary hidden md:block text-center'
+                    data-aos='fade-up'
+                    data-aos-delay='200'
                   >
                     saka
                   </Typography>
@@ -501,6 +533,8 @@ function AboutUs() {
                     height={40}
                     width={40}
                     src='/aboutus/particle.png'
+                    data-aos='fade-down'
+                    data-aos-delay='200'
                   />
                   <NextImage
                     height={30}
@@ -508,11 +542,15 @@ function AboutUs() {
                     className='absolute left-20 top-1 md:left-32 md:top-2'
                     alt='highlight'
                     src='/aboutus/highlight-saka.png'
+                    data-aos='fade-down'
+                    data-aos-delay='200'
                   />
                 </div>
                 <Typography
                   variant='c'
                   className='text-discolored-800 font-light md:text-justify '
+                  data-aos='fade-up'
+                  data-aos-delay='300'
                 >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -533,13 +571,17 @@ function AboutUs() {
                   height={253}
                   width={325}
                   alt='cloud'
+                  data-aos='fade-up'
+                  data-aos-delay='300'
                 />
                 <NextImage
-                  className='absolute md:left-52 md:-top-20  top-10 md:w-16 w-10 left-10'
+                  className='absolute md:left-56 md:-top-20  top-10 md:w-16 w-10 left-10'
                   alt='particle'
                   height={40}
                   width={40}
                   src='/aboutus/particle.png'
+                  data-aos='fade-left'
+                  data-aos-delay='200'
                 />
               </div>
               <div className='flex-col flex pt-10 md:max-w-lg'>
@@ -547,12 +589,16 @@ function AboutUs() {
                   <Typography
                     variant='h4'
                     className='font-primary text-center py-5 md:hidden'
+                    data-aos='fade-up'
+                    data-aos-delay='200'
                   >
                     wana
                   </Typography>
                   <Typography
                     variant='h3'
                     className='font-primary hidden md:flex text-center'
+                    data-aos='fade-up'
+                    data-aos-delay='200'
                   >
                     wana
                   </Typography>
@@ -562,6 +608,17 @@ function AboutUs() {
                     height={20}
                     width={20}
                     src='/aboutus/particle.png'
+                    data-aos='fade-down'
+                    data-aos-delay='200'
+                  />
+                  <NextImage
+                    className='absolute md:right-0 md:top-0 hidden md:block top-10 md:w-16 w-10 left-10'
+                    alt='particle'
+                    height={40}
+                    width={40}
+                    src='/aboutus/particle.png'
+                    data-aos='fade-down'
+                    data-aos-delay='200'
                   />
                   <NextImage
                     className='hidden md:block absolute -right-24 -bottom-20'
@@ -569,6 +626,8 @@ function AboutUs() {
                     alt='particle'
                     height={40}
                     width={40}
+                    data-aos='fade-down'
+                    data-aos-delay='200'
                   />
                   <NextImage
                     height={30}
@@ -576,11 +635,15 @@ function AboutUs() {
                     className='absolute right-20 md:right-32 top-2'
                     alt='highlight'
                     src='/aboutus/highlight-wana.png'
+                    data-aos='fade-down'
+                    data-aos-delay='200'
                   />
                 </div>
                 <Typography
                   variant='c'
                   className='text-discolored-800 font-light  '
+                  data-aos='fade-up'
+                  data-aos-delay='300'
                 >
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -600,10 +663,11 @@ function AboutUs() {
             className='w-full
           '
             src='/aboutus/mascot-bg-btm.png'
-            alt=''
+            alt='mascot background'
           />
         </section>
 
+        {/* Past memories */}
         <section
           id='past-memories'
           className={clsxm(
@@ -615,14 +679,14 @@ function AboutUs() {
             <Typography
               variant='h4'
               className='font-primary md:hidden text-center text-white leading-none mb-36'
-              data-aos='fade-up'
+              data-aos='fade-down'
             >
               past memories
             </Typography>
             <Typography
               variant='h1'
               className='font-primary hidden md:block text-center text-white leading-none mb-48'
-              data-aos='fade-up'
+              data-aos='fade-down'
             >
               past memories
             </Typography>
@@ -660,7 +724,9 @@ function AboutUs() {
             </Swiper>
             <Typography
               variant='c'
-              className='text-typo-white text-center md:hidden pb-32 pt-28 px-10'
+              className='text-typo-white text-center md:hidden pb-32 pt-28 layout'
+              data-aos='fade-up'
+              data-aos-delay='200'
             >
               “Saling memahami karena kita seniman, saling menghargai karena
               kita budayawan, saling menyikapi karena kita ilmuwan. Karena kita
@@ -670,6 +736,8 @@ function AboutUs() {
             <Typography
               variant='h6'
               className='text-typo-white hidden md:block text-center mx-auto max-w-4xl py-32'
+              data-aos='fade-up'
+              data-aos-delay='200'
             >
               “Saling memahami karena kita seniman, saling menghargai karena
               kita budayawan, saling menyikapi karena kita ilmuwan. Karena kita
@@ -711,14 +779,14 @@ function AboutUs() {
             height={120}
             width={85}
             className='absolute top-64 right-0 md:hidden'
-            alt=''
+            alt='flower right'
           />
           <NextImage
             src='/aboutus/memories-flower-left.png'
             height={140}
             width={80}
             className='absolute top-4 left-0 md:hidden'
-            alt=''
+            alt='flower left'
           />
         </section>
       </main>

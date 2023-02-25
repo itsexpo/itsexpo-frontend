@@ -11,6 +11,8 @@ function MascotBackground() {
         width={150}
         height={75}
         alt='cloud'
+        data-aos='fade-right'
+        data-aos-delay='300'
       />
       <NextImage
         className='absolute right-0 bottom-[46%] md:top-36 w-[30%] md:max-w-[250px] z-10'
@@ -18,6 +20,8 @@ function MascotBackground() {
         width={160}
         height={75}
         alt='cloud'
+        data-aos='fade-left'
+        data-aos-delay='300'
       />
       <NextImage
         className='absolute bottom-0 z-0 -left-4 hidden md:block'
@@ -25,6 +29,8 @@ function MascotBackground() {
         width={600}
         height={1100}
         src='/aboutus/mascot-left-wayang.png'
+        data-aos='fade-right'
+        data-aos-delay='500'
       />
       <NextImage
         alt='right-wayang'
@@ -32,6 +38,8 @@ function MascotBackground() {
         width={600}
         height={1100}
         src='/aboutus/mascot-right-wayang.png'
+        data-aos='fade-left'
+        data-aos-delay='500'
       />
     </div>
   );
