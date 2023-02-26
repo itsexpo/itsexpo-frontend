@@ -30,6 +30,10 @@
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+
+  .hover-this:hover > .hover-this-show-this {
+    opacity: 100%;
+  }
 }
 
 @layer base {
