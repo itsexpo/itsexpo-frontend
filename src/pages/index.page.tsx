@@ -213,71 +213,59 @@ export default function Home() {
           {/* Timeline Content */}
           <div
             className={clsxm(
-              'relative w-full md:w-8/12 lg:w-5/12',
+              'relative w-full md:w-8/12 lg:w-6/12',
               'flex flex-col items-center gap-y-10 md:gap-y-20',
               'p-7 md:p-0 font-secondary'
             )}
           >
             <div
               className={clsxm(
-                'absolute top-0 w-full h-full flex justify-center',
-                'pt-10 md:pt-14 pb-40 md:pb-14'
+                'absolute top-0 w-full h-full',
+                'flex justify-center gap-8 py-14'
               )}
               data-aos='fade-up'
               data-aos-offset='200'
             >
-              <div className='w-1 h-full bg-typo' />
+              <div className='w-0.5 h-full bg-typo' />
+              <div className='block md:hidden max-w-[152px] flex-1' />
             </div>
 
-            {landingTimelineContents.map((content, index) => {
-              const parity = index % 2 === 0 ? 'even' : 'odd';
+            <div className='w-full flex flex-col gap-24'>
+              {landingTimelineContents.map((content, index) => {
+                const parity = index % 2 === 0 ? 'even' : 'odd';
 
-              return (
-                <div
-                  key={index}
-                  className={clsxm(
-                    'last:hidden last:md:grid grid grid-rows-1 md:grid-cols-5',
-                    'md:gap-x-8 gap-y-2 md:gap-y-0',
-                    'md:grid-flow-col-dense'
-                  )}
-                >
+                return (
                   <div
-                    className='md:col-start-3 flex justify-center items-center'
+                    key={index}
+                    className={clsxm(
+                      'w-full flex justify-center items-center gap-8',
+                      [parity === 'odd' && 'md:flex-row-reverse']
+                    )}
                     data-aos='fade-up'
                   >
+                    <div className='hidden md:block md:max-w-[248px] md:flex-1' />
                     <NextImage {...content.img} />
-                  </div>
-                  <div
-                    className={clsxm(
-                      'flex flex-col items-center gap-y-2 md:gap-y-0',
-                      'text-center md:col-span-2',
-                      [
-                        parity === 'odd' && 'md:col-start-1 md:text-right',
-                        parity === 'even' && 'md:col-start-4 md:text-left',
-                      ]
-                    )}
-                    data-aos={
-                      (parity === 'odd' && 'fade-left') ||
-                      (parity === 'even' && 'fade-right')
-                    }
-                    data-aos-delay='300'
-                  >
-                    <Typography
-                      variant='h6'
-                      className='w-full font-bold text-typo-white'
+                    <div
+                      className={clsxm(
+                        'max-w-[152px] md:max-w-[248px] flex-1 flex flex-col gap-2',
+                        [parity === 'odd' && 'md:text-right']
+                      )}
                     >
-                      {content.date}
-                    </Typography>
-                    <Typography
-                      variant='t'
-                      className='text-typo-white w-48 md:w-full md:max-w-xs'
-                    >
-                      {content.caption}
-                    </Typography>
+                      <Typography
+                        as='p'
+                        variant='p'
+                        className='font-bold text-typo-white'
+                      >
+                        {content.date}
+                      </Typography>
+                      <Typography as='p' variant='b1' className='text-navy-100'>
+                        {content.caption}
+                      </Typography>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           <ButtonLink
