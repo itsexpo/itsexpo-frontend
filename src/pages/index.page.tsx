@@ -4,6 +4,7 @@ import 'swiper/css/autoplay';
 
 import AOS from 'aos';
 import { useEffect, useState } from 'react';
+import React from 'react';
 import { FiGlobe } from 'react-icons/fi';
 import { IoIosArrowDown } from 'react-icons/io';
 import { Autoplay } from 'swiper';
@@ -12,7 +13,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Button from '@/components/buttons/Button';
 import SwiperButton from '@/components/buttons/SwiperButton';
 import ButtonLink from '@/components/links/ButtonLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
@@ -36,10 +36,12 @@ export default function Home() {
 
   const [preEvent, setPreEvent] = useState<number>(0);
 
+  const aboutRef = React.useRef<HTMLElement>(null);
+
   return (
     <Layout>
       <SEO />
-      <main className='flex flex-col scroll-smooth bg-tainted-200'>
+      <main className='flex flex-col scroll-smooth bg-[#fdeeca]'>
         {/* Hero Section */}
         <section
           id='hero'
@@ -66,29 +68,35 @@ export default function Home() {
             <Typography
               variant='b1'
               color='tertiary'
-              className='font-secondary max-w-xl mt-6 text-center md:text-justify'
+              className='font-secondary max-w-xl mt-6 text-center md:text-justify font-light'
               data-aos='fade-up'
               data-aos-delay='100'
             >
               Salam Seni, Ilmu, dan Budaya
             </Typography>
-            <UnstyledLink
-              href='#about'
+            <div
+              onClick={() =>
+                scrollBy({
+                  top:
+                    (aboutRef.current?.getBoundingClientRect()?.top ?? 0) - 100,
+                  behavior: 'smooth',
+                })
+              }
               className={clsxm(
-                'mt-10 w-10 h-10 flex justify-center items-center rounded-full bg-success-600',
+                'mt-10 w-10 h-10 flex justify-center items-center rounded-full bg-success-600 cursor-pointer',
                 'animate-bounce'
               )}
               data-aos='fade-up'
               data-aos-delay='200'
             >
               <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
-            </UnstyledLink>
+            </div>
           </div>
         </section>
 
         {/* About Section */}
         <section
-          id='about'
+          ref={aboutRef}
           className='w-full flex flex-col justify-center items-center bg-tainted-100'
         >
           <div className='relative w-full'>
@@ -498,6 +506,7 @@ export default function Home() {
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
+                  leftIconClassName='text-black'
                   data-aos='fade-up'
                   data-aos-delay='100'
                   className='py-3'
@@ -509,6 +518,7 @@ export default function Home() {
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
+                  leftIconClassName='text-black'
                   data-aos='fade-up'
                   data-aos-delay='200'
                   className='py-3'
@@ -520,6 +530,7 @@ export default function Home() {
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
+                  leftIconClassName='text-black'
                   data-aos='fade-up'
                   data-aos-delay='300'
                   className='py-3'
@@ -531,6 +542,7 @@ export default function Home() {
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
+                  leftIconClassName='text-black'
                   data-aos='fade-up'
                   data-aos-delay='400'
                   className='py-3'
@@ -564,6 +576,7 @@ export default function Home() {
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
+                  leftIconClassName='text-black'
                   data-aos='fade-up'
                   data-aos-delay='100'
                   className='py-3'
@@ -575,6 +588,7 @@ export default function Home() {
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
+                  leftIconClassName='text-black'
                   data-aos='fade-up'
                   data-aos-delay='200'
                   className='py-3'
@@ -586,6 +600,7 @@ export default function Home() {
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
+                  leftIconClassName='text-black'
                   data-aos='fade-up'
                   data-aos-delay='300'
                   className='py-3'
