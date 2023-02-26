@@ -246,12 +246,12 @@ function AboutUs() {
               <div
                 className={clsxm(
                   'absolute top-0 w-full h-full flex justify-center',
-                  'pt-10 md:pt-14 pb-40 md:pb-14'
+                  'pt-20 sm:pt-16 md:pt-14 pb-24 md:pb-14'
                 )}
                 data-aos='fade-up'
                 data-aos-offset='200'
               >
-                <div className='w-1 h-full bg-typo' />
+                <div className='w-1 h-full bg-typo md:mr-0 mr-44 sm:mr-72' />
               </div>
 
               {sejarahITSExpo.map((content, index) => {
@@ -261,7 +261,7 @@ function AboutUs() {
                   <div
                     key={index}
                     className={clsxm(
-                      'grid grid-rows-1 md:grid-cols-5 overflow-hidden md:overflow-visible',
+                      'grid grid-rows-1 grid-cols-2 md:grid-cols-5 overflow-hidden md:overflow-visible',
                       'md:gap-x-8 gap-y-2 md:gap-y-0',
                       'md:grid-flow-col-dense'
                     )}
@@ -275,7 +275,7 @@ function AboutUs() {
                     <div
                       className={clsxm(
                         'flex flex-col items-center gap-y-2 md:gap-y-0',
-                        'text-center md:col-span-1 ',
+                        'text-start md:col-span-1 ',
                         [
                           parity === 'odd' && 'md:col-start-1 md:text-right',
                           parity === 'even' && 'md:col-start-5 md:text-left',
@@ -295,7 +295,7 @@ function AboutUs() {
                       </Typography>
                       <Typography
                         variant='b2'
-                        className='text-typo-white w-72 md:w-96'
+                        className='text-typo-white w-44 sm:w-72 md:w-96'
                       >
                         {content.caption}
                       </Typography>
