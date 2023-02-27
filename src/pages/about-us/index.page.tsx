@@ -275,7 +275,7 @@ function AboutUs() {
                     <div
                       className={clsxm(
                         'flex flex-col items-center gap-y-2 md:gap-y-0',
-                        'text-start md:col-span-1 ',
+                        'text-start md:col-span-1',
                         [
                           parity === 'odd' && 'md:col-start-1 md:text-right',
                           parity === 'even' && 'md:col-start-5 md:text-left',
@@ -358,7 +358,7 @@ function AboutUs() {
                     Slogan
                   </Button>
                 </div>
-                <div className='w-full h-80 md:h-full border-4 rounded-lg border-white/95 bg-white bg-opacity-30 overflow-hidden col-span-2 relative'>
+                <div className='w-full h-80 md:h-full border-4 rounded-lg border-white/95 bg-white bg-opacity-30 overflow-hidden relative'>
                   <NextImage
                     src='/aboutus/tema-bg-card.png'
                     alt='tema card background'
@@ -367,7 +367,7 @@ function AboutUs() {
                     className='absolute w-full h-full'
                   />
                   {tema && (
-                    <div className='px-5 py-7 flex flex-col md:justify-around justify-between sm:justify-around h-full w-full'>
+                    <div className='px-5 py-7 md:py-0 md:px-12 flex flex-col lg:justify-start md:gap-y-11 justify-between sm:justify-around h-full w-full'>
                       <Typography
                         variant='t'
                         className='font-secondary md:hidden font-bold text-navy-100'
@@ -376,7 +376,7 @@ function AboutUs() {
                       </Typography>
                       <Typography
                         variant='h5'
-                        className='font-secondary hidden md:block font-bold text-navy-100 pt-2'
+                        className='font-secondary hidden md:block font-bold text-navy-100 md:pt-11'
                       >
                         Salam Seni, Ilmu, dan Budaya
                       </Typography>
@@ -388,7 +388,7 @@ function AboutUs() {
                           >
                             <Typography
                               variant='t'
-                              className='md:hidden font-secondary text-navy-100  '
+                              className='md:hidden text-navy-100'
                             >
                               <span className='font-semibold'>
                                 {content.title}
@@ -397,7 +397,7 @@ function AboutUs() {
                             </Typography>
                             <Typography
                               variant='h5'
-                              className='font-secondary hidden md:block text-navy-100  '
+                              className='hidden md:block text-navy-100  ml-4'
                             >
                               <span className='font-semibold'>
                                 {content.title}
@@ -506,7 +506,7 @@ function AboutUs() {
                 height={370}
                 width={365}
                 alt='cloud'
-                data-aos='fade-up'
+                data-aos='zoom-in'
                 data-aos-delay='300'
               />
               <div className='flex flex-col pt-10 md:max-w-lg'>
@@ -571,7 +571,7 @@ function AboutUs() {
                   height={253}
                   width={325}
                   alt='cloud'
-                  data-aos='fade-up'
+                  data-aos='zoom-in'
                   data-aos-delay='300'
                 />
                 <NextImage
