@@ -45,6 +45,7 @@ function AboutUs() {
               <div className='flex-col pt-28 hidden md:flex'>
                 <Typography
                   variant='h1'
+                  as='h1'
                   className='font-primary text-center'
                   data-aos='fade-up'
                 >
@@ -67,7 +68,7 @@ function AboutUs() {
                 alt='Hero Left Bird Image'
                 width={200}
                 height={250}
-                className='pt-10 -left-72 absolute'
+                className='pt-10 -left-72 absolute '
                 data-aos='fade-right'
                 data-aos-delay='400'
               />
@@ -82,7 +83,11 @@ function AboutUs() {
               />
             </div>
             <div className='flex flex-col md:hidden pt-44'>
-              <Typography variant='h3' className='font-primary text-center'>
+              <Typography
+                variant='h1'
+                as='h1'
+                className='font-primary text-center'
+              >
                 about its expo
               </Typography>
               <UnstyledLink
@@ -111,11 +116,12 @@ function AboutUs() {
             >
               <HeroCaptionBackground />
               <div
-                className='flex flex-col space-y-4 layout md:space-y-10 md:pt-10'
+                className='flex flex-col space-y-4 layout md:space-y-6 md:pt-10'
                 data-aos='fade-down'
               >
                 <Typography
-                  variant='h4'
+                  variant='h2'
+                  as='h2'
                   className='text-typo-white font-primary text-center '
                   data-aos='fade-down'
                   data-aos-delay='200'
@@ -123,8 +129,9 @@ function AboutUs() {
                   apa itu its expo
                 </Typography>
                 <Typography
-                  variant='h6'
-                  className='text-typo-white font-normal text-justify md:text-center md:max-w-7xl px-2 mx-auto '
+                  variant='p'
+                  as='p'
+                  className='text-typo-white font-normal text-justify md:text-center md:max-w-6xl px-2 mx-auto '
                   data-aos='fade-down'
                   data-aos-delay='300'
                 >
@@ -182,7 +189,8 @@ function AboutUs() {
           className='relative w-full flex flex-col items-center bg-[#2A607B] overflow-hidden'
         >
           <Typography
-            variant='h4'
+            variant='h3'
+            as='h3'
             className='text-typo-white font-primary mb-11 mt-52'
           >
             sejarah its expo
@@ -366,7 +374,7 @@ function AboutUs() {
                     height={400}
                     className='absolute w-full h-full'
                   />
-                  {tema && (
+                  {tema === 1 ? (
                     <div className='px-5 py-7 md:py-0 md:px-12 flex flex-col lg:justify-start md:gap-y-11 justify-between sm:justify-around h-full w-full'>
                       <Typography
                         variant='t'
@@ -407,6 +415,37 @@ function AboutUs() {
                           </li>
                         ))}
                       </ul>
+                    </div>
+                  ) : (
+                    <div className='px-5 py-7 md:py-0 md:px-12 flex flex-col lg:justify-start md:gap-y-11 justify-between sm:justify-around h-full w-full'>
+                      <Typography
+                        variant='t'
+                        className='font-secondary md:hidden font-bold text-navy-100'
+                      >
+                        Gunita Akatara
+                      </Typography>
+                      <Typography
+                        variant='h5'
+                        className='font-secondary hidden md:block font-bold text-navy-100 md:pt-11'
+                      >
+                        Gunita Akatara
+                      </Typography>
+                      <Typography
+                        variant='t'
+                        className='text-navy-100 text-justify'
+                      >
+                        Gunita memiiki arti kebudayaan, keilmuan, dan
+                        kepandaian. Akatara memiliki arti cahaya.
+                      </Typography>
+                      <Typography
+                        variant='t'
+                        className='text-navy-100 text-justify'
+                      >
+                        Secara filosofis, ITS EXPO 2023 kembali hadir dengan
+                        membawa cahaya baru untuk ITS dan ITS EXPO berupa
+                        kegiatan yang menggabungkan 3 bidang yaitu seni, ilmu,
+                        dan budaya.
+                      </Typography>
                     </div>
                   )}
                 </div>
@@ -463,21 +502,15 @@ function AboutUs() {
         {/* Mascot */}
         <section id='mascot' className='relative'>
           <Typography
-            variant='h4'
-            className='font-primary md:hidden text-center pt-10'
-            data-aos='fade-down'
-          >
-            meet our mascot
-          </Typography>
-          <Typography
             variant='h1'
-            className='font-primary hidden md:block text-center pt-10'
+            as='h1'
+            className='text-center pt-10'
+            font='upakarti'
             data-aos='fade-down'
           >
             meet our mascot
           </Typography>
 
-          {/* Mascot Background */}
           <MascotBackground />
 
           <div className='flex flex-col md:flex-row justify-center relative sm:max-w-xl md:max-w-7xl sm:mx-auto lg:gap-x-4 xl:gap-x-48 pb-24'>
@@ -512,16 +545,10 @@ function AboutUs() {
               <div className='flex flex-col pt-10 md:max-w-lg'>
                 <div className='relative w-fit mx-auto px-28 md:px-40'>
                   <Typography
-                    variant='h4'
-                    className='font-primary text-center py-5 md:hidden'
-                    data-aos='fade-up'
-                    data-aos-delay='200'
-                  >
-                    saka
-                  </Typography>
-                  <Typography
                     variant='h3'
-                    className='font-primary hidden md:block text-center'
+                    as='h3'
+                    className='text-center'
+                    font='upakarti'
                     data-aos='fade-up'
                     data-aos-delay='200'
                   >
@@ -547,19 +574,18 @@ function AboutUs() {
                   />
                 </div>
                 <Typography
-                  variant='c'
-                  className='text-discolored-800 font-light md:text-justify '
+                  variant='p'
+                  className='text-discolored-800 mt-4 text-justify'
                   data-aos='fade-up'
                   data-aos-delay='300'
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut etiam sit amet nisl purus in mollis. Phasellus vestibulum
-                  lorem sed risus ultricies tristique nulla. Eget magna
-                  fermentum iaculis eu. Faucibus scelerisque eleifend donec
-                  pretium vulputate sapien. Aliquet eget sit amet tellus cras
-                  adipiscing enim eu turpis. Morbi tristique senectus et netus
-                  et malesuada fames ac. A diam maecenas sed enim ut sem.
+                  Saka terinspirasi dari legenda raja yang membawa sebuah
+                  peradaban baru di tanah jawa dan merupakan asal mula dari
+                  aksara jawa. Saka menjadi lambang sebuah inovasi juang baru
+                  dan keteraturan dalam berhubungan secara luar dan dalam, serta
+                  menciptakan sebuah ketertiban. Saka hadir untuk memberi
+                  peradaban baru untuk mahasiswa dalam berinovasi untuk selalu
+                  berkembang tanpa henti.
                 </Typography>
               </div>
             </div>
@@ -587,18 +613,12 @@ function AboutUs() {
               <div className='flex-col flex pt-10 md:max-w-lg'>
                 <div className='relative w-fit mx-auto px-28 md:px-40'>
                   <Typography
-                    variant='h4'
-                    className='font-primary text-center py-5 md:hidden'
-                    data-aos='fade-up'
-                    data-aos-delay='200'
-                  >
-                    wana
-                  </Typography>
-                  <Typography
                     variant='h3'
-                    className='font-primary hidden md:flex text-center'
+                    as='h3'
+                    className='text-center'
                     data-aos='fade-up'
                     data-aos-delay='200'
+                    font='upakarti'
                   >
                     wana
                   </Typography>
@@ -640,19 +660,19 @@ function AboutUs() {
                   />
                 </div>
                 <Typography
-                  variant='c'
-                  className='text-discolored-800 font-light  '
+                  variant='p'
+                  className='text-discolored-800 font-light mt-4 text-justify'
                   data-aos='fade-up'
                   data-aos-delay='300'
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut etiam sit amet nisl purus in mollis. Phasellus vestibulum
-                  lorem sed risus ultricies tristique nulla. Eget magna
-                  fermentum iaculis eu. Faucibus scelerisque eleifend donec
-                  pretium vulputate sapien. Aliquet eget sit amet tellus cras
-                  adipiscing enim eu turpis. Morbi tristique senectus et netus
-                  et malesuada fames ac. A diam maecenas sed enim ut sem.
+                  Wana terinspirasi dari hewan mitologi Lembuswana yang
+                  dilambangkan dengan kepala gajah dan badan sapi, mewakili
+                  sifat kecerdasan, kesetiaan, dan kesederhanaan. Wana menjadi
+                  lambang kecerdasan dan semangat untuk memajukan teknologi
+                  dengan bijak dan mempererat hubungan antara masyarakat,
+                  industri, dan akademisi. Wana muncul untuk memberi semangat
+                  untuk para mahasiswa/i untuk selalu mengembangkan kecerdasan
+                  teknologi yang berguna di masa kini dan mendatang.
                 </Typography>
               </div>
             </div>
@@ -731,7 +751,7 @@ function AboutUs() {
               “Saling memahami karena kita seniman, saling menghargai karena
               kita budayawan, saling menyikapi karena kita ilmuwan. Karena kita
               akan mengadakan sebuah pesta, menumbuhkan cinta dan menorehkan
-              sebuah cerita di ITS.”
+              sebuah cerita di ITS. ITS EXPO, Salam Seni, Ilmu, dan Budaya.”
             </Typography>
             <Typography
               variant='h6'
@@ -742,7 +762,7 @@ function AboutUs() {
               “Saling memahami karena kita seniman, saling menghargai karena
               kita budayawan, saling menyikapi karena kita ilmuwan. Karena kita
               akan mengadakan sebuah pesta, menumbuhkan cinta dan menorehkan
-              sebuah cerita di ITS.”
+              sebuah cerita di ITS. ITS EXPO, Salam Seni, Ilmu, dan Budaya.”
             </Typography>
           </div>
 

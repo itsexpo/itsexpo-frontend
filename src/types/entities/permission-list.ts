@@ -25,6 +25,9 @@ enum PermissionEnum {
   'url_shortener.delete',
   'url_shortener.store',
   'url_shortener.update',
+  'announcements.index',
+  'announcements.store',
+  'pre_event.index',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

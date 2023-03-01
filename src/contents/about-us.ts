@@ -20,8 +20,7 @@ const sejarahITSExpo: SejarahITSExpo[] = [
       height: '51',
     },
     year: '2012',
-    caption:
-      'ITS EXPO merupakan gabungan dari 2 event di ITS yaitu Pekan Ilmiah ITS dan Hari Budaya. Tahun ini merupakan tahun pertama adanya ITS EXPO.',
+    caption: 'ITS EXPO gabungan Pekan Ilmiah dan Hari Budaya',
   },
   {
     img: {
@@ -32,7 +31,7 @@ const sejarahITSExpo: SejarahITSExpo[] = [
     },
     year: '2013',
     caption:
-      'ITS EXPO disahkan menjadi event tahunan oleh Pemerintahan Provinsi Jawa Timur dan disahkan langsung oleh pakde karwo. ITS EXPO 2013 mengangkat tema kemaritiman.',
+      'ITS EXPO disahkan tahunan oleh Pemprov Jatim, dengan tema 2013 kemaritiman.',
   },
   {
     img: {
@@ -42,8 +41,7 @@ const sejarahITSExpo: SejarahITSExpo[] = [
       height: '54',
     },
     year: '2014',
-    caption:
-      'ITS EXPO mengusung konsep time traveler yang menyajikan perkembangan Indonesia dari masa ke masa.',
+    caption: 'ITS EXPO konsep time traveler, Indonesia masa ke masa.',
   },
   {
     img: {
@@ -74,7 +72,7 @@ const sejarahITSExpo: SejarahITSExpo[] = [
     },
     year: '2017',
     caption:
-      'ITS EXPO mengusung tema Rectoverso yaitu interpretasi dari semangat untuk bersatu dan maju bersama karena perbedaan hanyalah sekat semu',
+      'ITS EXPO tema Rectoverso, menginspirasi persatuan dan semangat, karena perbedaan hanyala sekat semu.',
   },
   {
     img: {

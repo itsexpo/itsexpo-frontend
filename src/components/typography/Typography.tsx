@@ -64,7 +64,7 @@ export default function Typography<T extends React.ElementType>({
           variant === 'h5' && ['text-[20px] md:text-[32px]'],
           variant === 'h6' && ['text-[16px] md:text-[24px]'],
           variant === 't' && ['text-[20px]'],
-          variant === 'p' && ['text-sm md:text-[18px]'],
+          variant === 'p' && ['text-sm md:text-[18px] leading-[24px]'],
           variant === 'b1' && ['text-[16px]'],
           variant === 'b2' && ['text-[16px]'],
           variant === 'c' && ['text-[14px]'],

@@ -9,17 +9,18 @@ import NextImage from '@/components/NextImage';
 import clsxm from '@/lib/clsxm';
 
 const links = [
-  { href: '/coming-soon', label: 'Tentang Kami' },
+  { href: '/about-us', label: 'Tentang Kami' },
   { href: '/coming-soon', label: 'Produk' },
   {
     href: '/coming-soon',
     label: 'Acara',
     children: [
-      { href: '/coming-soon', label: 'Main Event' },
       { href: '/coming-soon', label: 'Pre Event' },
+      { href: '/coming-soon', label: 'Opening' },
+      { href: '/coming-soon', label: 'Main Event' },
+      { href: '/coming-soon', label: 'Gebyar ITS EXPO' },
     ],
   },
-  { href: '/coming-soon', label: 'Privacy Policy' },
 ];
 
 export default function Navbar() {

@@ -41,6 +41,7 @@ function LoginPage() {
         role: permissions.role,
         permissions: permissions.routes,
         token: token,
+        pre_event: user.data.data.pre_event,
       });
 
       return res;

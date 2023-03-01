@@ -146,7 +146,6 @@ export default function Home() {
                   Sebuah acara yang mewadahi seluruh Keluarga Mahasiswa ITS
                   untuk mempertunjukan hasil pemikirannya kepada masyarakat umum
                   yang diharapkan membawa kebermanfaatan nyata untuk masyarakat.
-                  Tagline “Salam Seni, Ilmu, dan Budaya”
                 </Typography>
               </div>
 
@@ -269,7 +268,7 @@ export default function Home() {
           </div>
 
           <ButtonLink
-            href='/coming-soon'
+            href='/about-us'
             size='large'
             variant='green'
             className='hidden md:block mt-6'
@@ -436,7 +435,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Support Section */}
         <section id='contact-support' className='layout my-12'>
           <div className='flex justify-center items-center'>
             <div className='relative md:w-4/6 w-5/6'>
@@ -464,7 +462,6 @@ export default function Home() {
               >
                 Contact <br /> Support
               </Typography>
-
               <NextImage
                 src='/landing/contact-title-right.png'
                 alt='contact support title left'
@@ -490,7 +487,7 @@ export default function Home() {
               </Typography>
               <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='#'
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
@@ -502,7 +499,7 @@ export default function Home() {
                   Robot in Action
                 </ButtonLink>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='#'
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
@@ -514,7 +511,7 @@ export default function Home() {
                   Karya Tulis Ilmiah
                 </ButtonLink>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='#'
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
@@ -560,7 +557,7 @@ export default function Home() {
               </Typography>
               <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='#'
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
@@ -572,7 +569,7 @@ export default function Home() {
                   Opening ITS EXPO
                 </ButtonLink>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='#'
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
@@ -584,7 +581,7 @@ export default function Home() {
                   Exhibition ITS EXPO
                 </ButtonLink>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='#'
                   variant='discolored'
                   size='base'
                   leftIcon={FiGlobe}
@@ -611,14 +608,7 @@ export default function Home() {
           />
         </section>
 
-        {/* Sponsor Section */}
-        <section
-          id='sponsor'
-          className={clsxm(
-            // Custom Tailwind Class
-            'relative bg-[#00587A] pb-44'
-          )}
-        >
+        {/* <section id='sponsor' className={clsxm('relative bg-[#00587A] pb-44')}>
           <NextImage
             src='/landing/sponsor-bg-left.png'
             alt='about sponsor-bg-left'
@@ -648,7 +638,7 @@ export default function Home() {
               data-aos='fade-up'
             ></div>
           </div>
-        </section>
+        </section> */}
       </main>
     </Layout>
   );

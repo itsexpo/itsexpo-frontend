@@ -23,9 +23,10 @@ export default function PreEventCard({
         <div className='lg:shrink-0 grow'>
           <NextImage
             src={image}
-            alt='preevent frame'
+            alt='preevent'
             width='478'
             height='512'
+            useSkeleton
             className='h-full w-full object-cover lg:h-full lg:w-96'
           />
         </div>

@@ -15,7 +15,7 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: 'Mei - Juni',
+    date: 'Coming Soon',
     caption: 'Pre Event ITS EXPO',
   },
   {
@@ -25,7 +25,7 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '3 - 4 Juni',
+    date: 'Coming Soon',
     caption: 'Opening ITS EXPO',
   },
   {
@@ -35,7 +35,7 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '9 - 10 Juni',
+    date: 'Coming Soon',
     caption: 'Main Event ITS EXPO',
   },
   {
@@ -45,18 +45,8 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '11 Juni',
+    date: 'Coming Soon',
     caption: 'Gebyar ITS EXPO 2023',
-  },
-  {
-    img: {
-      src: '/landing/timeline-1.png',
-      alt: 'timeline illustration 5',
-      width: '121',
-      height: '66',
-    },
-    date: '12 Februari 2022',
-    caption: 'Open Recruitment Brand Ambasador',
   },
 ];
 

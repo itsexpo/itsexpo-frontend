@@ -1,3 +1,4 @@
+import { FaBullhorn } from 'react-icons/fa';
 import {
   FiFileText,
   FiLink,
@@ -90,6 +91,21 @@ export const navigations: Navigation[] = [
       },
     ],
   },
+  {
+    name: 'Manajemen Pengumuman',
+    href: '#',
+    icon: FaBullhorn,
+    permissions: ['announcements.index', 'announcements.store'],
+    children: [
+      {
+        name: 'List Pengumuman',
+        href: '/dashboard/admin/announcement',
+        exactMatch: true,
+        icon: FiList,
+        permissions: ['announcements.index'],
+      },
+    ],
+  },
   //! END ADMIN
 
   //! USER
@@ -98,7 +114,29 @@ export const navigations: Navigation[] = [
     href: '/dashboard/my',
     exactMatch: true,
     icon: FiFileText,
-    permissions: ['dashboard_user'],
+    permissions: ['dashboard_admin'],
+  },
+  {
+    name: 'Pre Event',
+    href: '#',
+    exactMatch: true,
+    icon: FiFileText,
+    permissions: ['pre_event.index'],
+    children: [
+      {
+        name: 'Jurnalistik',
+        href: '/dashboard/pre-event/jurnalistik',
+        exactMatch: true,
+        icon: FiFileText,
+        permissions: ['pre_event.index'],
+      },
+    ],
+  },
+  {
+    name: 'Info Penting',
+    href: '/dashboard/announcement',
+    exactMatch: true,
+    icon: FaBullhorn,
   },
   //! END USER
 ];

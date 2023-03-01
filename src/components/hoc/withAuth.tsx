@@ -1,8 +1,8 @@
 /* eslint-disable unused-imports/no-unused-vars */
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { ImSpinner8 } from 'react-icons/im';
 
+import Loading from '@/components/Loading';
 import { showToast, WARNING_TOAST } from '@/components/Toast';
 import api from '@/lib/api';
 import { getToken, removeToken } from '@/lib/cookies';
@@ -69,6 +69,7 @@ export default function withAuth<T>(
             role: permissions.role,
             token: token,
             permissions: permissions.routes,
+            pre_event: res.data.data.pre_event,
           });
         } catch (err) {
           removeToken();
@@ -155,12 +156,7 @@ export default function withAuth<T>(
         routePermission !== 'USER' &&
         !hasPermission(user, routePermission))
     ) {
-      return (
-        <div className='flex min-h-screen flex-col items-center justify-center text-gray-800'>
-          <ImSpinner8 className='mb-4 animate-spin text-4xl' />
-          <p>Loading...</p>
-        </div>
-      );
+      return <Loading />;
     }
 
     return <Component {...(props as T)} user={user} />;
