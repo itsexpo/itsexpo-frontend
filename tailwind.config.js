@@ -146,6 +146,10 @@ module.exports = {
           pressed: '#E9EBE2',
         },
       },
+      boxShadow: {
+        pendaftaran:
+          '0px 0.5px 2px rgba(65, 78, 98, 0.12), 0px 0px 1px rgba(65, 78, 98, 0.05)',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],

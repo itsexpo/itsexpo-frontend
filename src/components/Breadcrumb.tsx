@@ -12,6 +12,10 @@ const breadcrumbs = {
   '/dashboard/admin/permission': 'Permission',
   '/dashboard/admin/url-shortener': 'URL Shortener',
   '/dashboard/admin/url-shortener/generate': 'Generate',
+
+  // User
+  '/dashboard/pre-event/jurnalistik': 'Jurnalistik',
+  '/dashboard/pre-event/jurnalistik/pendaftaran': 'Pendaftaran Jurnalistik',
 };
 type BreadcrumbProps = {
   crumbs: Array<keyof typeof breadcrumbs>;

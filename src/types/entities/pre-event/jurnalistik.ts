@@ -8,9 +8,9 @@ enum JenisKegiatan {
 export interface Jurnalistik {
   team_role: string;
   team_name?: string;
-  jenis_kegiatan: keyof typeof JenisKegiatan;
   name: string;
-  province: string;
+  jenis_kegiatan: keyof typeof JenisKegiatan;
+  provinsi: string;
   kabupaten: string;
   asal_instansi: string;
   id_line: string;
