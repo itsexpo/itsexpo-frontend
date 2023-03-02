@@ -30,13 +30,23 @@ export default function Breadcrumb({
     <div className={clsxm('space-x-1', className)} {...rest}>
       {crumbs.map((crumb) => (
         <React.Fragment key={crumb}>
-          <PrimaryLink href={crumb} className='font-medium'>
+          <PrimaryLink
+            href={crumb}
+            variant='success'
+            className='font-bold no-underline'
+          >
             {breadcrumbs[crumb]}
           </PrimaryLink>
-          <span className='text-sm font-medium'>/</span>
+          <span className='text-md font-medium'>/</span>
         </React.Fragment>
       ))}
-      <Typography as='span'>{breadcrumbs[lastCrumb]}</Typography>
+      <Typography
+        as='span'
+        className={crumbs.length == 0 && 'font-bold'}
+        color={crumbs.length == 0 && 'success'}
+      >
+        {breadcrumbs[lastCrumb]}
+      </Typography>
     </div>
   );
 }
