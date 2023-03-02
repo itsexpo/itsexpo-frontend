@@ -121,14 +121,14 @@ export const navigations: Navigation[] = [
     href: '#',
     exactMatch: true,
     icon: FiFileText,
-    permissions: ['pre_event.index'],
+    // permissions: ['pre_event.index'],
     children: [
       {
         name: 'Jurnalistik',
         href: '/dashboard/pre-event/jurnalistik',
         exactMatch: true,
         icon: FiFileText,
-        permissions: ['pre_event.index'],
+        // permissions: ['pre_event.index'],
       },
     ],
   },
