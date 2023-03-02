@@ -4,7 +4,6 @@ import clsxm from '@/lib/clsxm';
 
 type TOptionProps = {
   children: React.ReactNode;
-  icon?: React.ReactNode;
   placeholder?: string;
   value: string | number | readonly string[] | undefined;
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
@@ -12,7 +11,6 @@ type TOptionProps = {
 
 export default function TOption({
   children,
-  icon: Icon,
   placeholder,
   onChange,
   value,
@@ -20,22 +18,17 @@ export default function TOption({
   return (
     <div
       className={clsxm(
-        'flex items-center',
+        'flex items-center justify-start',
         'border-secondary-250 hover:border-primary-400 hover:ring-0'
       )}
     >
-      <div className='relative'>
-        {Icon && (
-          <div className='pointer-events-none absolute inset-y-0 left-3 flex items-center'>
-            {Icon}
-          </div>
-        )}
+      <div className='relative '>
         <select
           className={clsxm(
-            'text-typo-secondary block rounded-md bg-transparent pl-8 pr-8 text-sm font-semibold',
-            'border-none outline-none focus:border-none focus:outline-none focus:ring-0',
-            'transition duration-200 hover:bg-white/70',
-            'active:bg-white disabled:bg-danger-main disabled:brightness-95'
+            'text-typo-icon block rounded-md pr-32 py-2.5 text-sm shadow-sm',
+            'border-typo-outline outline-none ring-0 focus:border-typo-icon focus:outline-none focus:ring-0',
+            'transition duration-100 hover:border-typo-outline/70',
+            'active:border-typo-outline disabled:bg-danger-main disabled:brightness-95'
           )}
           value={value}
           onChange={onChange}

@@ -48,7 +48,7 @@ function AdminShortener() {
     {
       id: 'created_at',
       cell: (info) => {
-        const date = info.row.original.created_at.split(' ')[0];
+        const date = info.row.original.created_at?.split(' ')[0];
         return date;
       },
       header: 'Created At',

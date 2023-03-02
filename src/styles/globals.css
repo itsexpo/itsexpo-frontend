@@ -53,7 +53,7 @@ body {
     top: 0;
     height: 100%;
     width: 2px;
-    background: rgba(0, 0, 0, 0.5);
+    background: #ffffff50;
     cursor: col-resize;
     user-select: none;
     touch-action: none;

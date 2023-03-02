@@ -6,11 +6,13 @@ import clsxm from '@/lib/clsxm';
 
 type FilterProps<T extends RowData> = {
   table: Table<T>;
+  placeholder?: string;
 } & React.ComponentPropsWithoutRef<'div'>;
 
 export default function Filter<T extends RowData>({
   className,
   table,
+  placeholder = 'Search...',
   ...rest
 }: FilterProps<T>) {
   const [filter, setFilter] = React.useState('');
@@ -30,7 +32,7 @@ export default function Filter<T extends RowData>({
   return (
     <div className={clsxm('relative mt-1 self-start', className)} {...rest}>
       <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
-        <FiSearch className='text-typo text-xl' />
+        <FiSearch className='text-typo text-[1.125rem]' />
       </div>
       <input
         type='text'
@@ -39,12 +41,12 @@ export default function Filter<T extends RowData>({
           setFilter(String(e.target.value));
         }}
         className={clsxm(
-          'block rounded-lg pl-9 text-sm shadow-sm',
-          'border-secondary-250 bg-secondary-250 focus:border-primary-border focus:ring-0',
-          'placeholder:text-typo-tertiary',
+          'block rounded-lg pl-9 pr-20 text-base shadow-sm transition duration-100',
+          'border-typo-outline bg-secondary-250 focus:border-typo-icon focus:ring-0',
+          'placeholder:text-typo-icon',
           'caret-primary-400'
         )}
-        placeholder='Search...'
+        placeholder={placeholder}
       />
       {table.getState().globalFilter !== '' && (
         <div className='absolute inset-y-0 right-0 flex items-center pr-3'>
