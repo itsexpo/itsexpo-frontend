@@ -13,14 +13,11 @@ export default function TBody<T extends RowData>({
   ...rest
 }: TBodyProps<T>) {
   return (
-    <tbody
-      className={clsxm('divide-y divide-gray-200 bg-white', className)}
-      {...rest}
-    >
+    <tbody className={clsxm(className)} {...rest}>
       {table.getRowModel().rows.map((row, index) => (
         <tr
           key={row.id}
-          className={clsxm(index % 2 === 0 ? 'bg-white' : 'bg-gray-50')}
+          className={clsxm(index % 2 === 0 ? 'bg-white' : 'bg-typo-light')}
         >
           {row.getVisibleCells().map((cell) => (
             <td

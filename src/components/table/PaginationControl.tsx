@@ -34,26 +34,29 @@ export default function PaginationControl<T extends RowData>({
   return (
     <div
       className={clsxm(
-        'flex items-center justify-between gap-x-2  md:justify-end',
+        'flex items-center justify-between gap-x-2 md:justify-end',
         className
       )}
       {...rest}
     >
       <div className='flex gap-1'>
         <Button
-          className='rounded-md !p-2 !font-semibold'
+          className={clsxm(
+            'flex min-w-[38px] justify-center rounded-md bg-white text-black drop-shadow-sm border-typo-outline border !p-2 !font-semibold ',
+            'disabled:bg-white disabled:hover:bg-white hover:bg-slate-100 active:bg-success-slate-200'
+          )}
           disabled={!table.getCanPreviousPage()}
           onClick={() => table.previousPage()}
         >
           <HiChevronLeft size={20} />
-          Prev
         </Button>
         {paginationControl.map((page, index) => (
           <Button
             key={index}
             className={clsxm(
-              'flex min-w-[34px] justify-center rounded-md bg-slate-200 !p-2 !font-semibold text-primary-main hover:bg-white/70',
-              currentPage === page && 'bg-white'
+              'flex min-w-[38px] justify-center rounded-md bg-white text-black drop-shadow-sm border-typo-outline border !p-2 !font-semibold hover:bg-slate-100 active:bg-success-700',
+              currentPage === page &&
+                'bg-success-600 text-white hover:bg-success-700'
             )}
             onClick={() => handlePageControlClick(page)}
           >
@@ -61,14 +64,17 @@ export default function PaginationControl<T extends RowData>({
           </Button>
         ))}
         <Button
-          className='rounded-md !p-2 !font-semibold'
+          color='basic'
+          className={clsxm(
+            'flex min-w-[38px] justify-center rounded-md bg-white text-black drop-shadow-sm border-typo-outline border !p-2 !font-semibold',
+            'disabled:bg-white disabled:hover:bg-white hover:bg-slate-100 active:bg-success-slate-200'
+          )}
           disabled={
             !table.getCanNextPage() ||
             data.length < table.getState().pagination.pageSize
           }
           onClick={() => table.nextPage()}
         >
-          Next
           <HiChevronRight size={20} />
         </Button>
       </div>

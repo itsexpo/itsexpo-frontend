@@ -6,7 +6,6 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import * as React from 'react';
-import { FiList } from 'react-icons/fi';
 
 import Filter from '@/components/table/Filter';
 import PaginationControl from '@/components/table/PaginationControl';
@@ -78,7 +77,6 @@ export default function ServerTable<T extends object>({
         <div className='flex items-center gap-3'>
           {Header}
           <TOption
-            icon={<FiList className='text-typo-secondary' />}
             value={table.getState().pagination.pageSize}
             onChange={(e) => {
               table.setPageSize(Number(e.target.value));
@@ -94,7 +92,7 @@ export default function ServerTable<T extends object>({
       </div>
       <div className='-my-2 -mx-4 mt-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
         <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
-          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg'>
+          <div className='overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-xl'>
             <table className='min-w-full divide-y divide-gray-300'>
               <colgroup>
                 {table.getAllColumns().map((column) => (
