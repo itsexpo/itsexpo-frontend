@@ -11,6 +11,7 @@ const PrimaryLinkVariant = [
   'secondary',
   'critical',
   'discolored',
+  'success',
 ] as const;
 
 type PrimaryLinkProps = {
@@ -61,6 +62,10 @@ const PrimaryLink = React.forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
           variant == 'discolored' && [
             'text-discolored-500 hover:text-discolored-600 active:text-discolored-600',
             'focus-visible:ring-discolored-400',
+          ],
+          variant == 'success' && [
+            'text-success-500 hover:text-success-600 active:text-success-600',
+            'focus-visible:ring-success-400',
           ],
           //*======== Variant ===========
           className
