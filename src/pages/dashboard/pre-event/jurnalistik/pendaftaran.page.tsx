@@ -5,7 +5,7 @@ import withAuth from '@/components/hoc/withAuth';
 import Loading from '@/components/Loading';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import FormPendaftaran from '@/pages/dashboard/pre-event/jurnalistik/container/form-pendaftaran';
+import FormPendaftaran from '@/pages/dashboard/pre-event/jurnalistik/container/PendaftaranForm';
 import useAuthStore from '@/store/useAuthStore';
 
 export default withAuth(PendaftaranJurnalistikDashboardPage, []);
