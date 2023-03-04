@@ -41,7 +41,7 @@ function AboutUs() {
         {/* About Us */}
         <section id='about-us'>
           <div className='relative overflow-hidden min-h-screen'>
-            <div className='justify-center md:w-fit md:mx-auto items-center pt-24 z-10 md:pt-44'>
+            <div className='justify-center md:w-fit md:mx-auto items-center pt-24 z-10 md:pt-32'>
               <div className='flex-col pt-28 relative md:flex'>
                 <Typography
                   variant='h1'
@@ -63,7 +63,7 @@ function AboutUs() {
                   <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
                 </UnstyledLink>
               </div>
-              <div className='w-full flex justify-between md:absolute md:max-w-lg md:top-44'>
+              <div className='w-full flex justify-between md:absolute md:max-w-lg md:top-40'>
                 <NextImage
                   src='/aboutus/hero-left-bird.png'
                   alt='Hero Left Bird Image'
@@ -185,14 +185,14 @@ function AboutUs() {
               alt='sejarah mobile background'
               width='334'
               height='2000'
-              className='absolute w-[334px] sm:w-[500px] block h-full md:hidden'
+              className='absolute w-[334px] sm:w-[600px] block h-full md:hidden'
             />
             <NextImage
               src='/aboutus/background-sejarah-desktop.png'
               alt='sejarah desktop background'
               width='688'
               height='2401'
-              className='absolute hidden w-full md:max-w-[688px] md:block h-full'
+              className='absolute hidden w-full md:max-w-[900px] xl:max-w-[1000px] layout md:block h-full'
             />
             <div className='absolute w-full top-[12%] h-full md:top-[15%] flex justify-between items-end'>
               <NextImage
@@ -230,7 +230,7 @@ function AboutUs() {
               className={clsxm(
                 'relative w-full md:w-8/12 lg:w-5/12',
                 'flex flex-col items-center gap-y-10 md:gap-y-20',
-                'p-7 md:p-0 font-secondary pt-10'
+                'p-7 md:mt-12 font-secondary pt-10 md:pt-0 overflow-hidden'
               )}
             >
               <div
@@ -241,7 +241,7 @@ function AboutUs() {
                 data-aos='fade-up'
                 data-aos-offset='200'
               >
-                <div className='w-1 h-full bg-typo md:mr-0 mr-44 sm:mr-72' />
+                <div className='w-1 h-full bg-typo md:mr-0  mr-44 sm:mr-72' />
               </div>
 
               {sejarahITSExpo.map((content, index) => {
@@ -267,8 +267,10 @@ function AboutUs() {
                         'flex flex-col items-center gap-y-2 md:gap-y-0',
                         'text-start md:col-span-1',
                         [
-                          parity === 'odd' && 'md:col-start-1 md:text-right ',
-                          parity === 'even' && 'md:col-start-5 md:text-left',
+                          parity === 'odd' &&
+                            'md:col-start-1 md:text-right md:mr-10',
+                          parity === 'even' &&
+                            'md:col-start-5 md:text-left md:ml-10',
                         ]
                       )}
                       data-aos={
@@ -329,31 +331,43 @@ function AboutUs() {
                     variant='green'
                     size='large'
                     className={clsx([
-                      'bg-turquoise-500 text-typo-white  w-1/2  ',
+                      'bg-turquoise-500  w-1/2  ',
                       tema === 0 && 'border border-white',
                     ])}
                     onClick={() => setTema(0)}
                   >
-                    Grand Theme
+                    <Typography
+                      variant='b1'
+                      className='font-secondary font-semibold text-typo-white'
+                    >
+                      Grand Theme
+                    </Typography>
                   </Button>
                   <Button
                     variant='green'
                     size='large'
                     className={clsx([
-                      'bg-turquoise-500 text-typo-white w-1/2 z-50',
+                      'bg-turquoise-500 text-typo-white font-secondary font-semibold w-1/2 z-50',
                       tema === 1 && 'border border-white',
                     ])}
                     onClick={() => setTema(1)}
                   >
-                    Slogan
+                    <Typography
+                      variant='b1'
+                      className='font-secondary font-semibold text-typo-white'
+                    >
+                      Slogan
+                    </Typography>
                   </Button>
                 </div>
                 <div className='w-full h-96 md:h-full border-4 rounded-lg border-white/95 bg-white bg-opacity-30 overflow-hidden relative'>
                   <NextImage
                     src='/aboutus/tema-bg-card.png'
                     alt='tema card background'
-                    width={400}
-                    height={400}
+                    layout='fill'
+                    width={500}
+                    height={500}
+                    objectFit='cover'
                     className='absolute w-full h-full'
                   />
                   {tema === 1 ? (
@@ -482,7 +496,7 @@ function AboutUs() {
         </section>
 
         {/* Mascot */}
-        <section id='mascot' className='relative'>
+        <section id='mascot' className='relative '>
           <Typography
             variant='h1'
             as='h1'
@@ -495,7 +509,7 @@ function AboutUs() {
 
           <MascotBackground />
 
-          <div className='flex flex-col md:flex-row justify-center relative sm:max-w-xl md:max-w-7xl sm:mx-auto lg:gap-x-4 xl:gap-x-48 pb-24'>
+          <div className='flex flex-col md:flex-row justify-center relative sm:max-w-xl md:max-w-7xl sm:mx-auto lg:gap-x-4 xl:gap-x-48 pb-24 '>
             <NextImage
               src='/aboutus/particle2-3.png'
               height={150}

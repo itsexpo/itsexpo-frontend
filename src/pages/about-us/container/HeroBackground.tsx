@@ -95,7 +95,7 @@ function HeroBackground() {
           data-aos-delay='600'
         />
         <NextImage
-          className='-bottom-1 left-10 sm:bottom-8  md:bottom-0 md:left-0 w-[180vw] scale-[1.35] md:scale-100 md:w-full md:block absolute'
+          className='-bottom-2 left-10 sm:bottom-8  md:bottom-0 md:left-0 w-[180vw] scale-[1.35] md:scale-100 md:w-full md:block absolute'
           alt='hero mountain'
           width={200}
           height={30}
