@@ -20,7 +20,7 @@ function HeroBackground() {
         src='/aboutus/hero-particle.png'
         width={75}
         height={75}
-        className='absolute md:right-[35%] right-[25%] w-[10%] max-w-[75px] bottom-96 md:bottom-64'
+        className='absolute md:right-[35%] right-[25%] w-[10%] max-w-[75px] bottom-60 md:bottom-64'
         alt='hero particle'
         data-aos='fade-up'
         data-aos-delay='600'
@@ -39,7 +39,7 @@ function HeroBackground() {
         src='/aboutus/hero-right-wayang.png'
         width='750'
         height='1000'
-        className='absolute right-0 top-0   hidden md:block'
+        className='absolute right-0 bottom-0 h-screen  hidden md:block'
         alt='hero wayang'
         data-aos='fade-left'
         data-aos-delay='800'
@@ -63,24 +63,6 @@ function HeroBackground() {
         data-aos-delay='700'
       />
       <NextImage
-        src='/aboutus/hero-left-bird.png'
-        alt='hero bird'
-        width={200}
-        height={240}
-        className='absolute -left-10 top-80 md:hidden'
-        data-aos='fade-right'
-        data-aos-delay='600'
-      />
-      <NextImage
-        src='/aboutus/hero-right-bird.png'
-        alt='hero bird'
-        width={200}
-        height={240}
-        className='absolute -right-10 top-80 md:hidden'
-        data-aos='fade-left'
-        data-aos-delay='600'
-      />
-      <NextImage
         src='/aboutus/hero-cloud-right.png'
         alt='hero cloud'
         className='absolute right-0 top-28 hidden md:block'
@@ -102,18 +84,9 @@ function HeroBackground() {
       {/* Hero bottom clouds and mountain */}
       <div className='absolute w-full bottom-6 sm:bottom-0  flex'>
         <NextImage
-          width={600}
-          height={400}
-          className='w-full h-full md:hidden -bottom-10'
-          src='/aboutus/hero-mobile-mountain.png'
-          alt='hero mobile mountain'
-          layout='responsive'
-          priority={true}
-        />
-        <NextImage
           width={500}
           height={170}
-          className='hidden h-full w-[60%] md:block mx-auto '
+          className='absolute bottom-[45vw] -left-10 scale-[1.6]  h-full w-[120vw] md:w-[60%] md:max-w-4xl md:left-0 md:scale-100 md:block md:relative md:bottom-0  md:mx-auto '
           layout='responsive'
           src='/aboutus/hero-mountain.png'
           alt='hero mountain'
@@ -122,15 +95,7 @@ function HeroBackground() {
           data-aos-delay='600'
         />
         <NextImage
-          className='absolute -bottom-10 w-full md:hidden z-0'
-          alt='hero mountain'
-          width={300}
-          height={150}
-          src='/aboutus/mountain-cloud-hero.png'
-          priority={true}
-        />
-        <NextImage
-          className='bottom-0 w-full hidden md:block absolute'
+          className='-bottom-1 left-10 sm:bottom-8  md:bottom-0 md:left-0 w-[180vw] scale-[1.35] md:scale-100 md:w-full md:block absolute'
           alt='hero mountain'
           width={200}
           height={30}
