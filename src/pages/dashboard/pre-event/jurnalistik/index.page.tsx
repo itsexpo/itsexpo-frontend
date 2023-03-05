@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import withAuth from '@/components/hoc/withAuth';
-import ButtonLink from '@/components/links/ButtonLink';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
+import TampilanAwal from '@/pages/dashboard/pre-event/jurnalistik/container/TampilanAwal';
 import useAuthStore from '@/store/useAuthStore';
 
 export default withAuth(JurnalistikDashboardPage, []);
@@ -23,17 +23,8 @@ function JurnalistikDashboardPage() {
             <Breadcrumb crumbs={['/dashboard/pre-event/jurnalistik']} />
           </div>
         </header>
-        <main>
-          {!user?.pre_event ? (
-            <ButtonLink
-              href='/dashboard/pre-event/jurnalistik/pendaftaran'
-              className='bg-primary-500 hover:bg-primary-600 text-white'
-            >
-              Pendaftaran
-            </ButtonLink>
-          ) : (
-            <p>Anda sudah mendaftar</p>
-          )}
+        <main className='mt-8'>
+          {!user?.pre_event ? <TampilanAwal /> : <p>Anda sudah mendaftar</p>}
         </main>
       </div>
     </DashboardLayout>
