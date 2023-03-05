@@ -228,9 +228,9 @@ function AboutUs() {
             {/* Sejarah Content */}
             <div
               className={clsxm(
-                'relative w-full md:w-8/12 lg:w-5/12',
+                'relative w-full layout lg:w-7/12 overflow-hidden lg:overflow-visible',
                 'flex flex-col items-center gap-y-10 md:gap-y-20',
-                'p-7 md:mt-12 font-secondary pt-10 md:pt-0 overflow-hidden'
+                'p-7 md:mt-12 font-secondary pt-10 md:pt-0 '
               )}
             >
               <div
@@ -251,13 +251,13 @@ function AboutUs() {
                   <div
                     key={index}
                     className={clsxm(
-                      'grid grid-rows-1 grid-cols-2 md:grid-cols-5 overflow-hidden md:overflow-visible',
+                      'grid grid-rows-1 grid-cols-2 md:grid-cols-5',
                       'md:gap-x-8 gap-y-2 md:gap-y-0',
                       'md:grid-flow-col-dense'
                     )}
                   >
                     <div
-                      className='md:col-start-3 flex justify-center items-center '
+                      className='md:col-start-3 flex justify-center items-center'
                       data-aos='fade-up'
                     >
                       <NextImage {...content.img} />
@@ -265,12 +265,12 @@ function AboutUs() {
                     <div
                       className={clsxm(
                         'flex flex-col items-center gap-y-2 md:gap-y-0',
-                        'text-start md:col-span-1',
+                        'text-start md:col-span-2',
                         [
                           parity === 'odd' &&
-                            'md:col-start-1 md:text-right md:mr-10',
+                            'md:col-start-1 md:text-right lg:mr-10',
                           parity === 'even' &&
-                            'md:col-start-5 md:text-left md:ml-10',
+                            'md:col-start-4 md:text-left lg:ml-10',
                         ]
                       )}
                       data-aos={
@@ -281,13 +281,13 @@ function AboutUs() {
                     >
                       <Typography
                         variant='h6'
-                        className='w-full font-bold text-typo-white md:w-96'
+                        className='w-full font-bold text-typo-white md:w-72 lg:w-96'
                       >
                         {content.year}
                       </Typography>
                       <Typography
                         variant='b2'
-                        className='text-typo-white w-44 sm:w-72 md:w-96'
+                        className='text-typo-white w-44 sm:w-72 md:w-72 lg:w-96 md:break-words'
                       >
                         {content.caption}
                       </Typography>
@@ -360,18 +360,9 @@ function AboutUs() {
                     </Typography>
                   </Button>
                 </div>
-                <div className='w-full h-96 md:h-full border-4 rounded-lg border-white/95 bg-white bg-opacity-30 overflow-hidden relative'>
-                  <NextImage
-                    src='/aboutus/tema-bg-card.png'
-                    alt='tema card background'
-                    layout='fill'
-                    width={500}
-                    height={500}
-                    objectFit='cover'
-                    className='absolute w-full h-full'
-                  />
+                <div className="w-full h-96 md:h-full border-4 rounded-lg border-white/95 bg-white bg-opacity-30 overflow-hidden relative bg-[url('/images/aboutus/tema-bg-card.png')] bg-cover">
                   {tema === 1 ? (
-                    <div className='px-5 py-7 md:py-11 md:px-12 flex flex-col lg:justify-start md:gap-y-11 justify-between sm:justify-around h-full w-full'>
+                    <div className='px-5 py-7 md:py-11 md:px-12 flex flex-col lg:justify-start md:gap-y-11  sm:justify-around h-full w-full '>
                       <Typography
                         variant='t'
                         className='font-secondary md:hidden font-bold text-navy-100'
@@ -384,24 +375,15 @@ function AboutUs() {
                       >
                         Salam Seni, Ilmu, dan Budaya
                       </Typography>
-                      <ul className='pt-5'>
+                      <ul className='pt-10 sm:pt-0 flex flex-col gap-y-2'>
                         {slogan.map((content, index) => (
                           <li
-                            className='list-item list-disc mx-4  text-typo-white'
+                            className='list-item list-disc mx-4  pb-0 md:pb-4 lg:pb-10  text-typo-white'
                             key={index}
                           >
                             <Typography
                               variant='t'
-                              className='md:hidden text-navy-100'
-                            >
-                              <span className='font-semibold'>
-                                {content.title}
-                              </span>
-                              {content.caption}
-                            </Typography>
-                            <Typography
-                              variant='h5'
-                              className='hidden md:block text-navy-100  ml-4'
+                              className='font-secondary text-navy-100  ml-4'
                             >
                               <span className='font-semibold'>
                                 {content.title}
