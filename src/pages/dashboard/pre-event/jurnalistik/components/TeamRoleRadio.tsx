@@ -46,7 +46,7 @@ export default function TeamRoleRadio({
             <RadioGroup.Label className='text-sm font-semibold '>
               {label}
             </RadioGroup.Label>
-            <div className='gap-x-4 flex flex-wrap mt-1'>
+            <div className='gap-4 flex flex-wrap mt-1'>
               {options.map((item) => (
                 <RadioGroup.Option
                   key={item.value}
@@ -59,7 +59,7 @@ export default function TeamRoleRadio({
                       ? 'bg-success-100 text-success-600 border border-success-500'
                       : 'bg-white border border-typo-outline'
                   }
-                    relative flex cursor-pointer rounded-lg px-20 py-5 focus:outline-none`
+                    relative flex cursor-pointer rounded-lg px-12 md:px-20 py-5 focus:outline-none`
                   }
                 >
                   {({ checked }) => (
