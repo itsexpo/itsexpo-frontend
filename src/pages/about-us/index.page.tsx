@@ -41,12 +41,12 @@ function AboutUs() {
         {/* About Us */}
         <section id='about-us'>
           <div className='relative overflow-hidden min-h-screen'>
-            <div className='relative justify-center space-x-10 w-fit mx-auto items-center hidden md:flex pt-24 z-10'>
-              <div className='flex-col pt-28 hidden md:flex'>
+            <div className='justify-center md:w-fit md:mx-auto items-center pt-24 z-10 md:pt-32'>
+              <div className='flex-col pt-28 relative md:flex'>
                 <Typography
                   variant='h1'
                   as='h1'
-                  className='font-primary text-center'
+                  className='font-primary text-center w-full'
                   data-aos='fade-up'
                 >
                   about its expo
@@ -63,44 +63,26 @@ function AboutUs() {
                   <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
                 </UnstyledLink>
               </div>
-              <NextImage
-                src='/aboutus/hero-left-bird.png'
-                alt='Hero Left Bird Image'
-                width={200}
-                height={250}
-                className='pt-10 -left-72 absolute '
-                data-aos='fade-right'
-                data-aos-delay='400'
-              />
-              <NextImage
-                src='/aboutus/hero-right-bird.png'
-                alt='Hero Right Bird Image'
-                width={190}
-                height={250}
-                className='pt-10 -right-56 absolute'
-                data-aos='fade-left'
-                data-aos-delay='400'
-              />
-            </div>
-            <div className='flex flex-col md:hidden pt-44'>
-              <Typography
-                variant='h1'
-                as='h1'
-                className='font-primary text-center'
-              >
-                about its expo
-              </Typography>
-              <UnstyledLink
-                href='#about'
-                className={clsxm(
-                  'mt-10 w-10 h-10 flex mx-auto justify-center items-center rounded-full bg-success-600',
-                  'animate-bounce'
-                )}
-                data-aos='fade-up'
-                data-aos-delay='200'
-              >
-                <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
-              </UnstyledLink>
+              <div className='w-full flex justify-between md:absolute md:max-w-lg md:top-40'>
+                <NextImage
+                  src='/aboutus/hero-left-bird.png'
+                  alt='Hero Left Bird Image'
+                  width={200}
+                  height={250}
+                  className='md:pt-10 md:-left-60 -left-10 absolute '
+                  data-aos='fade-right'
+                  data-aos-delay='400'
+                />
+                <NextImage
+                  src='/aboutus/hero-right-bird.png'
+                  alt='Hero Right Bird Image'
+                  width={190}
+                  height={250}
+                  className='md:pt-10 md:-right-20 absolute -right-10 '
+                  data-aos='fade-left'
+                  data-aos-delay='400'
+                />
+              </div>
             </div>
             {/* Hero Background */}
             <HeroBackground />
@@ -203,14 +185,14 @@ function AboutUs() {
               alt='sejarah mobile background'
               width='334'
               height='2000'
-              className='absolute block h-full md:hidden'
+              className='absolute w-[334px] sm:w-[600px] block h-full md:hidden'
             />
             <NextImage
               src='/aboutus/background-sejarah-desktop.png'
               alt='sejarah desktop background'
               width='688'
               height='2401'
-              className='absolute hidden md:block h-full'
+              className='absolute hidden w-full md:max-w-[900px] xl:max-w-[1000px] layout md:block h-full'
             />
             <div className='absolute w-full top-[12%] h-full md:top-[15%] flex justify-between items-end'>
               <NextImage
@@ -246,9 +228,9 @@ function AboutUs() {
             {/* Sejarah Content */}
             <div
               className={clsxm(
-                'relative w-full md:w-8/12 lg:w-5/12',
+                'relative w-full layout lg:w-7/12 overflow-hidden lg:overflow-visible',
                 'flex flex-col items-center gap-y-10 md:gap-y-20',
-                'p-7 md:p-0 font-secondary pt-10'
+                'p-7 md:mt-12 font-secondary pt-10 md:pt-0 '
               )}
             >
               <div
@@ -259,7 +241,7 @@ function AboutUs() {
                 data-aos='fade-up'
                 data-aos-offset='200'
               >
-                <div className='w-1 h-full bg-typo md:mr-0 mr-44 sm:mr-72' />
+                <div className='w-1 h-full bg-typo md:mr-0  mr-44 sm:mr-72' />
               </div>
 
               {sejarahITSExpo.map((content, index) => {
@@ -269,13 +251,13 @@ function AboutUs() {
                   <div
                     key={index}
                     className={clsxm(
-                      'grid grid-rows-1 grid-cols-2 md:grid-cols-5 overflow-hidden md:overflow-visible',
+                      'grid grid-rows-1 grid-cols-2 md:grid-cols-5',
                       'md:gap-x-8 gap-y-2 md:gap-y-0',
                       'md:grid-flow-col-dense'
                     )}
                   >
                     <div
-                      className='md:col-start-3 flex justify-center items-center '
+                      className='md:col-start-3 flex justify-center items-center'
                       data-aos='fade-up'
                     >
                       <NextImage {...content.img} />
@@ -283,10 +265,12 @@ function AboutUs() {
                     <div
                       className={clsxm(
                         'flex flex-col items-center gap-y-2 md:gap-y-0',
-                        'text-start md:col-span-1',
+                        'text-start md:col-span-2',
                         [
-                          parity === 'odd' && 'md:col-start-1 md:text-right',
-                          parity === 'even' && 'md:col-start-5 md:text-left',
+                          parity === 'odd' &&
+                            'md:col-start-1 md:text-right lg:mr-10',
+                          parity === 'even' &&
+                            'md:col-start-4 md:text-left lg:ml-10',
                         ]
                       )}
                       data-aos={
@@ -297,13 +281,13 @@ function AboutUs() {
                     >
                       <Typography
                         variant='h6'
-                        className='w-full font-bold text-typo-white md:w-96'
+                        className='w-full font-bold text-typo-white md:w-72 lg:w-96'
                       >
                         {content.year}
                       </Typography>
                       <Typography
                         variant='b2'
-                        className='text-typo-white w-44 sm:w-72 md:w-96'
+                        className='text-typo-white w-44 sm:w-72 md:w-72 lg:w-96 md:break-words'
                       >
                         {content.caption}
                       </Typography>
@@ -347,35 +331,38 @@ function AboutUs() {
                     variant='green'
                     size='large'
                     className={clsx([
-                      'bg-turquoise-500 text-typo-white  w-1/2  ',
+                      'bg-turquoise-500  w-1/2  ',
                       tema === 0 && 'border border-white',
                     ])}
                     onClick={() => setTema(0)}
                   >
-                    Grand Theme
+                    <Typography
+                      variant='b1'
+                      className='font-secondary font-semibold text-typo-white'
+                    >
+                      Grand Theme
+                    </Typography>
                   </Button>
                   <Button
                     variant='green'
                     size='large'
                     className={clsx([
-                      'bg-turquoise-500 text-typo-white w-1/2 z-50',
+                      'bg-turquoise-500 text-typo-white font-secondary font-semibold w-1/2 z-50',
                       tema === 1 && 'border border-white',
                     ])}
                     onClick={() => setTema(1)}
                   >
-                    Slogan
+                    <Typography
+                      variant='b1'
+                      className='font-secondary font-semibold text-typo-white'
+                    >
+                      Slogan
+                    </Typography>
                   </Button>
                 </div>
-                <div className='w-full h-80 md:h-full border-4 rounded-lg border-white/95 bg-white bg-opacity-30 overflow-hidden relative'>
-                  <NextImage
-                    src='/aboutus/tema-bg-card.png'
-                    alt='tema card background'
-                    width={400}
-                    height={400}
-                    className='absolute w-full h-full'
-                  />
+                <div className="w-full h-96 md:h-full border-4 rounded-lg border-white/95 bg-white bg-opacity-30 overflow-hidden relative bg-[url('/images/aboutus/tema-bg-card.png')] bg-cover">
                   {tema === 1 ? (
-                    <div className='px-5 py-7 md:py-0 md:px-12 flex flex-col lg:justify-start md:gap-y-11 justify-between sm:justify-around h-full w-full'>
+                    <div className='px-5 py-7 md:py-11 md:px-12 flex flex-col lg:justify-start md:gap-y-11  sm:justify-around h-full w-full '>
                       <Typography
                         variant='t'
                         className='font-secondary md:hidden font-bold text-navy-100'
@@ -384,28 +371,19 @@ function AboutUs() {
                       </Typography>
                       <Typography
                         variant='h5'
-                        className='font-secondary hidden md:block font-bold text-navy-100 md:pt-11'
+                        className='font-secondary hidden md:block font-bold text-navy-100 '
                       >
                         Salam Seni, Ilmu, dan Budaya
                       </Typography>
-                      <ul className='pt-5'>
+                      <ul className='pt-10 sm:pt-0 flex flex-col gap-y-2'>
                         {slogan.map((content, index) => (
                           <li
-                            className='list-item list-disc mx-4  text-typo-white'
+                            className='list-item list-disc mx-4  pb-0 md:pb-4 lg:pb-10  text-typo-white'
                             key={index}
                           >
                             <Typography
                               variant='t'
-                              className='md:hidden text-navy-100'
-                            >
-                              <span className='font-semibold'>
-                                {content.title}
-                              </span>
-                              {content.caption}
-                            </Typography>
-                            <Typography
-                              variant='h5'
-                              className='hidden md:block text-navy-100  ml-4'
+                              className='font-secondary text-navy-100  ml-4'
                             >
                               <span className='font-semibold'>
                                 {content.title}
@@ -417,7 +395,7 @@ function AboutUs() {
                       </ul>
                     </div>
                   ) : (
-                    <div className='px-5 py-7 md:py-0 md:px-12 flex flex-col lg:justify-start md:gap-y-11 justify-between sm:justify-around h-full w-full'>
+                    <div className='px-5 py-7 md:py-11 md:px-12 flex flex-col lg:justify-start md:gap-y-11 justify-between sm:justify-around h-full w-full '>
                       <Typography
                         variant='t'
                         className='font-secondary md:hidden font-bold text-navy-100'
@@ -426,7 +404,7 @@ function AboutUs() {
                       </Typography>
                       <Typography
                         variant='h5'
-                        className='font-secondary hidden md:block font-bold text-navy-100 md:pt-11'
+                        className='font-secondary hidden md:block font-bold text-navy-100 '
                       >
                         Gunita Akatara
                       </Typography>
@@ -500,7 +478,7 @@ function AboutUs() {
         </section>
 
         {/* Mascot */}
-        <section id='mascot' className='relative'>
+        <section id='mascot' className='relative '>
           <Typography
             variant='h1'
             as='h1'
@@ -513,36 +491,27 @@ function AboutUs() {
 
           <MascotBackground />
 
-          <div className='flex flex-col md:flex-row justify-center relative sm:max-w-xl md:max-w-7xl sm:mx-auto lg:gap-x-4 xl:gap-x-48 pb-24'>
+          <div className='flex flex-col md:flex-row justify-center relative sm:max-w-xl md:max-w-7xl sm:mx-auto lg:gap-x-4 xl:gap-x-48 pb-24 '>
             <NextImage
-              src='/aboutus/particle2.png'
-              height={70}
-              width={70}
+              src='/aboutus/particle2-3.png'
+              height={150}
+              width={400}
               className='absolute left-32 -top-16 hidden md:block'
               alt='particle'
               data-aos='fade-right'
               data-aos-delay='100'
             />
-            <NextImage
-              src='/aboutus/particle3.png'
-              height={50}
-              width={50}
-              className='absolute left-[40%] top-14 hidden md:block'
-              alt='particle'
-              data-aos='fade-up'
-              data-aos-delay='100'
-            />
-            <div className='flex flex-col justify-center px-6 md:py-10'>
+            <div className='flex flex-col justify-center px-6 md:py-10 '>
               <NextImage
                 src='/aboutus/saka.png'
-                className='w-full px-4 pt-10 max-w-[375px] mx-auto md:h-[385px]'
+                className='w-full px-4 pt-10 md:pt-0 max-w-[375px] mx-auto md:h-[385px] z-50'
                 height={370}
                 width={365}
-                alt='cloud'
+                alt='saka'
                 data-aos='zoom-in'
                 data-aos-delay='300'
               />
-              <div className='flex flex-col pt-10 md:max-w-lg'>
+              <div className='flex flex-col pt-16 md:pt-10 md:max-w-lg'>
                 <div className='relative w-fit mx-auto px-28 md:px-40'>
                   <Typography
                     variant='h3'
@@ -566,7 +535,7 @@ function AboutUs() {
                   <NextImage
                     height={30}
                     width={30}
-                    className='absolute left-20 top-1 md:left-32 md:top-2'
+                    className='absolute left-20 -top-4 md:left-32 md:top-0'
                     alt='highlight'
                     src='/aboutus/highlight-saka.png'
                     data-aos='fade-down'
@@ -590,13 +559,13 @@ function AboutUs() {
               </div>
             </div>
             <div className='flex flex-col px-6 md:py-10'>
-              <div className='relative'>
+              <div className='relative '>
                 <NextImage
                   src='/aboutus/wana.png'
-                  className='w-full px-4 pt-10 md:max-w-[400px] mx-auto md:h-[385px]'
+                  className='w-full px-4 pt-10 md:max-w-[420px] mx-auto md:h-[385px] z-50'
                   height={253}
                   width={325}
-                  alt='cloud'
+                  alt='wana'
                   data-aos='zoom-in'
                   data-aos-delay='300'
                 />
@@ -610,7 +579,7 @@ function AboutUs() {
                   data-aos-delay='200'
                 />
               </div>
-              <div className='flex-col flex pt-10 md:max-w-lg'>
+              <div className='flex-col flex pt-16 md:pt-20 md:max-w-lg'>
                 <div className='relative w-fit mx-auto px-28 md:px-40'>
                   <Typography
                     variant='h3'
@@ -623,25 +592,7 @@ function AboutUs() {
                     wana
                   </Typography>
                   <NextImage
-                    className='absolute right-10 bottom-6 md:hidden'
-                    alt='particle'
-                    height={20}
-                    width={20}
-                    src='/aboutus/particle.png'
-                    data-aos='fade-down'
-                    data-aos-delay='200'
-                  />
-                  <NextImage
-                    className='absolute md:right-0 md:top-0 hidden md:block top-10 md:w-16 w-10 left-10'
-                    alt='particle'
-                    height={40}
-                    width={40}
-                    src='/aboutus/particle.png'
-                    data-aos='fade-down'
-                    data-aos-delay='200'
-                  />
-                  <NextImage
-                    className='hidden md:block absolute -right-24 -bottom-20'
+                    className='absolute -right-10 -bottom-16  md:-right-24 md:-bottom-20 w-4 md:w-10'
                     src='/aboutus/particle3.png'
                     alt='particle'
                     height={40}
@@ -652,7 +603,7 @@ function AboutUs() {
                   <NextImage
                     height={30}
                     width={30}
-                    className='absolute right-20 md:right-32 top-2'
+                    className='absolute right-20 md:right-32 -top-4 md:top-0'
                     alt='highlight'
                     src='/aboutus/highlight-wana.png'
                     data-aos='fade-down'
@@ -765,34 +716,12 @@ function AboutUs() {
               sebuah cerita di ITS. ITS EXPO, Salam Seni, Ilmu, dan Budaya.”
             </Typography>
           </div>
-
           <NextImage
-            src='/aboutus/pm-particle1.png'
+            src='/aboutus/pm-particles.png'
             alt='past memories particle'
-            height={25}
-            width={25}
-            className='absolute top-10 left-10'
-          />
-          <NextImage
-            src='/aboutus/pm-particle2.png'
-            alt='past memories particle'
-            height={40}
-            width={40}
-            className='absolute top-20 right-10'
-          />
-          <NextImage
-            src='/aboutus/pm-particle3.png'
-            alt='past memories particle'
-            height={40}
-            width={40}
-            className='absolute top-72 left-8'
-          />
-          <NextImage
-            src='/aboutus/pm-particle4.png'
-            alt='past memories particle'
-            height={20}
-            width={20}
-            className='absolute top-80 right-28'
+            height={80}
+            width={90}
+            className='absolute top-12 md:hidden w-full max-w-sm sm:max-w-lg left-1/2 -translate-x-1/2'
           />
           <NextImage
             src='/aboutus/memories-flower-right.png'
