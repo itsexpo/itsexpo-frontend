@@ -25,7 +25,39 @@ export type Level =
     }
   | {
       id: '3';
-      name: 'KADIV';
+      name: 'SMP/Sederajat';
+    }
+  | {
+      id: '4';
+      name: 'SMA/Sederajat';
+    }
+  | {
+      id: '5';
+      name: 'Mahasiswa';
+    }
+  | {
+      id: '6';
+      name: 'Umum';
+    }
+  | {
+      id: '7';
+      name: 'BPH';
+    }
+  | {
+      id: '8';
+      name: 'Event';
+    }
+  | {
+      id: '9';
+      name: 'Marketing';
+    }
+  | {
+      id: '10';
+      name: 'Branding';
+    }
+  | {
+      id: '11';
+      name: 'Damen';
     };
 
 export type RoleColumn = {
