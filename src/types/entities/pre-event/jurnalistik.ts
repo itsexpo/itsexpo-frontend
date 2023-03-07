@@ -28,6 +28,18 @@ export interface Jurnalistik {
   share_poster: FileWithPreview[];
 }
 
+export type TimelineJurnalistikData = {
+  img: ExtractProps<typeof NextImage>;
+  date: string;
+  caption: string;
+};
+
+export type JurnalistikSubContestData = {
+  img: ExtractProps<typeof NextImage>;
+  title: string;
+  caption: string;
+};
+
 export type JuriJurnalistikData = {
   img: ExtractProps<typeof NextImage>;
   name: string;

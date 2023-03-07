@@ -13,7 +13,7 @@ function JurnalistikDashboardPage() {
   const user = useAuthStore.useUser();
 
   return (
-    <DashboardLayout>
+    <DashboardLayout className='bg-typo-surface'>
       <div className='dashboard-layout min-h-screen'>
         <header className=''>
           <div className='flex justify-between items-center'>
@@ -24,7 +24,11 @@ function JurnalistikDashboardPage() {
           </div>
         </header>
         <main className='mt-8'>
-          {!user?.pre_event ? <TampilanAwal /> : <p>Anda sudah mendaftar</p>}
+          {!user?.pre_event.jurnalistik ? (
+            <TampilanAwal />
+          ) : (
+            <p>Anda sudah mendaftar</p>
+          )}
         </main>
       </div>
     </DashboardLayout>

@@ -1,7 +1,87 @@
 import {
   HadiahJurnalistikData,
   JuriJurnalistikData,
+  JurnalistikSubContestData,
+  TimelineJurnalistikData,
 } from '@/types/entities/pre-event/jurnalistik';
+
+export const jurnalistikClosedDate: Date = new Date('May 01, 2023 23:59:59');
+
+export const timelineJurnalistik: TimelineJurnalistikData[] = [
+  {
+    img: {
+      src: '/landing/timeline-1.png',
+      alt: 'timeline illustration 1',
+      width: '121',
+      height: '66',
+    },
+    date: '1 April - 1 Mei 2023',
+    caption: 'Masa Pendaftaran',
+  },
+  {
+    img: {
+      src: '/landing/timeline-2.png',
+      alt: 'timeline illustration 2',
+      width: '121',
+      height: '66',
+    },
+    date: '27 Mei 2023',
+    caption: 'Technical Meeting',
+  },
+  {
+    img: {
+      src: '/landing/timeline-3.png',
+      alt: 'timeline illustration 3',
+      width: '121',
+      height: '66',
+    },
+    date: '2 - 4 Juni 2023',
+    caption: 'Pelaksanaan Lomba 1',
+  },
+  {
+    img: {
+      src: '/landing/timeline-4.png',
+      alt: 'timeline illustration 4',
+      width: '121',
+      height: '66',
+    },
+    date: '9 - 11 Juni 2023',
+    caption: 'Pelaksanaan Lomba 2',
+  },
+  {
+    img: {
+      src: '/landing/timeline-1.png',
+      alt: 'timeline illustration 1',
+      width: '121',
+      height: '66',
+    },
+    date: '21 Juni 2023',
+    caption: 'Pengumuman Pemenang',
+  },
+];
+
+export const jurnalistikSubContest: JurnalistikSubContestData[] = [
+  {
+    img: {
+      src: '/dashboard/pre-event/jurnalistik/tampilan-awal/cabang-lomba-1.png',
+      alt: 'SMA/SMK Jurnalistik Sub Contest',
+      width: 1525,
+      height: 1024,
+    },
+    title: 'Liputan Video Blogger',
+    caption: 'SMA/SMK Sederajat',
+  },
+  {
+    img: {
+      src: '/dashboard/pre-event/jurnalistik/tampilan-awal/cabang-lomba-2.png',
+      alt: 'Mahasiswa/Umum Jurnalistik Sub Contest',
+      width: 1525,
+      height: 1024,
+    },
+    title: 'Liputan Televisi',
+    caption: 'Mahasiswa/Umum',
+  },
+];
 
 export const juriJurnalistikContents: JuriJurnalistikData[] = [
   {
