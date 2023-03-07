@@ -20,7 +20,7 @@ export default function HadiahCard() {
             <NextImage
               {...img}
               className='w-full'
-              imgClassName='rounded-[25px]'
+              imgClassName='rounded-[18px] md:rounded-[25px]'
             />
             <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
               <Typography variant='p' className='font-semibold text-white'>

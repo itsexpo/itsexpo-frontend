@@ -2,49 +2,32 @@ import React from 'react';
 import { RxChevronDown } from 'react-icons/rx';
 
 import Typography from '@/components/typography/Typography';
-import clsxm from '@/lib/clsxm';
 import { FAQJurnalistikData } from '@/types/entities/pre-event/jurnalistik';
 
 const Accordion = ({ title, content }: FAQJurnalistikData) => {
-  const [showAccordion, setShowAccordion] = React.useState<boolean>(false);
-
   return (
-    <div className='flex flex-col p-4 bg-typo-surface rounded-lg'>
-      <div
-        className={clsxm(
-          'cursor-pointer text-typo flex justify-between items-center',
-          'transition-all ease-in-out duration-500'
-        )}
-        onClick={() => setShowAccordion(!showAccordion)}
-      >
+    <button className='group bg-typo-surface rounded-lg focus:outline-none'>
+      <div className='flex items-center justify-between p-4 bg-typo-surface rounded-lg'>
         <Typography
           variant='b2'
-          className='text-sm md:text-base font-semibold md:font-bold cursor-pointer text-typo-label'
+          as='h6'
+          className='font-medium text-left text-[14px] md:text-base'
         >
           {title}
         </Typography>
-        <RxChevronDown
-          className={clsxm(
-            'transition-all ease-in-out duration-200 cursor-pointer',
-            showAccordion && 'rotate-180'
-          )}
-        />
+        <RxChevronDown className='text-typo-secondary w-4 h-4' />
       </div>
-      <div
-        className={clsxm(
-          'mt-0 max-h-0 transition-all ease-in-out duration-500 invisible opacity-0 rounded-b-xl',
-          showAccordion && 'mt-2 max-h-64 block visible opacity-100'
-        )}
-      >
-        <Typography
-          variant='c'
-          color='secondary'
-          className='text-xs md:text-sm min-h-max text-typo-secondary'
-        >
-          {content}
-        </Typography>
+      <div>
+        <div className='px-4 max-h-0 overflow-hidden duration-300 group-focus:max-h-96 md:group-focus:max-h-60 text-left'>
+          <Typography
+            variant='b2'
+            className='pb-4 text-typo-secondary text-[13px] md:text-sm'
+          >
+            {content}
+          </Typography>
+        </div>
       </div>
-    </div>
+    </button>
   );
 };
 
