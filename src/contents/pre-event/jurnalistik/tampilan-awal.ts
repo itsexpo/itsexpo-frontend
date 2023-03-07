@@ -223,7 +223,7 @@ export const FAQJurnalistikContents: FAQJurnalistikData[] = [
   {
     title: 'Apa saja benefit yang didapatkan jika kita mengikuti lomba ini?',
     content:
-      'Peserta dapat mengasah dan meningkatkan kemampuan berpikir kritis serta berbicara di depan khalayak umum dalam menyampaikan informasi. Selain itu, seluruh peserta juga akan mendapatkan e-sertifikat. Untuk pemenang di masing-masing kategori lomba akan mendapatkan: Kontol',
+      'Peserta dapat mengasah dan meningkatkan kemampuan berpikir kritis serta berbicara di depan khalayak umum dalam menyampaikan informasi. Selain itu, seluruh peserta juga akan mendapatkan e-sertifikat. Untuk pemenang (juara 1, 2, dan 3) di masing-masing kategori lomba akan mendapatkan uang pembinaan, trofi, dan sertifikat.',
   },
   {
     title:

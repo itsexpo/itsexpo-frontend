@@ -17,14 +17,14 @@ export default function TimelineCard() {
         Timeline Penting
       </Typography>
 
-      <div className='relative w-full grid grid-cols-5'>
-        <div className='absolute top-7 w-full h-fit flex justify-center'>
-          <div className='w-10/12 h-0.5 bg-typo-outline' />
+      <div className='relative w-full grid grid-cols-1 md:grid-cols-5 gap-6'>
+        <div className='absolute top-7 w-full h-full md:h-fit flex justify-center'>
+          <div className='w-0.5 h-5/6 md:w-10/12 md:h-0.5 bg-typo-outline' />
         </div>
 
         {timelineJurnalistik.map((content, index) => (
           <div key={index} className='flex flex-col items-center gap-4'>
-            <div className='w-6/12'>
+            <div className='w-3/12 md:w-6/12'>
               <NextImage
                 {...content.img}
                 className='w-full'
@@ -32,7 +32,7 @@ export default function TimelineCard() {
               />
             </div>
 
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center z-0'>
               <Typography
                 as='p'
                 variant='b1'

@@ -9,11 +9,11 @@ const Accordion = ({ title, content }: FAQJurnalistikData) => {
   const [showAccordion, setShowAccordion] = React.useState<boolean>(false);
 
   return (
-    <div className='mt-4'>
+    <div className='flex flex-col p-4 bg-typo-surface rounded-lg'>
       <div
         className={clsxm(
-          'cursor-pointer px-6 py-4 bg-typo-surface text-typo rounded-xl transition-all ease-in-out duration-500 flex justify-between items-center',
-          showAccordion && 'rounded-b-none'
+          'cursor-pointer text-typo flex justify-between items-center',
+          'transition-all ease-in-out duration-500'
         )}
         onClick={() => setShowAccordion(!showAccordion)}
       >
@@ -32,8 +32,8 @@ const Accordion = ({ title, content }: FAQJurnalistikData) => {
       </div>
       <div
         className={clsxm(
-          'bg-typo-surface px-6 h-0 transition-all ease-in-out duration-500 invisible opacity-0 rounded-b-xl',
-          showAccordion && 'h-64 md:h-32 min-h-max block visible opacity-100'
+          'mt-0 max-h-0 transition-all ease-in-out duration-500 invisible opacity-0 rounded-b-xl',
+          showAccordion && 'mt-2 max-h-64 block visible opacity-100'
         )}
       >
         <Typography

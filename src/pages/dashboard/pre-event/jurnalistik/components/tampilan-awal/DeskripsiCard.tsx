@@ -10,7 +10,7 @@ export default function DeskripsiCard() {
   const [days, hours, minutes] = useCountdown(jurnalistikClosedDate);
 
   return (
-    <div className='flex gap-6'>
+    <div className='flex flex-col-reverse md:flex-row gap-6'>
       <div
         className={clsxm(
           'flex flex-col rounded-xl p-6 gap-2',
@@ -20,11 +20,16 @@ export default function DeskripsiCard() {
         <Typography
           as='h6'
           variant='h6'
-          className='font-bold text-typo-primary'
+          className='font-bold text-typo-primary text-center md:text-left'
         >
           Apa Itu Journalistic?
         </Typography>
-        <Typography as='p' variant='b1' color='secondary'>
+        <Typography
+          as='p'
+          variant='b1'
+          color='secondary'
+          className='text-center md:text-left'
+        >
           Journalistic merupakan salah satu ajang lomba bergengsi dari cabang
           kompetisi ITS Expo 2023 yang mewadahi peserta untuk menuangkan
           kreativitasnya di bidang fotografi, videografi, penyiaran, dan
@@ -41,7 +46,7 @@ export default function DeskripsiCard() {
 
       <div
         className={clsxm(
-          'flex flex-col justify-between items-center rounded-xl',
+          'h-fit flex flex-col items-center rounded-xl',
           'bg-typo-white shadow-pendaftaran p-6 gap-4'
         )}
       >
@@ -53,10 +58,10 @@ export default function DeskripsiCard() {
           Pendaftaran Ditutup
         </Typography>
 
-        <div className='flex items-center gap-2'>
+        <div className='w-full flex items-center gap-2'>
           <div
             className={clsxm(
-              'w-20 flex flex-col items-center p-3',
+              'w-full md:w-20 flex flex-col items-center p-3',
               'rounded-md bg-typo-surface'
             )}
           >
@@ -77,7 +82,7 @@ export default function DeskripsiCard() {
             :
           </Typography>
 
-          <div className='w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
+          <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
             <Typography as='h5' variant='h5' className='font-bold'>
               {hours}
             </Typography>
@@ -95,7 +100,7 @@ export default function DeskripsiCard() {
             :
           </Typography>
 
-          <div className='w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
+          <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
             <Typography as='h5' variant='h5' className='font-bold'>
               {minutes}
             </Typography>

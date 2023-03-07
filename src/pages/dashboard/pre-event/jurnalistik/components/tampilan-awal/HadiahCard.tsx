@@ -7,7 +7,11 @@ import { hadiahJurnalistikContents } from '@/contents/pre-event/jurnalistik/tamp
 export default function HadiahCard() {
   return (
     <div className='p-6 shadow-pendaftaran rounded-xl bg-typo-white'>
-      <Typography as='h6' variant='h6' className='font-bold text-typo-primary'>
+      <Typography
+        as='h6'
+        variant='h6'
+        className='font-bold text-typo-primary text-center md:text-left'
+      >
         Hadiah
       </Typography>
       <div className='grid md:grid-rows-3 grid-rows-6 grid-flow-col mt-6 gap-6'>
