@@ -40,10 +40,7 @@ export default function JuriCard() {
                 </div>
 
                 {/* Description */}
-                <Typography
-                  variant='b1'
-                  className='text-typo-secondary text-center md:text-left'
-                >
+                <Typography className='text-typo-secondary text-sm md:text-base text-center md:text-left'>
                   {description}
                 </Typography>
               </div>

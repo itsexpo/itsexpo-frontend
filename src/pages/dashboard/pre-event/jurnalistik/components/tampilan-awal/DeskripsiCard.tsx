@@ -117,7 +117,6 @@ export default function DeskripsiCard() {
 
         <div className='w-full flex flex-col gap-4'>
           <Button variant='green'>Daftar Sekarang</Button>
-
           <Button variant='outline'>Unduh Guidebook</Button>
         </div>
       </div>

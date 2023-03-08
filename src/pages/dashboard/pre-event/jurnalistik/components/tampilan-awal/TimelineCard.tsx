@@ -23,7 +23,7 @@ export default function TimelineCard() {
         </div>
 
         {timelineJurnalistik.map((content, index) => (
-          <div key={index} className='flex flex-col items-center gap-4'>
+          <div key={index} className='flex flex-col items-center gap-2'>
             <div className='w-3/12 md:w-6/12'>
               <NextImage
                 {...content.img}
@@ -32,9 +32,8 @@ export default function TimelineCard() {
               />
             </div>
 
-            <div className='flex flex-col items-center z-0'>
+            <div className='flex flex-col items-center bg-white py-1 z-0'>
               <Typography
-                as='p'
                 variant='b1'
                 className='font-semibold text-typo-primary'
               >
