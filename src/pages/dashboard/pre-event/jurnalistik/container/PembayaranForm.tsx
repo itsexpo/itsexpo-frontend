@@ -1,3 +1,4 @@
+import { useMutation } from '@tanstack/react-query';
 import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -5,63 +6,42 @@ import Button from '@/components/buttons/Button';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import SelectInput from '@/components/forms/SelectInput';
 import Typography from '@/components/typography/Typography';
+import useMutationToast from '@/hooks/toast/useMutationToast';
+import api from '@/lib/api';
 import { Jurnalistik } from '@/types/entities/pre-event/jurnalistik';
 export default function FormPembayaran() {
   const methods = useForm<Jurnalistik>();
 
-  // tambahkan isLoading
-  const [isLoading, setIsLoading] = React.useState(false);
   const { handleSubmit } = methods;
+  // gunakan useMutation untuk mengirim data ke API
+  const { mutate, isLoading } = useMutationToast<void, Jurnalistik>(
+    useMutation(async (data) => {
+      const res = await api.post('/store_image_test', {
+        ...data,
+      });
+      return res;
+    })
+  );
 
-  const onSubmit = async (data: Jurnalistik) => {
-    setIsLoading(true); // set isLoading to true before making the API call
-    try {
-      const response = await fetch(
-        'https://itsexpo.dev-its.site/api/store_image_test',
-        {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      const responseData = await response.json();
-      // eslint-disable-next-line no-console
-      console.log(responseData);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-    }
-    setIsLoading(false); // set isLoading to false after the API call is finished
-  };
+  const onSubmit = (data: Jurnalistik) => mutate(data);
+
   return (
     <div className='grid grid-rows-2 md:grid-cols-6'>
       <div className='col-span-6 md:col-span-4 bg-white shadow-pendaftaran p-6 rounded-xl m-5'>
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
-            <Typography
-              variant='p'
-              as='p'
-              className='font-bold text-navy-800 -mb-3'
-            >
-              Harga
-            </Typography>
-            <div className='flex'>
-              <Typography
-                variant='p'
-                as='p'
-                className='font-bold text-typo-primary'
-              >
-                Rp100.
+            <div>
+              <Typography variant='p' className='font-bold text-navy-800'>
+                Harga
               </Typography>
-              <Typography
-                variant='p'
-                as='p'
-                className='font-bold text-success-600'
-              >
-                089
-              </Typography>
+              <div className='flex'>
+                <Typography variant='p' className='font-bold text-typo-primary'>
+                  Rp100.
+                </Typography>
+                <Typography variant='p' className='font-bold text-success-600'>
+                  089
+                </Typography>
+              </div>
             </div>
             <SelectInput
               id='nama_bank'
@@ -81,28 +61,33 @@ export default function FormPembayaran() {
             />
 
             <div className='flex justify-end'>
-              <Button type='submit' variant='green' className='mr-0'>
-                {isLoading ? 'Uploading...' : 'Upload Bukti Transfer'}
+              <Button
+                type='submit'
+                variant='green'
+                className='mr-0'
+                isLoading={isLoading}
+              >
+                Upload Bukti Transfer
               </Button>
             </div>
           </form>
         </FormProvider>
       </div>
       <div className='col-span-6 md:col-span-2 max-h-64 bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
-        <Typography variant='p' as='p' className='font-normal text-navy-800'>
+        <Typography variant='p' className='font-normal text-navy-800'>
           Lakukan pembayaran ke bank di bawah ini
         </Typography>
         <br />
-        <Typography variant='p' as='p' className='font-normal text-navy-800'>
+        <Typography variant='p' className='font-normal text-navy-800'>
           BNI: 2347623 (Tio)
         </Typography>
-        <Typography variant='p' as='p' className='font-normal text-navy-800'>
+        <Typography variant='p' className='font-normal text-navy-800'>
           DANA: 07825674813 (Hanafi)
         </Typography>
-        <Typography variant='p' as='p' className='font-normal text-navy-800'>
+        <Typography variant='p' className='font-normal text-navy-800'>
           OVO: 08135479478322(Satriyo)
         </Typography>
-        <Typography variant='p' as='p' className='font-normal text-navy-800'>
+        <Typography variant='p' className='font-normal text-navy-800'>
           BRI: 346823464 (Setiawan)
         </Typography>
       </div>
