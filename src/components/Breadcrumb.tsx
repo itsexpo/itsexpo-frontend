@@ -16,6 +16,7 @@ const breadcrumbs = {
   // User
   '/dashboard/pre-event/jurnalistik': 'Jurnalistik',
   '/dashboard/pre-event/jurnalistik/pendaftaran': 'Pendaftaran Jurnalistik',
+  '/dashboard/pre-event/jurnalistik/pembayaran': 'Pembayaran',
 };
 type BreadcrumbProps = {
   crumbs: Array<keyof typeof breadcrumbs>;
