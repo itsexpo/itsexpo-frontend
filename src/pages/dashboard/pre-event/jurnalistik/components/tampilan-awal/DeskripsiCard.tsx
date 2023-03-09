@@ -1,13 +1,17 @@
 import * as React from 'react';
 
-import Button from '@/components/buttons/Button';
+import ButtonLink from '@/components/links/ButtonLink';
 import Typography from '@/components/typography/Typography';
-import { jurnalistikClosedDate } from '@/contents/pre-event/jurnalistik/tampilan-awal';
 import useCountdown from '@/hooks/useCountdown';
 import clsxm from '@/lib/clsxm';
 
-export default function DeskripsiCard() {
-  const [days, hours, minutes] = useCountdown(jurnalistikClosedDate);
+type TampilanAwal = {
+  isRegister: boolean;
+  closeDate: Date;
+} & React.ComponentPropsWithoutRef<'div'>;
+
+export default function DeskripsiCard({ isRegister, closeDate }: TampilanAwal) {
+  const [days, hours, minutes] = useCountdown(new Date(closeDate));
 
   return (
     <div className='flex flex-col-reverse md:flex-row gap-6'>
@@ -50,75 +54,119 @@ export default function DeskripsiCard() {
           'bg-typo-white shadow-pendaftaran p-6 gap-4'
         )}
       >
-        <Typography
-          as='p'
-          variant='t'
-          className='font-semibold text-typo-primary'
-        >
-          Pendaftaran Ditutup
-        </Typography>
-
-        <div className='w-full flex items-center gap-2'>
-          <div
-            className={clsxm(
-              'w-full md:w-20 flex flex-col items-center p-3',
-              'rounded-md bg-typo-surface'
-            )}
-          >
-            <Typography as='h5' variant='h5' className='font-bold'>
-              {days}
-            </Typography>
+        {!isRegister ? (
+          <>
             <Typography
-              as='c'
-              variant='c'
-              color='secondary'
-              className='font-semibold'
+              as='p'
+              variant='t'
+              className='font-semibold text-typo-primary'
             >
-              Hari
+              Pendaftaran Ditutup
             </Typography>
-          </div>
 
-          <Typography as='p' variant='p' className='text-typo-icon'>
-            :
-          </Typography>
+            <div className='w-full flex items-center gap-2'>
+              <div
+                className={clsxm(
+                  'w-full md:w-20 flex flex-col items-center p-3',
+                  'rounded-md bg-typo-surface'
+                )}
+              >
+                <Typography as='h5' variant='h5' className='font-bold'>
+                  {days}
+                </Typography>
+                <Typography
+                  as='c'
+                  variant='c'
+                  color='secondary'
+                  className='font-semibold'
+                >
+                  Hari
+                </Typography>
+              </div>
 
-          <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
-            <Typography as='h5' variant='h5' className='font-bold'>
-              {hours}
-            </Typography>
-            <Typography
-              as='c'
-              variant='c'
-              color='secondary'
-              className='font-semibold'
-            >
-              Jam
-            </Typography>
-          </div>
+              <Typography as='p' variant='p' className='text-typo-icon'>
+                :
+              </Typography>
 
-          <Typography as='p' variant='p' className='text-typo-icon'>
-            :
-          </Typography>
+              <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
+                <Typography as='h5' variant='h5' className='font-bold'>
+                  {hours}
+                </Typography>
+                <Typography
+                  as='c'
+                  variant='c'
+                  color='secondary'
+                  className='font-semibold'
+                >
+                  Jam
+                </Typography>
+              </div>
 
-          <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
-            <Typography as='h5' variant='h5' className='font-bold'>
-              {minutes}
-            </Typography>
-            <Typography
-              as='c'
-              variant='c'
-              color='secondary'
-              className='font-semibold'
-            >
-              Menit
-            </Typography>
-          </div>
-        </div>
+              <Typography as='p' variant='p' className='text-typo-icon'>
+                :
+              </Typography>
 
-        <div className='w-full flex flex-col gap-4'>
-          <Button variant='green'>Daftar Sekarang</Button>
-          <Button variant='outline'>Unduh Guidebook</Button>
-        </div>
+              <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
+                <Typography as='h5' variant='h5' className='font-bold'>
+                  {minutes}
+                </Typography>
+                <Typography
+                  as='c'
+                  variant='c'
+                  color='secondary'
+                  className='font-semibold'
+                >
+                  Menit
+                </Typography>
+              </div>
+            </div>
+
+            <div className='w-full flex flex-col gap-4'>
+              <ButtonLink
+                variant='green'
+                href='/dashboard/pre-event/jurnalistik/pendaftaran'
+              >
+                Daftar Sekarang
+              </ButtonLink>
+              <ButtonLink
+                variant='discolored'
+                href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
+                target='_blank'
+              >
+                Unduh Guidebook
+              </ButtonLink>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className='space-y-4 w-72'>
+              <Typography
+                as='p'
+                variant='t'
+                className='font-semibold text-typo-primary text-center'
+              >
+                Anda Sudah Terdaftar
+              </Typography>
+              <Typography
+                as='p'
+                variant='b1'
+                className='text-typo-secondary text-center'
+              >
+                Terimakasih telah berpartisipasi pada lomba Journalistic. Jangan
+                terlewatkan pengumuman lomba ini dan segera lengkapi tim kamu
+              </Typography>
+            </div>
+            <div className='w-full mt-10'>
+              <ButtonLink
+                className='w-full'
+                variant='green'
+                href='/dashboard/pre-event/jurnalistik/main'
+              >
+                Lihat Dashboard
+              </ButtonLink>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

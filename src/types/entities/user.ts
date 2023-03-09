@@ -11,7 +11,7 @@ export type User = {
   permissions: PermissionList;
 
   // Pre Event
-  pre_event: PreEvent;
+  pre_event: PreEvent[];
 };
 
 export type LoginRespond = {
@@ -24,7 +24,7 @@ export type LoginRespond = {
   };
 
   // Pre Event
-  pre_event: PreEvent;
+  pre_event: PreEvent[];
 };
 
 // User page
