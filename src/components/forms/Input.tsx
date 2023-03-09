@@ -77,6 +77,7 @@ export default function Input({
               ? 'bg-critical-100 focus:ring-red-500 border-red-500 focus:border-red-500'
               : 'bg-surface-base focus:ring-success-500 border-none focus:border-success-500',
             'block w-full rounded-md',
+
             LeftIcon && 'pl-9',
             RightIcon && 'pr-8'
           )}

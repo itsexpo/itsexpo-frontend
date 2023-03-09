@@ -23,13 +23,7 @@ function JurnalistikDashboardPage() {
             <Breadcrumb crumbs={['/dashboard/pre-event/jurnalistik']} />
           </div>
         </header>
-        <main className='mt-8'>
-          {!user?.pre_event.jurnalistik ? (
-            <TampilanAwal />
-          ) : (
-            <p>Anda sudah mendaftar</p>
-          )}
-        </main>
+        <main className='mt-8'>{user && <TampilanAwal user={user} />}</main>
       </div>
     </DashboardLayout>
   );

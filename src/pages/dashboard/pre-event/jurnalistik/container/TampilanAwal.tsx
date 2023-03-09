@@ -6,11 +6,19 @@ import HadiahCard from '@/pages/dashboard/pre-event/jurnalistik/components/tampi
 import JuriCard from '@/pages/dashboard/pre-event/jurnalistik/components/tampilan-awal/JuriCard';
 import SubContestCard from '@/pages/dashboard/pre-event/jurnalistik/components/tampilan-awal/SubContestCard';
 import TimelineCard from '@/pages/dashboard/pre-event/jurnalistik/components/tampilan-awal/TimelineCard';
+import { User } from '@/types/entities/user';
 
-export default function TampilanAwal() {
+type TampilanAwal = {
+  user: User;
+} & React.ComponentPropsWithoutRef<'div'>;
+
+export default function TampilanAwal({ user }: TampilanAwal) {
   return (
     <div className='flex flex-col gap-y-6'>
-      <DeskripsiCard />
+      <DeskripsiCard
+        isRegister={user.pre_event[0].Jurnalistik.status}
+        closeDate={user.pre_event[0].Jurnalistik.close_date}
+      />
       <TimelineCard />
       <SubContestCard />
       <JuriCard />

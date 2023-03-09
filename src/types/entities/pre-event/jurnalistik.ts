@@ -57,3 +57,34 @@ export type FAQJurnalistikData = {
   title: string;
   content: string;
 };
+
+export type Peserta = {
+  id: string;
+  user_id: string;
+  name: string;
+  ketua: boolean;
+};
+
+export interface DetailPendaftarJurnalistik {
+  id_tim: string;
+  name_tim: string;
+  ketua_tim: boolean;
+  code_tim: string;
+
+  status: {
+    status: boolean;
+    pembayaran: string;
+  };
+  category_jurnalistik: string;
+  peserta: Array<Peserta>;
+  jenis_kegiatan: string;
+
+  personal: {
+    id: string;
+    user_id: string;
+    nama: string;
+    provinsi: string;
+    kabupaten: string;
+    asal_instansi: string;
+  };
+}

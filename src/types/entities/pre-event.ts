@@ -5,7 +5,7 @@ export type PreEventDetail = {
 };
 
 export type PreEvent = {
-  jurnalistik: PreEventDetail;
+  Jurnalistik: PreEventDetail;
   kti: PreEventDetail;
   robotik: PreEventDetail;
   talkshow: PreEventDetail;
