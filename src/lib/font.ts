@@ -6,6 +6,27 @@ export const upakarti = localFont({
 });
 
 export const montserrat = localFont({
-  src: '../styles/fonts/montserrat.ttf',
+  src: [
+    {
+      path: '../styles/fonts/montserrat/Montserrat-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../styles/fonts/montserrat/Montserrat-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../styles/fonts/montserrat/Montserrat-SemiBold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: '../styles/fonts/montserrat/Montserrat-Bold.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
   variable: '--font-montserrat',
 });
