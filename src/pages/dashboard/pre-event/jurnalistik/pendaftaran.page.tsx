@@ -8,7 +8,10 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import FormPendaftaran from '@/pages/dashboard/pre-event/jurnalistik/container/PendaftaranForm';
 import useAuthStore from '@/store/useAuthStore';
 
-export default withAuth(PendaftaranJurnalistikDashboardPage, []);
+export default withAuth(PendaftaranJurnalistikDashboardPage, [
+  'jurnalistik_ketua.store',
+  'jurnalistik_member.store',
+]);
 
 function PendaftaranJurnalistikDashboardPage() {
   const user = useAuthStore.useUser();
@@ -16,7 +19,7 @@ function PendaftaranJurnalistikDashboardPage() {
   // TODO: Jika Belum Mendaftar Lomba Jurnalistik
   if (!user) {
     return <Loading />;
-  } else if (user)
+  } else
     return (
       <DashboardLayout>
         <div className='dashboard-layout min-h-screen'>
@@ -39,13 +42,4 @@ function PendaftaranJurnalistikDashboardPage() {
         </div>
       </DashboardLayout>
     );
-  else {
-    return (
-      <DashboardLayout>
-        <div className='dashboard-layout'>
-          <p>Hallo</p>
-        </div>
-      </DashboardLayout>
-    );
-  }
 }

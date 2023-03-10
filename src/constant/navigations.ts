@@ -1,3 +1,4 @@
+import { BsJournalMedical } from 'react-icons/bs';
 import { FaBullhorn } from 'react-icons/fa';
 import {
   FiFileText,
@@ -8,6 +9,7 @@ import {
   FiUserPlus,
   FiUsers,
 } from 'react-icons/fi';
+import { MdOutlineEventAvailable } from 'react-icons/md';
 
 import { Navigation } from '@/types/navigate';
 
@@ -120,15 +122,21 @@ export const navigations: Navigation[] = [
     name: 'Pre Event',
     href: '#',
     exactMatch: true,
-    icon: FiFileText,
+    icon: MdOutlineEventAvailable,
     // permissions: ['pre_event.index'],
     children: [
       {
         name: 'Jurnalistik',
         href: '/dashboard/pre-event/jurnalistik',
         exactMatch: true,
-        icon: FiFileText,
-        // permissions: ['pre_event.index'],
+        icon: BsJournalMedical,
+        permissions: [
+          'jurnalistik.index',
+          'jurnalistik_join.store',
+          'jurnalistik_team.delete',
+          'jurnalistik_ketua.store',
+          'jurnalistik_member.store',
+        ],
       },
     ],
   },

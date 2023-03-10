@@ -28,6 +28,12 @@ enum PermissionEnum {
   'announcements.index',
   'announcements.store',
   'pre_event.index',
+  // Journalistik
+  'jurnalistik.index',
+  'jurnalistik_join.store',
+  'jurnalistik_team.delete',
+  'jurnalistik_ketua.store',
+  'jurnalistik_member.store',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

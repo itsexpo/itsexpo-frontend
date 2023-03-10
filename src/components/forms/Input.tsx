@@ -72,7 +72,7 @@ export default function Input({
           readOnly={readOnly}
           className={clsx(
             readOnly
-              ? 'bg-gray-100 focus:ring-0 cursor-not-allowed focus:border-gray-300'
+              ? 'bg-typo-surface focus:ring-0 cursor-not-allowed border-none text-typo-icon'
               : error
               ? 'bg-critical-100 focus:ring-red-500 border-red-500 focus:border-red-500'
               : 'bg-surface-base focus:ring-success-500 border-none focus:border-success-500',
