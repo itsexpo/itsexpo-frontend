@@ -5,7 +5,7 @@ import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import FormPembayaran from '@/pages/dashboard/pre-event/jurnalistik/container/PembayaranForm';
 
-const PembayaranPages = () => {
+const PembayaranPage = () => {
   return (
     <DashboardLayout>
       <div className='dashboard-layout min-h-screen'>
@@ -17,6 +17,7 @@ const PembayaranPages = () => {
             <Breadcrumb
               crumbs={[
                 '/dashboard/pre-event/jurnalistik',
+                '/dashboard/pre-event/jurnalistik/main',
                 '/dashboard/pre-event/jurnalistik/pembayaran',
               ]}
             />
@@ -30,4 +31,4 @@ const PembayaranPages = () => {
   );
 };
 
-export default PembayaranPages;
+export default PembayaranPage;

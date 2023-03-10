@@ -1,7 +1,8 @@
 export type ApiReturn<T> = {
-  status: boolean;
+  success: boolean;
   message: string;
   data: T;
+  code?: number;
 };
 
 export type ApiError = {
@@ -23,6 +24,6 @@ type PaginateData<Data> = {
 };
 export interface PaginatedApiResponse<DataType> {
   code: number;
-  status: string;
+  success: string;
   data: PaginateData<DataType>;
 }

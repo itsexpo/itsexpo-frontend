@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { toast } from 'react-hot-toast';
 import { MdContentCopy } from 'react-icons/md';
 
-import Button from '@/components/buttons/Button';
+import ButtonLink from '@/components/links/ButtonLink';
 import Typography from '@/components/typography/Typography';
 import AnggotaButton from '@/pages/dashboard/pre-event/jurnalistik/components/dashboard/AnggotaButton';
 import { Peserta } from '@/types/entities/pre-event/jurnalistik';
@@ -25,11 +26,13 @@ export default function TeamCard({
   name_tim,
   category_jurnalistik,
   peserta,
+  ketua_tim,
   jenis_kegiatan,
   status,
 }: CardProps) {
   const copyToClipboard = () => {
-    alert('Hallo');
+    navigator.clipboard.writeText(code_tim);
+    toast.success('Kode tim berhasil disalin');
   };
 
   return (
@@ -141,13 +144,22 @@ export default function TeamCard({
           Anggota Tim
         </Typography>
         {peserta.map((anggota, index) => (
-          <AnggotaButton key={index} {...anggota} id_team={id_tim} />
+          <AnggotaButton
+            key={index}
+            {...anggota}
+            id_team={id_tim}
+            isTeamLead={ketua_tim}
+          />
         ))}
       </div>
       <div className='flex justify-end'>
-        <Button variant='green' className='w-fit'>
+        <ButtonLink
+          variant='green'
+          className='w-fit'
+          href='/dashboard/pre-event/jurnalistik/pembayaran'
+        >
           Lakukan Pembayaran
-        </Button>
+        </ButtonLink>
       </div>
     </div>
   );

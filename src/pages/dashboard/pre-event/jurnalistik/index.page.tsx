@@ -7,7 +7,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import TampilanAwal from '@/pages/dashboard/pre-event/jurnalistik/container/TampilanAwal';
 import useAuthStore from '@/store/useAuthStore';
 
-export default withAuth(JurnalistikDashboardPage, []);
+export default withAuth(JurnalistikDashboardPage, ['jurnalistik.index']);
 
 function JurnalistikDashboardPage() {
   const user = useAuthStore.useUser();
