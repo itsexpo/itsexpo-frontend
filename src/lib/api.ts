@@ -1,5 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { GetServerSidePropsContext } from 'next';
+import requestIp from 'request-ip';
 import Cookies from 'universal-cookie';
 
 import { getToken } from '@/lib/cookies';
@@ -32,6 +33,8 @@ api.interceptors.request.use(function (config) {
         throw 'Api Context not found. You must call `setApiContext(context)` before calling api on server-side';
 
       const cookies = new Cookies(context.req?.headers.cookie);
+      const detectedIp = requestIp.getClientIp(context.req);
+      config.headers['X-Forwarded-For'] = detectedIp;
       /** Get cookies from context if server side */
       token = cookies.get('@itsexpo/token');
     } else {
