@@ -69,7 +69,7 @@ export default function TeamCard({
           {jenis_kegiatan}
         </Typography>
       </div>
-      <div className='flex justify-between items-center'>
+      <div className='flex flex-col gap-y-6 xl:gap-y-0 xl:flex-row xl:justify-between items-start xl:items-center'>
         <div>
           <Typography
             as='p'
@@ -118,7 +118,7 @@ export default function TeamCard({
           Status Pembayaran
         </Typography>
         {status.status ? (
-          <div className='w-full h-11 rounded-lg bg-success-100 flex justify-center items-center'>
+          <div className='w-full h-11 rounded-lg bg-success-100 flex justify-center items-center text-center p-6 sm:p-0'>
             <Typography
               as='p'
               variant='b1'
@@ -128,7 +128,7 @@ export default function TeamCard({
             </Typography>
           </div>
         ) : (
-          <div className='w-full h-11 rounded-lg bg-critical-100 flex justify-center items-center'>
+          <div className='w-full h-11 rounded-lg bg-critical-100 flex justify-center items-center text-center p-6 sm:p-0'>
             <Typography
               as='p'
               variant='b1'

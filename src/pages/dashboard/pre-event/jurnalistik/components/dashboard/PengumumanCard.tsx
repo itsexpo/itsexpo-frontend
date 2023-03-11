@@ -28,7 +28,11 @@ export default function PengumumanCard() {
               </Typography>
             </div>
           </div>
-          <Typography as='p' variant='c' className='text-typo-icon'>
+          <Typography
+            as='p'
+            variant='c'
+            className='text-typo-icon text-end md:text-center'
+          >
             18 Agustus 2021
           </Typography>
         </div>
