@@ -25,9 +25,9 @@ export const PreEvent: PreEventData[] = [
   },
   {
     id: 3,
-    title: 'Jurnalistik',
+    title: 'Journalistic',
     description:
-      'Kini saatnya para pelajar dan mahasiswa di seluruh Indonesia menunjukkan bakat dan kemampuan jurnalistik online mereka di ajang kompetisi yang diadakan oleh ITS Expo 2023! Meskipun dikenal sebagai kampus yang bergerak di bidang teknologi, ITS juga memiliki keahlian di bidang seni visual dan jurnalistik. Kompetisi ini merupakan kesempatan emas bagi para penerus bangsa untuk mengasah kemampuan fotografi, vidiorafi, dan penulisan serta memperluas wawasan di bidang jurnalistik. Jadilah bagian dari generasi muda kreatif dan inovatif dengan mendaftar dan mengikuti kompetisi jurnalistik ini!',
+      'Kini saatnya para pelajar dan mahasiswa di seluruh Indonesia menunjukkan bakat dan kemampuan journalistic online mereka di ajang kompetisi yang diadakan oleh ITS Expo 2023! Meskipun dikenal sebagai kampus yang bergerak di bidang teknologi, ITS juga memiliki keahlian di bidang seni visual dan jurnalistik. Kompetisi ini merupakan kesempatan emas bagi para penerus bangsa untuk mengasah kemampuan fotografi, vidiorafi, dan penulisan serta memperluas wawasan di bidang jurnalistik. Jadilah bagian dari generasi muda kreatif dan inovatif dengan mendaftar dan mengikuti kompetisi jurnalistik ini!',
     link: '/coming-soon',
     image: '/landing/preevent-jurnalistik.png',
   },

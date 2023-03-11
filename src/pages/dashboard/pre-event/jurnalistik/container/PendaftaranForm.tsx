@@ -92,7 +92,7 @@ export default function FromPendaftaran() {
       const formData = serialize(body, { indices: true });
       SubmitAsMember(formData);
     }
-    router.push('/dashboard/pre-event/jurnalistik');
+    router.push('/dashboard/pre-event/jurnalistik/main');
   };
   const isTeamLead = watch('member_type') === 'ketua';
 

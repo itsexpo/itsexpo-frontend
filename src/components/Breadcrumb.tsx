@@ -14,10 +14,10 @@ const breadcrumbs = {
   '/dashboard/admin/url-shortener/generate': 'Generate',
 
   // User
-  '/dashboard/pre-event/jurnalistik': 'Jurnalistik',
+  '/dashboard/pre-event/jurnalistik': 'Journalistic',
   '/dashboard/pre-event/jurnalistik/main': 'Dashboard',
   '/dashboard/pre-event/jurnalistik/join': 'Join Team',
-  '/dashboard/pre-event/jurnalistik/pendaftaran': 'Pendaftaran Jurnalistik',
+  '/dashboard/pre-event/jurnalistik/pendaftaran': 'Pendaftaran',
   '/dashboard/pre-event/jurnalistik/pembayaran': 'Pembayaran',
 };
 type BreadcrumbProps = {
