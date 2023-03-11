@@ -34,7 +34,8 @@ const LOGIN_ROUTE = '/login';
 
 export default function withAuth<T>(
   Component: React.ComponentType<T>,
-  routePermission: PermissionList | GeneralPermission
+  routePermission: PermissionList | GeneralPermission,
+  withRefetch = false
 ) {
   const ComponentWithAuth = (props: Omit<T, keyof WithAuthProps>) => {
     const router = useRouter();
@@ -77,7 +78,7 @@ export default function withAuth<T>(
           stopLoading();
         }
       };
-      if (!isAuthenticated) {
+      if (!isAuthenticated || withRefetch) {
         loadUser();
       }
     }, [isAuthenticated, login, logout, stopLoading]);

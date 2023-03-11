@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import Breadcrumb from '@/components/Breadcrumb';
@@ -15,18 +16,22 @@ export default withAuth(PendaftaranJurnalistikDashboardPage, [
 
 function PendaftaranJurnalistikDashboardPage() {
   const user = useAuthStore.useUser();
+  const router = useRouter();
 
-  // TODO: Jika Belum Mendaftar Lomba Jurnalistik
+  if (user?.pre_event[0].Jurnalistik.status === true) {
+    router.push('/dashboard/pre-event/jurnalistik');
+  }
+
   if (!user) {
     return <Loading />;
-  } else
+  } else if (user?.pre_event[0].Jurnalistik.status === false) {
     return (
       <DashboardLayout>
         <div className='dashboard-layout min-h-screen'>
           <header className=''>
             <div className='flex justify-between items-center'>
               <Typography variant='h5' className='font-bold'>
-                Jurnalistik
+                Journalistic
               </Typography>
               <Breadcrumb
                 crumbs={[
@@ -42,4 +47,7 @@ function PendaftaranJurnalistikDashboardPage() {
         </div>
       </DashboardLayout>
     );
+  } else {
+    return <Loading />;
+  }
 }

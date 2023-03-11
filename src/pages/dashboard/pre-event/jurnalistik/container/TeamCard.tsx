@@ -152,15 +152,17 @@ export default function TeamCard({
           />
         ))}
       </div>
-      <div className='flex justify-end'>
-        <ButtonLink
-          variant='green'
-          className='w-fit'
-          href='/dashboard/pre-event/jurnalistik/pembayaran'
-        >
-          Lakukan Pembayaran
-        </ButtonLink>
-      </div>
+      {ketua_tim && (
+        <div className='flex justify-end'>
+          <ButtonLink
+            variant='green'
+            className='w-fit'
+            href='/dashboard/pre-event/jurnalistik/pembayaran'
+          >
+            Lakukan Pembayaran
+          </ButtonLink>
+        </div>
+      )}
     </div>
   );
 }

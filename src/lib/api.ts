@@ -33,8 +33,11 @@ api.interceptors.request.use(function (config) {
         throw 'Api Context not found. You must call `setApiContext(context)` before calling api on server-side';
 
       const cookies = new Cookies(context.req?.headers.cookie);
-      const detectedIp = requestIp.getClientIp(context.req);
-      config.headers['X-Forwarded-For'] = detectedIp;
+      // if in production
+      if (process.env.NODE_ENV === 'production') {
+        const detectedIp = requestIp.getClientIp(context.req);
+        config.headers['X-Forwarded-For'] = detectedIp;
+      }
       /** Get cookies from context if server side */
       token = cookies.get('@itsexpo/token');
     } else {

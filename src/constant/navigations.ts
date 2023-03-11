@@ -123,10 +123,9 @@ export const navigations: Navigation[] = [
     href: '#',
     exactMatch: true,
     icon: MdOutlineEventAvailable,
-    // permissions: ['pre_event.index'],
     children: [
       {
-        name: 'Jurnalistik',
+        name: 'Journalistic',
         href: '/dashboard/pre-event/jurnalistik',
         exactMatch: true,
         icon: BsJournalMedical,
