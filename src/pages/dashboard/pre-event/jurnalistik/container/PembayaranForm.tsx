@@ -49,10 +49,10 @@ export default function FormPembayaran() {
               validation={{ required: 'Bank tidak boleh kosong' }}
             >
               <option value=''>Pilih Nama Bank</option>
-              <option value='BNI'>BNI</option>
-              <option value='DANA'>DANA</option>
-              <option value='OVO'>OVO</option>
               <option value='BRI'>BRI</option>
+              <option value='BNI'>BNI</option>
+              <option value='Shopeepay'>Shopeepay</option>
+              <option value='DANA'>DANA</option>
             </SelectInput>
             <DropzoneInput
               id='bukti_transfer'
@@ -75,20 +75,20 @@ export default function FormPembayaran() {
       </div>
       <div className='col-span-6 md:col-span-2 max-h-64 bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
         <Typography variant='p' className='font-normal text-navy-800'>
-          Lakukan pembayaran ke bank di bawah ini
+          PEMBAYARAN JURNALISTIK
         </Typography>
         <br />
         <Typography variant='p' className='font-normal text-navy-800'>
-          BNI: 2347623 (Tio)
+          BRI: 0908 0104 5864 532 (Navisa Salsabila)
         </Typography>
         <Typography variant='p' className='font-normal text-navy-800'>
-          DANA: 07825674813 (Hanafi)
+          BNI: 1299871140 (Navisa Salsabila)
         </Typography>
         <Typography variant='p' className='font-normal text-navy-800'>
-          OVO: 08135479478322(Satriyo)
+          Shopeepay: 087871529729(Navisa Salsabila)
         </Typography>
         <Typography variant='p' className='font-normal text-navy-800'>
-          BRI: 346823464 (Setiawan)
+          Dana: 087871529729 (Navisa Salsabila)
         </Typography>
       </div>
     </div>
