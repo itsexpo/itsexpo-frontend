@@ -18,36 +18,6 @@ export default withAuth(DashboardJurnalistik, [
   'jurnalistik_team.delete',
 ]);
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  setApiContext(context);
-  try {
-    const res = await api.get<ApiReturn<DetailPendaftarJurnalistik>>(
-      '/pre_event/jurnalistik'
-    );
-    return {
-      props: {
-        data: res.data,
-      },
-    };
-  } catch (err) {
-    const error = err as AxiosError<ApiError>;
-    if (error.response?.data.code === 6060) {
-      return {
-        redirect: {
-          destination: '/dashboard/pre-event/jurnalistik/join',
-          permanent: false,
-        },
-      };
-    }
-    return {
-      redirect: {
-        destination: '/dashboard/pre-event/jurnalistik',
-        permanent: false,
-      },
-    };
-  }
-}
-
 function DashboardJurnalistik({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -77,3 +47,34 @@ function DashboardJurnalistik({
     </DashboardLayout>
   );
 }
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  setApiContext(context);
+  try {
+    const res = await api.get<ApiReturn<DetailPendaftarJurnalistik>>(
+      '/pre_event/jurnalistik'
+    );
+    return {
+      props: {
+        data: res.data,
+      },
+    };
+  } catch (err) {
+    if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
+      return {
+        redirect: {
+          destination: '/dashboard/pre-event/jurnalistik/join',
+          permanent: false,
+        },
+      };
+    }
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/500',
+      },
+    };
+  }
+};
