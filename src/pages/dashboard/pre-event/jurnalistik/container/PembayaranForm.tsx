@@ -6,6 +6,7 @@ import Button from '@/components/buttons/Button';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import SelectInput from '@/components/forms/SelectInput';
 import Typography from '@/components/typography/Typography';
+import { Bank } from '@/constant/bank';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import api from '@/lib/api';
 import { Jurnalistik } from '@/types/entities/pre-event/jurnalistik';
@@ -48,11 +49,11 @@ export default function FormPembayaran() {
               label='Transfer Dari'
               validation={{ required: 'Bank tidak boleh kosong' }}
             >
-              <option value=''>Pilih Nama Bank</option>
-              <option value='BRI'>BRI</option>
-              <option value='BNI'>BNI</option>
-              <option value='Shopeepay'>Shopeepay</option>
-              <option value='DANA'>DANA</option>
+              {Object.entries(Bank).map(([key, value]) => (
+                <option key={key} value={value}>
+                  {key}
+                </option>
+              ))}
             </SelectInput>
             <DropzoneInput
               id='bukti_transfer'

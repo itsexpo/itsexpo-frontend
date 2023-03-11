@@ -38,7 +38,7 @@ function DashboardJurnalistik({
       </header>
       <main className='dashboard-layout !pt-8 space-y-6 mb-8'>
         <PengumumanCard />
-        <div className='grid grid-cols-2 gap-x-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-0 gap-x-0 md:gap-x-4'>
           {/* Team Card */}
           <TeamCard {...data.data} />
           <DataDiriCard data={data.data.personal} />
