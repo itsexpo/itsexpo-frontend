@@ -14,7 +14,7 @@ export default function FAQCard() {
       >
         FAQ
       </Typography>
-      <div className='mt-6 flex flex-col gap-4'>
+      <div className='mt-6 flex flex-col'>
         {FAQJurnalistikContents.map((faq, index) => (
           <Accordion {...faq} key={index} />
         ))}
