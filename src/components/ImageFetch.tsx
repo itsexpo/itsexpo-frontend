@@ -8,9 +8,10 @@ import api from '@/lib/api';
 
 type ImageFetchProps = {
   imgPath: string;
-  label: string;
+  label?: string;
   width?: number;
   height?: number;
+  imgClassName?: string;
   alt: string;
 } & React.ComponentPropsWithoutRef<'div'>;
 
@@ -20,6 +21,8 @@ const ImageFetch = ({
   alt,
   width = 300,
   height = 160,
+  className,
+  imgClassName,
   ...props
 }: ImageFetchProps) => {
   const [imgSrc, setImgSrc] = React.useState<string>();
@@ -58,8 +61,10 @@ const ImageFetch = ({
     <>
       <div {...props} className='cursor-pointer'>
         {imgSrc && (
-          <div className=''>
-            <label className='block font-bold text-lg pb-2'>{label}</label>
+          <div className={className}>
+            {label && (
+              <label className='block font-bold text-lg pb-2'>{label}</label>
+            )}
             <Image
               src={imgSrc as string}
               layout='responsive'
@@ -67,6 +72,7 @@ const ImageFetch = ({
               height={height}
               alt={alt}
               objectFit='contain'
+              className={imgClassName}
               onClick={() => setIsOpen(true)}
             />
           </div>
