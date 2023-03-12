@@ -1,6 +1,7 @@
 import { BsJournalMedical } from 'react-icons/bs';
 import { FaBullhorn } from 'react-icons/fa';
 import {
+  FiDatabase,
   FiFileText,
   FiLink,
   FiLink2,
@@ -109,17 +110,16 @@ export const navigations: Navigation[] = [
     ],
   },
   {
-    name: 'Data Management',
+    name: 'Manajemen Data',
     href: '#',
-    exactMatch: true,
-    icon: FiFileText,
-    // permissions: ['pre_event.index'],
+    icon: FiDatabase,
+    permissions: ['admin_jurnalistik.index', 'admin_jurnalistik.detail'],
     children: [
       {
         name: 'Jurnalistik',
         href: '/dashboard/admin/data-management/jurnalistik',
         exactMatch: true,
-        icon: FiFileText,
+        icon: FiList,
         permissions: ['admin_jurnalistik.index'],
       },
     ],

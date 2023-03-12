@@ -112,3 +112,32 @@ export interface DetailPendaftarJurnalistik {
     asal_instansi: string;
   };
 }
+
+export interface DetailTimJurnalistik {
+  team_name: string;
+  team_code: string;
+  payment: {
+    payment_status:
+      | 'WAITING_PAYMENT'
+      | 'REVISI'
+      | 'GAGAL'
+      | 'SUCCESS'
+      | 'WAITING_VERIFICATION';
+    payment_image: string;
+  };
+  team_member: Array<{
+    name: string;
+    ketua: 'KETUA' | 'MEMBER';
+    provinsi: string;
+    kabupaten: string;
+    id_line: string;
+    id_card_url: string;
+    follow_sosmed_url: string;
+    share_poster_url: string;
+  }>;
+}
+
+export interface JurnalistikVerification {
+  id_jurnalistik?: string;
+  status: 'TERIMA' | 'TOLAK';
+}

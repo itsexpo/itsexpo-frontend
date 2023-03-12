@@ -35,6 +35,7 @@ enum PermissionEnum {
   'jurnalistik_ketua.store',
   'jurnalistik_member.store',
   'admin_jurnalistik.index',
+  'admin_jurnalistik.detail',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;
