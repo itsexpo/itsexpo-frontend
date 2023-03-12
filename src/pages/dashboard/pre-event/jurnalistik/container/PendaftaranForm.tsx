@@ -78,7 +78,9 @@ export default function FromPendaftaran() {
         ...image,
       };
       const formData = serialize(body);
-      SubmitAsKetua(formData);
+      SubmitAsKetua(formData, {
+        onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/main'),
+      });
     } else {
       const body = {
         name: data.name,
@@ -90,9 +92,10 @@ export default function FromPendaftaran() {
         ...image,
       };
       const formData = serialize(body, { indices: true });
-      SubmitAsMember(formData);
+      SubmitAsMember(formData, {
+        onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/join'),
+      });
     }
-    router.push('/dashboard/pre-event/jurnalistik/main');
   };
   const isTeamLead = watch('member_type') === 'ketua';
 
