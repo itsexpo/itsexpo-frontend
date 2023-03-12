@@ -108,6 +108,22 @@ export const navigations: Navigation[] = [
       },
     ],
   },
+  {
+    name: 'Data Management',
+    href: '#',
+    exactMatch: true,
+    icon: FiFileText,
+    // permissions: ['pre_event.index'],
+    children: [
+      {
+        name: 'Jurnalistik',
+        href: '/dashboard/admin/data-management/jurnalistik',
+        exactMatch: true,
+        icon: FiFileText,
+        permissions: ['admin_jurnalistik.index'],
+      },
+    ],
+  },
   //! END ADMIN
 
   //! USER
