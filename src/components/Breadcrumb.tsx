@@ -12,6 +12,8 @@ const breadcrumbs = {
   '/dashboard/admin/permission': 'Permission',
   '/dashboard/admin/url-shortener': 'URL Shortener',
   '/dashboard/admin/url-shortener/generate': 'Generate',
+  '/dashboard/admin/data-management/': 'Data Management',
+  '/dashboard/admin/data-management/jurnalistik': 'Jurnalistik',
 
   // User
   '/dashboard/pre-event/jurnalistik': 'Journalistic',

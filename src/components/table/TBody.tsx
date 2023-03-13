@@ -22,7 +22,7 @@ export default function TBody<T extends RowData>({
           {row.getVisibleCells().map((cell) => (
             <td
               key={cell.id}
-              className='truncate whitespace-nowrap py-4 pl-[30px] pr-3'
+              className='truncate whitespace-nowrap py-4 px-3'
               style={{ maxWidth: cell.column.getSize() }}
             >
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
