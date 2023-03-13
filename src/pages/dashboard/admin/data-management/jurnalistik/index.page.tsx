@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
+import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 
 import Button from '@/components/buttons/Button';
@@ -54,7 +55,7 @@ function AdminJurnalistikDashboardPage() {
     },
     {
       id: 'created_at',
-      accessorFn: (row) => `${row.created_at.split(' ')[0]}`,
+      accessorFn: (row) => format(new Date(row.created_at), "y'-'MM'-'dd"),
       header: 'Created At',
       size: 200,
     },

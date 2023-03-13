@@ -36,7 +36,7 @@ export default function BuktiPembayaranCard({
     )
   );
 
-  const onClick = ({
+  const handleVerification = ({
     status,
   }: Omit<JurnalistikVerification, 'id_jurnalistik'>) => {
     const data: JurnalistikVerification = {
@@ -80,7 +80,7 @@ export default function BuktiPembayaranCard({
                 tim?.payment.payment_status === 'WAITING_PAYMENT') &&
                 'bg-typo-outline'
             )}
-            onClick={() => onClick({ status: 'TERIMA' })}
+            onClick={() => handleVerification({ status: 'TERIMA' })}
             isLoading={isLoading}
           >
             Tolak
@@ -102,7 +102,7 @@ export default function BuktiPembayaranCard({
                 tim?.payment.payment_status === 'WAITING_PAYMENT') &&
                 'bg-typo-outline'
             )}
-            onClick={() => onClick({ status: 'TOLAK' })}
+            onClick={() => handleVerification({ status: 'TOLAK' })}
             isLoading={isLoading}
           >
             Terima

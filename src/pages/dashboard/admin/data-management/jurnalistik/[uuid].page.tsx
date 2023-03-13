@@ -6,9 +6,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import BuktiPembayaranCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/BuktiPembayaranCard';
-import DetailTimCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/DetailTimCard';
-import DokumenCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/DokumenCard';
+import BuktiPembayaranCard from '@/pages/dashboard/admin/data-management/jurnalistik/container/BuktiPembayaranCard';
+import DetailTimCard from '@/pages/dashboard/admin/data-management/jurnalistik/container/DetailTimCard';
+import DokumenCard from '@/pages/dashboard/admin/data-management/jurnalistik/container/DokumenCard';
 import { ApiReturn } from '@/types/api';
 import { DetailTimJurnalistik } from '@/types/entities/pre-event/jurnalistik';
 
@@ -26,10 +26,15 @@ function DetailTimJurnalistik() {
       <div className='dashboard-layout min-h-screen space-y-6'>
         <header>
           <div className='flex justify-between items-center'>
-            <Typography variant='h5' className='font-bold'>
+            <Typography as='h5' variant='h5' className='font-bold'>
               {`${queryData?.data.team_name} Tim`}
             </Typography>
-            <Breadcrumb crumbs={['/dashboard/pre-event/jurnalistik']} />
+            <Breadcrumb
+              crumbs={[
+                '/dashboard/admin/data-management/',
+                '/dashboard/admin/data-management/jurnalistik',
+              ]}
+            />
           </div>
         </header>
 

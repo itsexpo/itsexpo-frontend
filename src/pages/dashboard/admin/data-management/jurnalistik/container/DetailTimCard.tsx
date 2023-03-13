@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
+import AnggotaCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/AnggotaCard';
 import { DetailTimJurnalistik } from '@/types/entities/pre-event/jurnalistik';
 
 export default function DetailTimCard({
@@ -118,18 +119,5 @@ export default function DetailTimCard({
         })}
       </div>
     </section>
-  );
-}
-
-function AnggotaCard({ jabatan, nama }: { jabatan: string; nama: string }) {
-  return (
-    <div className='p-4 rounded-lg border border-typo-outline'>
-      <Typography as='c' variant='c' className='font-medium text-typo-icon'>
-        {jabatan}
-      </Typography>
-      <Typography className='font-semibold text-typo-primary'>
-        {nama}
-      </Typography>
-    </div>
   );
 }
