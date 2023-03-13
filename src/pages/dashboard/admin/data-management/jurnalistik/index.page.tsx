@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import ServerTable from '@/components/table/ServerTable';
+import PaymentTag from '@/components/tag/PaymentTag';
 import Typography from '@/components/typography/Typography';
 import useServerTable from '@/hooks/useServerTable';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import clsxm from '@/lib/clsxm';
 import { buildPaginatedTableURL } from '@/lib/table';
 import { JurnalistikDataRecap } from '@/pages/dashboard/admin/data-management/jurnalistik/components/JurnalistikDataRecap';
 import { PaginatedApiResponse } from '@/types/api';
@@ -33,71 +33,34 @@ function AdminJurnalistikDashboardPage() {
       id: 'index',
       cell: (info) => info.row.index + 1,
       header: 'No.',
-      size: 75,
     },
     {
       id: 'ketua_tim',
       accessorKey: 'ketua_tim',
       header: 'Ketua Tim',
-      size: 200,
     },
     {
       id: 'nama_tim',
       accessorKey: 'nama_tim',
       header: 'Nama Tim',
-      size: 200,
     },
     {
       id: 'kode_tim',
       accessorKey: 'kode_tim',
       header: 'Kode Tim',
-      size: 180,
     },
     {
       id: 'created_at',
       accessorFn: (row) => format(new Date(row.created_at), "y'-'MM'-'dd"),
       header: 'Created At',
-      size: 200,
     },
     {
       id: 'status_pembayaran',
-      cell: (info) => {
-        const status = info.row.original.status_pembayaran;
-
-        const color = [
-          (status === 'REVISI' ||
-            status === 'AWAITING VERIFICATION' ||
-            status === 'AWAITING PAYMENT') &&
-            'border-warning-400 bg-warning-100 text-warning-700',
-          status === 'GAGAL' &&
-            'bg-critical-100 border-critical-300 text-critical-700',
-          status === 'SUCCESS' &&
-            'border-success-300 bg-success-100 text-success-700',
-        ];
-
-        const text = [
-          status === 'REVISI' && 'Revisi',
-          status === 'GAGAL' && 'Gagal',
-          status === 'SUCCESS' && 'Sukses',
-          status === 'AWAITING VERIFICATION' && 'Menunggu Verifikasi',
-          status === 'AWAITING PAYMENT' && 'Menunggu Pembayaran',
-        ];
-
-        return (
-          <div className='w-full flex justify-center'>
-            <div
-              className={clsxm(
-                'flex justify-center rounded-md min-w-[120px] px-4 py-0.5 border text-sm font-semibold',
-                color
-              )}
-            >
-              {text}
-            </div>
-          </div>
-        );
-      },
       header: 'Status Pembayaran',
-      size: 220,
+      cell: (info) => (
+        <PaymentTag color={info.row.original.status_pembayaran} />
+      ),
+      size: 280,
     },
     {
       id: 'detail_tim',
