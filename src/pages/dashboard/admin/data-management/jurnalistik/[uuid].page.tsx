@@ -31,8 +31,8 @@ function DetailTimJurnalistik() {
             </Typography>
             <Breadcrumb
               crumbs={[
-                '/dashboard/admin/data-management/',
                 '/dashboard/admin/data-management/jurnalistik',
+                '/dashboard/admin/data-management/jurnalistik/detail',
               ]}
             />
           </div>
@@ -40,7 +40,9 @@ function DetailTimJurnalistik() {
 
         <main className='space-y-6'>
           <div className='flex gap-x-6'>
-            <DetailTimCard tim={queryData?.data} className='flex-1' />
+            {queryData && (
+              <DetailTimCard tim={queryData.data} className='flex-1' />
+            )}
             <BuktiPembayaranCard
               tim={queryData?.data}
               uuid={`${uuid}`}

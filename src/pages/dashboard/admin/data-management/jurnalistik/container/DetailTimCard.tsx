@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import Loading from '@/components/Loading';
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
 import AnggotaCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/AnggotaCard';
@@ -9,9 +10,11 @@ export default function DetailTimCard({
   tim,
   className,
 }: {
-  tim?: DetailTimJurnalistik;
+  tim: DetailTimJurnalistik;
   className?: string;
 }) {
+  if (!tim) <Loading />;
+
   return (
     <section
       className={clsxm(

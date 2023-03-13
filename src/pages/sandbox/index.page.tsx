@@ -13,6 +13,9 @@ export default function Home() {
             <ButtonLink href='/sandbox/colors'>Color</ButtonLink>
             <ButtonLink href='/sandbox/form'>Form</ButtonLink>
             <ButtonLink href='/sandbox/typography'>Typography</ButtonLink>
+            <ButtonLink href='/sandbox/table'>Table</ButtonLink>
+            <ButtonLink href='/sandbox/query-toast'>Query</ButtonLink>
+            <ButtonLink href='/sandbox/tag'>Tag</ButtonLink>
             <ButtonLink href='/sandbox/imagefetch'>Image Fetch</ButtonLink>
           </div>
         </section>
