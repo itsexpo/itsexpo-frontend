@@ -13,7 +13,7 @@ export function JurnalistikDataRecap({
   return (
     <div className='grid md:grid-cols-3 grid-cols-2 grid-flow-row gap-6'>
       {/* Total Tim */}
-      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran'>
+      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
         <Typography as='b1' variant='b1' className='text-typo-icon'>
           Total Tim
         </Typography>
@@ -32,7 +32,7 @@ export function JurnalistikDataRecap({
       </div>
 
       {/* Menunggu Pembayaran */}
-      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran'>
+      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
         <Typography as='b1' variant='b1' className='text-typo-icon'>
           Menunggu Pembayaran:
         </Typography>
@@ -51,7 +51,7 @@ export function JurnalistikDataRecap({
       </div>
 
       {/* Pembayaran Gagal */}
-      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran'>
+      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
         <Typography as='b1' variant='b1' className='text-typo-icon'>
           Pembayaran Gagal:
         </Typography>
@@ -70,7 +70,7 @@ export function JurnalistikDataRecap({
       </div>
 
       {/* Pembayaran Revisi */}
-      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran'>
+      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
         <Typography as='b1' variant='b1' className='text-typo-icon'>
           Pembayaran Revisi:
         </Typography>
@@ -89,7 +89,7 @@ export function JurnalistikDataRecap({
       </div>
 
       {/* Menunggu Verifikasi */}
-      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran'>
+      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
         <Typography as='b1' variant='b1' className='text-typo-icon'>
           Menunggu Verifikasi:
         </Typography>
@@ -108,7 +108,7 @@ export function JurnalistikDataRecap({
       </div>
 
       {/* Pembayaran Berhasil */}
-      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran'>
+      <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
         <Typography as='b1' variant='b1' className='text-typo-icon'>
           Pembayaran Berhasil:
         </Typography>

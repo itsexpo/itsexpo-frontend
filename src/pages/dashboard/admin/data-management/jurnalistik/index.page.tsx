@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
+import { useRouter } from 'next/router';
 
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
@@ -21,6 +22,7 @@ export default withAuth(AdminJurnalistikDashboardPage, [
 ]);
 
 function AdminJurnalistikDashboardPage() {
+  const router = useRouter();
   const { tableState, setTableState } = useServerTable<AdminJurnalistikColumn>({
     pageSize: 10,
   });
@@ -98,13 +100,16 @@ function AdminJurnalistikDashboardPage() {
     },
     {
       id: 'detail_tim',
-      cell: () => {
+      cell: (info) => {
         return (
           <div className='flex flex-row justify-center'>
             <Button
               variant='outline'
               size='small'
               className='border-typo-icon !text-typo-icon font-semibold'
+              onClick={() =>
+                router.push(`jurnalistik/${info.row.original.id_tim}`)
+              }
             >
               Lihat Detail
             </Button>
@@ -129,9 +134,9 @@ function AdminJurnalistikDashboardPage() {
   });
 
   return (
-    <DashboardLayout>
+    <DashboardLayout className='bg-typo-surface '>
       <main>
-        <section className='bg-typo-surface dashboard-layout'>
+        <section className='dashboard-layout'>
           <div className='min-h-screen flex flex-col gap-6 pb-20'>
             <div>
               <Typography

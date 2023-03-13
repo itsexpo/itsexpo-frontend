@@ -1,4 +1,5 @@
 export type AdminJurnalistikColumn = {
+  id_tim: string;
   ketua_tim: string;
   nama_tim: string;
   kode_tim: string;
