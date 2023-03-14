@@ -18,6 +18,7 @@ export default function TampilanAwal({ user }: TampilanAwal) {
       <DeskripsiCard
         isRegister={user.pre_event[0].Jurnalistik.status}
         closeDate={user.pre_event[0].Jurnalistik.close_date}
+        startDate={user.pre_event[0].Jurnalistik.start_date}
       />
       <TimelineCard />
       <SubContestCard />

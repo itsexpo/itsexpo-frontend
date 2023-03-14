@@ -157,7 +157,7 @@ export default function TeamCard({
           <ButtonLink
             variant='green'
             className='w-fit'
-            href='/dashboard/pre-event/jurnalistik/pembayaran'
+            href={`/dashboard/pre-event/jurnalistik/pembayaran?code=${id_tim}`}
           >
             Lakukan Pembayaran
           </ButtonLink>
