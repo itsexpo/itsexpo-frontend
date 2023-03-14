@@ -9,6 +9,7 @@ import Input from '@/components/forms/Input';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
+import useDialog from '@/hooks/useDialog';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api from '@/lib/api';
 import PengumumanCard from '@/pages/dashboard/pre-event/jurnalistik/components/dashboard/PengumumanCard';
@@ -20,6 +21,7 @@ type JoinTeamJurnalistikProps = {
 export default withAuth(JoinTeamJurnalistik, ['jurnalistik_join.store']);
 
 function JoinTeamJurnalistik() {
+  const dialog = useDialog();
   const router = useRouter();
 
   const methods = useForm<JoinTeamJurnalistikProps>();
@@ -27,6 +29,22 @@ function JoinTeamJurnalistik() {
     handleSubmit,
     formState: { isDirty },
   } = methods;
+
+  function openWarningJoin({ data }: { data: JoinTeamJurnalistikProps }) {
+    dialog({
+      title: 'Apakah Anda Yakin Data Yang Anda Masukan Sudah Benar!!!',
+      description: `Apakah Anda Yakin untuk Join Tim Ini?`,
+      submitText: 'Join Team',
+      variant: 'warning',
+      catchOnCancel: true,
+    }).then(() => {
+      joinTeam(data, {
+        onSuccess: () => {
+          router.push('/dashboard/pre-event/jurnalistik/main');
+        },
+      });
+    });
+  }
 
   const { mutate: joinTeam, isLoading: joinTeamLoading } = useMutationToast<
     void,
@@ -42,11 +60,7 @@ function JoinTeamJurnalistik() {
   );
 
   const onSubmit = (data: JoinTeamJurnalistikProps) => {
-    joinTeam(data, {
-      onSuccess: () => {
-        router.push('/dashboard/pre-event/jurnalistik/main');
-      },
-    });
+    openWarningJoin({ data });
   };
   return (
     <DashboardLayout>
