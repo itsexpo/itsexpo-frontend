@@ -1,97 +1,139 @@
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { serialize } from 'object-to-formdata';
 import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import Button from '@/components/buttons/Button';
+import PaymentCountdown from '@/components/countdown/PaymentCountdown';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import SelectInput from '@/components/forms/SelectInput';
-import Typography from '@/components/typography/Typography';
+import PaymentCode from '@/components/shared/PaymentCode';
 import { Bank } from '@/constant/bank';
 import useMutationToast from '@/hooks/toast/useMutationToast';
+import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
-import { Jurnalistik } from '@/types/entities/pre-event/jurnalistik';
-export default function FormPembayaran() {
-  const methods = useForm<Jurnalistik>();
+import { formatToRupiah } from '@/lib/currency';
+import { FileWithPreview } from '@/types/dropzone';
+import { PembayaranJurnalistik } from '@/types/entities/pre-event/pembayaran';
 
+type CreatePembayaranJurnalistik = {
+  bank_id: number;
+  bukti_pembayaran: FileWithPreview[];
+  jurnalistik_team_id: string;
+  harga: number;
+};
+
+export default function FormPembayaran({
+  data,
+}: {
+  data: PembayaranJurnalistik;
+}) {
+  const methods = useForm<CreatePembayaranJurnalistik>();
+  const router = useRouter();
+  const { code } = router.query;
   const { handleSubmit } = methods;
-  // gunakan useMutation untuk mengirim data ke API
-  const { mutate, isLoading } = useMutationToast<void, Jurnalistik>(
+
+  //#region  //*=========== Pembayaran ===========
+  const { mutate: SubmitPembayaran, isLoading } = useMutationToast<
+    void,
+    FormData
+  >(
     useMutation(async (data) => {
-      const res = await api.post('/store_image_test', {
-        ...data,
-      });
-      return res;
+      return api
+        .post('/pre_event/pembayaran/jurnalistik', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((res) => res.data);
     })
   );
+  //#endregion  //*=========== Pembayaran ===========
 
-  const onSubmit = (data: Jurnalistik) => mutate(data);
+  //#region  //*=========== Bayar Dialog ===========
+  const dialog = useDialog();
+  function openWarningBayar({
+    harga,
+    formdata,
+  }: {
+    harga: number;
+    formdata: FormData;
+  }) {
+    dialog({
+      title: 'Apakah Anda Yakin Data Yang Anda Masukan Sudah Benar!!!',
+      description: `Cek Kembali apakah nominal yang anda masukan sudah benar sebesar : ${formatToRupiah(
+        harga
+      )}`,
+      submitText: 'Kirim',
+      variant: 'warning',
+      catchOnCancel: true,
+    }).then(() => {
+      SubmitPembayaran(formdata, {
+        onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/main'),
+      });
+    });
+  }
+  //#region  //*=========== Bayar Dialog ===========
+
+  const harga = parseInt(data.harga) + parseInt(data.kode_unik);
+
+  const onSubmit = (data: CreatePembayaranJurnalistik) => {
+    const body = {
+      bukti_pembayaran: data.bukti_pembayaran[0],
+      bank_id: 1,
+      jurnalistik_team_id: code as string,
+      harga: harga,
+    };
+    const formdata = serialize(body);
+    openWarningBayar({ harga, formdata });
+  };
 
   return (
-    <div className='grid grid-rows-2 md:grid-cols-6'>
-      <div className='col-span-6 md:col-span-4 bg-white shadow-pendaftaran p-6 rounded-xl m-5'>
-        <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+    <div className='col-span-6 md:col-span-4 bg-white shadow-pendaftaran rounded-xl p-4'>
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+          <div className='flex items-center justify-between flex-wrap'>
             <div>
-              <Typography variant='p' className='font-bold text-navy-800'>
-                Harga
-              </Typography>
-              <div className='flex'>
-                <Typography variant='p' className='font-bold text-typo-primary'>
-                  Rp100.
-                </Typography>
-                <Typography variant='p' className='font-bold text-success-600'>
-                  089
-                </Typography>
-              </div>
+              <PaymentCode
+                code={data.kode_unik}
+                price={data.harga}
+                label='Harga'
+              />
             </div>
-            <SelectInput
-              id='nama_bank'
-              label='Transfer Dari'
-              validation={{ required: 'Bank tidak boleh kosong' }}
-            >
-              {Object.entries(Bank).map(([key, value]) => (
-                <option key={key} value={value}>
-                  {key}
-                </option>
-              ))}
-            </SelectInput>
-            <DropzoneInput
-              id='bukti_transfer'
-              label='Upload Bukti Transfer'
-              validation={{ required: 'Bukti Transfer tidak boleh kosong' }}
-            />
+            <div className='!text-end'>
+              <PaymentCountdown closeDate={data.tanggal_pembayaran} />
+            </div>
+          </div>
+          <SelectInput
+            id='nama_bank'
+            label='Transfer Dari'
+            validation={{ required: 'Bank tidak boleh kosong' }}
+          >
+            {Object.entries(Bank).map(([key, value]) => (
+              <option key={key} value={value}>
+                {key}
+              </option>
+            ))}
+          </SelectInput>
+          <DropzoneInput
+            id='bukti_pembayaran'
+            label='Upload Bukti Transfer'
+            validation={{ required: 'Bukti Transfer tidak boleh kosong' }}
+          />
 
-            <div className='flex justify-end'>
-              <Button
-                type='submit'
-                variant='green'
-                className='mr-0'
-                isLoading={isLoading}
-              >
-                Upload Bukti Transfer
-              </Button>
-            </div>
-          </form>
-        </FormProvider>
-      </div>
-      <div className='col-span-6 md:col-span-2 max-h-64 bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
-        <Typography variant='p' className='font-normal text-navy-800'>
-          PEMBAYARAN JURNALISTIK
-        </Typography>
-        <br />
-        <Typography variant='p' className='font-normal text-navy-800'>
-          BRI: 0908 0104 5864 532 (Navisa Salsabila)
-        </Typography>
-        <Typography variant='p' className='font-normal text-navy-800'>
-          BNI: 1299871140 (Navisa Salsabila)
-        </Typography>
-        <Typography variant='p' className='font-normal text-navy-800'>
-          Shopeepay: 087871529729(Navisa Salsabila)
-        </Typography>
-        <Typography variant='p' className='font-normal text-navy-800'>
-          Dana: 087871529729 (Navisa Salsabila)
-        </Typography>
-      </div>
+          <div className='flex justify-end'>
+            <Button
+              type='submit'
+              variant='green'
+              className='mr-0'
+              isLoading={isLoading}
+            >
+              Upload Bukti Transfer
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
     </div>
   );
 }

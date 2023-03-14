@@ -1,18 +1,21 @@
 import * as React from 'react';
 
+import Countdown from '@/components/countdown/Countdown';
 import ButtonLink from '@/components/links/ButtonLink';
 import Typography from '@/components/typography/Typography';
-import useCountdown from '@/hooks/useCountdown';
 import clsxm from '@/lib/clsxm';
 
 type TampilanAwal = {
   isRegister: boolean;
   closeDate: Date;
+  startDate: Date;
 } & React.ComponentPropsWithoutRef<'div'>;
 
-export default function DeskripsiCard({ isRegister, closeDate }: TampilanAwal) {
-  const [days, hours, minutes] = useCountdown(new Date(closeDate));
-
+export default function DeskripsiCard({
+  isRegister,
+  closeDate,
+  startDate,
+}: TampilanAwal) {
   return (
     <div className='flex flex-col-reverse md:flex-row gap-6'>
       <div
@@ -64,62 +67,7 @@ export default function DeskripsiCard({ isRegister, closeDate }: TampilanAwal) {
               Pendaftaran Ditutup
             </Typography>
 
-            <div className='w-full flex items-center gap-2'>
-              <div
-                className={clsxm(
-                  'w-full md:w-20 flex flex-col items-center p-3',
-                  'rounded-md bg-typo-surface'
-                )}
-              >
-                <Typography as='h5' variant='h5' className='font-bold'>
-                  {days}
-                </Typography>
-                <Typography
-                  as='c'
-                  variant='c'
-                  color='secondary'
-                  className='font-semibold'
-                >
-                  Hari
-                </Typography>
-              </div>
-
-              <Typography as='p' variant='p' className='text-typo-icon'>
-                :
-              </Typography>
-
-              <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
-                <Typography as='h5' variant='h5' className='font-bold'>
-                  {hours}
-                </Typography>
-                <Typography
-                  as='c'
-                  variant='c'
-                  color='secondary'
-                  className='font-semibold'
-                >
-                  Jam
-                </Typography>
-              </div>
-
-              <Typography as='p' variant='p' className='text-typo-icon'>
-                :
-              </Typography>
-
-              <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
-                <Typography as='h5' variant='h5' className='font-bold'>
-                  {minutes}
-                </Typography>
-                <Typography
-                  as='c'
-                  variant='c'
-                  color='secondary'
-                  className='font-semibold'
-                >
-                  Menit
-                </Typography>
-              </div>
-            </div>
+            <Countdown closeDate={closeDate} startDate={startDate} />
 
             <div className='w-full flex flex-col gap-4'>
               <ButtonLink
