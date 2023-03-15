@@ -39,7 +39,7 @@ function AboutUs() {
       <SEO title='About Us' description='This is about us page' />
       <main className='flex flex-col bg-tainted-100 scroll-smooth'>
         {/* About Us */}
-        <section id='about-us'>
+        <section id='about-us' className='relative'>
           <div className='relative overflow-hidden min-h-screen'>
             <div className='justify-center md:w-fit md:mx-auto items-center pt-24 z-10 md:pt-32'>
               <div className='flex-col pt-28 relative md:flex'>
@@ -54,13 +54,13 @@ function AboutUs() {
                 <UnstyledLink
                   href='#about-itsexpo'
                   className={clsxm(
-                    'mt-10 w-10 h-10 flex mx-auto justify-center items-center rounded-full bg-success-600',
+                    'mt-10 w-10 h-10 z-50 flex mx-auto justify-center items-center rounded-full bg-success-600',
                     'animate-bounce'
                   )}
                   data-aos='fade-up'
                   data-aos-delay='200'
                 >
-                  <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
+                  <IoIosArrowDown className='z-50 fill-warning-100 w-5 h-5' />
                 </UnstyledLink>
               </div>
               <div className='w-full flex justify-between md:absolute md:max-w-lg md:top-40'>
