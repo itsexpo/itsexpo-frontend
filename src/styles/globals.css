@@ -11,7 +11,12 @@
   @apply mx-auto w-11/12;
   @apply pt-20;
 }
-
+.layout-pre-event {
+  max-width: 87.75rem;
+  /* margin-left: 28px;
+  margin-right: 28px; */
+  @apply mx-auto w-[93%];
+}
 /* Default font */
 body {
   @apply font-primary;
@@ -113,6 +118,24 @@ body {
 
 .bg-dashboard-mobile {
   background: linear-gradient(180deg, #092540 -25%, #8ab364 264.84%);
+}
+
+.bg-preevent-landing {
+  background: linear-gradient(
+    180deg,
+    #2a607b 0%,
+    #073e59 50.83%,
+    #2f2d2b 91.98%,
+    #2b2722 100%
+  );
+}
+
+.bg-card-tentang-preevent {
+  background: linear-gradient(
+    93.84deg,
+    rgba(255, 255, 255, 0.05) 0.98%,
+    rgba(255, 255, 255, 0.3) 102.39%
+  );
 }
 
 /* #region  /**=========== Datepicker =========== */
