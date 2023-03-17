@@ -43,12 +43,14 @@ function DetailTimJurnalistik() {
             {queryData && (
               <DetailTimCard tim={queryData.data} className='flex-1' />
             )}
-            <BuktiPembayaranCard
-              tim={queryData?.data}
-              uuid={`${uuid}`}
-              onSuccess={refetchData}
-              className='h-fit'
-            />
+            {queryData && uuid && (
+              <BuktiPembayaranCard
+                tim={queryData.data}
+                payment_id={queryData.data.payment.payment_id}
+                onSuccess={refetchData}
+                className='h-fit'
+              />
+            )}
           </div>
           <DokumenCard tim={queryData?.data} />
         </main>

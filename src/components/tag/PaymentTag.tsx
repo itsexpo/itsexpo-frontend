@@ -1,30 +1,7 @@
 import * as React from 'react';
 
 import Tag, { TagColor } from '@/components/tag/Tag';
-
-const PAYMENT_ID = [
-  'WAITING_PAYMENT',
-  'WAITING_REVISION',
-  'WAITING_VERIFICATION',
-  'GAGAL',
-  'SUCCESS',
-];
-
-const PAYMENT_TEXT = [
-  'Menunggu Pembayaran',
-  'Menunggu Revisi',
-  'Menunggu Verifikasi',
-  'Gagal',
-  'Berhasil',
-];
-
-export type PaymentId = (typeof PAYMENT_ID)[number];
-export type PaymentText = (typeof PAYMENT_TEXT)[number];
-
-export interface PaymentTagProps {
-  id: PaymentId;
-  name: PaymentText;
-}
+import { PaymentId, PaymentText } from '@/types/entities/pembayaran';
 
 const colors: Record<
   string,
@@ -34,13 +11,25 @@ const colors: Record<
     color: 'DEFAULT',
     text: 'Tidak Diketahui',
   },
-  WAITING_PAYMENT: {
-    color: 'warning',
+  'AWAITING PAYMENT': {
+    color: 'purple',
     text: 'Menunggu Pembayaran',
   },
-  WAITING_REVISION: {
+  'AWAITING VERIFICATION': {
     color: 'warning',
+    text: 'Menunggu Verifikasi',
+  },
+  REVISI: {
+    color: 'skyblue',
     text: 'Menunggu Revisi',
+  },
+  GAGAL: {
+    color: 'danger',
+    text: 'Pembayaran Gagal',
+  },
+  SUCCESS: {
+    color: 'success',
+    text: 'Pembayaran Berhasil',
   },
 };
 

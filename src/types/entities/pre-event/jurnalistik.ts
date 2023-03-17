@@ -1,5 +1,6 @@
 import NextImage from '@/components/NextImage';
 import { FileWithPreview } from '@/types/dropzone';
+import { PaymentId } from '@/types/entities/pembayaran';
 import { ExtractProps } from '@/types/helper';
 
 enum JenisKegiatan {
@@ -117,12 +118,8 @@ export interface DetailTimJurnalistik {
   team_name: string;
   team_code: string;
   payment: {
-    payment_status:
-      | 'WAITING_PAYMENT'
-      | 'REVISI'
-      | 'GAGAL'
-      | 'SUCCESS'
-      | 'WAITING_VERIFICATION';
+    payment_id: string;
+    payment_status: PaymentId;
     payment_image: string;
   };
   team_member: Array<{
@@ -138,6 +135,6 @@ export interface DetailTimJurnalistik {
 }
 
 export interface JurnalistikVerification {
-  id_jurnalistik?: string;
-  status: 'TERIMA' | 'TOLAK';
+  pembayaran_id: string;
+  status_pembayaran_id: 3 | 1;
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Loading from '@/components/Loading';
+import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
 import AnggotaCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/AnggotaCard';
@@ -75,35 +76,7 @@ export default function DetailTimCard({
         </div>
       </div>
 
-      <div className='space-y-2'>
-        <Typography as='c' variant='c' className='font-medium text-typo-icon'>
-          Status Pembayaran
-        </Typography>
-        <div
-          className={clsxm('px-4 py-2 rounded-lg bg-warning-100', [
-            tim?.payment.payment_status === 'SUCCESS' && 'bg-success-100',
-            tim?.payment.payment_status === 'GAGAL' && 'bg-critical-100',
-          ])}
-        >
-          <Typography
-            className={clsxm('text-center font-semibold text-warning-700', [
-              tim?.payment.payment_status === 'SUCCESS' && 'text-success-700',
-              tim?.payment.payment_status === 'GAGAL' && 'text-critical-700',
-            ])}
-          >
-            {[
-              tim?.payment.payment_status === 'WAITING_PAYMENT' &&
-                'Menunggu Pembayaran',
-              tim?.payment.payment_status === 'REVISI' && 'Menunggu Revisi',
-              tim?.payment.payment_status === 'WAITING_VERIFICATION' &&
-                'Belum Terverifikasi',
-              tim?.payment.payment_status === 'SUCCESS' &&
-                'Pembayaran Terverifikasi',
-              tim?.payment.payment_status === 'GAGAL' && 'Verifikasi Ditolak',
-            ]}
-          </Typography>
-        </div>
-      </div>
+      <StatusPembayaranCard status={tim.payment.payment_status} />
 
       <div className='space-y-4'>
         <Typography as='c' variant='c' className='font-medium text-typo-icon'>

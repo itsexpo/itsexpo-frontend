@@ -15,12 +15,12 @@ import {
 
 export default function BuktiPembayaranCard({
   tim,
-  uuid,
+  payment_id,
   onSuccess,
   className,
 }: {
-  tim?: DetailTimJurnalistik;
-  uuid?: string;
+  tim: DetailTimJurnalistik;
+  payment_id: string;
   onSuccess: () => void;
   className?: string;
 }) {
@@ -37,11 +37,11 @@ export default function BuktiPembayaranCard({
   );
 
   const handleVerification = ({
-    status,
-  }: Omit<JurnalistikVerification, 'id_jurnalistik'>) => {
+    status_pembayaran_id,
+  }: Omit<JurnalistikVerification, 'pembayaran_id'>) => {
     const data: JurnalistikVerification = {
-      id_jurnalistik: uuid,
-      status: status,
+      pembayaran_id: payment_id,
+      status_pembayaran_id,
     };
     verificate(data);
   };
@@ -65,47 +65,19 @@ export default function BuktiPembayaranCard({
         <div className='flex gap-x-2'>
           <Button
             size='small'
-            variant={
-              tim?.payment.payment_status === 'GAGAL' ||
-              tim?.payment.payment_status === 'WAITING_PAYMENT'
-                ? 'basic'
-                : 'red'
-            }
-            disabled={
-              tim?.payment.payment_status === 'GAGAL' ||
-              tim?.payment.payment_status === 'WAITING_PAYMENT'
-            }
-            className={clsxm(
-              (tim?.payment.payment_status === 'GAGAL' ||
-                tim?.payment.payment_status === 'WAITING_PAYMENT') &&
-                'bg-typo-outline'
-            )}
-            onClick={() => handleVerification({ status: 'TERIMA' })}
-            isLoading={isLoading}
-          >
-            Tolak
-          </Button>
-          <Button
-            size='small'
-            variant={
-              tim?.payment.payment_status === 'SUCCESS' ||
-              tim?.payment.payment_status === 'WAITING_PAYMENT'
-                ? 'basic'
-                : 'green'
-            }
-            disabled={
-              tim?.payment.payment_status === 'SUCCESS' ||
-              tim?.payment.payment_status === 'WAITING_PAYMENT'
-            }
-            className={clsxm(
-              (tim?.payment.payment_status === 'SUCCESS' ||
-                tim?.payment.payment_status === 'WAITING_PAYMENT') &&
-                'bg-typo-outline'
-            )}
-            onClick={() => handleVerification({ status: 'TOLAK' })}
+            variant='green'
+            onClick={() => handleVerification({ status_pembayaran_id: 3 })}
             isLoading={isLoading}
           >
             Terima
+          </Button>
+          <Button
+            size='small'
+            variant='red'
+            onClick={() => handleVerification({ status_pembayaran_id: 1 })}
+            isLoading={isLoading}
+          >
+            Tolak
           </Button>
         </div>
       </div>

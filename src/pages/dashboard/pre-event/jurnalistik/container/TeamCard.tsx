@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 import { MdContentCopy } from 'react-icons/md';
 
 import ButtonLink from '@/components/links/ButtonLink';
+import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import AnggotaButton from '@/pages/dashboard/pre-event/jurnalistik/components/dashboard/AnggotaButton';
 import { Peserta } from '@/types/entities/pre-event/jurnalistik';
@@ -16,6 +17,7 @@ type CardProps = {
   ketua_tim: boolean;
   status: {
     status: boolean;
+    pembayaran: string;
   };
   peserta: Array<Peserta>;
 } & React.ComponentPropsWithoutRef<'div'>;
@@ -109,40 +111,23 @@ export default function TeamCard({
           </div>
         </div>
       </div>
-      <div className='space-y-2'>
-        <Typography
-          as='p'
-          variant='caption'
-          className='text-typo-icon font-medium'
-        >
-          Status Pembayaran
-        </Typography>
-        {status.status ? (
-          <div className='w-full h-11 rounded-lg bg-success-100 flex justify-center items-center text-center p-6 sm:p-0'>
-            <Typography
-              as='p'
-              variant='b1'
-              className='text-success-800 font-medium'
-            >
-              Sudah Melakukan Pembayaran
-            </Typography>
-          </div>
-        ) : (
-          <div className='w-full h-11 rounded-lg bg-critical-100 flex justify-center items-center text-center p-6 sm:p-0'>
-            <Typography
-              as='p'
-              variant='b1'
-              className='text-critical-800 font-medium'
-            >
-              Belum Melakukan Pembayaran
-            </Typography>
-          </div>
-        )}
-      </div>
+      <StatusPembayaranCard status={status.pembayaran} />
       <div className='space-y-4'>
-        <Typography as='p' variant='caption' className='text-typo-icon'>
-          Anggota Tim
-        </Typography>
+        <div>
+          <Typography as='p' variant='caption' className='text-typo-icon'>
+            Anggota Tim
+          </Typography>
+          {status.status ? (
+            <Typography as='p' variant='c' color='success'>
+              Tim Sudah Memenuhi Syarat (Min 3 Anggota)
+            </Typography>
+          ) : (
+            <Typography as='p' variant='c' color='danger'>
+              Tim Belum Memenuhi Syarat (Min 3 Anggota)
+            </Typography>
+          )}
+        </div>
+
         {peserta.map((anggota, index) => (
           <AnggotaButton
             key={index}
@@ -152,17 +137,19 @@ export default function TeamCard({
           />
         ))}
       </div>
-      {ketua_tim && (
-        <div className='flex justify-end'>
-          <ButtonLink
-            variant='green'
-            className='w-fit'
-            href={`/dashboard/pre-event/jurnalistik/pembayaran?code=${id_tim}`}
-          >
-            Lakukan Pembayaran
-          </ButtonLink>
-        </div>
-      )}
+      {ketua_tim &&
+        status.pembayaran !== 'AWAITING VERIFICATION' &&
+        status.pembayaran !== 'SUCCESS' && (
+          <div className='flex justify-end'>
+            <ButtonLink
+              variant='green'
+              className='w-fit'
+              href={`/dashboard/pre-event/jurnalistik/pembayaran?code=${id_tim}`}
+            >
+              Lakukan Pembayaran
+            </ButtonLink>
+          </div>
+        )}
     </div>
   );
 }
