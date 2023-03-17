@@ -62,7 +62,7 @@ export default function Home() {
                 variant='h6'
                 className='font-secondary font-semibold text-critical-500'
               >
-                Gunita Aksara
+                Gunita Akatara
               </Typography>
             </div>
             <Typography
