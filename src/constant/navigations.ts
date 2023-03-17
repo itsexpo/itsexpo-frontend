@@ -153,6 +153,13 @@ export const navigations: Navigation[] = [
           'jurnalistik_member.store',
         ],
       },
+      {
+        name: 'KTI',
+        href: '/dashboard/pre-event/kti',
+        exactMatch: true,
+        icon: BsJournalMedical,
+        permissions: [],
+      },
     ],
   },
   {
