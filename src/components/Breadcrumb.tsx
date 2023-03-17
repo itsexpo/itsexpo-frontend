@@ -22,6 +22,10 @@ const breadcrumbs = {
   '/dashboard/pre-event/jurnalistik/join': 'Join Team',
   '/dashboard/pre-event/jurnalistik/pendaftaran': 'Pendaftaran',
   '/dashboard/pre-event/jurnalistik/pembayaran': 'Pembayaran',
+  '/dashboard/pre-event/kti': 'KTI',
+  '/dashboard/pre-event/kti/main': 'Dashboard',
+  '/dashboard/pre-event/kti/pendaftaran': 'Pendaftaran',
+  '/dashboard/pre-event/kti/pembayaran': 'Pembayaran',
 };
 type BreadcrumbProps = {
   crumbs: Array<keyof typeof breadcrumbs>;
