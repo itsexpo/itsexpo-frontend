@@ -2,7 +2,7 @@ import NextImage from '@/components/NextImage';
 import { FileWithPreview } from '@/types/dropzone';
 import { ExtractProps } from '@/types/helper';
 
-export interface KTI {
+export interface KTIPendaftaranForm {
   team_name: string;
   asal_instansi: string;
   nama_ketua: string;

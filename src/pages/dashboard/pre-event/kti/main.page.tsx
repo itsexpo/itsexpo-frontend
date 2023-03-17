@@ -50,13 +50,14 @@ export const getServerSideProps = async (
   setApiContext(context);
   try {
     const res = await api.get<ApiReturn<DetailPendaftarJurnalistik>>(
-      '/pre_event/jurnalistik'
+      '/pre_event/kti'
     );
     return {
       props: {
         data: res.data,
       },
     };
+    // ! TODO NEED TO CHANGE IF API DONE
   } catch (err) {
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {

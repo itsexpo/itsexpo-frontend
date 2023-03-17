@@ -16,7 +16,7 @@ function PendaftaranKTIDashboardPage() {
   const router = useRouter();
 
   if (user?.pre_event[0].Jurnalistik.status === true) {
-    router.push('/dashboard/pre-event/jurnalistik');
+    router.push('/dashboard/pre-event/kti');
   }
 
   if (!user) {
