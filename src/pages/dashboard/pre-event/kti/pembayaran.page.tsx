@@ -66,7 +66,7 @@ export const getServerSideProps = async (
   setApiContext(context);
   try {
     const res = await api.get<ApiReturn<PembayaranJurnalistik>>(
-      '/pre_event/pembayaran/jurnalistik'
+      '/pre_event/pembayaran/kti'
     );
     return {
       props: {
@@ -77,7 +77,7 @@ export const getServerSideProps = async (
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {
         redirect: {
-          destination: '/dashboard/pre-event/jurnalistik/main',
+          destination: '/dashboard/pre-event/kti/main',
           permanent: false,
         },
       };

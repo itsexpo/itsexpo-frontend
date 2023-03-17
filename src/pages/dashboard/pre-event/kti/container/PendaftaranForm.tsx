@@ -12,10 +12,10 @@ import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
 import Informasi from '@/pages/dashboard/pre-event/kti/components/pendaftaran/Informasi';
 import KTIFieldArray from '@/pages/dashboard/pre-event/kti/components/pendaftaran/KTIFieldArray';
-import { KTI } from '@/types/entities/pre-event/kti';
+import { KTIPendaftaranForm } from '@/types/entities/pre-event/kti';
 
 export default function FormPendaftaran() {
-  const methods = useForm<KTI>();
+  const methods = useForm<KTIPendaftaranForm>();
   const dialog = useDialog();
   const {
     handleSubmit,
@@ -48,7 +48,7 @@ export default function FormPendaftaran() {
     });
   }
 
-  const onSubmit = (data: KTI) => {
+  const onSubmit = (data: KTIPendaftaranForm) => {
     if (data.team_member.length < 2) {
       toast.error('Anggota minimal 2 orang');
       return;
