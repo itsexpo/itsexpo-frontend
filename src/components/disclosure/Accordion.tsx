@@ -1,16 +1,31 @@
 import { Disclosure, Transition } from '@headlessui/react';
-import React from 'react';
+import * as React from 'react';
 import { RxChevronDown } from 'react-icons/rx';
 
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
-import { FAQRobotikData } from '@/types/entities/pre-event/robotik';
+import { ExtractProps } from '@/types/helper';
 
-const Accordion = ({ title, content }: FAQRobotikData) => {
+type AccordionProps = {
+  title: string;
+  className?: string;
+} & ExtractProps<typeof Disclosure>;
+
+export default function Accordion({
+  title,
+  className,
+  children,
+  ...rest
+}: AccordionProps) {
   return (
-    <Disclosure>
+    <Disclosure as={React.Fragment} {...rest}>
       {({ open }) => (
-        <div className='p-4 space-y-2 rounded-lg bg-typo-surface'>
+        <div
+          className={clsxm(
+            'p-4 space-y-2 rounded-lg bg-typo-surface',
+            className
+          )}
+        >
           <Disclosure.Button className='w-full flex justify-between items-center'>
             <Typography
               as='h6'
@@ -36,20 +51,10 @@ const Accordion = ({ title, content }: FAQRobotikData) => {
             leaveFrom='opacity-100 max-h-96'
             leaveTo='opacity-0 max-h-0'
           >
-            <Disclosure.Panel>
-              <Typography
-                variant='b2'
-                color='secondary'
-                className='text-sm md:text-base'
-              >
-                {content}
-              </Typography>
-            </Disclosure.Panel>
+            <Disclosure.Panel>{children}</Disclosure.Panel>
           </Transition>
         </div>
       )}
     </Disclosure>
   );
-};
-
-export default Accordion;
+}

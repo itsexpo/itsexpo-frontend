@@ -1,8 +1,8 @@
 import * as React from 'react';
 
+import Accordion from '@/components/disclosure/Accordion';
 import Typography from '@/components/typography/Typography';
 import { FAQJurnalistikContents } from '@/contents/pre-event/jurnalistik/tampilan-awal';
-import Accordion from '@/pages/dashboard/pre-event/jurnalistik/components/tampilan-awal/Accordion';
 
 export default function FAQCard() {
   return (
@@ -14,9 +14,17 @@ export default function FAQCard() {
       >
         FAQ
       </Typography>
-      <div className='mt-6 flex flex-col'>
+      <div className='mt-6 space-y-4'>
         {FAQJurnalistikContents.map((faq, index) => (
-          <Accordion {...faq} key={index} />
+          <Accordion key={index} title={faq.title}>
+            <Typography
+              variant='b2'
+              color='secondary'
+              className='text-sm md:text-base'
+            >
+              {faq.content}
+            </Typography>
+          </Accordion>
         ))}
       </div>
     </div>
