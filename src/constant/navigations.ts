@@ -158,7 +158,7 @@ export const navigations: Navigation[] = [
         href: '/dashboard/pre-event/kti',
         exactMatch: true,
         icon: BsJournalMedical,
-        permissions: [],
+        permissions: ['kti.index', 'kti.store'],
       },
     ],
   },

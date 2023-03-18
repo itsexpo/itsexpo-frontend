@@ -6,7 +6,7 @@ export type PreEventDetail = {
 
 export type PreEvent = {
   Jurnalistik: PreEventDetail;
-  kti: PreEventDetail;
-  robotik: PreEventDetail;
-  talkshow: PreEventDetail;
+  KaryaTulisIlmiah: PreEventDetail;
+  RobotInAction: PreEventDetail;
+  Talkshow: PreEventDetail;
 };

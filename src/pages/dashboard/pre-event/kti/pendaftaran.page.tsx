@@ -15,13 +15,13 @@ function PendaftaranKTIDashboardPage() {
   const user = useAuthStore.useUser();
   const router = useRouter();
 
-  if (user?.pre_event[0].Jurnalistik.status === true) {
+  if (user?.pre_event[1].KaryaTulisIlmiah.status === true) {
     router.push('/dashboard/pre-event/kti');
   }
 
   if (!user) {
     return <Loading />;
-  } else if (user?.pre_event[0].Jurnalistik.status === false) {
+  } else if (user?.pre_event[1].KaryaTulisIlmiah.status === false) {
     return (
       <DashboardLayout>
         <div className='dashboard-layout min-h-screen'>

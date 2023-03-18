@@ -15,9 +15,9 @@ export default function TampilanAwal({ user }: TampilanAwal) {
   return (
     <div className='flex flex-col gap-y-6'>
       <DeskripsiCard
-        isRegister={user.pre_event[0].Jurnalistik.status}
-        closeDate={user.pre_event[0].Jurnalistik.close_date}
-        startDate={user.pre_event[0].Jurnalistik.start_date}
+        isRegister={user.pre_event[1].KaryaTulisIlmiah.status}
+        closeDate={user.pre_event[1].KaryaTulisIlmiah.close_date}
+        startDate={user.pre_event[1].KaryaTulisIlmiah.start_date}
       />
       <TimelineCard />
       <ContestCard />
