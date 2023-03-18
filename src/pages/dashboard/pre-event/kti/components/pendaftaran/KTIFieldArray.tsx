@@ -18,7 +18,7 @@ export default function KTIFieldArray() {
         fields.map((item, index) => (
           <div key={item.id} className='space-y-2'>
             <Input
-              id={`team_member.${index}.name`}
+              id={`team_member.${index}.nama`}
               label={`Nama Anggota ${index + 1}`}
               placeholder='Nama'
               validation={{

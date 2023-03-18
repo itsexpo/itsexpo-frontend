@@ -61,7 +61,7 @@ export default function FormPendaftaran() {
 
       team_member: data.team_member,
 
-      abstrak: data.abstrak[0],
+      file_abstrak: data.file_abstrak[0],
       follow_sosmed: data.follow_sosmed[0],
       bukti_repost: data.bukti_repost[0],
       twibbon: data.twibbon[0],

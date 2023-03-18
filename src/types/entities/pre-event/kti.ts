@@ -8,9 +8,13 @@ export interface KTIPendaftaranForm {
   nama_ketua: string;
   no_telp_ketua: string;
 
-  team_member: string;
+  team_member: {
+    nama: string;
+    no_telp: string;
+  }[];
 
-  abstrak: FileWithPreview[];
+  file_abstrak: FileWithPreview[];
+
   follow_sosmed: FileWithPreview[];
   bukti_repost: FileWithPreview[];
   twibbon: FileWithPreview[];

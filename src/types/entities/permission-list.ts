@@ -37,6 +37,9 @@ enum PermissionEnum {
   'admin_jurnalistik.index',
   'admin_jurnalistik.detail',
   'pembayaran_jurnalistik.store',
+  // KTI
+  'kti.index',
+  'kti.store',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

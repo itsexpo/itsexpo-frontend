@@ -188,7 +188,6 @@ export default function DropzoneInput({
                       </span>{' '}
                       atau drag and drop
                       <br />
-                      JPEG, PNG dan SVG
                     </p>
                     <p className='text-xs text-gray-500'>{`${
                       maxFiles - (files?.length || 0)
