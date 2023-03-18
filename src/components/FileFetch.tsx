@@ -1,5 +1,3 @@
-import 'react-image-lightbox/style.css';
-
 import * as React from 'react';
 import { HiOutlineExternalLink, HiOutlinePaperClip } from 'react-icons/hi';
 

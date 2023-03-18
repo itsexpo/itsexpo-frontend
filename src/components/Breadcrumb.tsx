@@ -22,8 +22,13 @@ const breadcrumbs = {
   '/dashboard/pre-event/jurnalistik/join': 'Join Team',
   '/dashboard/pre-event/jurnalistik/pendaftaran': 'Pendaftaran',
   '/dashboard/pre-event/jurnalistik/pembayaran': 'Pembayaran',
-  '/dashboard/pre-event/robotik': 'Robot Line Tracer',
+
+  // Robotik
+  '/dashboard/pre-event/robotik': 'Robot In Action',
   '/dashboard/pre-event/robotik/join': 'Join',
+  '/dashboard/pre-event/robotik/line-tracer': 'Line Tracer',
+
+  // KTI
   '/dashboard/pre-event/kti': 'KTI',
   '/dashboard/pre-event/kti/main': 'Dashboard',
   '/dashboard/pre-event/kti/pendaftaran': 'Pendaftaran',
