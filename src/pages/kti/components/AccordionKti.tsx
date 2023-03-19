@@ -10,7 +10,7 @@ const AccordionKti = ({ title, content }: FAQKTIData) => {
   return (
     <Disclosure>
       {({ open }) => (
-        <div className='mb-4 w-full'>
+        <div className='mb-2 sm:mb-4 w-full'>
           <Disclosure.Button
             className={clsxm(
               'bg-tainted-300 rounded-t-lg text-left p-4 w-full flex justify-between items-center',
@@ -20,7 +20,7 @@ const AccordionKti = ({ title, content }: FAQKTIData) => {
             <Typography
               variant='b2'
               as='h6'
-              className='font-medium text-left text-[14px] md:text-base text-tainted-900'
+              className='font-semibold text-left text-[10px] sm:text-[14px] md:text-base text-tainted-900'
             >
               {title}
             </Typography>
@@ -44,7 +44,7 @@ const AccordionKti = ({ title, content }: FAQKTIData) => {
             <Disclosure.Panel className='bg-tainted-300 p-4 overflow-hidden text-left transition rounded-b-lg mb-4'>
               <Typography
                 variant='b2'
-                className='text-warning-900 text-justify text-[13px] md:text-sm pb-2'
+                className='text-warning-900 text-justify text-[10px] sm:text-[13px] md:text-sm pb-2'
               >
                 {content}
               </Typography>
