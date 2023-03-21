@@ -1,3 +1,4 @@
+import { AiOutlineRobot } from 'react-icons/ai';
 import { BsJournalMedical } from 'react-icons/bs';
 import { FaBullhorn } from 'react-icons/fa';
 import {
@@ -159,6 +160,13 @@ export const navigations: Navigation[] = [
         exactMatch: true,
         icon: BsJournalMedical,
         permissions: ['kti.index', 'kti.store'],
+      },
+      {
+        name: 'Robot In Action',
+        href: '/dashboard/pre-event/robotik',
+        exactMatch: true,
+        icon: AiOutlineRobot,
+        permissions: ['robot_in_action.index', 'robot_in_action.store'],
       },
     ],
   },

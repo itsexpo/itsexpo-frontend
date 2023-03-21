@@ -3,18 +3,15 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import Input from '@/components/forms/Input';
 import Typography from '@/components/typography/Typography';
+import { DetailPendaftarRobotik } from '@/types/entities/pre-event/robotik';
 
-// mock data for form
-const mockData = {
-  nama: 'John Doe',
-  provinsi: 'Jawa Barat',
-  kabupaten: 'Bandung',
-  asal_instansi: 'Universitas Bandung',
-};
-
-export default function DataDiriCard() {
+export default function DataDiriCard({
+  data,
+}: {
+  data: DetailPendaftarRobotik['personal'];
+}) {
   const methods = useForm({
-    defaultValues: mockData,
+    defaultValues: data,
   });
   return (
     <div className=' p-6 pb-12 rounded-xl border-typo-outline border-[1px]'>
@@ -23,7 +20,7 @@ export default function DataDiriCard() {
       </Typography>
       <FormProvider {...methods}>
         <div className='space-y-4 mt-5'>
-          <Input id='nama' label='Nama' readOnly />
+          <Input id='name' label='Nama' readOnly />
           <Input id='provinsi' label='Provinsi' readOnly />
           <Input id='kabupaten' label='Kabupaten' readOnly />
           <Input id='asal_instansi' label='Asal Instansi' readOnly />
