@@ -10,6 +10,7 @@ import DropzoneInput from '@/components/forms/DropzoneInput';
 import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
 import TextArea from '@/components/forms/TextArea';
+import { REG_PHONE } from '@/constant/regex';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import api from '@/lib/api';
 import TeamRoleRadio from '@/pages/dashboard/pre-event/components/TeamRoleRadio';
@@ -31,23 +32,10 @@ export default function FormPendaftaran() {
 
   const router = useRouter();
 
-  const { mutate: SubmitAsKetua, isLoading: KetuaIsLoading } = useMutationToast<
-    void,
-    FormData
-  >(
-    useMutation((data) => {
-      return api.post('pre_event/robotik/ketua', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-    })
-  );
-
-  const { mutate: SubmitAsMember, isLoading: MemberIsLoading } =
+  const { mutate: submitRegistration, isLoading: submitIsLoading } =
     useMutationToast<void, FormData>(
       useMutation((data) => {
-        return api.post('pre_event/robotik/member', data, {
+        return api.post('pre_event/robotik', data, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
@@ -55,8 +43,14 @@ export default function FormPendaftaran() {
       })
     );
 
+  const isTeamLead = watch('member_type') === 'ketua';
+
   const onSubmit = (data: RobotikPendaftaranForm) => {
-    const image = {
+    const memberData = {
+      member_type: data.member_type,
+      name: data.name,
+      no_telp: data.no_telp,
+      asal_sekolah: data.asal_sekolah,
       id_card: data.id_card[0],
       follow_sosmed: data.follow_sosmed[0],
       share_poster: data.share_poster[0],
@@ -64,36 +58,22 @@ export default function FormPendaftaran() {
 
     if (isTeamLead) {
       const body = {
-        name: data.name,
-        member_type: data.member_type,
         team_name: data.team_name,
-        provinsi_id: data.provinsi_id,
-        kabupaten_id: data.kabupaten_id,
-        asal_instansi: data.asal_instansi,
-        id_line: data.opus_description, //dummy
-        ...image,
+        deskripsi_karya: data.deskripsi_karya,
+        ...memberData,
       };
       const formData = serialize(body);
-      SubmitAsKetua(formData, {
-        onSuccess: () => router.push('/dashboard/pre-event/robotik/'),
+      submitRegistration(formData, {
+        onSuccess: () => router.push('/dashboard/pre-event/robotik/main'),
       });
     } else {
-      const body = {
-        name: data.name,
-        member_type: data.member_type,
-        provinsi_id: data.provinsi_id,
-        kabupaten_id: data.kabupaten_id,
-        asal_instansi: data.asal_instansi,
-        id_line: data.opus_description, //dummy
-        ...image,
-      };
+      const body = memberData;
       const formData = serialize(body, { indices: true });
-      SubmitAsMember(formData, {
+      submitRegistration(formData, {
         onSuccess: () => router.push('/dashboard/pre-event/robotik/join'),
       });
     }
   };
-  const isTeamLead = watch('member_type') === 'ketua';
 
   const provinsi = useQuery<ApiReturn<{ id: string; name: string }[]>>([
     '/provinsi',
@@ -163,17 +143,33 @@ export default function FormPendaftaran() {
               </SelectInput>
             )}
             <Input
-              id='asal_instansi'
+              id='asal_sekolah'
               label='Asal Instansi'
               placeholder='Institut Teknologi Sepuluh Nopember'
               validation={{ required: 'Asal Instansi tidak boleh kosong' }}
             />
-            <TextArea
-              id='opuc_description'
-              label='Deskripsi Singkat tentang Karya'
-              placeholder='Robot Line Tracer merupakan kompetisi membuat robot yang tidak menggunakan bahasa pemrograman atau menggunakan mikrokontroler ...'
-              validation={{ required: 'Deskripsi Karya tidak boleh kosong' }}
+            <Input
+              id='no_telp'
+              label='Nomor Telepon'
+              type='tel'
+              placeholder='Masukkan Nomor Telepon'
+              helperText='Nomor telepon harus diawali +62'
+              validation={{
+                required: 'Nomor telepon wajib diisi',
+                pattern: {
+                  value: REG_PHONE,
+                  message: 'Nomor telepon tidak valid',
+                },
+              }}
             />
+            {isTeamLead && (
+              <TextArea
+                id='deskripsi_karya'
+                label='Deskripsi Singkat tentang Karya'
+                placeholder='Robot Line Tracer merupakan kompetisi membuat robot yang tidak menggunakan bahasa pemrograman atau menggunakan mikrokontroler ...'
+                validation={{ required: 'Deskripsi Karya tidak boleh kosong' }}
+              />
+            )}
             <DropzoneInput
               id='id_card'
               label='Upload Scan Kartu Pelajar / KTP'
@@ -189,16 +185,17 @@ export default function FormPendaftaran() {
             />
             <DropzoneInput
               id='share_poster'
-              label='Bukti Repost Poster Lomba Jurnalistik'
+              label='Bukti Repost Poster Lomba Robot In Action'
               validation={{
-                required: 'Bukti Poster Lomba Jurnalistik tidak boleh kosong',
+                required:
+                  'Bukti Poster Lomba Robot In Action tidak boleh kosong',
               }}
             />
 
             <Button
               type='submit'
               disabled={!isDirty}
-              isLoading={KetuaIsLoading || MemberIsLoading}
+              isLoading={submitIsLoading}
             >
               Submit
             </Button>

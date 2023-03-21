@@ -40,6 +40,9 @@ enum PermissionEnum {
   // KTI
   'kti.index',
   'kti.store',
+  // Robotik
+  'robot_in_action.index',
+  'robot_in_action.store',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

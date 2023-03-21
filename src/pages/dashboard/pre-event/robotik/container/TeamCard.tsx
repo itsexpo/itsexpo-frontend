@@ -3,12 +3,21 @@ import { toast } from 'react-hot-toast';
 import { MdContentCopy } from 'react-icons/md';
 
 import ButtonLink from '@/components/links/ButtonLink';
+import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import AnggotaButton from '@/pages/dashboard/pre-event/robotik/components/dashboard/AnggotaButton';
+import { DetailPendaftarRobotik } from '@/types/entities/pre-event/robotik';
 
-export default function TeamCard() {
+export default function TeamCard({
+  id_tim,
+  code_tim,
+  name_tim,
+  peserta,
+  ketua_tim,
+  payment,
+}: DetailPendaftarRobotik) {
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('TES');
+    navigator.clipboard.writeText(code_tim);
     toast.success('Kode tim berhasil disalin');
   };
 
@@ -28,7 +37,7 @@ export default function TeamCard() {
             variant='h6'
             className='font-bold text-typo-primary'
           >
-            Local Love
+            {name_tim}
           </Typography>
         </div>
         <div>
@@ -45,7 +54,7 @@ export default function TeamCard() {
               variant='h6'
               className='font-bold text-success-600'
             >
-              JR-CITS-001
+              {code_tim}
             </Typography>
             <MdContentCopy
               className='inline-block text-xl cursor-pointer'
@@ -54,68 +63,36 @@ export default function TeamCard() {
           </div>
         </div>
       </div>
-      <div className='space-y-2'>
-        <Typography
-          as='p'
-          variant='caption'
-          className='text-typo-icon font-medium'
-        >
-          Status Pembayaran
-        </Typography>
-
-        <div className='w-full h-11 rounded-lg bg-success-100 flex justify-center items-center text-center p-6 sm:p-0'>
-          <Typography
-            as='p'
-            variant='b1'
-            className='text-success-800 font-medium'
-          >
-            Sudah Melakukan Pembayaran
+      <StatusPembayaranCard status={payment.status} />
+      <div className='space-y-4'>
+        <div>
+          <Typography as='p' variant='caption' className='text-typo-icon'>
+            Anggota Tim
           </Typography>
         </div>
-      </div>
-      <div className='space-y-4'>
-        <Typography as='p' variant='caption' className='text-typo-icon'>
-          Anggota Tim
-        </Typography>
 
-        <AnggotaButton
-          user_id='1234'
-          name='Tigo S Yoga'
-          id='1234'
-          key={1}
-          ketua={true}
-          id_team={'1234'}
-          isTeamLead={true}
-        />
-        <AnggotaButton
-          user_id='1234'
-          name='Darren Prasetya'
-          id='1234'
-          key={1}
-          ketua={false}
-          id_team={'1234'}
-          isTeamLead={true}
-        />
-        <AnggotaButton
-          user_id='1234'
-          name='Robby Pambudi'
-          id='1234'
-          key={1}
-          ketua={false}
-          id_team={'1234'}
-          isTeamLead={true}
-        />
+        {peserta.map((anggota, index) => (
+          <AnggotaButton
+            key={index}
+            {...anggota}
+            id_team={id_tim}
+            isTeamLead={ketua_tim}
+          />
+        ))}
       </div>
-
-      <div className='flex justify-end'>
-        <ButtonLink
-          variant='green'
-          className='w-fit'
-          href='/dashboard/pre-event/jurnalistik/pembayaran'
-        >
-          Lakukan Pembayaran
-        </ButtonLink>
-      </div>
+      {ketua_tim &&
+        payment.status !== 'AWAITING VERIFICATION' &&
+        payment.status !== 'SUCCESS' && (
+          <div className='flex justify-end'>
+            <ButtonLink
+              variant='green'
+              className='w-fit'
+              href={`/dashboard/pre-event/robotik/pembayaran?code=${id_tim}`}
+            >
+              Lakukan Pembayaran
+            </ButtonLink>
+          </div>
+        )}
     </div>
   );
 }

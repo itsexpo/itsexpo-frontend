@@ -12,7 +12,6 @@ import { ApiReturn } from '@/types/api';
 
 type ButtonProps = {
   id: string;
-  user_id: string;
   name: string;
   ketua: boolean;
   isTeamLead: boolean;
@@ -36,7 +35,7 @@ const AnggotaButton = ({
     DeleteAnggota
   >(
     useMutation(async (data) => {
-      await api.delete('/pre_event/jurnalistik/team', { data });
+      await api.delete('/pre_event/robotik/team', { data });
     })
   );
 
