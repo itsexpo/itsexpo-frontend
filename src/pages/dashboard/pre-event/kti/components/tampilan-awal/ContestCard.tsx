@@ -8,7 +8,7 @@ export default function ContestCard() {
       <div className='relative'>
         <div className='w-full h-64'>
           <NextImage
-            src='/dashboard/pre-event/lkti/tampilan-awal/contest-card.png'
+            src='/dashboard/pre-event/kti/tampilan-awal/contest-card.png'
             alt='Karya Tulis Ilmiah Mahasiswa S1/D4/Sederajat'
             width={1525}
             height={1024}

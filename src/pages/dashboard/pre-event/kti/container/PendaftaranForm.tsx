@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
 import { serialize } from 'object-to-formdata';
 import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -7,6 +8,7 @@ import { toast } from 'react-hot-toast';
 import Button from '@/components/buttons/Button';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import Input from '@/components/forms/Input';
+import { REG_PHONE } from '@/constant/regex';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
@@ -15,8 +17,16 @@ import KTIFieldArray from '@/pages/dashboard/pre-event/kti/components/pendaftara
 import { KTIPendaftaranForm } from '@/types/entities/pre-event/kti';
 
 export default function FormPendaftaran() {
-  const methods = useForm<KTIPendaftaranForm>();
+  const methods = useForm<KTIPendaftaranForm>({
+    defaultValues: {
+      team_member: [{ nama: '', no_telp: '' }],
+    },
+  });
+
+  const router = useRouter();
+
   const dialog = useDialog();
+
   const {
     handleSubmit,
     formState: { isDirty },
@@ -27,7 +37,7 @@ export default function FormPendaftaran() {
     FormData
   >(
     useMutation((data) => {
-      return api.post('pre_event/kti', data, {
+      return api.post('/pre_event/kti', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -44,7 +54,9 @@ export default function FormPendaftaran() {
       variant: 'warning',
       catchOnCancel: true,
     }).then(() => {
-      daftarKTI(formdata);
+      daftarKTI(formdata, {
+        onSuccess: () => router.push('/dashboard/pre-event/kti'),
+      });
     });
   }
 
@@ -76,42 +88,35 @@ export default function FormPendaftaran() {
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
             <Input
-              id='name'
+              id='team_name'
               label='Nama Tim'
-              placeholder='Sentinels'
+              placeholder='Nama Tim'
               validation={{ required: 'Nama tidak boleh kosong' }}
             />
             <Input
-              id='asal_universitas'
+              id='asal_instansi'
               label='Asal Universitas'
               placeholder='Institut Teknologi Sepuluh Nopember'
               validation={{ required: 'Universitas tidak boleh kosong' }}
             />
             <Input
-              id='name_ketua'
+              id='nama_ketua'
               label='Nama Ketua'
-              placeholder='Hanafi Satriyo Utomo Setiawan'
+              placeholder='Nama Lengkap'
               validation={{ required: 'Nama Ketua tidak boleh kosong' }}
             />
             <Input
-              id='no_telp'
+              id='no_telp_ketua'
               label='No. Telp Ketua'
-              placeholder='+6212345678990'
+              placeholder='Nomor Telepon'
               helperText='Nomor telepon harus diawali +62'
-              validation={{ required: 'No. Telp tidak boleh kosong' }}
-            />
-            <Input
-              id='nama_anggota'
-              label='Nama Anggota 1'
-              placeholder='Hanafi Satriyo Utomo Setiawan'
-              validation={{ required: 'Nama Anggota 1 tidak boleh kosong' }}
-            />
-            <Input
-              id='no_telp_anggota1'
-              label='No. Telp Anggota 1'
-              placeholder='+6212345678990'
-              helperText='Nomor telepon harus diawali +62'
-              validation={{ required: 'Nama Anggota 1 tidak boleh kosong' }}
+              validation={{
+                required: 'No. Telp tidak boleh kosong',
+                pattern: {
+                  value: REG_PHONE,
+                  message: 'Nomor telepon tidak valid',
+                },
+              }}
             />
             <KTIFieldArray />
             <DropzoneInput
@@ -123,7 +128,7 @@ export default function FormPendaftaran() {
               helperText='www.instagram.com/ITSEXPO2023'
             />
             <DropzoneInput
-              id='share_poster'
+              id='bukti_repost'
               label='Bukti Repost Poster Lomba Karya Tulis Ilmiah'
               validation={{
                 required:
