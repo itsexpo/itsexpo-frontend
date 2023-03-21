@@ -9,7 +9,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import FormPendaftaran from '@/pages/dashboard/pre-event/kti/container/PendaftaranForm';
 import useAuthStore from '@/store/useAuthStore';
 
-export default withAuth(PendaftaranKTIDashboardPage, []);
+export default withAuth(PendaftaranKTIDashboardPage, ['kti.store']);
 
 function PendaftaranKTIDashboardPage() {
   const user = useAuthStore.useUser();

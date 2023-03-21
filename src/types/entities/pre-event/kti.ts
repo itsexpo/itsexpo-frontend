@@ -1,5 +1,6 @@
 import NextImage from '@/components/NextImage';
 import { FileWithPreview } from '@/types/dropzone';
+import { PaymentId } from '@/types/entities/pembayaran';
 import { ExtractProps } from '@/types/helper';
 
 export interface KTIPendaftaranForm {
@@ -14,7 +15,6 @@ export interface KTIPendaftaranForm {
   }[];
 
   file_abstrak: FileWithPreview[];
-
   follow_sosmed: FileWithPreview[];
   bukti_repost: FileWithPreview[];
   twibbon: FileWithPreview[];
@@ -76,52 +76,26 @@ export type JurnalistikDataRecapType = {
   };
 };
 
-export interface DetailPendaftarJurnalistik {
-  id_tim: string;
-  name_tim: string;
-  ketua_tim: boolean;
-  code_tim: string;
-
-  status: {
-    status: boolean;
-    pembayaran: string;
-  };
-  category_jurnalistik: string;
-  peserta: Array<Peserta>;
-  jenis_kegiatan: string;
-
-  personal: {
-    id: string;
-    user_id: string;
-    nama: string;
-    provinsi: string;
-    kabupaten: string;
-    asal_instansi: string;
-  };
-}
-
-export interface DetailTimJurnalistik {
+export interface DetailTimKTI {
   team_name: string;
-  team_code: string;
+  asal_instansi: string;
+  lead_name: string;
+  no_telp: string;
+
   payment: {
-    payment_status:
-      | 'WAITING_PAYMENT'
-      | 'REVISI'
-      | 'GAGAL'
-      | 'SUCCESS'
-      | 'WAITING_VERIFICATION';
-    payment_image: string;
+    payment_id: string;
+    payment_status: PaymentId;
   };
-  team_member: Array<{
+
+  members: Array<{
     name: string;
-    ketua: 'KETUA' | 'MEMBER';
-    provinsi: string;
-    kabupaten: string;
-    id_line: string;
-    id_card_url: string;
-    follow_sosmed_url: string;
-    share_poster_url: string;
+    no_telp: string;
   }>;
+
+  follow_sosmed: string;
+  share_poster: string;
+  twibbon: string;
+  abstrak: string;
 }
 
 export interface JurnalistikVerification {

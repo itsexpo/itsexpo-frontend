@@ -14,32 +14,31 @@ export default function KTIFieldArray() {
 
   return (
     <div className='space-y-4'>
-      {fields &&
-        fields.map((item, index) => (
-          <div key={item.id} className='space-y-2'>
-            <Input
-              id={`team_member.${index}.nama`}
-              label={`Nama Anggota ${index + 1}`}
-              placeholder='Nama'
-              validation={{
-                required: 'Nama harus diisi',
-              }}
-            />
-            <Input
-              id={`team_member.${index}.no_telp`}
-              label='Nomor Telepon'
-              placeholder='Nomor Telepon'
-              helperText='Nomor telepon harus diawali +62'
-              validation={{
-                required: 'Nomor telepon wajib diisi',
-                pattern: {
-                  value: REG_PHONE,
-                  message: 'Nomor telepon tidak valid',
-                },
-              }}
-            />
-          </div>
-        ))}
+      {fields.map((item, index) => (
+        <div key={item.id} className='space-y-2'>
+          <Input
+            id={`team_member.${index}.nama`}
+            label={`Nama Anggota ${index + 1}`}
+            placeholder='Nama Lengkap'
+            validation={{
+              required: 'Nama harus diisi',
+            }}
+          />
+          <Input
+            id={`team_member.${index}.no_telp`}
+            label={`No. Telp Anggota ${index + 1}`}
+            placeholder='Nomor Telepon'
+            helperText='Nomor telepon harus diawali +62'
+            validation={{
+              required: 'Nomor telepon wajib diisi',
+              pattern: {
+                value: REG_PHONE,
+                message: 'Nomor telepon tidak valid',
+              },
+            }}
+          />
+        </div>
+      ))}
       <div className='flex justify-center gap-x-4'>
         {fields.length < 4 && (
           <Button

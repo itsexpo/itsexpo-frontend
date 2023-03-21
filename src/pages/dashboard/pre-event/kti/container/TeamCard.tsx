@@ -1,38 +1,27 @@
 import * as React from 'react';
-import { toast } from 'react-hot-toast';
-import { MdContentCopy } from 'react-icons/md';
 
 import ButtonLink from '@/components/links/ButtonLink';
 import Typography from '@/components/typography/Typography';
-import AnggotaButton from '@/pages/dashboard/pre-event/jurnalistik/components/dashboard/AnggotaButton';
-import { Peserta } from '@/types/entities/pre-event/jurnalistik';
+import AnggotaButton from '@/pages/dashboard/pre-event/kti/components/dashboard/AnggotaButton';
 
 type CardProps = {
-  id_tim: string;
-  name_tim: string;
-  jenis_kegiatan: string;
-  code_tim: string;
-  ketua_tim: boolean;
-  status: {
-    status: boolean;
+  team_name: string;
+  lead_name: string;
+  payment: {
+    payment_status: string;
   };
-  peserta: Array<Peserta>;
+  members: Array<{
+    name: string;
+    no_telp: string;
+  }>;
 } & React.ComponentPropsWithoutRef<'div'>;
 
 export default function TeamCard({
-  id_tim,
-  code_tim,
-  name_tim,
-  peserta,
-  ketua_tim,
-  jenis_kegiatan,
-  status,
+  team_name,
+  lead_name,
+  payment,
+  members,
 }: CardProps) {
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(code_tim);
-    toast.success('Kode tim berhasil disalin');
-  };
-
   return (
     <div className='p-6 rounded-xl border-typo-outline border-[1px] space-y-6'>
       <div>
@@ -51,22 +40,6 @@ export default function TeamCard({
           Karya Tulis Ilmiah
         </Typography>
       </div>
-      <div>
-        <Typography
-          as='p'
-          variant='caption'
-          className='font-medium text-typo-icon'
-        >
-          Jenis Kegiatan
-        </Typography>
-        <Typography
-          as='h6'
-          variant='h6'
-          className='font-bold text-typo-primary'
-        >
-          {jenis_kegiatan}
-        </Typography>
-      </div>
       <div className='flex flex-col gap-y-6 xl:gap-y-0 xl:flex-row xl:justify-between items-start xl:items-center'>
         <div>
           <Typography
@@ -81,30 +54,8 @@ export default function TeamCard({
             variant='h6'
             className='font-bold text-typo-primary'
           >
-            {name_tim}
+            {team_name}
           </Typography>
-        </div>
-        <div>
-          <Typography
-            as='p'
-            variant='caption'
-            className='text-typo-icon font-medium'
-          >
-            Kode Tim
-          </Typography>
-          <div className='flex items-center justify-center space-x-2'>
-            <Typography
-              as='h6'
-              variant='h6'
-              className='font-bold text-success-600'
-            >
-              {code_tim}
-            </Typography>
-            <MdContentCopy
-              className='inline-block text-xl cursor-pointer'
-              onClick={copyToClipboard}
-            />
-          </div>
         </div>
       </div>
       <div className='space-y-2'>
@@ -115,24 +66,40 @@ export default function TeamCard({
         >
           Status Pembayaran
         </Typography>
-        {status.status ? (
+        {payment.payment_status !== 'AWAITING VERIFICATION' &&
+          payment.payment_status !== 'SUCCESS' && (
+            <div className='w-full h-11 rounded-lg bg-critical-100 flex justify-center items-center text-center p-6 sm:p-0'>
+              <Typography
+                as='p'
+                variant='b1'
+                color='danger'
+                className='font-medium'
+              >
+                Belum Melakukan Pembayaran
+              </Typography>
+            </div>
+          )}
+        {payment.payment_status === 'AWAITING VERIFICATION' && (
+          <div className='w-full h-11 rounded-lg bg-warning-100 flex justify-center items-center text-center p-6 sm:p-0'>
+            <Typography
+              as='p'
+              variant='b1'
+              color='warning'
+              className='font-medium'
+            >
+              Menunggu Verifikasi
+            </Typography>
+          </div>
+        )}
+        {payment.payment_status === 'SUCCESS' && (
           <div className='w-full h-11 rounded-lg bg-success-100 flex justify-center items-center text-center p-6 sm:p-0'>
             <Typography
               as='p'
               variant='b1'
-              className='text-success-800 font-medium'
+              color='success'
+              className='font-medium'
             >
               Sudah Melakukan Pembayaran
-            </Typography>
-          </div>
-        ) : (
-          <div className='w-full h-11 rounded-lg bg-critical-100 flex justify-center items-center text-center p-6 sm:p-0'>
-            <Typography
-              as='p'
-              variant='b1'
-              className='text-critical-800 font-medium'
-            >
-              Belum Melakukan Pembayaran
             </Typography>
           </div>
         )}
@@ -141,26 +108,22 @@ export default function TeamCard({
         <Typography as='p' variant='caption' className='text-typo-icon'>
           Anggota Tim
         </Typography>
-        {peserta.map((anggota, index) => (
-          <AnggotaButton
-            key={index}
-            {...anggota}
-            id_team={id_tim}
-            isTeamLead={ketua_tim}
-          />
+        {members.map((member, index) => (
+          <AnggotaButton key={index} {...member} lead_name={lead_name} />
         ))}
       </div>
-      {ketua_tim && (
-        <div className='flex justify-end'>
-          <ButtonLink
-            variant='green'
-            className='w-fit'
-            href={`/dashboard/pre-event/jurnalistik/pembayaran?code=${id_tim}`}
-          >
-            Lakukan Pembayaran
-          </ButtonLink>
-        </div>
-      )}
+      {payment.payment_status !== 'AWAITING VERIFICATION' &&
+        payment.payment_status !== 'SUCCESS' && (
+          <div className='flex justify-end'>
+            <ButtonLink
+              variant='green'
+              className='w-fit'
+              href={`/dashboard/pre-event/kti`}
+            >
+              Lakukan Pembayaran
+            </ButtonLink>
+          </div>
+        )}
     </div>
   );
 }

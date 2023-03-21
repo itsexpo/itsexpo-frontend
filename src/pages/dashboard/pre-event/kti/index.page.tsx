@@ -7,7 +7,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import TampilanAwal from '@/pages/dashboard/pre-event/kti/container/TampilanAwal';
 import useAuthStore from '@/store/useAuthStore';
 
-export default withAuth(KTIDashboardPage, []);
+export default withAuth(KTIDashboardPage, ['kti.index'], true);
 
 function KTIDashboardPage() {
   const user = useAuthStore.useUser();

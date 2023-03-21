@@ -102,15 +102,16 @@ export default function DeskripsiCard({
                 variant='b1'
                 className='text-typo-secondary text-center'
               >
-                Terimakasih telah berpartisipasi pada lomba Journalistic. Jangan
-                terlewatkan pengumuman lomba ini dan segera lengkapi tim kamu
+                Terimakasih telah berpartisipasi pada lomba Karya Tulis Ilmiah.
+                Jangan terlewatkan pengumuman lomba ini dan segera lengkapi tim
+                kamu
               </Typography>
             </div>
             <div className='w-full mt-10'>
               <ButtonLink
                 className='w-full'
                 variant='green'
-                href='/dashboard/pre-event/jurnalistik/main'
+                href='/dashboard/pre-event/kti/main'
               >
                 Lihat Dashboard
               </ButtonLink>
