@@ -15,7 +15,7 @@ const links = [
     href: '/coming-soon',
     label: 'Acara',
     children: [
-      { href: '/coming-soon', label: 'Pre Event' },
+      { href: '/pre-event', label: 'Pre Event' },
       { href: '/coming-soon', label: 'Opening' },
       { href: '/coming-soon', label: 'Main Event' },
       { href: '/coming-soon', label: 'Gebyar ITS EXPO' },
