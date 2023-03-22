@@ -128,14 +128,16 @@ export default function TeamCard({
           )}
         </div>
 
-        {peserta.map((anggota, index) => (
-          <AnggotaButton
-            key={index}
-            {...anggota}
-            id_team={id_tim}
-            isTeamLead={ketua_tim}
-          />
-        ))}
+        <div className='flex flex-col gap-4'>
+          {peserta.map((anggota, index) => (
+            <AnggotaButton
+              key={index}
+              {...anggota}
+              id_team={id_tim}
+              isTeamLead={ketua_tim}
+            />
+          ))}
+        </div>
       </div>
       {ketua_tim &&
         status.pembayaran !== 'AWAITING VERIFICATION' &&
