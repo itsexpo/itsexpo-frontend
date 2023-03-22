@@ -23,6 +23,7 @@ export interface DetailPendaftarRobotik {
   name_tim: string;
   ketua_tim: boolean;
   code_tim: string;
+  competition_status: string;
   deskripsi_karya: string;
 
   payment: {

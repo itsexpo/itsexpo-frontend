@@ -1,5 +1,5 @@
+import DokumenPendukungCard from '@/components/shared/DokumenPendukungCard';
 import clsxm from '@/lib/clsxm';
-import DokumenPendukungCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/DokumenPendukungCard';
 
 export default function DokumenPendukung({
   idCard,

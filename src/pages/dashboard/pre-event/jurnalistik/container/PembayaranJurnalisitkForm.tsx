@@ -7,6 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Button from '@/components/buttons/Button';
 import PaymentCountdown from '@/components/countdown/PaymentCountdown';
 import DropzoneInput from '@/components/forms/DropzoneInput';
+import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
 import PaymentCode from '@/components/shared/PaymentCode';
 import { Bank } from '@/constant/bank';
@@ -19,12 +20,17 @@ import { PembayaranPreEvent } from '@/types/entities/pre-event/pembayaran';
 
 type CreatePembayaranJurnalistik = {
   bank_id: number;
+  atas_nama: string;
   bukti_pembayaran: FileWithPreview[];
   jurnalistik_team_id: string;
   harga: number;
 };
 
-export default function FormPembayaran({ data }: { data: PembayaranPreEvent }) {
+export default function PembayaranJurnalistikForm({
+  data,
+}: {
+  data: PembayaranPreEvent;
+}) {
   const methods = useForm<CreatePembayaranJurnalistik>();
   const router = useRouter();
   const { code } = router.query;
@@ -36,13 +42,11 @@ export default function FormPembayaran({ data }: { data: PembayaranPreEvent }) {
     FormData
   >(
     useMutation(async (data) => {
-      return api
-        .post('/pre_event/pembayaran/jurnalistik', data, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then((res) => res.data);
+      return api.post('/pre_event/pembayaran/jurnalistik', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
     })
   );
   //#endregion  //*=========== Pembayaran ===========
@@ -76,6 +80,7 @@ export default function FormPembayaran({ data }: { data: PembayaranPreEvent }) {
 
   const onSubmit = (data: CreatePembayaranJurnalistik) => {
     const body = {
+      atas_nama: data.atas_nama,
       bukti_pembayaran: data.bukti_pembayaran[0],
       bank_id: 1,
       jurnalistik_team_id: code as string,
@@ -101,6 +106,14 @@ export default function FormPembayaran({ data }: { data: PembayaranPreEvent }) {
               <PaymentCountdown closeDate={data.tanggal_pembayaran} />
             </div>
           </div>
+          <Input
+            id='atas_nama'
+            label='Atas Nama'
+            placeholder='Atas nama'
+            validation={{
+              required: 'Atas nama tidak boleh kosong',
+            }}
+          />
           <SelectInput
             id='nama_bank'
             label='Transfer Dari'

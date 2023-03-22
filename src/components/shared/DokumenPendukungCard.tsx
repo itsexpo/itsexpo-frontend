@@ -11,7 +11,7 @@ export default function DokumenPendukungCard({
   caption: string;
 }) {
   return (
-    <div className='flex items-center gap-x-4 p-4 rounded-xl border border-typo-outline'>
+    <div className='flex items-center gap-x-4 p-4 rounded-xl border border-typo-outline group'>
       <ImageFetch
         imgPath={imgPath}
         alt='id card ketua'

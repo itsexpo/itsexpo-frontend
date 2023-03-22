@@ -7,9 +7,9 @@ import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
-import FormPembayaran from '@/pages/dashboard/pre-event/jurnalistik/container/PembayaranForm';
+import FormPembayaran from '@/pages/dashboard/pre-event/jurnalistik/container/PembayaranJurnalisitkForm';
 import { ApiError, ApiReturn } from '@/types/api';
-import { PembayaranJurnalistik } from '@/types/entities/pre-event/pembayaran';
+import { PembayaranPreEvent } from '@/types/entities/pre-event/pembayaran';
 
 export default withAuth(PembayaranKTI, []);
 
@@ -65,7 +65,7 @@ export const getServerSideProps = async (
 ) => {
   setApiContext(context);
   try {
-    const res = await api.get<ApiReturn<PembayaranJurnalistik>>(
+    const res = await api.get<ApiReturn<PembayaranPreEvent>>(
       '/pre_event/pembayaran/kti'
     );
     return {

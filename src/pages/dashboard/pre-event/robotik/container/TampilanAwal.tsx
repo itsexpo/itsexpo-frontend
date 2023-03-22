@@ -3,7 +3,6 @@ import * as React from 'react';
 import DeskripsiCard from '@/pages/dashboard/pre-event/robotik/components/DeskripsiCard';
 import FaqCard from '@/pages/dashboard/pre-event/robotik/components/FaqCard';
 import HadiahCard from '@/pages/dashboard/pre-event/robotik/components/HadiahCard';
-import JuriCard from '@/pages/dashboard/pre-event/robotik/components/JuriCard';
 import SubContestCard from '@/pages/dashboard/pre-event/robotik/components/SubContestCard';
 import TimelineCard from '@/pages/dashboard/pre-event/robotik/components/TimelineCard';
 import { User } from '@/types/entities/user';
@@ -22,7 +21,7 @@ export default function TampilanAwal({ user }: TampilanAwal) {
       />
       <TimelineCard />
       <SubContestCard />
-      <JuriCard />
+      {/* <JuriCard /> */}
       <HadiahCard />
       <FaqCard />
     </div>

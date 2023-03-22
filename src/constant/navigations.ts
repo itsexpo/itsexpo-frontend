@@ -23,13 +23,6 @@ export const navigations: Navigation[] = [
     icon: FiFileText,
     permissions: ['dashboard_admin'],
   },
-  {
-    name: 'Dashboard',
-    href: '/dashboard/my',
-    exactMatch: true,
-    icon: FiFileText,
-    permissions: ['dashboard_user'],
-  },
   //! ADMIN
   {
     name: 'Manajemen User',
@@ -133,8 +126,8 @@ export const navigations: Navigation[] = [
     href: '/dashboard/my',
     exactMatch: true,
     icon: FiFileText,
-    permissions: ['dashboard_admin'],
   },
+
   {
     name: 'Pre Event',
     href: '#',
@@ -166,7 +159,7 @@ export const navigations: Navigation[] = [
         href: '/dashboard/pre-event/robotik',
         exactMatch: true,
         icon: AiOutlineRobot,
-        permissions: ['robot_in_action.index', 'robot_in_action.store'],
+        permissions: ['robotik.index', 'robotik.store'],
       },
     ],
   },

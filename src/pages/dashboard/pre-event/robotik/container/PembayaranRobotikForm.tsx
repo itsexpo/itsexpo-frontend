@@ -7,6 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Button from '@/components/buttons/Button';
 import PaymentCountdown from '@/components/countdown/PaymentCountdown';
 import DropzoneInput from '@/components/forms/DropzoneInput';
+import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
 import PaymentCode from '@/components/shared/PaymentCode';
 import { Bank } from '@/constant/bank';
@@ -15,21 +16,22 @@ import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
 import { formatToRupiah } from '@/lib/currency';
 import { FileWithPreview } from '@/types/dropzone';
-import { PembayaranJurnalistik } from '@/types/entities/pre-event/pembayaran';
+import { PembayaranPreEvent } from '@/types/entities/pre-event/pembayaran';
 
-type CreatePembayaranJurnalistik = {
+type CreatePembayaranRobotik = {
   bank_id: number;
+  atas_nama: string;
   bukti_pembayaran: FileWithPreview[];
-  jurnalistik_team_id: string;
+  robot_in_action_team_id: string;
   harga: number;
 };
 
-export default function FormPembayaran({
+export default function PembayaranRobotikForm({
   data,
 }: {
-  data: PembayaranJurnalistik;
+  data: PembayaranPreEvent;
 }) {
-  const methods = useForm<CreatePembayaranJurnalistik>();
+  const methods = useForm<CreatePembayaranRobotik>();
   const router = useRouter();
   const { code } = router.query;
   const { handleSubmit } = methods;
@@ -40,13 +42,11 @@ export default function FormPembayaran({
     FormData
   >(
     useMutation(async (data) => {
-      return api
-        .post('/pre_event/pembayaran/jurnalistik', data, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then((res) => res.data);
+      return api.post('/pre_event/pembayaran/robotik', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
     })
   );
   //#endregion  //*=========== Pembayaran ===========
@@ -70,7 +70,7 @@ export default function FormPembayaran({
       catchOnCancel: true,
     }).then(() => {
       SubmitPembayaran(formdata, {
-        onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/main'),
+        onSuccess: () => router.push('/dashboard/pre-event/robotik/main'),
       });
     });
   }
@@ -78,11 +78,12 @@ export default function FormPembayaran({
 
   const harga = parseInt(data.harga) + parseInt(data.kode_unik);
 
-  const onSubmit = (data: CreatePembayaranJurnalistik) => {
+  const onSubmit = (data: CreatePembayaranRobotik) => {
     const body = {
+      atas_nama: data.atas_nama,
       bukti_pembayaran: data.bukti_pembayaran[0],
       bank_id: 1,
-      jurnalistik_team_id: code as string,
+      robot_in_action_team_id: code as string,
       harga: harga,
     };
     const formdata = serialize(body);
@@ -105,6 +106,15 @@ export default function FormPembayaran({
               <PaymentCountdown closeDate={data.tanggal_pembayaran} />
             </div>
           </div>
+          <Input
+            id='atas_nama'
+            label='Atas Nama'
+            placeholder='Robby Saputra'
+            validation={{
+              required: 'Atas nama tidak boleh kosong',
+            }}
+            helperText='Nama yang tertera pada bukti transfer'
+          />
           <SelectInput
             id='nama_bank'
             label='Transfer Dari'
