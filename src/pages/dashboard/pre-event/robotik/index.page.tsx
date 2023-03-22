@@ -7,7 +7,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import TampilanAwal from '@/pages/dashboard/pre-event/robotik/container/TampilanAwal';
 import useAuthStore from '@/store/useAuthStore';
 
-export default withAuth(RobotikDashboardPage, []);
+export default withAuth(RobotikDashboardPage, ['robotik.index'], true);
 
 function RobotikDashboardPage() {
   const user = useAuthStore.useUser();

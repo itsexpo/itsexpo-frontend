@@ -27,7 +27,8 @@ const breadcrumbs = {
   '/dashboard/pre-event/robotik': 'Robot In Action',
   '/dashboard/pre-event/robotik/join': 'Join',
   '/dashboard/pre-event/robotik/pendaftaran': 'Pendaftaran',
-  '/dashboard/pre-event/robotik/line-tracer': 'Line Tracer',
+  '/dashboard/pre-event/robotik/main': 'Dashboard',
+  '/dashboard/pre-event/robotik/pembayaran': 'Pembayaran',
 
   // KTI
   '/dashboard/pre-event/kti': 'KTI',

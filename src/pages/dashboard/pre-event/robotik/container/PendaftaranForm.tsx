@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { serialize } from 'object-to-formdata';
 import * as React from 'react';
@@ -8,21 +8,20 @@ import { FaUser, FaUsers } from 'react-icons/fa';
 import Button from '@/components/buttons/Button';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import Input from '@/components/forms/Input';
-import SelectInput from '@/components/forms/SelectInput';
 import TextArea from '@/components/forms/TextArea';
 import { REG_PHONE } from '@/constant/regex';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import api from '@/lib/api';
 import TeamRoleRadio from '@/pages/dashboard/pre-event/components/TeamRoleRadio';
 import Informasi from '@/pages/dashboard/pre-event/robotik/components/pendaftaran/Informasi';
-import { ApiReturn } from '@/types/api';
 import { RobotikPendaftaranForm } from '@/types/entities/pre-event/robotik';
 
 export default function FormPendaftaran() {
-  const [kabupaten, setKabupaten] = React.useState<
-    { id: string; name: string }[]
-  >([]);
-  const methods = useForm<RobotikPendaftaranForm>();
+  const methods = useForm<RobotikPendaftaranForm>({
+    defaultValues: {
+      member_type: 'KETUA',
+    },
+  });
 
   const {
     handleSubmit,
@@ -43,7 +42,7 @@ export default function FormPendaftaran() {
       })
     );
 
-  const isTeamLead = watch('member_type') === 'ketua';
+  const isTeamLead = watch('member_type') === 'KETUA';
 
   const onSubmit = (data: RobotikPendaftaranForm) => {
     const memberData = {
@@ -75,19 +74,6 @@ export default function FormPendaftaran() {
     }
   };
 
-  const provinsi = useQuery<ApiReturn<{ id: string; name: string }[]>>([
-    '/provinsi',
-  ]);
-
-  const getKabupaten = (provinsiId: string) => {
-    api
-      .get<ApiReturn<{ id: string; name: string }[]>>(
-        `/kabupaten?provinsi_id=${provinsiId}`
-      )
-      .then((res) => {
-        setKabupaten(res.data.data);
-      });
-  };
   return (
     <div className='grid grid-cols-1 md:grid-cols-5 md:gap-x-5 gap-y-5'>
       <div className='col-span-3 bg-white shadow-pendaftaran p-6 rounded-xl'>
@@ -97,8 +83,8 @@ export default function FormPendaftaran() {
               id='member_type'
               label='Daftar Sebagai'
               options={[
-                { label: 'Ketua', value: 'ketua', icon: FaUser },
-                { label: 'Anggota', value: 'anggota', icon: FaUsers },
+                { label: 'Ketua', value: 'KETUA', icon: FaUser },
+                { label: 'Anggota', value: 'MEMBER', icon: FaUsers },
               ]}
               validation={{ required: 'Pilih salah satu' }}
             />
@@ -116,32 +102,6 @@ export default function FormPendaftaran() {
               placeholder='Nama Lengkap'
               validation={{ required: 'Nama tidak boleh kosong' }}
             />
-            <SelectInput
-              id='provinsi_id'
-              label='Provinsi'
-              validation={{ required: 'Provinsi tidak boleh kosong' }}
-              onChange={(e) => getKabupaten(e.target.value)}
-            >
-              {provinsi.data?.data.map((prov) => (
-                <option key={prov.id} value={prov.id}>
-                  {prov.name}
-                </option>
-              ))}
-            </SelectInput>
-            {kabupaten.length > 0 && (
-              <SelectInput
-                id='kabupaten_id'
-                label='Kabupaten'
-                validation={{ required: 'Kabupaten tidak boleh kosong' }}
-                onChange={(e) => getKabupaten(e.target.value)}
-              >
-                {kabupaten.map((prov) => (
-                  <option key={prov.id} value={prov.id}>
-                    {prov.name}
-                  </option>
-                ))}
-              </SelectInput>
-            )}
             <Input
               id='asal_sekolah'
               label='Asal Instansi'
@@ -172,7 +132,7 @@ export default function FormPendaftaran() {
             )}
             <DropzoneInput
               id='id_card'
-              label='Upload Scan Kartu Pelajar / KTP'
+              label='Upload Scan Kartu Pelajar / Sejenisnya'
               validation={{ required: 'ID Card tidak boleh kosong' }}
             />
             <DropzoneInput

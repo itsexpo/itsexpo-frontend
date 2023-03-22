@@ -13,6 +13,7 @@ export default function TeamCard({
   code_tim,
   name_tim,
   peserta,
+  deskripsi_karya,
   ketua_tim,
   payment,
 }: DetailPendaftarRobotik) {
@@ -64,6 +65,14 @@ export default function TeamCard({
         </div>
       </div>
       <StatusPembayaranCard status={payment.status} />
+      <div>
+        <Typography as='p' variant='caption' className='text-typo-icon'>
+          Deskripsi Karya
+        </Typography>
+        <Typography as='p' variant='body1' className='text-typo-primary'>
+          {deskripsi_karya}
+        </Typography>
+      </div>
       <div className='space-y-4'>
         <div>
           <Typography as='p' variant='caption' className='text-typo-icon'>

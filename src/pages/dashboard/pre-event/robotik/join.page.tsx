@@ -21,12 +21,6 @@ export default function JoinTeamRobotik() {
   const dialog = useDialog();
   const router = useRouter();
 
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  const { query } = router;
-
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  const { teamId, category } = query;
-
   function openWarningJoin({ data }: { data: JoinTeamRobotikProps }) {
     dialog({
       title: 'Apakah Anda Yakin Data Yang Anda Masukan Sudah Benar!!!',
@@ -71,7 +65,7 @@ export default function JoinTeamRobotik() {
       <header className='dashboard-layout'>
         <div className='flex justify-between items-center'>
           <Typography as='h5' variant='h5' className='font-bold'>
-            Robot Line Tracer
+            Join Team Robotik
           </Typography>
           <Breadcrumb
             crumbs={[

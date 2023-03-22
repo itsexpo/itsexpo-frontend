@@ -13,7 +13,7 @@ import TeamCard from '@/pages/dashboard/pre-event/robotik/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
 import { DetailPendaftarRobotik } from '@/types/entities/pre-event/robotik';
 
-export default withAuth(DashboardRobotikLineTracer, ['robot_in_action.index']);
+export default withAuth(DashboardRobotikLineTracer, ['robotik.index']);
 
 function DashboardRobotikLineTracer({
   data,
@@ -23,12 +23,14 @@ function DashboardRobotikLineTracer({
       <header className='dashboard-layout'>
         <div className='flex justify-between items-center'>
           <Typography as='h5' variant='h5' className='font-bold'>
-            Robot Line Tracer
+            {data.data.competition_status === 'BENTENGAN'
+              ? 'Open Category (Bentengan)'
+              : 'Line Tracer'}
           </Typography>
           <Breadcrumb
             crumbs={[
               '/dashboard/pre-event/robotik',
-              '/dashboard/pre-event/robotik/line-tracer',
+              '/dashboard/pre-event/robotik/main',
             ]}
           />
         </div>
