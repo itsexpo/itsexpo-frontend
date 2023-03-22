@@ -25,8 +25,10 @@ enum PermissionEnum {
   'url_shortener.delete',
   'url_shortener.store',
   'url_shortener.update',
-  'announcements.index',
-  'announcements.store',
+  'pengumuman.index',
+  'pengumuman.store',
+  'pengumuman.update',
+  'pengumuman.delete',
   'pre_event.index',
   // Journalistik
   'jurnalistik.index',

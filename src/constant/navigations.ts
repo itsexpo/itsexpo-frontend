@@ -17,18 +17,11 @@ import { Navigation } from '@/types/navigate';
 
 export const navigations: Navigation[] = [
   {
-    name: 'Dashboard',
+    name: 'Dashboard Admin',
     href: '/dashboard',
     exactMatch: true,
     icon: FiFileText,
     permissions: ['dashboard_admin'],
-  },
-  {
-    name: 'Dashboard',
-    href: '/dashboard/my',
-    exactMatch: true,
-    icon: FiFileText,
-    permissions: ['dashboard_user'],
   },
   //! ADMIN
   {
@@ -99,14 +92,14 @@ export const navigations: Navigation[] = [
     name: 'Manajemen Pengumuman',
     href: '#',
     icon: FaBullhorn,
-    permissions: ['announcements.index', 'announcements.store'],
+    permissions: ['pengumuman.index', 'pengumuman.store'],
     children: [
       {
         name: 'List Pengumuman',
         href: '/dashboard/admin/announcement',
         exactMatch: true,
         icon: FiList,
-        permissions: ['announcements.index'],
+        permissions: ['pengumuman.index'],
       },
     ],
   },
