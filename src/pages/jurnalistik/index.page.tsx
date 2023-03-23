@@ -47,11 +47,11 @@ export default function Home() {
   return (
     <Layout>
       <SEO title='Jurnalistik' description='This is Jurnalistik page' />
-      <main className='flex flex-col scroll-smooth bg-tainted-100'>
+      <main className='scroll-smooth bg-tainted-100'>
         {/* Hero Section */}
         <section
           id='hero'
-          className='relative w-full flex flex-col justify-center items-center bg-tainted-100 mt-10'
+          className='relative w-full flex flex-col justify-center items-center bg-tainted-100 pt-16'
         >
           <HeroBackground />
 
@@ -69,7 +69,7 @@ export default function Home() {
                 <Typography
                   variant='h3'
                   as='h3'
-                  className='font-secondary font-bold text-5xl md:text-[55px] lg:text-6xl text-center md:text-left text-critical-500'
+                  className='font-secondary font-bold text-4xl md:text-5xl lg:text-[55px] xl:text-6xl text-center md:text-left text-critical-500'
                 >
                   JURNALISTIK
                 </Typography>
@@ -278,47 +278,32 @@ export default function Home() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pb-20'>
               <div>
-                <div className='relative left-[0%] md:left-[14%] top-10 sm:top-0 md:top-14 lg:top-10'>
+                <div className='w-[95%] md:w-[80%] mx-auto relative z-[1]'>
                   <NextImage
-                    src='/jurnalistik/title-tv.png'
-                    alt='medal'
+                    src={'/jurnalistik/title-tv.png'}
+                    alt='title tv'
                     width='1146'
                     height='612'
-                    className='absolute left-[50%] md:left-0 -translate-x-1/2 md:translate-x-0 w-[80%] md:w-3/4 z-[1]'
+                    className='w-full'
                     data-aos='zoom-in'
                   />
                 </div>
-                <div
-                  className='relative grid grid-cols-1 justify-center rounded-xl bg-white md:mx-20 mt-40 md:mt-40 xl:mt-52'
-                  data-aos='fade-down'
-                >
+                <div className='-translate-y-1/4 bg-white rounded-xl mx-auto w-[90%] md:w-[65%] p-3 xl:p-4'>
                   <RewardTV />
                 </div>
               </div>
-
               <div>
-                <div className='relative left-[0%] md:left-[14%] top-10 sm:top-0 md:top-14 lg:top-10'>
+                <div className='w-[95%] md:w-[80%] mx-auto relative z-[1]'>
                   <NextImage
-                    src='/jurnalistik/title-video.png'
-                    alt='medal'
+                    src={'/jurnalistik/title-video.png'}
+                    alt='title tv'
                     width='1146'
                     height='612'
-                    className='absolute w-3/4 hidden md:block z-[1]'
-                    data-aos='zoom-in'
-                  />
-                  <NextImage
-                    src='/jurnalistik/title-video-mb.png'
-                    alt='medal'
-                    width='447'
-                    height='253'
-                    className='absolute left-[50%] md:left-0 -translate-x-1/2 md:translate-x-0  w-[80%] block md:hidden z-[1]'
+                    className='w-full'
                     data-aos='zoom-in'
                   />
                 </div>
-                <div
-                  className='relative grid grid-cols-1 justify-center rounded-xl bg-white md:mx-20 mt-40 md:mt-40 xl:mt-52'
-                  data-aos='fade-down'
-                >
+                <div className='-translate-y-1/4 bg-white rounded-xl mx-auto w-[90%] md:w-[65%] p-3 xl:p-4'>
                   <RewardVideo />
                 </div>
               </div>

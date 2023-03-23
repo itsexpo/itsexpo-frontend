@@ -81,7 +81,7 @@ export const HeroBackground = () => {
           alt='hero bird'
           width='315'
           height='445'
-          className='absolute hidden md:block w-1/12 xl:right-[4%] 2xl:right-[6%] right-[4.1%] mt-24 z-[1]'
+          className='absolute hidden md:block w-1/12 xl:right-[4%] 2xl:right-[6%] right-[4.1%] mt-32 z-[1]'
         />
       </div>
     </div>
@@ -90,13 +90,21 @@ export const HeroBackground = () => {
 
 export const HeroPattern = () => {
   return (
-    <div className='relative min-h-fit w-full'>
+    <div className='w-full relative z-[1] translate-y-1/2 md:translate-y-0'>
       <NextImage
         src='/jurnalistik/hero-pattern.png'
         alt='hero pattern'
         width='2880'
         height='328'
-        className='w-full'
+        className='w-full md:block hidden'
+        priority={true}
+      />
+      <NextImage
+        src='/jurnalistik/hero-pattern-mobile.png'
+        alt='hero pattern'
+        width='586'
+        height='116'
+        className='w-full block md:hidden'
         priority={true}
       />
     </div>
