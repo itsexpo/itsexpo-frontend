@@ -24,7 +24,7 @@ export default function Countdown({
         variant='t'
         className='font-semibold text-typo-primary text-center'
       >
-        {isStarted ? 'Pendaftaran Ditutup' : 'Pendaftaran Akan Dibuka'}
+        {isStarted ? 'Pendaftaran Ditutup' : 'Pendaftaran Dibuka'}
       </Typography>
       <div className='w-full flex items-center gap-2 mt-4'>
         <div

@@ -17,7 +17,8 @@ export default function DeskripsiCard({
   startDate,
   closeDate,
 }: TampilanAwal) {
-  const isClosed = new Date() > new Date(closeDate);
+  const isOpen =
+    new Date() < new Date(closeDate) && new Date() > new Date(startDate);
   return (
     <div className='flex flex-col-reverse md:flex-row gap-6'>
       <div
@@ -49,7 +50,7 @@ export default function DeskripsiCard({
             <Countdown closeDate={closeDate} startDate={startDate} />
 
             <div className='w-full flex flex-col gap-4'>
-              {!isClosed && (
+              {isOpen && (
                 <ButtonLink
                   variant='green'
                   href='/dashboard/pre-event/robotik/pendaftaran'
