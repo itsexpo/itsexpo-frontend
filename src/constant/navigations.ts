@@ -1,5 +1,5 @@
 import { AiOutlineRobot } from 'react-icons/ai';
-import { BsJournalMedical } from 'react-icons/bs';
+import { BsJournalMedical, BsSpeaker } from 'react-icons/bs';
 import { FaBullhorn } from 'react-icons/fa';
 import {
   FiDatabase,
@@ -11,7 +11,8 @@ import {
   FiUserPlus,
   FiUsers,
 } from 'react-icons/fi';
-import { MdOutlineEventAvailable } from 'react-icons/md';
+import { GiPartyPopper } from 'react-icons/gi';
+import { MdAlarmAdd, MdOutlineEventAvailable } from 'react-icons/md';
 
 import { Navigation } from '@/types/navigate';
 
@@ -161,7 +162,25 @@ export const navigations: Navigation[] = [
         icon: AiOutlineRobot,
         permissions: ['robotik.index', 'robotik.store'],
       },
+      {
+        name: 'Talkshow',
+        href: '/dashboard/pre-event/talkshow',
+        exactMatch: true,
+        icon: BsSpeaker,
+      },
     ],
+  },
+  {
+    name: 'Main Event',
+    href: '#',
+    exactMatch: true,
+    icon: MdAlarmAdd,
+  },
+  {
+    name: 'Gebyar ITS Expo',
+    href: '#',
+    exactMatch: true,
+    icon: GiPartyPopper,
   },
   {
     name: 'Info Penting',
