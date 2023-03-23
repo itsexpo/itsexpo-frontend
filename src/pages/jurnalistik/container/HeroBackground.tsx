@@ -47,7 +47,7 @@ export const HeroBackground = () => {
           alt='landing hero left figure'
           width='388'
           height='144'
-          className='absolute hidden md:block w-1/6 left-20 top-0 mt-16'
+          className='absolute hidden md:block w-[15%] left-20 top-0 mt-16'
           data-aos='fade-right'
           data-aos-delay='700'
         />
@@ -56,7 +56,7 @@ export const HeroBackground = () => {
           alt='landing hero left figure'
           width='293'
           height='118'
-          className='absolute hidden md:block w-[10%] left-80 ml-8 top-0 mt-36'
+          className='absolute hidden md:block w-[10%] left-80 top-0 mt-36'
           data-aos='fade-right'
           data-aos-delay='900'
         />
@@ -81,7 +81,7 @@ export const HeroBackground = () => {
           alt='hero bird'
           width='315'
           height='445'
-          className='absolute hidden md:block w-1/12 right-32 mt-20 z-[1]'
+          className='absolute hidden md:block w-1/12 xl:right-[4%] 2xl:right-[6%] right-[4.1%] mt-24 z-[1]'
         />
       </div>
     </div>
@@ -96,7 +96,7 @@ export const HeroPattern = () => {
         alt='hero pattern'
         width='2880'
         height='328'
-        className='w-[1440px] min-w-full'
+        className='w-full'
         priority={true}
       />
     </div>

@@ -55,21 +55,18 @@ export default function Home() {
           {/* Hero Content */}
           <div className='layout my-24 pt-5'>
             <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-y-2'>
-              <div
-                className='items-center -space-y-4 md:-space-y-6'
-                data-aos='fade-up'
-              >
+              <div className='items-center' data-aos='fade-up'>
                 <Typography
                   variant='h3'
                   as='h3'
-                  className='font-primary text-center md:text-left mb-2'
+                  className='font-primary text-center md:text-left'
                 >
                   its expo 2023
                 </Typography>
                 <Typography
                   variant='h3'
                   as='h3'
-                  className='font-secondary font-bold text-5xl md:text-[55px] lg:text-6xl text-center md:text-left text-critical-500 '
+                  className='font-secondary font-bold text-5xl md:text-[55px] lg:text-6xl text-center md:text-left text-critical-500'
                 >
                   JURNALISTIK
                 </Typography>
@@ -113,7 +110,7 @@ export default function Home() {
 
             <div className='w-full'>
               <div
-                className='layout justify-center items-center py-24'
+                className='layout justify-center items-center py-10 md:py-24'
                 data-aos='fade-up'
               >
                 <div className='layout space-y-2'>
@@ -126,7 +123,7 @@ export default function Home() {
                   <Typography
                     variant='h6'
                     as='h6'
-                    className='font-secondary text-sm md:text-2xl text-white text-justify md:text-center'
+                    className='font-secondary text-sm md:text-xl text-white text-justify md:text-center'
                   >
                     Journalistic merupakan salah satu ajang lomba bergengsi dari
                     cabang kompetisi ITS Expo 2023 yang mewadahi peserta untuk
@@ -161,7 +158,7 @@ export default function Home() {
             alt='pre-event title left'
             width='793'
             height='512'
-            className='absolute left-[8%] md:left-[25%] transform -translate-y-1/2 w-[15%] md:w-[10%] pt-16 mt-6 md:mt-0'
+            className='absolute left-[10%] md:left-[25%] xl:left-[30%] transform -translate-y-1/2 w-[18%] md:w-[10%] pt-16 mt-6 md:mt-0'
             data-aos='fade-right'
           />
 
@@ -170,12 +167,12 @@ export default function Home() {
             alt='about ctn right'
             width='793'
             height='512'
-            className='absolute right-[8%] md:right-[25%] transform -translate-y-1/2 w-[15%] md:w-[10%] pt-16 mt-6 md:mt-0'
+            className='absolute right-[10%] md:right-[25%] xl:right-[30%] transform -translate-y-1/2 w-[18%] md:w-[10%] pt-16 mt-6 md:mt-0'
             data-aos='fade-left'
           />
           <Typography
             variant='h2'
-            className='font-primary text-typo-white my-16 mt-6 md:mt-0 md:mb-40'
+            className='font-primary leading-[1.2] md:leading-[0.8] text-typo-white my-16 mt-6 md:mt-0 md:mb-40'
             data-aos='fade-up'
           >
             timeline
@@ -184,7 +181,7 @@ export default function Home() {
           {/* Timeline Content */}
           <div
             className={clsxm(
-              'relative w-full md:w-8/12 lg:w-6/12',
+              'relative w-full md:w-8/12 lg:w-[60%] 2xl:w-1/2',
               'flex flex-col items-center gap-y-10 md:gap-y-20',
               'p-7 md:p-0 font-secondary'
             )}
@@ -276,20 +273,20 @@ export default function Home() {
               Hadiah pemenang
             </Typography>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pb-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pb-20'>
               <div>
-                <div className='relative left-[18%] md:left-[14%] top-10 sm:top-0 md:top-14 lg:top-10'>
+                <div className='relative left-[0%] md:left-[14%] top-10 sm:top-0 md:top-14 lg:top-10'>
                   <NextImage
                     src='/jurnalistik/title-tv.png'
                     alt='medal'
                     width='1146'
                     height='612'
-                    className='absolute w-2/3 md:w-3/4 z-[1]'
+                    className='absolute left-[50%] md:left-0 -translate-x-1/2 md:translate-x-0 w-[80%] md:w-3/4 z-[1]'
                     data-aos='zoom-in'
                   />
                 </div>
                 <div
-                  className='relative grid grid-cols-1 justify-center rounded-xl bg-white md:mx-20 mt-32 md:mt-48'
+                  className='relative grid grid-cols-1 justify-center rounded-xl bg-white md:mx-20 mt-40 md:mt-40 xl:mt-52'
                   data-aos='fade-down'
                 >
                   <RewardTV />
@@ -297,7 +294,7 @@ export default function Home() {
               </div>
 
               <div>
-                <div className='relative left-[18%] md:left-[14%] top-10 sm:top-0 md:top-14 lg:top-10'>
+                <div className='relative left-[0%] md:left-[14%] top-10 sm:top-0 md:top-14 lg:top-10'>
                   <NextImage
                     src='/jurnalistik/title-video.png'
                     alt='medal'
@@ -311,12 +308,12 @@ export default function Home() {
                     alt='medal'
                     width='447'
                     height='253'
-                    className='absolute w-2/3 block md:hidden z-[1]'
+                    className='absolute left-[50%] md:left-0 -translate-x-1/2 md:translate-x-0  w-[80%] block md:hidden z-[1]'
                     data-aos='zoom-in'
                   />
                 </div>
                 <div
-                  className='relative grid grid-cols-1 justify-center rounded-xl bg-white md:mx-20 mt-32 md:mt-48'
+                  className='relative grid grid-cols-1 justify-center rounded-xl bg-white md:mx-20 mt-40 md:mt-40 xl:mt-52'
                   data-aos='fade-down'
                 >
                   <RewardVideo />
@@ -329,7 +326,7 @@ export default function Home() {
             alt='awan-gbook'
             width='2880'
             height='482'
-            className='absolute w-full z-[1]'
+            className='absolute w-full z-[1] translate-y-4 xl:-translate-y-12'
           />
         </section>
 
@@ -381,16 +378,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* <section id='pattern' className='w-full h-full -top-[23%]'>
-          <NextImage
-            src='/jurnalistik/bunga-faq.png'
-            alt='bunga-faq'
-            width='2880'
-            height='1021'
-            className='hidden md:block w-full'
-            // md:-top-52
-          />
-        </section> */}
+
         <section id='faq' className='relative bg-tainted-100 pb-20 md:pb-56'>
           <NextImage
             src='/jurnalistik/bunga-faq-bot.png'
@@ -414,7 +402,7 @@ export default function Home() {
             alt='ornamen-faq'
             width='384'
             height='882'
-            className='absolute hidden md:block bottom-0 w-[15%]'
+            className='absolute hidden md:block bottom-0 w-[13%]'
             data-aos='fade-right'
           />
 
@@ -423,7 +411,7 @@ export default function Home() {
             alt='ornamen-faq'
             width='384'
             height='882'
-            className='absolute hidden md:block bottom-0 w-[15%] right-0'
+            className='absolute hidden md:block bottom-0 xl:w-[13%] right-0'
             data-aos='fade-left'
           />
           <div className='relative layout space-y-2 pt-20'>
@@ -437,7 +425,7 @@ export default function Home() {
             </Typography>
 
             <div
-              className='grid grid-cols-1 max-w-[310px] md:max-w-[953px] bg-white rounded-lg p-8 mt-8 mx-auto'
+              className='grid grid-cols-1 max-w-[310px] md:max-w-[953px] bg-white rounded-lg p-4 md:p-8 mt-8 mx-auto'
               data-aos='fade-up'
             >
               {Frequent.map((faq, index) => (

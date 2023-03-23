@@ -13,7 +13,7 @@ export const TimelineBackground1 = () => {
         alt='timeline desktop background'
         width='665'
         height='2000'
-        className='absolute hidden md:block top-0'
+        className='absolute hidden md:block top-0 -translate-y-24'
       />
       <NextImage
         src='/jurnalistik/timeline-bg-mobile2.png'

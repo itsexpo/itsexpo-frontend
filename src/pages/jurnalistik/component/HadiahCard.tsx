@@ -21,7 +21,7 @@ export default function HadiahCard({ img, text }: HadiahCard) {
         <Typography
           variant='b2'
           as='b2'
-          className='font-semibold text-base md:text-2xl text-white'
+          className='font-semibold text-lg md:text-xl xl:text-2xl text-white'
         >
           {text}
         </Typography>
