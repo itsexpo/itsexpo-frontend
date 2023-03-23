@@ -20,10 +20,7 @@ import {
   AboutPattern,
 } from '@/pages/jurnalistik/container/AboutBackground';
 import Frequentlyaq from '@/pages/jurnalistik/container/Faq';
-import {
-  GuidebookBackground,
-  GuidebookPattern,
-} from '@/pages/jurnalistik/container/GuidebookBg';
+import { GuidebookBackgroundjurnalistik } from '@/pages/jurnalistik/container/GuidebookBg';
 import {
   HeroBackground,
   HeroPattern,
@@ -336,54 +333,53 @@ export default function Home() {
           />
         </section>
 
+        {/* Guide Section */}
         <section
-          id='guidebook'
-          className={clsxm('relative bg-[#00587A] pb-10 md:pb-32 pt-20')}
+          id='guide'
+          className='relative bg-[#00587A] pt-0 md:pt-28 2xl:pt-36 pb-20 sm:pb-24 md:pb-44'
         >
-          <div className='layout my-12 justify-center items-center max-w-[294px] md:max-w-[751px] z[2]'>
-            <NextImage
-              src='/jurnalistik/gbook-title-left.png'
-              alt='pre-event title left'
-              width='470'
-              height='469'
-              className='absolute left-[4%] md:left-[20%] top-[4%] md:top-[7%] transform -translate-y-1/2 w-[15%] pt-56 z-[2]'
-              data-aos='fade-right'
-            />
-
-            <NextImage
-              src='/jurnalistik/gbook-title-right.png'
-              alt='title-right'
-              width='470'
-              height='469'
-              className='absolute right-[4%] md:right-[20%] top-[4%] md:top-[7%] transform -translate-y-1/2 w-[15%] pt-56 z-[2]'
-              data-aos='fade-left'
-            />
-            <Typography
-              variant='h2'
-              as='h2'
-              className='font-primary text-center text-white leading-none z[2]'
-              data-aos='fade-up'
-            >
-              GuideBOOK
-            </Typography>
-            <div
-              className='relative grid grid-cols-1 z-[2] min-h-[388px] max-w-[294px] md:max-w-[751px] bg-white rounded-lg p-8 mt-8 mx-auto'
-              data-aos='fade-up'
-            ></div>
-            <div className='relative flex flex-col z-[2] justify-center space-y-5 max-w-[294px] md:max-w-[751px] mx-auto'>
-              <ButtonLink
-                href='/coming-soon'
-                variant='yellow'
-                size='large'
-                className='mt-8'
-                data-aos='fade-up'
-                data-aos-delay='100'
-              >
-                Download Guidebook
-              </ButtonLink>
+          <div className='relative w-full '>
+            <GuidebookBackgroundjurnalistik />
+            {/* Guide Content */}
+            <div className='flex flex-col w-full justify-center items-center relative px-8'>
+              <div className='relative z-20'>
+                <Typography
+                  variant='h2'
+                  className='font-primary text-typo-white my-7 md:mt-0 md:mb-14'
+                  data-aos='fade-up'
+                >
+                  guidebook
+                </Typography>
+                <NextImage
+                  src='/jurnalistik/guide-right-vine.png'
+                  alt='guide left vine'
+                  width='228'
+                  height='226'
+                  className='absolute -left-20 sm:-left-40 md:-left-52 lg:-left-80 top-10 sm:top-12 md:-top-6 w-[40%] sm:w-[50%] md:w-[75%]'
+                  data-aos='fade-right'
+                />
+                <NextImage
+                  src='/jurnalistik/guide-left-vine.png'
+                  alt='guide right vine'
+                  width='228'
+                  height='226'
+                  className='absolute -right-20 sm:-right-40 md:-right-52 lg:-right-80 top-10 sm:top-12 md:-top-6 w-[40%] sm:w-[50%] md:w-[75%]'
+                  data-aos='fade-left'
+                />
+              </div>
+              <div className='w-full max-w-[47rem] z-50' data-aos='fade-up'>
+                <div className='w-full min-h-[514px] rounded-xl bg-white'></div>
+                <ButtonLink
+                  variant='yellow'
+                  href='/'
+                  size='base'
+                  className='w-full mt-4'
+                >
+                  Download Guidebook
+                </ButtonLink>
+              </div>
             </div>
           </div>
-          <GuidebookBackground />
         </section>
         {/* <section id='pattern' className='w-full h-full -top-[23%]'>
           <NextImage
@@ -396,7 +392,6 @@ export default function Home() {
           />
         </section> */}
         <section id='faq' className='relative bg-tainted-100 pb-20 md:pb-56'>
-          <GuidebookPattern />
           <NextImage
             src='/jurnalistik/bunga-faq-bot.png'
             alt='bunga-faq'
