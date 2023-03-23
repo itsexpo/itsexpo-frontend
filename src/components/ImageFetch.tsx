@@ -4,6 +4,7 @@ import Image from 'next/legacy/image';
 import * as React from 'react';
 import Lightbox from 'react-image-lightbox';
 
+import Skeleton from '@/components/Skeleton';
 import api from '@/lib/api';
 
 type ImageFetchProps = {
@@ -60,6 +61,7 @@ const ImageFetch = ({
   return (
     <>
       <div {...props} className='cursor-pointer'>
+        {!imgSrc && <Skeleton className='w-full h-full' />}
         {imgSrc && (
           <div className={className}>
             {label && (

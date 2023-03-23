@@ -122,6 +122,9 @@ export default function FormPendaftaran() {
             <DropzoneInput
               id='follow_sosmed'
               label='Bukti Follow Media Sosial ITS EXPO 2023'
+              accept={{
+                'image/*': ['.jpg', '.jpeg', '.png'],
+              }}
               validation={{
                 required: 'Bukti Follow Media Sosial tidak boleh kosong',
               }}
@@ -130,6 +133,9 @@ export default function FormPendaftaran() {
             <DropzoneInput
               id='bukti_repost'
               label='Bukti Repost Poster Lomba Karya Tulis Ilmiah'
+              accept={{
+                'image/*': ['.jpg', '.jpeg', '.png'],
+              }}
               validation={{
                 required:
                   'Bukti Poster Lomba Karya Tulis Ilmiah tidak boleh kosong',
@@ -138,6 +144,9 @@ export default function FormPendaftaran() {
             <DropzoneInput
               id='twibbon'
               label='Bukti Upload Twibbon'
+              accept={{
+                'image/*': ['.jpg', '.jpeg', '.png'],
+              }}
               validation={{
                 required: 'Bukti Upload Twibbon tidak boleh kosong',
               }}
@@ -145,6 +154,10 @@ export default function FormPendaftaran() {
             <DropzoneInput
               id='file_abstrak'
               label='Pengumpulan File Abstrak'
+              accept={{
+                'application/pdf': ['.pdf'],
+              }}
+              acceptTypes={'PDF'}
               validation={{
                 required: 'Bukti Upload File Abstrak tidak boleh kosong',
               }}

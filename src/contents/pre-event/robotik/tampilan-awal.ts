@@ -76,22 +76,22 @@ export const robotikSubContest: RobotikSubContestData[] = [
   {
     img: {
       src: '/dashboard/pre-event/jurnalistik/tampilan-awal/cabang-lomba-1.png',
-      alt: 'SMP dan SMA/SMK Sederajat',
+      alt: 'SMP / Sederajat',
       width: 1525,
       height: 1024,
     },
     title: 'Robot Line Tracer',
-    caption: 'SMP dan SMA/SMK Sederajat',
+    caption: 'SMP / Sederajat',
   },
   {
     img: {
       src: '/dashboard/pre-event/jurnalistik/tampilan-awal/cabang-lomba-2.png',
-      alt: 'SMP dan SMA/SMK Sederajat',
+      alt: 'SMA/SMK Sederajat',
       width: 1525,
       height: 1024,
     },
     title: 'Open Category',
-    caption: 'SMP dan SMA/SMK Sederajat',
+    caption: 'SMA / SMK Sederajat',
   },
 ];
 

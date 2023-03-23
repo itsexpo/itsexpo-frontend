@@ -17,6 +17,7 @@ export default function DeskripsiCard({
   startDate,
   closeDate,
 }: TampilanAwal) {
+  const isClosed = new Date() > new Date(closeDate);
   return (
     <div className='flex flex-col-reverse md:flex-row gap-6'>
       <div
@@ -45,19 +46,17 @@ export default function DeskripsiCard({
       >
         {!isRegistered ? (
           <>
-            <Typography variant='t' className='font-semibold text-typo-primary'>
-              Pendaftaran Ditutup
-            </Typography>
-
             <Countdown closeDate={closeDate} startDate={startDate} />
 
             <div className='w-full flex flex-col gap-4'>
-              <ButtonLink
-                variant='green'
-                href='/dashboard/pre-event/robotik/pendaftaran'
-              >
-                Daftar Sekarang
-              </ButtonLink>
+              {!isClosed && (
+                <ButtonLink
+                  variant='green'
+                  href='/dashboard/pre-event/robotik/pendaftaran'
+                >
+                  Daftar Sekarang
+                </ButtonLink>
+              )}
               <ButtonLink variant='discolored' href='#' target='_blank'>
                 Unduh Guidebook
               </ButtonLink>
