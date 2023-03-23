@@ -1,3 +1,8 @@
+# ITS EXPO FRONTEND
+[![Lint Check](https://github.com/itsexpo/itsexpo-frontend/actions/workflows/lint.yml/badge.svg)](https://github.com/itsexpo/itsexpo-frontend/actions/workflows/lint.yml)
+[![Frontend Production](https://github.com/itsexpo/itsexpo-infra/actions/workflows/update-fe.yml/badge.svg)](https://github.com/itsexpo/itsexpo-infra/actions/workflows/update-fe.yml)
+
+
 ## Commit Message Convention
 
 This website follows [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
