@@ -12,6 +12,7 @@ type DropzoneInputProps = {
   helperText?: string;
   id: string;
   label: string;
+  acceptTypes?: string;
   maxFiles?: number;
   readOnly?: boolean;
   validation?: Record<string, unknown>;
@@ -20,6 +21,7 @@ type DropzoneInputProps = {
 export default function DropzoneInput({
   accept,
   helperText = '',
+  acceptTypes = 'JPG / JPEG / PNG',
   id,
   label,
   maxFiles = 1,
@@ -118,11 +120,21 @@ export default function DropzoneInput({
     }
   };
 
+  function sizeValidation(file: File) {
+    if (file.size > 1000000) {
+      return {
+        code: 'file-too-large',
+        message: 'File Terlalu Besar, Maksimal 1MB',
+      };
+    }
+    return null;
+  }
+
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept,
     maxFiles,
-    maxSize: 1000000,
+    validator: sizeValidation,
   });
 
   return (
@@ -188,6 +200,9 @@ export default function DropzoneInput({
                       </span>{' '}
                       atau drag and drop
                       <br />
+                      <span className='text-sm text-gray-400'>
+                        {acceptTypes}
+                      </span>
                     </p>
                     <p className='text-xs text-gray-500'>{`${
                       maxFiles - (files?.length || 0)

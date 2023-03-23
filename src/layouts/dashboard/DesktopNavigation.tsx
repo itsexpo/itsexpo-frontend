@@ -35,7 +35,7 @@ export default function DesktopNavigation() {
           <Navigation className='mt-6' />
         </div>
       </div>
-      <div className='hidden lg:fixed right-0 top-0 w-[calc(100%-16rem)] h-16 bg-white shadow-navbar-dashboard lg:flex justify-between z-[99]'>
+      <div className='hidden lg:fixed right-0 top-0 w-[calc(100%-16rem)] h-16 bg-white shadow-navbar-dashboard lg:flex justify-between z-20'>
         <Typography className='my-auto pl-10'>
           {format(new Date(), 'EEEE, dd MMMM yyyy')}
         </Typography>
