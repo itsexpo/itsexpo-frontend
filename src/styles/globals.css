@@ -138,6 +138,10 @@ body {
   );
 }
 
+.bg-about-jurnalistik {
+  background: linear-gradient(180deg, #dd8d00 0%, #c57b00 46.67%, #804400 100%);
+}
+
 /* #region  /**=========== Datepicker =========== */
 .react-datepicker-wrapper {
   display: block;
