@@ -7,6 +7,7 @@ import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
+import DokumenKTICard from '@/pages/dashboard/pre-event/kti/components/dashboard/DokumenKTICard';
 import PengumumanCard from '@/pages/dashboard/pre-event/kti/components/dashboard/PengumumanCard';
 import TeamCard from '@/pages/dashboard/pre-event/kti/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
@@ -37,6 +38,7 @@ function DashboardKTI({
         <div className='grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-0 gap-x-0 md:gap-x-4'>
           {/* Team Card */}
           <TeamCard {...data.data} />
+          <DokumenKTICard data={data.data} />
         </div>
       </main>
     </DashboardLayout>

@@ -190,12 +190,18 @@ export default function FromPendaftaran() {
             />
             <DropzoneInput
               id='id_card'
+              accept={{
+                image: ['image/png', 'image/jpeg', 'image/jpg'],
+              }}
               label='Upload Scan Kartu Pelajar / KTP'
               validation={{ required: 'ID Card tidak boleh kosong' }}
             />
             <DropzoneInput
               id='follow_sosmed'
               label='Bukti Follow Media Sosial ITS EXPO 2023'
+              accept={{
+                image: ['image/png', 'image/jpeg', 'image/jpg'],
+              }}
               validation={{
                 required: 'Bukti Follow Media Sosial tidak boleh kosong',
               }}
@@ -204,6 +210,9 @@ export default function FromPendaftaran() {
             <DropzoneInput
               id='share_poster'
               label='Bukti Repost Poster Lomba Jurnalistik'
+              accept={{
+                image: ['image/png', 'image/jpeg', 'image/jpg'],
+              }}
               validation={{
                 required: 'Bukti Poster Lomba Jurnalistik tidak boleh kosong',
               }}

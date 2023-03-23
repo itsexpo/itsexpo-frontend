@@ -28,7 +28,7 @@ function RobotikDashboardPage() {
             className='hidden md:block'
           />
         </header>
-        <main className='mt-8'>{user && <TampilanAwal user={user} />}</main>
+        <main className='my-8'>{user && <TampilanAwal user={user} />}</main>
       </div>
     </DashboardLayout>
   );
