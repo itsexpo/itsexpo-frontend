@@ -263,57 +263,51 @@ export default function Home() {
                 hadiah pemenang
               </Typography>
             </div>
+
             <div className='layout grid grid-cols-1 md:grid-cols-2 gap-4 pb-10'>
               <div>
-                <div className='relative left-[18%] md:left-[10%] top-10 sm:top-0 md:top-14 lg:top-6'>
+                <div className='w-[95%] md:w-[80%] mx-auto relative z-[1]'>
                   <NextImage
-                    src='/robotics/hadiah-title-1.png'
-                    alt='medal'
+                    src={'/robotics/hadiah-title-1.png'}
+                    alt='title robot line tracer'
                     width='1146'
                     height='612'
-                    className='absolute w-4/5 hidden md:block z-[1]'
+                    className='w-full hidden md:block'
                     data-aos='zoom-in'
                   />
                   <NextImage
-                    src='/robotics/hadiah-title-mobile-1.png'
-                    alt='title'
+                    src={'/robotics/hadiah-title-mobile-1.png'}
+                    alt='title robot line tracer'
                     width='447'
                     height='253'
-                    className='absolute w-2/3 block md:hidden z-[1]'
+                    className='w-full block md:hidden'
                     data-aos='zoom-in'
                   />
                 </div>
-                <div
-                  className='grid grid-cols-1 items-center justify-center rounded-xl bg-white md:mx-20 mt-[118px] xs:mt-44 sm:mt-36 md:mt-40 lg:mt-44 xl:mt-48 2xl:mt-48'
-                  data-aos='fade-down'
-                >
+                <div className='-translate-y-[23%] md:-translate-y-1/4 bg-white rounded-xl mx-auto w-[90%] md:w-[65%] p-3 xl:p-4'>
                   <Reward1 />
                 </div>
               </div>
-
               <div>
-                <div className='relative left-[18%] md:left-[10%] top-10 sm:top-0 md:top-14 lg:top-6'>
+                <div className='w-[95%] md:w-[80%] mx-auto relative z-[1]'>
                   <NextImage
-                    src='/robotics/hadiah-title-2.png'
-                    alt='title'
+                    src={'/robotics/hadiah-title-2.png'}
+                    alt='title open category'
                     width='1146'
                     height='612'
-                    className='absolute w-4/5 hidden md:block z-[1]'
+                    className='w-full hidden md:block'
                     data-aos='zoom-in'
                   />
                   <NextImage
-                    src='/robotics/hadiah-title-mobile-2.png'
-                    alt='title'
+                    src={'/robotics/hadiah-title-mobile-2.png'}
+                    alt='title open category'
                     width='447'
                     height='253'
-                    className='absolute w-2/3 block md:hidden z-[1]'
+                    className='w-full block md:hidden'
                     data-aos='zoom-in'
                   />
                 </div>
-                <div
-                  className='relative grid grid-cols-1 justify-center rounded-xl bg-white md:mx-20 mt-[118px] xs:mt-44 sm:mt-36 md:mt-40 lg:mt-44 xl:mt-48 2xl:mt-48'
-                  data-aos='fade-down'
-                >
+                <div className='-translate-y-[23%] md:-translate-y-1/4 bg-white rounded-xl mx-auto w-[90%] md:w-[65%] p-3 xl:p-4'>
                   <Reward2 />
                 </div>
               </div>

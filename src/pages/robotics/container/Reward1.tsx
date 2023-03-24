@@ -21,7 +21,7 @@ const HadiahState = [
 export const Reward1 = () => {
   return (
     <>
-      <div className='mt-16 md:mt-10 lg:mt-2 xl:mt-16 space-y-4 md:-space-y-8 lg:-space-y-6 xl:space-y-4 p-4'>
+      <div className='pt-16 xl:pt-28'>
         {HadiahState.map((item, index) => (
           <HadiahCard key={index} img={item.img} text={item.text} />
         ))}
