@@ -77,6 +77,7 @@ export type JurnalistikDataRecapType = {
 };
 
 export interface DetailTimKTI {
+  team_id: string;
   team_name: string;
   asal_instansi: string;
   lead_name: string;

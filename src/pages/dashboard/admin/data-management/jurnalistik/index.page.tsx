@@ -132,7 +132,6 @@ function AdminJurnalistikDashboardPage() {
             <JurnalistikDataRecap
               {...(queryData?.data.meta as unknown as JurnalistikDataRecapType)}
             />
-            <pre>{JSON.stringify(url, null, 2)}</pre>
             <ServerTable
               columns={columns}
               data={queryData?.data.data_per_page ?? []}
