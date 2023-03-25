@@ -10,13 +10,23 @@ type Timeline = {
 const landingTimelineContents: Timeline[] = [
   {
     img: {
+      src: '/landing/timeline-3.png',
+      alt: 'timeline illustration 3',
+      width: '121',
+      height: '66',
+    },
+    date: '2 Juni 2023',
+    caption: 'Karya Tulis Ilmiah',
+  },
+  {
+    img: {
       src: '/landing/timeline-1.png',
       alt: 'timeline illustration 1',
       width: '121',
       height: '66',
     },
-    date: 'Coming Soon',
-    caption: 'Pre Event ITS EXPO',
+    date: '2 - 11 Juni 2023',
+    caption: 'Jurnalistic Competition',
   },
   {
     img: {
@@ -25,18 +35,8 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: 'Coming Soon',
-    caption: 'Opening ITS EXPO',
-  },
-  {
-    img: {
-      src: '/landing/timeline-3.png',
-      alt: 'timeline illustration 3',
-      width: '121',
-      height: '66',
-    },
-    date: 'Coming Soon',
-    caption: 'Main Event ITS EXPO',
+    date: '2 Juni 2023',
+    caption: 'Robotic Competition',
   },
   {
     img: {
@@ -45,8 +45,38 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: 'Coming Soon',
-    caption: 'Gebyar ITS EXPO 2023',
+    date: '3 Juni 2023',
+    caption: 'Talkshow',
+  },
+  {
+    img: {
+      src: '/landing/timeline-3.png',
+      alt: 'timeline illustration 3',
+      width: '121',
+      height: '66',
+    },
+    date: '4 Juni 2023',
+    caption: 'Parade Budaya dan Pentas Kolosal',
+  },
+  {
+    img: {
+      src: '/landing/timeline-1.png',
+      alt: 'timeline illustration 3',
+      width: '121',
+      height: '66',
+    },
+    date: '4 Juni 2023',
+    caption: 'Exhibition',
+  },
+  {
+    img: {
+      src: '/landing/timeline-2.png',
+      alt: 'timeline illustration 2',
+      width: '121',
+      height: '66',
+    },
+    date: '11 Juni 2023',
+    caption: 'Grbyar ITS Expo 2023',
   },
 ];
 

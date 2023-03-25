@@ -23,7 +23,7 @@ function JurnalistikDashboardPage() {
             <Breadcrumb crumbs={['/dashboard/pre-event/jurnalistik']} />
           </div>
         </header>
-        <main className='mt-8'>{user && <TampilanAwal user={user} />}</main>
+        <main className='my-8'>{user && <TampilanAwal user={user} />}</main>
       </div>
     </DashboardLayout>
   );

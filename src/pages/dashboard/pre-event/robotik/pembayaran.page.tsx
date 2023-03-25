@@ -68,7 +68,7 @@ export const getServerSideProps = async (
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {
         redirect: {
-          destination: '/dashboard/pre-event/jurnalistik/main',
+          destination: '/dashboard/pre-event/robotik/main',
           permanent: false,
         },
       };

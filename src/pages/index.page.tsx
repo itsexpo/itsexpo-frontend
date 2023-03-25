@@ -237,7 +237,7 @@ export default function Home() {
                   <div
                     key={index}
                     className={clsxm(
-                      'w-full flex justify-center items-center gap-8',
+                      'w-full flex justify-center items-center gap-8 group',
                       [parity === 'odd' && 'md:flex-row-reverse']
                     )}
                     data-aos='fade-up'
@@ -246,7 +246,7 @@ export default function Home() {
                     <NextImage {...content.img} />
                     <div
                       className={clsxm(
-                        'max-w-[152px] md:max-w-[248px] flex-1 flex flex-col gap-2',
+                        'max-w-[152px] md:max-w-[248px] flex-1 flex flex-col gap-2 group-hover:scale-[1.02] transition-transform duration-300 ease-in-out',
                         [parity === 'odd' && 'md:text-right']
                       )}
                     >

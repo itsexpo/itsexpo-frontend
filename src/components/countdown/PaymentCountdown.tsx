@@ -3,7 +3,7 @@ import * as React from 'react';
 import Typography from '@/components/typography/Typography';
 import useCountdown from '@/hooks/useCountdown';
 
-export default function Countdown({
+export default function PaymentCoutdown({
   closeDate,
 }: {
   closeDate: Date;
@@ -17,8 +17,9 @@ export default function Countdown({
       </Typography>
       {hours !== 0 && minutes !== 0 && seconds !== 0 ? (
         <Typography variant='p' className='font-normal text-navy-800'>
-          {days > 0 && `${days} Hari`}
-          {hours} Jam {minutes} Menit {seconds} Detik
+          {days > 0 && `${days} Hari `}
+          {hours} Jam {minutes} Menit
+          {days === 0 && seconds > 0 && ` ${seconds} Detik`}
         </Typography>
       ) : (
         <Typography variant='p' className='font-normal text-navy-800'>

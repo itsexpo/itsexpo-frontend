@@ -2,7 +2,9 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { RegisterOptions, useFormContext } from 'react-hook-form';
 
-import Typography from '@/components/typography/Typography';
+import Typography, {
+  TypographyColor,
+} from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
 
 enum CheckboxSize {
@@ -25,6 +27,7 @@ export type CheckboxProps = {
   /** Manual validation using RHF, it is encouraged to use yup resolver instead */
   validation?: RegisterOptions;
   size?: keyof typeof CheckboxSize;
+  color?: keyof typeof TypographyColor;
 } & Omit<React.ComponentPropsWithoutRef<'input'>, 'size'>;
 
 export default function Checkbox({
@@ -37,6 +40,8 @@ export default function Checkbox({
   hideError = false,
   validation,
   size = 'base',
+  color = 'primary',
+
   ...rest
 }: CheckboxProps) {
   const {
@@ -72,6 +77,7 @@ export default function Checkbox({
           aria-describedby={name}
         />
         <Typography
+          color={color}
           className={clsx(readOnly && 'cursor-not-allowed')}
           as='label'
           htmlFor={`${name}_${value}`}
