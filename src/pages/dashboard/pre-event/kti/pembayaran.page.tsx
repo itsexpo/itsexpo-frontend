@@ -7,7 +7,7 @@ import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
-import FormPembayaran from '@/pages/dashboard/pre-event/jurnalistik/container/PembayaranJurnalisitkForm';
+import FormPembayaranKTI from '@/pages/dashboard/pre-event/kti/container/PembayaranFormKTI';
 import { ApiError, ApiReturn } from '@/types/api';
 import { PembayaranPreEvent } from '@/types/entities/pre-event/pembayaran';
 
@@ -35,7 +35,7 @@ function PembayaranKTI({
         </header>
         <main>
           <div className='grid grid-rows-2 md:grid-cols-6 mt-4 gap-6'>
-            <FormPembayaran data={data.data} />
+            <FormPembayaranKTI data={data.data} />
             <div className='col-span-6 md:col-span-2 h-fit bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
               <Typography variant='p' className='font-normal text-navy-800'>
                 PEMBAYARAN KARYA TULIS ILMIAH
