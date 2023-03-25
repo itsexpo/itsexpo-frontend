@@ -40,7 +40,9 @@ function AnnouncementUpdate({
   const { id } = useRouter().query;
 
   const methods = useForm<UpdateAnnouncement>();
-
+  const {
+    formState: { isDirty },
+  } = methods;
   const { mutate, isLoading } = useMutationToast<void, UpdateAnnouncement>(
     useMutation((data) => api.put(`/pengumuman/${id}`, serialize(data)))
   );
@@ -117,17 +119,10 @@ function AnnouncementUpdate({
                         />
                       </div>
                       <Button
-                        className='col-span-1 !text-critical-600 border-critical-600'
-                        isLoading={isLoading}
-                        size='large'
-                        variant='outline'
-                      >
-                        Batalkan
-                      </Button>
-                      <Button
-                        className='col-span-1'
+                        className='col-span-full'
                         size='large'
                         variant='green'
+                        disabled={!isDirty}
                         type='submit'
                         isLoading={isLoading}
                       >
