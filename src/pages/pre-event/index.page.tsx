@@ -177,7 +177,7 @@ function Preevent() {
                   dan mengembangkan keterampilan jurnalistikmu!
                 </Typography>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='/jurnalistik'
                   className='relative md:max-w-[215px] mt-10 -top-32 md:top-0'
                   variant='discolored'
                   size='large'
@@ -248,7 +248,7 @@ function Preevent() {
                   Robotik di ITS Expo 2023!
                 </Typography>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='/robotics'
                   className='relative md:max-w-[215px] -top-14 md:top-0  mt-10'
                   variant='discolored'
                   size='large'
@@ -300,7 +300,7 @@ function Preevent() {
                   inovatif!
                 </Typography>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='/kti'
                   className='relative md:max-w-[215px] mt-10 -top-16 md:top-0'
                   variant='discolored'
                   size='large'

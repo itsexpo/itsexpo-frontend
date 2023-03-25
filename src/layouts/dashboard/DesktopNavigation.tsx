@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import * as React from 'react';
 
+import UnstyledLink from '@/components/links/UnstyledLink';
 import Logo from '@/components/Logo';
 import NextImage from '@/components/NextImage';
 import Typography from '@/components/typography/Typography';
@@ -26,7 +27,9 @@ export default function DesktopNavigation() {
           className='absolute bottom-0 right-0 w-3/4 z-[-3]'
         />
         <div className='flex items-center justify-center'>
-          <Logo />
+          <UnstyledLink href='/'>
+            <Logo />
+          </UnstyledLink>
         </div>
 
         {/* Sidebar component */}

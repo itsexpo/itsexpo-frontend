@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
+import * as React from 'react';
 
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
+import JurnalistikFilterPopup from '@/components/shared/PembayaranFilterPopup';
 import ServerTable from '@/components/table/ServerTable';
 import PaymentTag from '@/components/tag/PaymentTag';
 import Typography from '@/components/typography/Typography';
@@ -85,9 +87,17 @@ function AdminJurnalistikDashboardPage() {
     },
   ];
 
+  const [pembayaranFilter, setPembayaranFilter] = React.useState<string[]>([]);
+
   const url = buildPaginatedTableURL({
     baseUrl: '/admin/jurnalistik',
     tableState,
+    additionalParam: {
+      filter: pembayaranFilter,
+    },
+    option: {
+      arrayFormat: 'index',
+    },
   });
 
   const { data: queryData } = useQuery<
@@ -122,12 +132,18 @@ function AdminJurnalistikDashboardPage() {
             <JurnalistikDataRecap
               {...(queryData?.data.meta as unknown as JurnalistikDataRecapType)}
             />
+            <pre>{JSON.stringify(url, null, 2)}</pre>
             <ServerTable
               columns={columns}
               data={queryData?.data.data_per_page ?? []}
               meta={queryData?.data.meta}
               tableState={tableState}
               setTableState={setTableState}
+              header={
+                <JurnalistikFilterPopup
+                  setPembayaranFilter={setPembayaranFilter}
+                />
+              }
               withFilter={true}
               className='text-center text-typo-primary font-secondary'
             />
