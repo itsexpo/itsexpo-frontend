@@ -13,6 +13,7 @@ import {
 } from 'react-icons/fi';
 import { GiPartyPopper } from 'react-icons/gi';
 import { MdAlarmAdd, MdOutlineEventAvailable } from 'react-icons/md';
+import { TbMicroscope } from 'react-icons/tb';
 
 import { Navigation } from '@/types/navigate';
 
@@ -128,7 +129,6 @@ export const navigations: Navigation[] = [
     exactMatch: true,
     icon: FiFileText,
   },
-
   {
     name: 'Pre Event',
     href: '#',
@@ -152,7 +152,7 @@ export const navigations: Navigation[] = [
         name: 'KTI',
         href: '/dashboard/pre-event/kti',
         exactMatch: true,
-        icon: BsJournalMedical,
+        icon: TbMicroscope,
         permissions: ['kti.index', 'kti.store'],
       },
       {
