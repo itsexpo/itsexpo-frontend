@@ -5,9 +5,9 @@ import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
+import PengumumanEventCard from '@/container/PengumumanEventCard';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
-import PengumumanCard from '@/pages/dashboard/pre-event/jurnalistik/components/dashboard/PengumumanCard';
 import DataDiriCard from '@/pages/dashboard/pre-event/robotik/components/dashboard/DataDiriCard';
 import TeamCard from '@/pages/dashboard/pre-event/robotik/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
@@ -36,7 +36,7 @@ function DashboardRobotikLineTracer({
         </div>
       </header>
       <main className='dashboard-layout !pt-8 space-y-6 mb-8'>
-        <PengumumanCard />
+        <PengumumanEventCard id='13' />
         <div className='grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-0 gap-x-0 md:gap-x-4'>
           <TeamCard {...data.data} />
           <DataDiriCard data={data.data.personal} />
