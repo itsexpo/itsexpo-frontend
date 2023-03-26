@@ -25,7 +25,7 @@ export default function JuriCard() {
                 {...img}
                 imgClassName='rounded-md'
                 useSkeleton
-                blurClassName='bg-typo-secondary rounded-md z-10'
+                blurClassName='bg-typo-inline rounded-md z-10'
               />
               <div className='flex flex-col items-center md:items-start gap-y-4'>
                 {/* Name and position */}

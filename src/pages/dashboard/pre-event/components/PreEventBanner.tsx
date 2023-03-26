@@ -29,7 +29,7 @@ const PreEventBanner = ({
         height='160'
         className='rounded-xl w-full'
         useSkeleton
-        blurClassName='bg-typo-secondary rounded-xl z-10'
+        blurClassName='bg-typo-inline rounded-xl z-10'
       />
       <div className='absolute flex flex-col items-start bottom-2 sm:bottom-3 lg:bottom-4 left-2 sm:left-3 lg:left-4'>
         <Typography

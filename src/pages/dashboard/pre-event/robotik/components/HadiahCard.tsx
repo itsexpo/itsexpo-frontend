@@ -28,7 +28,7 @@ export default function HadiahCard() {
               className='w-full'
               imgClassName='rounded-lg md:rounded-2xl'
               useSkeleton
-              blurClassName='bg-typo-secondary rounded-lg md:rounded-2xl z-10'
+              blurClassName='bg-typo-inline rounded-lg md:rounded-2xl z-10'
             />
             <div
               className={clsxm(

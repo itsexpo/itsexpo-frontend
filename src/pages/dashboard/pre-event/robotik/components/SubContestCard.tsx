@@ -15,7 +15,7 @@ export default function SubContestCard() {
               className='w-full h-full'
               imgClassName='object-cover rounded-xl'
               useSkeleton
-              blurClassName='bg-typo-secondary object-cover rounded-xl z-10'
+              blurClassName='bg-typo-inline rounded-xl z-10'
             />
           </div>
           <div

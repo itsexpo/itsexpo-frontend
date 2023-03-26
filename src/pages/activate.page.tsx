@@ -6,7 +6,7 @@ import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
 import Layout from '@/layouts/Layout';
-import api from '@/lib/api';
+import api, { setApiContext } from '@/lib/api';
 import { UserVerificationReturn } from '@/types/entities/user-verification';
 
 export default function AccountActivationPage({
@@ -127,7 +127,7 @@ export default function AccountActivationPage({
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const email = context.query.email as string;
   const token = context.query.token as string;
-
+  setApiContext(context);
   try {
     const res = await api.post(`/user_verification`, { email, token });
     return {
