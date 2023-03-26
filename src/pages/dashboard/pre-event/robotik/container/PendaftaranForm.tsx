@@ -11,6 +11,7 @@ import Input from '@/components/forms/Input';
 import TextArea from '@/components/forms/TextArea';
 import { REG_PHONE } from '@/constant/regex';
 import useMutationToast from '@/hooks/toast/useMutationToast';
+import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
 import TeamRoleRadio from '@/pages/dashboard/pre-event/components/TeamRoleRadio';
 import Informasi from '@/pages/dashboard/pre-event/robotik/components/pendaftaran/Informasi';
@@ -22,6 +23,7 @@ export default function FormPendaftaran() {
       member_type: 'KETUA',
     },
   });
+  const dialog = useDialog();
 
   const {
     handleSubmit,
@@ -62,15 +64,31 @@ export default function FormPendaftaran() {
         ...memberData,
       };
       const formData = serialize(body);
-      submitRegistration(formData, {
-        onSuccess: () => router.push('/dashboard/pre-event/robotik/main'),
-      });
+      dialog({
+        title: 'Mohon pastikan lagi informasi anda',
+        description: `Apakah anda yakin bahwa informasi yang diberikan sudah benar?`,
+        submitText: 'Sudah Benar',
+        variant: 'warning',
+        catchOnCancel: true,
+      }).then(() =>
+        submitRegistration(formData, {
+          onSuccess: () => router.push('/dashboard/pre-event/robotik/main'),
+        })
+      );
     } else {
       const body = memberData;
       const formData = serialize(body, { indices: true });
-      submitRegistration(formData, {
-        onSuccess: () => router.push('/dashboard/pre-event/robotik/join'),
-      });
+      dialog({
+        title: 'Mohon pastikan lagi informasi anda',
+        description: `Apakah anda yakin bahwa informasi yang diberikan sudah benar?`,
+        submitText: 'Sudah Benar',
+        variant: 'warning',
+        catchOnCancel: true,
+      }).then(() =>
+        submitRegistration(formData, {
+          onSuccess: () => router.push('/dashboard/pre-event/robotik/join'),
+        })
+      );
     }
   };
 
@@ -163,10 +181,11 @@ export default function FormPendaftaran() {
 
             <Button
               type='submit'
+              variant='green'
               disabled={!isDirty}
               isLoading={submitIsLoading}
             >
-              Submit
+              Daftar Sekarang
             </Button>
           </form>
         </FormProvider>
