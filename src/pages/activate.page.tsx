@@ -137,9 +137,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   } catch (e) {
     const error = e as AxiosError;
+    if (error.response?.data) {
+      return {
+        props: {
+          data: error.response?.data,
+        },
+      };
+    }
     return {
       props: {
-        data: error.response?.data,
+        data: {
+          success: false,
+          code: 500,
+          message: 'Internal Server Error',
+        },
       },
     };
   }
