@@ -35,7 +35,10 @@ api.interceptors.request.use(function (config) {
       const cookies = new Cookies(context.req?.headers.cookie);
       const detectedIp = requestIp.getClientIp(context.req);
       // if in production
-      if (detectedIp) {
+      if (
+        detectedIp &&
+        process.env.NEXT_PUBLIC_STATUS_PRODUCTION === 'production'
+      ) {
         config.headers['X-Forwarded-For'] = detectedIp;
       }
       /** Get cookies from context if server side */
