@@ -10,6 +10,7 @@ import DropzoneInput from '@/components/forms/DropzoneInput';
 import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
 import useMutationToast from '@/hooks/toast/useMutationToast';
+import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
 import TeamRoleRadio from '@/pages/dashboard/pre-event/jurnalistik/components/TeamRoleRadio';
 import useAuthStore from '@/store/useAuthStore';
@@ -20,6 +21,8 @@ export default function FromPendaftaran() {
   const [kabupaten, setKabupaten] = React.useState<
     { id: string; name: string }[]
   >([]);
+  const dialog = useDialog();
+
   const methods = useForm<Jurnalistik>();
 
   const {
@@ -78,9 +81,18 @@ export default function FromPendaftaran() {
         ...image,
       };
       const formData = serialize(body);
-      SubmitAsKetua(formData, {
-        onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/main'),
-      });
+
+      dialog({
+        title: 'Mohon pastikan lagi informasi anda',
+        description: `Apakah anda yakin bahwa informasi yang diberikan sudah benar?`,
+        submitText: 'Sudah Benar',
+        variant: 'warning',
+        catchOnCancel: true,
+      }).then(() =>
+        SubmitAsKetua(formData, {
+          onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/main'),
+        })
+      );
     } else {
       const body = {
         name: data.name,
@@ -92,9 +104,18 @@ export default function FromPendaftaran() {
         ...image,
       };
       const formData = serialize(body, { indices: true });
-      SubmitAsMember(formData, {
-        onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/join'),
-      });
+
+      dialog({
+        title: 'Mohon pastikan lagi informasi anda',
+        description: `Apakah anda yakin bahwa informasi yang diberikan sudah benar?`,
+        submitText: 'Sudah Benar',
+        variant: 'warning',
+        catchOnCancel: true,
+      }).then(() =>
+        SubmitAsMember(formData, {
+          onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/join'),
+        })
+      );
     }
   };
   const isTeamLead = watch('member_type') === 'ketua';
@@ -145,6 +166,7 @@ export default function FromPendaftaran() {
               id='jenis_kegiatan'
               label='Jenis Kegiatan'
               validation={{ required: 'Jenis Kegiatan tidak boleh kosong' }}
+              helperText='Untuk informasi lebih detail tercantum pada guidebook'
             >
               <option value=''>Pilih Jenis Kegiatan</option>
               <option value='KHUSUS'>Kegiatan Khusus</option>
@@ -220,10 +242,11 @@ export default function FromPendaftaran() {
 
             <Button
               type='submit'
+              variant='green'
               disabled={!isDirty}
               isLoading={KetuaIsLoading || MemberIsLoading}
             >
-              Submit
+              Daftar Sekarang
             </Button>
           </form>
         </FormProvider>
