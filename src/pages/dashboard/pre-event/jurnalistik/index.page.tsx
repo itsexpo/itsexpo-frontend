@@ -18,7 +18,7 @@ function JurnalistikDashboardPage() {
         <header className=''>
           <div className='flex justify-between items-center'>
             <Typography variant='h5' className='font-bold'>
-              Jurnalistik
+              Journalistic
             </Typography>
             <Breadcrumb crumbs={['/dashboard/pre-event/jurnalistik']} />
           </div>

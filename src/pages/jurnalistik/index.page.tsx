@@ -68,7 +68,7 @@ export default function Home() {
                   as='h3'
                   className='font-secondary font-bold text-4xl md:text-5xl lg:text-[55px] xl:text-6xl text-center md:text-left text-critical-500'
                 >
-                  JURNALISTIK
+                  JOURNALISTIC
                 </Typography>
               </div>
               <div className='flex items-center'>
@@ -118,7 +118,7 @@ export default function Home() {
                     variant='h2'
                     className='font-primary text-white text-center'
                   >
-                    jurnalistik
+                    Journalistic
                   </Typography>
                   <Typography
                     variant='h6'
@@ -353,7 +353,7 @@ export default function Home() {
                 <div className='w-full min-h-[514px] rounded-xl bg-white'></div>
                 <ButtonLink
                   variant='yellow'
-                  href='/'
+                  href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
                   size='base'
                   className='w-full mt-4'
                 >
