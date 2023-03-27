@@ -15,7 +15,7 @@ export default function DataDiriCard({
     defaultValues: data,
   });
   return (
-    <div className=' p-6 pb-12 rounded-xl border-typo-outline border-[1px]'>
+    <div className='bg-white p-6 pb-12 rounded-xl border-typo-outline border-[1px]'>
       <Typography as='h6' variant='h6' className='text-typo-primary font-bold'>
         Data Diri Anda
       </Typography>

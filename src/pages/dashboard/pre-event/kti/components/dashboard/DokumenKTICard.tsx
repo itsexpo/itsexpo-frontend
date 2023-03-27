@@ -7,7 +7,7 @@ import { DetailTimKTI } from '@/types/entities/pre-event/kti';
 
 export default function DokumenKTICard({ data }: { data: DetailTimKTI }) {
   return (
-    <div className=' p-6 pb-12 rounded-xl border-typo-outline border-[1px] h-fit'>
+    <div className='bg-white p-6 pb-12 rounded-xl border-typo-outline border-[1px] h-fit'>
       <Typography as='h6' variant='h6' className='text-typo-primary font-bold'>
         Dokumen KTI
       </Typography>

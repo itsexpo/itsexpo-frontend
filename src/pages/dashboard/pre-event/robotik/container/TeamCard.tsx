@@ -23,7 +23,7 @@ export default function TeamCard({
   };
 
   return (
-    <div className='p-6 rounded-xl border-typo-outline border-[1px] space-y-6'>
+    <div className='bg-white p-6 rounded-xl border-typo-outline border-[1px] space-y-6'>
       <div className='flex flex-col gap-y-6 xl:gap-y-0 xl:flex-row xl:justify-between items-start xl:items-center'>
         <div>
           <Typography

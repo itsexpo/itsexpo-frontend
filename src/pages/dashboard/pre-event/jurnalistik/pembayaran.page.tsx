@@ -3,6 +3,7 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import * as React from 'react';
 
 import Breadcrumb from '@/components/Breadcrumb';
+import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
@@ -18,6 +19,8 @@ export default withAuth(PembayaranJurnalistik, [
 function PembayaranJurnalistik({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  // check if the time is expired
+  const isExpired = new Date(data.data?.tanggal_pembayaran) < new Date();
   return (
     <DashboardLayout>
       <div className='dashboard-layout min-h-screen'>
@@ -35,29 +38,47 @@ function PembayaranJurnalistik({
             />
           </div>
         </header>
-        <main>
-          <div className='grid grid-rows-2 md:grid-cols-6 mt-4 gap-6'>
-            <FormPembayaran data={data.data} />
-            <div className='col-span-6 md:col-span-2 h-fit bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
-              <Typography variant='p' className='font-normal text-navy-800'>
-                PEMBAYARAN JURNALISTIK
-              </Typography>
-              <br />
-              <Typography variant='p' className='font-normal text-navy-800'>
-                BRI: 0908 0104 5864 532 (Navisa Salsabila)
-              </Typography>
-              <Typography variant='p' className='font-normal text-navy-800'>
-                BNI: 1299871140 (Navisa Salsabila)
-              </Typography>
-              <Typography variant='p' className='font-normal text-navy-800'>
-                Shopeepay: 087871529729(Navisa Salsabila)
-              </Typography>
-              <Typography variant='p' className='font-normal text-navy-800'>
-                Dana: 087871529729 (Navisa Salsabila)
-              </Typography>
+        {!isExpired ? (
+          <main>
+            <div className='grid grid-rows-2 md:grid-cols-6 mt-4 gap-6'>
+              <FormPembayaran data={data.data} />
+              <div className='col-span-6 md:col-span-2 h-fit bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
+                <Typography variant='p' className='font-normal text-navy-800'>
+                  PEMBAYARAN JURNALISTIK
+                </Typography>
+                <br />
+                <Typography variant='p' className='font-normal text-navy-800'>
+                  BRI: 0908 0104 5864 532 (Navisa Salsabila)
+                </Typography>
+                <Typography variant='p' className='font-normal text-navy-800'>
+                  BNI: 1299871140 (Navisa Salsabila)
+                </Typography>
+                <Typography variant='p' className='font-normal text-navy-800'>
+                  Shopeepay: 087871529729(Navisa Salsabila)
+                </Typography>
+                <Typography variant='p' className='font-normal text-navy-800'>
+                  Dana: 087871529729 (Navisa Salsabila)
+                </Typography>
+              </div>
             </div>
-          </div>
-        </main>
+          </main>
+        ) : (
+          <main>
+            <div className='w-full grid grid-cols-2'>
+              <div className='bg-white shadow-pendaftaran p-4 rounded-lg'>
+                <Typography variant='p' as='p' className=''>
+                  Mohon maaf anda tidak dapat melakukan pembayaran karena waktu
+                  sudah pembayaran anda sudah habis, silhkan tekan tombol
+                  dibawah ini untuk pengajuan pembayaran kembali
+                </Typography>
+
+                <Button variant='green' color='primary' className='w-fit mt-4'>
+                  Lakukan Pembayaran Ulang
+                </Button>
+              </div>
+            </div>
+          </main>
+        )}
       </div>
     </DashboardLayout>
   );
