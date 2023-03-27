@@ -145,7 +145,7 @@ function Preevent() {
                   as='h3'
                   className='text-typo-white text-6xl text-center md:text-left font-primary'
                 >
-                  Jurnalistik
+                  Journalistic
                 </Typography>
                 <NextImage
                   src='/preevent/jurnalistik-mobile.png'
