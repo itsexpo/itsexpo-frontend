@@ -118,6 +118,13 @@ export const navigations: Navigation[] = [
         icon: FiList,
         permissions: ['admin_jurnalistik.index'],
       },
+      {
+        name: 'KTI',
+        href: '/dashboard/admin/data-management/kti',
+        exactMatch: true,
+        icon: FiList,
+        permissions: ['admin_kti.index'],
+      },
     ],
   },
   //! END ADMIN

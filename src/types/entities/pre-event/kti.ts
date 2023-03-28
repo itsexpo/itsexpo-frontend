@@ -52,19 +52,6 @@ export type Peserta = {
   ketua: boolean;
 };
 
-export type AdminJurnalistikColumn = {
-  ketua_tim: string;
-  nama_tim: string;
-  kode_tim: string;
-  created_at: string;
-  status_pembayaran:
-    | 'REVISI'
-    | 'GAGAL'
-    | 'SUCCESS'
-    | 'AWAITING VERIFICATION'
-    | 'AWAITING PAYMENT';
-};
-
 export type JurnalistikDataRecapType = {
   total_tim?: number;
   pembayaran?: {
@@ -99,7 +86,29 @@ export interface DetailTimKTI {
   abstrak: string;
 }
 
-export interface JurnalistikVerification {
-  id_jurnalistik?: string;
-  status: 'TERIMA' | 'TOLAK';
+export interface DetailAdminTimKTI {
+  team_name: string;
+  team_code: string;
+  asal_instansi: string;
+  follow_sosmed: string;
+  bukti_repost: string;
+  twibbon: string;
+  abstrak: string;
+
+  payment: {
+    payment_id: string;
+    payment_status: PaymentId;
+    payment_image: string;
+  };
+
+  team_member: Array<{
+    name: string;
+    ketua: string;
+    no_telp: string;
+  }>;
+}
+
+export interface KTIVerification {
+  pembayaran_id: string;
+  status_pembayaran_id: 3 | 1;
 }
