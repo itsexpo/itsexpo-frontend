@@ -12,7 +12,7 @@ export const PreEvent: PreEventData[] = [
     title: 'Robot in Action',
     description:
       'Robot In Action adalah ajang kompetisi robotik untuk siswa SMP/MTS/Sederajat dan SMA/MA/Sederajat di Jawa Timur, dengan tujuan memperkenalkan IPTEK dan meningkatkan kreativitas dan bakat di bidang teknologi. Kompetisi ini juga menghadirkan kegiatan untuk mempertemukan stakeholder seni dan IPTEK. Para peserta akan memamerkan kemampuan robotik mereka melalui beberapa kategori lomba yang menantang, menciptakan wadah bagi siswa untuk mengekspresikan kreativitas dan bakat mereka. Ikuti Robot In Action dan saksikan inovasi dan teknologi masa depan yang diciptakan oleh para siswa berbakat di Jawa Timur!',
-    link: '/robotics',
+    link: '/robotika',
     image: '/landing/preevent-robotik.png',
   },
   {

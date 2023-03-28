@@ -83,7 +83,7 @@ function Preevent() {
           id='tentang pre event'
           className='relative w-full flex flex-col items-center bg-preevent-landing overflow-hidden'
         >
-          <div className='layout-pre-event my-24'>
+          <div className='layout mt-24'>
             <div className='relative grid grid-cols-3 max-w-6xl justify-center items-center mx-auto'>
               <div className='flex flex-col'>
                 <NextImage
@@ -91,15 +91,16 @@ function Preevent() {
                   alt='ornamen'
                   width={316}
                   height={204}
-                  className='absolute w-1/5 md:w-[15%] md:ml-16'
+                  className='absolute w-1/5 md:w-[12%] md:ml-28'
                 />
               </div>
 
               <div className='relative flex flex-col top-10 sm:top-6 md:top-12'>
                 <Typography
-                  variant='h4'
-                  as='h4'
-                  className='text-typo-white text-center font-primary md:-translate-y-3'
+                  variant='h3'
+                  as='h3'
+                  className='text-typo-white text-center md:-translate-y-3'
+                  font='upakarti'
                 >
                   tentang pre event
                 </Typography>
@@ -110,7 +111,7 @@ function Preevent() {
                   alt='ornamen'
                   width={316}
                   height={204}
-                  className='absolute w-1/5 md:w-[15%] right-0 md:mr-20'
+                  className='absolute w-1/5 md:w-[12%] right-0 md:mr-28'
                 />
               </div>
             </div>
@@ -135,7 +136,7 @@ function Preevent() {
           </div>
 
           {/* jurnalistik */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='relative flex flex-col max-w-full'>
                 <Typography
@@ -190,7 +191,7 @@ function Preevent() {
           </div>
 
           {/* robotics */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='flex flex-col'>
                 <NextImage
@@ -207,7 +208,7 @@ function Preevent() {
                   as='h3'
                   className='text-typo-white text-6xl text-center md:text-left font-primary'
                 >
-                  robotics
+                  robotika
                 </Typography>
                 <NextImage
                   src='/preevent/robotics.png'
@@ -236,7 +237,7 @@ function Preevent() {
                   in Action ini dilaksanakan secara luring.
                 </Typography>
                 <ButtonLink
-                  href='/robotics'
+                  href='/robotika'
                   className='relative md:max-w-[215px] -top-14 md:top-0  mt-10'
                   variant='discolored'
                   size='large'
@@ -248,7 +249,7 @@ function Preevent() {
           </div>
 
           {/* kti */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='flex flex-col'>
                 <Typography
@@ -307,7 +308,7 @@ function Preevent() {
           </div>
 
           {/* talkshow */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='relative flex flex-col'>
                 <NextImage
