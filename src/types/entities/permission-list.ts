@@ -43,6 +43,10 @@ enum PermissionEnum {
   // KTI
   'kti.index',
   'kti.store',
+  'admin_kti.index',
+  'admin_kti.detail',
+  'pembayaran_kti.store',
+  'pembayaran_kti.index',
   // Robotik
   'robotik.index',
   'robotik.store',
