@@ -1,11 +1,14 @@
+import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
+import useMutationToast from '@/hooks/toast/useMutationToast';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
 import FormPembayaran from '@/pages/dashboard/pre-event/jurnalistik/container/PembayaranJurnalisitkForm';
@@ -19,8 +22,21 @@ export default withAuth(PembayaranJurnalistik, [
 function PembayaranJurnalistik({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const router = useRouter();
   // check if the time is expired
-  const isExpired = new Date(data.data?.tanggal_pembayaran) < new Date();
+
+  const { mutate: updatePembayaran, isLoading: isUpdatePembayaranLoading } =
+    useMutationToast<void, { payment_id: string }>(
+      useMutation(
+        (data) => {
+          return api.post('/pre-event/pembayaran', data);
+        },
+        {
+          onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/main'),
+        }
+      )
+    );
+
   return (
     <DashboardLayout>
       <div className='dashboard-layout min-h-screen'>
@@ -38,10 +54,12 @@ function PembayaranJurnalistik({
             />
           </div>
         </header>
-        {!isExpired ? (
+        {data && data?.code !== 6009 ? (
           <main>
             <div className='grid grid-rows-2 md:grid-cols-6 mt-4 gap-6'>
-              <FormPembayaran data={data.data} />
+              <FormPembayaran
+                data={(data as ApiReturn<PembayaranPreEvent>).data}
+              />
               <div className='col-span-6 md:col-span-2 h-fit bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
                 <Typography variant='p' className='font-normal text-navy-800'>
                   PEMBAYARAN JURNALISTIK
@@ -64,17 +82,26 @@ function PembayaranJurnalistik({
           </main>
         ) : (
           <main>
-            <div className='w-full grid grid-cols-2'>
-              <div className='bg-white shadow-pendaftaran p-4 rounded-lg'>
+            <div className='w-full grid md:grid-cols-2 grid-cols-1'>
+              <div className='bg-white shadow-pendaftaran p-4 rounded-lg mt-4'>
                 <Typography variant='p' as='p' className=''>
                   Mohon maaf anda tidak dapat melakukan pembayaran karena waktu
-                  sudah pembayaran anda sudah habis, silhkan tekan tombol
-                  dibawah ini untuk pengajuan pembayaran kembali
+                  sudah pembayaran anda sudah habis atau kuota sudah terpenuhi,
+                  silhkan tekan tombol dibawah ini untuk pengajuan pembayaran
+                  kembali
                 </Typography>
 
-                <Button variant='green' color='primary' className='w-fit mt-4'>
-                  Lakukan Pembayaran Ulang
-                </Button>
+                {data && (
+                  <Button
+                    variant='green'
+                    color='primary'
+                    className='w-fit mt-4'
+                    isLoading={isUpdatePembayaranLoading}
+                    onClick={() => updatePembayaran({ payment_id: '123' })}
+                  >
+                    Lakukan Pembayaran Ulang
+                  </Button>
+                )}
               </div>
             </div>
           </main>
@@ -97,6 +124,14 @@ export const getServerSideProps = async (
       },
     };
   } catch (err) {
+    if ((err as AxiosError<ApiError>)?.response?.data?.code === 6009) {
+      return {
+        props: {
+          data: (err as AxiosError<ApiError>)?.response?.data,
+        },
+      };
+    }
+
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {
         redirect: {

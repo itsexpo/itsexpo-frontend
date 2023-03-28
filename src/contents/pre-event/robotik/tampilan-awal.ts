@@ -17,7 +17,7 @@ export const timelineRobotik: TimelineRobotikData[] = [
       width: '121',
       height: '66',
     },
-    date: '15 Maret - 30 April 2023',
+    date: '01 April - 30 April 2023',
     caption: 'Masa Pendaftaran',
   },
   {
@@ -143,7 +143,7 @@ export const hadiahRobotikContents: HadiahRobotikData[] = [
       height: '160',
     },
     text: 'Juara 1 Robot Line Tracer',
-    prize: 'Rp1.500.000,-',
+    prize: 'Rp3.000.000,-',
   },
   {
     img: {
@@ -153,7 +153,7 @@ export const hadiahRobotikContents: HadiahRobotikData[] = [
       height: '160',
     },
     text: 'Juara 2 Robot Line Tracer',
-    prize: 'Rp1.000.000,-',
+    prize: 'Rp2.000.000,-',
   },
   {
     img: {
@@ -163,7 +163,7 @@ export const hadiahRobotikContents: HadiahRobotikData[] = [
       height: '160',
     },
     text: 'Juara 3 Robot Line Tracer',
-    prize: 'Rp800.000,-',
+    prize: 'Rp1.000.000,-',
   },
   {
     img: {
@@ -173,7 +173,7 @@ export const hadiahRobotikContents: HadiahRobotikData[] = [
       height: '160',
     },
     text: 'Juara 1 Open Category',
-    prize: 'Rp1.000.000,-',
+    prize: 'Rp3.500.000,-',
   },
   {
     img: {
@@ -183,7 +183,7 @@ export const hadiahRobotikContents: HadiahRobotikData[] = [
       height: '160',
     },
     text: 'Juara 2 Open Category',
-    prize: 'Rp800.000,-',
+    prize: 'Rp2.500.000,-',
   },
   {
     img: {
@@ -193,7 +193,7 @@ export const hadiahRobotikContents: HadiahRobotikData[] = [
       height: '160',
     },
     text: 'Juara 3 Open Category',
-    prize: 'Rp500.000,-',
+    prize: 'Rp2.000.000,-',
   },
 ];
 

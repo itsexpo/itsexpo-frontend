@@ -17,8 +17,6 @@ export default withAuth(PembayaranRobotik, ['pembayaran_jurnalistik.store']);
 function PembayaranRobotik({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const isExpired = new Date(data.data?.tanggal_pembayaran) < new Date();
-
   return (
     <DashboardLayout>
       <div className='dashboard-layout min-h-screen'>
@@ -36,10 +34,12 @@ function PembayaranRobotik({
             />
           </div>
         </header>
-        {!isExpired ? (
+        {data?.code !== 6009 ? (
           <main>
             <div className='grid grid-rows-2 md:grid-cols-6 mt-4 gap-6'>
-              <PembayaranRobotikForm data={data.data} />
+              <PembayaranRobotikForm
+                data={(data as ApiReturn<PembayaranPreEvent>).data}
+              />
               <div className='col-span-6 md:col-span-2 h-fit bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
                 <Typography variant='p' className='font-normal text-navy-800'>
                   PEMBAYARAN ROBOTIKA
@@ -86,6 +86,13 @@ export const getServerSideProps = async (
       },
     };
   } catch (err) {
+    if ((err as AxiosError<ApiError>)?.response?.data?.code === 6009) {
+      return {
+        props: {
+          data: (err as AxiosError<ApiError>)?.response?.data,
+        },
+      };
+    }
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {
         redirect: {

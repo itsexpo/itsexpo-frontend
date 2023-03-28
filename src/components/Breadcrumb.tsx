@@ -60,7 +60,7 @@ export default function Breadcrumb({
           <PrimaryLink
             href={crumb}
             variant='success'
-            className='font-bold no-underline'
+            className='font-semibold no-underline'
           >
             {breadcrumbs[crumb]}
           </PrimaryLink>
