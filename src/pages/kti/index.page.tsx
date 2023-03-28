@@ -306,7 +306,7 @@ export default function Home() {
                     variant='h5'
                     className='font-secondary text-white font-semibold sm:font-normal text-base sm:text-[32px]'
                   >
-                    Rp.1.500.000,-
+                    Rp.2.500.000,-
                   </Typography>
                 </div>
                 <div
@@ -342,7 +342,7 @@ export default function Home() {
                     variant='h5'
                     className='font-secondary text-white font-semibold sm:font-normal text-base sm:text-3xl'
                   >
-                    Rp.1.000.000,-
+                    Rp.2.000.000,-
                   </Typography>
                 </div>
                 <div
@@ -378,7 +378,7 @@ export default function Home() {
                     variant='h5'
                     className='font-secondary text-white font-semibold sm:font-normal text-base sm:text-3xl'
                   >
-                    Rp.800.000,-
+                    Rp.1.000.000,-
                   </Typography>
                 </div>
                 <div

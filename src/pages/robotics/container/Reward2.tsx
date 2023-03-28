@@ -6,15 +6,15 @@ import HadiahCard from '@/pages/robotics/components/HadiahCard';
 const HadiahState = [
   {
     img: '/robotics/juara1.png',
-    text: 'Rp 1.000.000,-',
+    text: 'Rp 3.500.000,-',
   },
   {
     img: '/robotics/juara2.png',
-    text: 'Rp 800.000,-',
+    text: 'Rp 2.500.000,-',
   },
   {
     img: '/robotics/juara3.png',
-    text: 'Rp 500.000,-',
+    text: 'Rp 2.000.000,-',
   },
 ];
 
