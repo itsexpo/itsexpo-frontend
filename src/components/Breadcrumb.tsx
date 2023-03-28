@@ -17,6 +17,8 @@ const breadcrumbs = {
   '/dashboard/admin/data-management/jurnalistik/detail': 'Detail',
   '/dashboard/admin/data-management/kti': 'KTI',
   '/dashboard/admin/data-management/kti/detail': 'Detail',
+  '/dashboard/admin/data-management/robotik': 'Robotik',
+  '/dashboard/admin/data-management/robotik/detail': 'Detail',
 
   // User
   '/dashboard/pre-event/jurnalistik': 'Journalistic',

@@ -50,6 +50,8 @@ enum PermissionEnum {
   // Robotik
   'robotik.index',
   'robotik.store',
+  'admin_robotik.index',
+  'admin_robotik.detail',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

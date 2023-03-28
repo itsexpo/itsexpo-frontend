@@ -109,7 +109,12 @@ export const navigations: Navigation[] = [
     name: 'Manajemen Data',
     href: '#',
     icon: FiDatabase,
-    permissions: ['admin_jurnalistik.index', 'admin_jurnalistik.detail'],
+    permissions: [
+      'admin_jurnalistik.index',
+      'admin_jurnalistik.detail',
+      'admin_robotik.index',
+      'admin_robotik.detail',
+    ],
     children: [
       {
         name: 'Jurnalistik',
@@ -124,6 +129,13 @@ export const navigations: Navigation[] = [
         exactMatch: true,
         icon: FiList,
         permissions: ['admin_kti.index'],
+      },
+      {
+        name: 'Robotik',
+        href: '/dashboard/admin/data-management/robotik',
+        exactMatch: true,
+        icon: FiList,
+        permissions: ['admin_robotik.index'],
       },
     ],
   },
