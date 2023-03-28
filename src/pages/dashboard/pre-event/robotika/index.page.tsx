@@ -4,7 +4,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import TampilanAwal from '@/pages/dashboard/pre-event/robotik/container/TampilanAwal';
+import TampilanAwal from '@/pages/dashboard/pre-event/robotika/container/TampilanAwal';
 import useAuthStore from '@/store/useAuthStore';
 
 export default withAuth(RobotikDashboardPage, ['robotik.index'], true);
@@ -24,7 +24,7 @@ function RobotikDashboardPage() {
             Robot In Action
           </Typography>
           <Breadcrumb
-            crumbs={['/dashboard/pre-event/robotik']}
+            crumbs={['/dashboard/pre-event/robotika']}
             className='hidden md:block'
           />
         </header>

@@ -14,7 +14,7 @@ import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
 import TeamRoleRadio from '@/pages/dashboard/pre-event/components/TeamRoleRadio';
-import Informasi from '@/pages/dashboard/pre-event/robotik/components/pendaftaran/Informasi';
+import Informasi from '@/pages/dashboard/pre-event/robotika/components/pendaftaran/Informasi';
 import { RobotikPendaftaranForm } from '@/types/entities/pre-event/robotik';
 
 export default function FormPendaftaran() {
@@ -72,7 +72,7 @@ export default function FormPendaftaran() {
         catchOnCancel: true,
       }).then(() =>
         submitRegistration(formData, {
-          onSuccess: () => router.push('/dashboard/pre-event/robotik/main'),
+          onSuccess: () => router.push('/dashboard/pre-event/robotika/main'),
         })
       );
     } else {
@@ -86,7 +86,7 @@ export default function FormPendaftaran() {
         catchOnCancel: true,
       }).then(() =>
         submitRegistration(formData, {
-          onSuccess: () => router.push('/dashboard/pre-event/robotik/join'),
+          onSuccess: () => router.push('/dashboard/pre-event/robotika/join'),
         })
       );
     }

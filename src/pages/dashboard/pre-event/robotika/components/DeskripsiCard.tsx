@@ -53,7 +53,7 @@ export default function DeskripsiCard({
               {isOpen && (
                 <ButtonLink
                   variant='green'
-                  href='/dashboard/pre-event/robotik/pendaftaran'
+                  href='/dashboard/pre-event/robotika/pendaftaran'
                 >
                   Daftar Sekarang
                 </ButtonLink>
@@ -85,7 +85,7 @@ export default function DeskripsiCard({
               <ButtonLink
                 className='w-full'
                 variant='green'
-                href='/dashboard/pre-event/robotik/main'
+                href='/dashboard/pre-event/robotika/main'
               >
                 Lihat Dashboard
               </ButtonLink>

@@ -8,8 +8,8 @@ import Typography from '@/components/typography/Typography';
 import PengumumanEventCard from '@/container/PengumumanEventCard';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
-import DataDiriCard from '@/pages/dashboard/pre-event/robotik/components/dashboard/DataDiriCard';
-import TeamCard from '@/pages/dashboard/pre-event/robotik/container/TeamCard';
+import DataDiriCard from '@/pages/dashboard/pre-event/robotika/components/dashboard/DataDiriCard';
+import TeamCard from '@/pages/dashboard/pre-event/robotika/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
 import { DetailPendaftarRobotik } from '@/types/entities/pre-event/robotik';
 
@@ -29,8 +29,8 @@ function DashboardRobotikLineTracer({
           </Typography>
           <Breadcrumb
             crumbs={[
-              '/dashboard/pre-event/robotik',
-              '/dashboard/pre-event/robotik/main',
+              '/dashboard/pre-event/robotika',
+              '/dashboard/pre-event/robotika/main',
             ]}
           />
         </div>
@@ -63,7 +63,7 @@ export const getServerSideProps = async (
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {
         redirect: {
-          destination: '/dashboard/pre-event/robotik/join',
+          destination: '/dashboard/pre-event/robotika/join',
           permanent: false,
         },
       };

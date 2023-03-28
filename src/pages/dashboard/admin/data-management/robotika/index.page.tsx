@@ -13,7 +13,7 @@ import Typography from '@/components/typography/Typography';
 import useServerTable from '@/hooks/useServerTable';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import { buildPaginatedTableURL } from '@/lib/table';
-import RobotikAdminStatistic from '@/pages/dashboard/admin/data-management/robotik/container/RobotikAdminStatistic';
+import RobotikAdminStatistic from '@/pages/dashboard/admin/data-management/robotika/container/RobotikAdminStatistic';
 import { PaginatedApiResponse } from '@/types/api';
 import {
   AdminRobotikColumn,
@@ -69,7 +69,7 @@ function AdminRobotikDashboardPage() {
         <Button
           variant='outline'
           size='small'
-          onClick={() => router.push(`robotik/${info.row.original.id_tim}`)}
+          onClick={() => router.push(`robotika/${info.row.original.id_tim}`)}
         >
           Lihat Detail
         </Button>
@@ -109,7 +109,7 @@ function AdminRobotikDashboardPage() {
             variant='h5'
             className='font-bold text-typo-primary'
           >
-            Robotics
+            Robotika
           </Typography>
         </section>
 

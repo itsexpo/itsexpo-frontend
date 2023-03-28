@@ -8,7 +8,7 @@ import {
 } from 'react-icons/io';
 import { RiPencilFill } from 'react-icons/ri';
 
-import StatisticCard from '@/pages/dashboard/admin/data-management/robotik/components/StatisticCard';
+import StatisticCard from '@/pages/dashboard/admin/data-management/robotika/components/StatisticCard';
 import { AdminRobotikMeta } from '@/types/entities/data-management/robotik';
 
 export default function RobotikAdminStatistic({

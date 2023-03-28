@@ -17,8 +17,8 @@ const breadcrumbs = {
   '/dashboard/admin/data-management/jurnalistik/detail': 'Detail',
   '/dashboard/admin/data-management/kti': 'KTI',
   '/dashboard/admin/data-management/kti/detail': 'Detail',
-  '/dashboard/admin/data-management/robotik': 'Robotik',
-  '/dashboard/admin/data-management/robotik/detail': 'Detail',
+  '/dashboard/admin/data-management/robotika': 'Robotika',
+  '/dashboard/admin/data-management/robotika/detail': 'Detail',
 
   // User
   '/dashboard/pre-event/jurnalistik': 'Journalistic',
@@ -28,11 +28,11 @@ const breadcrumbs = {
   '/dashboard/pre-event/jurnalistik/pembayaran': 'Pembayaran',
 
   // Robotik
-  '/dashboard/pre-event/robotik': 'Robot In Action',
-  '/dashboard/pre-event/robotik/join': 'Join',
-  '/dashboard/pre-event/robotik/pendaftaran': 'Pendaftaran',
-  '/dashboard/pre-event/robotik/main': 'Dashboard',
-  '/dashboard/pre-event/robotik/pembayaran': 'Pembayaran',
+  '/dashboard/pre-event/robotika': 'Robot In Action',
+  '/dashboard/pre-event/robotika/join': 'Join',
+  '/dashboard/pre-event/robotika/pendaftaran': 'Pendaftaran',
+  '/dashboard/pre-event/robotika/main': 'Dashboard',
+  '/dashboard/pre-event/robotika/pembayaran': 'Pembayaran',
 
   // KTI
   '/dashboard/pre-event/kti': 'KTI',

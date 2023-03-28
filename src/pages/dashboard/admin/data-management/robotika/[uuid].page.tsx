@@ -6,9 +6,9 @@ import Breadcrumb from '@/components/Breadcrumb';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import BuktiPembayaranCard from '@/pages/dashboard/admin/data-management/robotik/container/BuktiPembayaranCard';
-import DetailTimCard from '@/pages/dashboard/admin/data-management/robotik/container/DetailTimCard';
-import DokumenCard from '@/pages/dashboard/admin/data-management/robotik/container/DokumenCard';
+import BuktiPembayaranCard from '@/pages/dashboard/admin/data-management/robotika/container/BuktiPembayaranCard';
+import DetailTimCard from '@/pages/dashboard/admin/data-management/robotika/container/DetailTimCard';
+import DokumenCard from '@/pages/dashboard/admin/data-management/robotika/container/DokumenCard';
 import { ApiReturn } from '@/types/api';
 import { DetailTimRobotik } from '@/types/entities/pre-event/robotik';
 
@@ -16,7 +16,7 @@ export default withAuth(DetailTimRobotik, ['admin_robotik.detail']);
 
 function DetailTimRobotik() {
   const { uuid } = useRouter().query;
-  const url = `/admin/robotik/${uuid}`;
+  const url = `/admin/robotika/${uuid}`;
   const { data: queryData, refetch: refetchData } = useQuery<
     ApiReturn<DetailTimRobotik>
   >([url]);
@@ -31,8 +31,8 @@ function DetailTimRobotik() {
             </Typography>
             <Breadcrumb
               crumbs={[
-                '/dashboard/admin/data-management/robotik',
-                '/dashboard/admin/data-management/robotik/detail',
+                '/dashboard/admin/data-management/robotika',
+                '/dashboard/admin/data-management/robotika/detail',
               ]}
             />
           </div>

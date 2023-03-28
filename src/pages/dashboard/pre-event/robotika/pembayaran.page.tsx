@@ -8,7 +8,7 @@ import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
-import PembayaranRobotikForm from '@/pages/dashboard/pre-event/robotik/container/PembayaranRobotikForm';
+import PembayaranRobotikForm from '@/pages/dashboard/pre-event/robotika/container/PembayaranRobotikForm';
 import { ApiError, ApiReturn } from '@/types/api';
 import { PembayaranPreEvent } from '@/types/entities/pre-event/pembayaran';
 
@@ -29,9 +29,9 @@ function PembayaranRobotik({
             </Typography>
             <Breadcrumb
               crumbs={[
-                '/dashboard/pre-event/robotik',
-                '/dashboard/pre-event/robotik/main',
-                '/dashboard/pre-event/robotik/pembayaran',
+                '/dashboard/pre-event/robotika',
+                '/dashboard/pre-event/robotika/main',
+                '/dashboard/pre-event/robotika/pembayaran',
               ]}
             />
           </div>
@@ -42,7 +42,7 @@ function PembayaranRobotik({
               <PembayaranRobotikForm data={data.data} />
               <div className='col-span-6 md:col-span-2 h-fit bg-navy-100 shadow-pendaftaran p-4 rounded-xl'>
                 <Typography variant='p' className='font-normal text-navy-800'>
-                  PEMBAYARAN ROBOTIK
+                  PEMBAYARAN ROBOTIKA
                 </Typography>
                 <br />
                 <Typography variant='p' className='font-normal text-navy-800'>
@@ -89,7 +89,7 @@ export const getServerSideProps = async (
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {
         redirect: {
-          destination: '/dashboard/pre-event/robotik/main',
+          destination: '/dashboard/pre-event/robotika/main',
           permanent: false,
         },
       };

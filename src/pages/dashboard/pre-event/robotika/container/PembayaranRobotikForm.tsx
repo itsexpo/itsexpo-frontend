@@ -70,7 +70,7 @@ export default function PembayaranRobotikForm({
       catchOnCancel: true,
     }).then(() => {
       SubmitPembayaran(formdata, {
-        onSuccess: () => router.push('/dashboard/pre-event/robotik/main'),
+        onSuccess: () => router.push('/dashboard/pre-event/robotika/main'),
       });
     });
   }

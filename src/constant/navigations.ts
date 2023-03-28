@@ -131,8 +131,8 @@ export const navigations: Navigation[] = [
         permissions: ['admin_kti.index'],
       },
       {
-        name: 'Robotik',
-        href: '/dashboard/admin/data-management/robotik',
+        name: 'Robotika',
+        href: '/dashboard/admin/data-management/robotika',
         exactMatch: true,
         icon: FiList,
         permissions: ['admin_robotik.index'],
@@ -176,7 +176,7 @@ export const navigations: Navigation[] = [
       },
       {
         name: 'Robot In Action',
-        href: '/dashboard/pre-event/robotik',
+        href: '/dashboard/pre-event/robotika',
         exactMatch: true,
         icon: AiOutlineRobot,
         permissions: ['robotik.index', 'robotik.store'],
