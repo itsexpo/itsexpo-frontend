@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import DeskripsiCard from '@/pages/dashboard/pre-event/robotik/components/DeskripsiCard';
-import FaqCard from '@/pages/dashboard/pre-event/robotik/components/FaqCard';
-import HadiahCard from '@/pages/dashboard/pre-event/robotik/components/HadiahCard';
-import SubContestCard from '@/pages/dashboard/pre-event/robotik/components/SubContestCard';
-import TimelineCard from '@/pages/dashboard/pre-event/robotik/components/TimelineCard';
+import DeskripsiCard from '@/pages/dashboard/pre-event/robotika/components/DeskripsiCard';
+import FaqCard from '@/pages/dashboard/pre-event/robotika/components/FaqCard';
+import HadiahCard from '@/pages/dashboard/pre-event/robotika/components/HadiahCard';
+import SubContestCard from '@/pages/dashboard/pre-event/robotika/components/SubContestCard';
+import TimelineCard from '@/pages/dashboard/pre-event/robotika/components/TimelineCard';
 import { User } from '@/types/entities/user';
 
 type TampilanAwal = {

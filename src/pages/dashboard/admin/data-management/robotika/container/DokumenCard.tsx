@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
-import DokumenPendukung from '@/pages/dashboard/admin/data-management/robotik/components/DokumenPendukung';
+import DokumenPendukung from '@/pages/dashboard/admin/data-management/robotika/components/DokumenPendukung';
 import { DetailTimRobotik } from '@/types/entities/pre-event/robotik';
 
 export default function DokumenCard({

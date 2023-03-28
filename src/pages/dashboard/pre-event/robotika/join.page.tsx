@@ -31,7 +31,7 @@ export default function JoinTeamRobotik() {
     }).then(() => {
       joinTeam(data, {
         onSuccess: () => {
-          router.push('/dashboard/pre-event/robotik/main');
+          router.push('/dashboard/pre-event/robotika/main');
         },
       });
     });
@@ -65,12 +65,12 @@ export default function JoinTeamRobotik() {
       <header className='dashboard-layout'>
         <div className='flex justify-between items-center'>
           <Typography as='h5' variant='h5' className='font-bold'>
-            Join Team Robotik
+            Join Team Robotika
           </Typography>
           <Breadcrumb
             crumbs={[
-              '/dashboard/pre-event/robotik',
-              '/dashboard/pre-event/robotik/join',
+              '/dashboard/pre-event/robotika',
+              '/dashboard/pre-event/robotika/join',
             ]}
           />
         </div>

@@ -4,7 +4,7 @@ import Loading from '@/components/Loading';
 import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
-import AnggotaCard from '@/pages/dashboard/admin/data-management/robotik/components/AnggotaCard';
+import AnggotaCard from '@/pages/dashboard/admin/data-management/robotika/components/AnggotaCard';
 import { DetailTimRobotik } from '@/types/entities/pre-event/robotik';
 
 export default function DetailTimCard({

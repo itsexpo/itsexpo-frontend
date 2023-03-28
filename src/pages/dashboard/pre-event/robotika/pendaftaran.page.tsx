@@ -6,7 +6,7 @@ import withAuth from '@/components/hoc/withAuth';
 import Loading from '@/components/Loading';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import FormPendaftaran from '@/pages/dashboard/pre-event/robotik/container/PendaftaranForm';
+import FormPendaftaran from '@/pages/dashboard/pre-event/robotika/container/PendaftaranForm';
 import useAuthStore from '@/store/useAuthStore';
 
 export default withAuth(PendaftaranRobotikDashboardPage, []);
@@ -16,7 +16,7 @@ function PendaftaranRobotikDashboardPage() {
   const router = useRouter();
 
   if (user?.pre_event[2].RobotInAction.status === true) {
-    router.push('/dashboard/pre-event/robotik');
+    router.push('/dashboard/pre-event/robotika');
   }
 
   if (!user) {
@@ -32,8 +32,8 @@ function PendaftaranRobotikDashboardPage() {
               </Typography>
               <Breadcrumb
                 crumbs={[
-                  '/dashboard/pre-event/robotik',
-                  '/dashboard/pre-event/robotik/pendaftaran',
+                  '/dashboard/pre-event/robotika',
+                  '/dashboard/pre-event/robotika/pendaftaran',
                 ]}
               />
             </div>

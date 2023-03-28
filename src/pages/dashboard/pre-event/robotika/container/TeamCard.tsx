@@ -5,7 +5,7 @@ import { MdContentCopy } from 'react-icons/md';
 import ButtonLink from '@/components/links/ButtonLink';
 import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
-import AnggotaButton from '@/pages/dashboard/pre-event/robotik/components/dashboard/AnggotaButton';
+import AnggotaButton from '@/pages/dashboard/pre-event/robotika/components/dashboard/AnggotaButton';
 import { DetailPendaftarRobotik } from '@/types/entities/pre-event/robotik';
 
 export default function TeamCard({
@@ -96,7 +96,7 @@ export default function TeamCard({
             <ButtonLink
               variant='green'
               className='w-fit'
-              href={`/dashboard/pre-event/robotik/pembayaran?code=${id_tim}`}
+              href={`/dashboard/pre-event/robotika/pembayaran?code=${id_tim}`}
             >
               Lakukan Pembayaran
             </ButtonLink>

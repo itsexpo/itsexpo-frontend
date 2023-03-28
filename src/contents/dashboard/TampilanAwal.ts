@@ -9,7 +9,7 @@ export const PreEventBannerContent = [
     title: 'Robot in Action',
     participant: 'SMP/SMA Sederajat',
     img: '/dashboard/pre-event/user/tampilan-awal/preevent-robotik.png',
-    url: '/dashboard/pre-event/robotik',
+    url: '/dashboard/pre-event/robotika',
   },
   {
     title: 'Karya Tulis Ilmiah',
