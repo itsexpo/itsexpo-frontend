@@ -234,7 +234,7 @@ export default function Home() {
                       <Typography
                         as='p'
                         variant='p'
-                        className='font-bold text-typo-white'
+                        className='font-bold text-typo-white text-[18px]'
                       >
                         {content.date}
                       </Typography>
@@ -257,7 +257,7 @@ export default function Home() {
             <div className='flex flex-col w-full justify-center items-center text-center px-4 sm:px-8'>
               <Typography
                 variant='h2'
-                className='font-primary text-3xl sm:text-5xl'
+                className='font-primary text-[32px] sm:text-5xl'
                 data-aos='fade-up'
               >
                 hadiah pemenang
@@ -326,8 +326,8 @@ export default function Home() {
             <div className='flex flex-col w-full justify-center items-center relative px-8'>
               <div className='relative z-20'>
                 <Typography
-                  variant='h2'
-                  className='font-primary text-typo-white my-7 md:mt-0 md:mb-14'
+                  variant='h5'
+                  className='font-primary text-typo-white text-[32px] md:text-7xl my-7 md:mt-0 md:mb-14'
                   data-aos='fade-up'
                 >
                   guidebook
@@ -397,7 +397,7 @@ export default function Home() {
                   variant='discolored'
                   size='large'
                   href='/'
-                  className='w-full text-tainted-100 text-center bg-tainted-900'
+                  className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
                 >
                   Lihat Lebih Lanjut <BiChevronDown />
                 </ButtonLink>

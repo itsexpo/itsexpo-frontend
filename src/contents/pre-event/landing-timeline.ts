@@ -76,7 +76,7 @@ const landingTimelineContents: Timeline[] = [
       height: '66',
     },
     date: '11 Juni 2023',
-    caption: 'Grbyar ITS Expo 2023',
+    caption: 'Gebyar ITS Expo 2023',
   },
 ];
 

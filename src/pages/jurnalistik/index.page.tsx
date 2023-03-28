@@ -5,28 +5,28 @@ import 'swiper/css/autoplay';
 import AOS from 'aos';
 import { useEffect } from 'react';
 import React from 'react';
+import { BiChevronDown } from 'react-icons/bi';
 import { IoIosArrowDown } from 'react-icons/io';
 
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
-import { Frequent } from '@/contents/pre-event/jurnalistik/faq';
 import landingTimelineContents from '@/contents/pre-event/jurnalistik/landing-timeline';
+import { FAQJurnalistikContents } from '@/contents/pre-event/jurnalistik/tampilan-awal';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
+import AccordionJurnalistik from '@/pages/jurnalistik/component/AccordionJurnalistik';
 import {
   AboutBackground,
   AboutPattern,
 } from '@/pages/jurnalistik/container/AboutBackground';
-import Frequentlyaq from '@/pages/jurnalistik/container/Faq';
 import { GuidebookBackgroundjurnalistik } from '@/pages/jurnalistik/container/GuidebookBg';
 import {
   HeroBackground,
   HeroPattern,
 } from '@/pages/jurnalistik/container/HeroBackground';
 import { HeroImage } from '@/pages/jurnalistik/container/HeroImage';
-import { OtherFaq } from '@/pages/jurnalistik/container/OtherFaq';
 import { RewardTV } from '@/pages/jurnalistik/container/Reward';
 import { RewardVideo } from '@/pages/jurnalistik/container/RewardVideo';
 import {
@@ -410,17 +410,22 @@ export default function Home() {
             </Typography>
 
             <div
-              className='grid grid-cols-1 max-w-[310px] md:max-w-[953px] bg-white rounded-lg p-4 md:p-8 mt-8 mx-auto'
+              className='grid grid-cols-1 max-w-[310px] md:max-w-[953px] bg-white rounded-lg p-4 md:p-8 mt-8 mx-auto '
               data-aos='fade-up'
             >
-              {Frequent.map((faq, index) => (
-                <Frequentlyaq
-                  key={index}
-                  title={faq.title}
-                  description={faq.description}
-                />
-              ))}
-              <OtherFaq />
+              <div className='sm:mt-6 flex flex-col'>
+                {FAQJurnalistikContents.slice(0, 5).map((faq, index) => (
+                  <AccordionJurnalistik {...faq} key={index} />
+                ))}
+              </div>
+              <ButtonLink
+                variant='discolored'
+                size='large'
+                href='/'
+                className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
+              >
+                Lihat Lebih Lanjut <BiChevronDown />
+              </ButtonLink>
             </div>
           </div>
         </section>
