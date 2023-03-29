@@ -20,6 +20,8 @@ export const api = axios.create({
     'Content-Type': 'application/json',
   },
   withCredentials: false,
+  timeout: 5000,
+  timeoutErrorMessage: 'Tidak Ada Jaringan',
 });
 
 api.defaults.withCredentials = false;

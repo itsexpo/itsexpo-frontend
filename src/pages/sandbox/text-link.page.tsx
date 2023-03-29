@@ -22,10 +22,8 @@ export default function TextButtonPage() {
                   Primary
                 </Typography>
                 <div className='flex gap-x-4'>
-                  <PrimaryLink href='/' variant='primary'>
-                    Button
-                  </PrimaryLink>
-                  <PrimaryLink href='/' variant='primary' size='small'>
+                  <PrimaryLink href='/'>Button</PrimaryLink>
+                  <PrimaryLink href='/' size='small'>
                     Button
                   </PrimaryLink>
                 </div>

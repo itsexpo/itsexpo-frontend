@@ -47,8 +47,6 @@ const FileFetch = ({
           /^data:application\/pdf;base64,/,
           ''
         );
-        setfileData(base64WithoutPrefix);
-
         const bytes = atob(base64WithoutPrefix);
         let length = bytes.length;
         const out = new Uint8Array(length);

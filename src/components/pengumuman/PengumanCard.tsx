@@ -49,13 +49,10 @@ export default function PengumumanCard({
           {new Date(updated_at).getTime() > new Date(created_at).getTime() ? (
             <>
               <span className='hidden md:inline'>Diperbarui pada </span>
-              {format(new Date(updated_at), 'dd MMMM yyyy')}
+              {updated_at && format(new Date(updated_at), 'dd MMMM yyyy')}
             </>
           ) : (
-            <>
-              <span className='hidden md:inline'>Dibuat pada </span>
-              {format(new Date(created_at), 'dd MMMM yyyy')}
-            </>
+            <>{created_at && format(new Date(created_at), 'dd MMMM yyyy')}</>
           )}
         </Typography>
       </div>

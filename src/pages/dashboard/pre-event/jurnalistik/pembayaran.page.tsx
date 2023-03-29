@@ -23,16 +23,15 @@ function PembayaranJurnalistik({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
-  // check if the time is expired
 
   const { mutate: updatePembayaran, isLoading: isUpdatePembayaranLoading } =
     useMutationToast<void, { payment_id: string }>(
       useMutation(
         (data) => {
-          return api.post('/pre-event/pembayaran', data);
+          return api.put('/pre_event/pembayaran', data);
         },
         {
-          onSuccess: () => router.push('/dashboard/pre-event/jurnalistik/main'),
+          onSuccess: () => router.push(router.asPath),
         }
       )
     );
@@ -83,8 +82,8 @@ function PembayaranJurnalistik({
         ) : (
           <main>
             <div className='w-full grid md:grid-cols-2 grid-cols-1'>
-              <div className='bg-white shadow-pendaftaran p-4 rounded-lg mt-4'>
-                <Typography variant='p' as='p' className=''>
+              <div className='bg-white shadow-pendaftaran p-6 rounded-lg mt-4'>
+                <Typography variant='p' as='p' className='text-justify'>
                   Mohon maaf anda tidak dapat melakukan pembayaran karena waktu
                   sudah pembayaran anda sudah habis atau kuota sudah terpenuhi,
                   silhkan tekan tombol dibawah ini untuk pengajuan pembayaran
@@ -97,7 +96,12 @@ function PembayaranJurnalistik({
                     color='primary'
                     className='w-fit mt-4'
                     isLoading={isUpdatePembayaranLoading}
-                    onClick={() => updatePembayaran({ payment_id: '123' })}
+                    onClick={() =>
+                      updatePembayaran({
+                        payment_id: (data as ApiReturn<{ payment_id: string }>)
+                          .data.payment_id,
+                      })
+                    }
                   >
                     Lakukan Pembayaran Ulang
                   </Button>
@@ -124,7 +128,10 @@ export const getServerSideProps = async (
       },
     };
   } catch (err) {
-    if ((err as AxiosError<ApiError>)?.response?.data?.code === 6009) {
+    if (
+      (err as AxiosError<ApiReturn<{ payment_id: string }>>)?.response?.data
+        ?.code === 6009
+    ) {
       return {
         props: {
           data: (err as AxiosError<ApiError>)?.response?.data,

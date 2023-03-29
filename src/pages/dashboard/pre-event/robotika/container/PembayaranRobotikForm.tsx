@@ -129,6 +129,9 @@ export default function PembayaranRobotikForm({
           <DropzoneInput
             id='bukti_pembayaran'
             label='Upload Bukti Transfer'
+            accept={{
+              image: ['image/png', 'image/jpeg', 'image/jpg'],
+            }}
             validation={{ required: 'Bukti Transfer tidak boleh kosong' }}
           />
 

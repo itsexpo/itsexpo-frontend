@@ -1,11 +1,14 @@
+import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
+import useMutationToast from '@/hooks/toast/useMutationToast';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
 import FormPembayaranKTI from '@/pages/dashboard/pre-event/kti/container/PembayaranFormKTI';
@@ -17,6 +20,19 @@ export default withAuth(PembayaranKTI, []);
 function PembayaranKTI({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const router = useRouter();
+
+  const { mutate: updatePembayaran, isLoading: isUpdatePembayaranLoading } =
+    useMutationToast<void, { payment_id: string }>(
+      useMutation(
+        (data) => {
+          return api.put('/pre_event/pembayaran', data);
+        },
+        {
+          onSuccess: () => router.push(router.asPath),
+        }
+      )
+    );
   return (
     <DashboardLayout>
       <div className='dashboard-layout min-h-screen'>
@@ -70,7 +86,18 @@ function PembayaranKTI({
                   dibawah ini untuk pengajuan pembayaran kembali
                 </Typography>
 
-                <Button variant='green' color='primary' className='w-fit mt-4'>
+                <Button
+                  variant='green'
+                  color='primary'
+                  className='w-fit mt-4'
+                  isLoading={isUpdatePembayaranLoading}
+                  onClick={() =>
+                    updatePembayaran({
+                      payment_id: (data as ApiReturn<{ payment_id: string }>)
+                        .data.payment_id,
+                    })
+                  }
+                >
                   Lakukan Pembayaran Ulang
                 </Button>
               </div>
@@ -98,7 +125,8 @@ export const getServerSideProps = async (
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6009) {
       return {
         props: {
-          data: (err as AxiosError<ApiError>)?.response?.data,
+          data: (err as AxiosError<ApiReturn<{ payment_id: string }>>)?.response
+            ?.data,
         },
       };
     }
