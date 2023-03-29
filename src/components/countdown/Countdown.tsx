@@ -12,63 +12,75 @@ export default function Countdown({
   closeDate: Date;
   startDate: Date;
 } & React.ComponentPropsWithoutRef<'div'>) {
-  const [days, hours, minutes] = useCountdown(new Date(closeDate));
+  const isStarted = new Date() > new Date(startDate);
+  const [days, hours, minutes] = useCountdown(
+    isStarted ? new Date(closeDate) : new Date(startDate)
+  );
 
   return (
-    <div className='w-full flex items-center gap-2'>
-      <div
-        className={clsxm(
-          'w-full md:w-20 flex flex-col items-center p-3',
-          'rounded-md bg-typo-surface'
-        )}
+    <div>
+      <Typography
+        as='p'
+        variant='t'
+        className='font-semibold text-typo-primary text-center'
       >
-        <Typography as='h5' variant='h5' className='font-bold'>
-          {days}
-        </Typography>
-        <Typography
-          as='c'
-          variant='c'
-          color='secondary'
-          className='font-semibold'
-        >
-          Hari
-        </Typography>
-      </div>
-
-      <Typography as='p' variant='p' className='text-typo-icon'>
-        :
+        {isStarted ? 'Pendaftaran Ditutup' : 'Pendaftaran Dibuka'}
       </Typography>
-
-      <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
-        <Typography as='h5' variant='h5' className='font-bold'>
-          {hours}
-        </Typography>
-        <Typography
-          as='c'
-          variant='c'
-          color='secondary'
-          className='font-semibold'
+      <div className='w-full flex items-center gap-2 mt-4'>
+        <div
+          className={clsxm(
+            'w-full md:w-20 flex flex-col items-center p-3',
+            'rounded-md bg-typo-surface'
+          )}
         >
-          Jam
-        </Typography>
-      </div>
+          <Typography as='h5' variant='h5' className='font-bold'>
+            {days}
+          </Typography>
+          <Typography
+            as='c'
+            variant='c'
+            color='secondary'
+            className='font-semibold'
+          >
+            Hari
+          </Typography>
+        </div>
 
-      <Typography as='p' variant='p' className='text-typo-icon'>
-        :
-      </Typography>
+        <Typography as='p' variant='p' className='text-typo-icon'>
+          :
+        </Typography>
 
-      <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
-        <Typography as='h5' variant='h5' className='font-bold'>
-          {minutes}
+        <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
+          <Typography as='h5' variant='h5' className='font-bold'>
+            {hours}
+          </Typography>
+          <Typography
+            as='c'
+            variant='c'
+            color='secondary'
+            className='font-semibold'
+          >
+            Jam
+          </Typography>
+        </div>
+
+        <Typography as='p' variant='p' className='text-typo-icon'>
+          :
         </Typography>
-        <Typography
-          as='c'
-          variant='c'
-          color='secondary'
-          className='font-semibold'
-        >
-          Menit
-        </Typography>
+
+        <div className='w-full md:w-20 flex flex-col items-center p-3 rounded-md bg-typo-surface'>
+          <Typography as='h5' variant='h5' className='font-bold'>
+            {minutes}
+          </Typography>
+          <Typography
+            as='c'
+            variant='c'
+            color='secondary'
+            className='font-semibold'
+          >
+            Menit
+          </Typography>
+        </div>
       </div>
     </div>
   );

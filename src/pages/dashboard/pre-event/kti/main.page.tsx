@@ -5,9 +5,10 @@ import React from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
+import PengumumanEventCard from '@/container/PengumumanEventCard';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
-import PengumumanCard from '@/pages/dashboard/pre-event/kti/components/dashboard/PengumumanCard';
+import DokumenKTICard from '@/pages/dashboard/pre-event/kti/components/dashboard/DokumenKTICard';
 import TeamCard from '@/pages/dashboard/pre-event/kti/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
 import { DetailTimKTI } from '@/types/entities/pre-event/kti';
@@ -33,10 +34,11 @@ function DashboardKTI({
         </div>
       </header>
       <main className='dashboard-layout !pt-8 space-y-6 mb-8'>
-        <PengumumanCard />
+        <PengumumanEventCard id='12' />
         <div className='grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-y-0 gap-x-0 md:gap-x-4'>
           {/* Team Card */}
           <TeamCard {...data.data} />
+          <DokumenKTICard data={data.data} />
         </div>
       </main>
     </DashboardLayout>

@@ -23,6 +23,7 @@ export interface DetailPendaftarRobotik {
   name_tim: string;
   ketua_tim: boolean;
   code_tim: string;
+  competition_status: string;
   deskripsi_karya: string;
 
   payment: {
@@ -78,3 +79,28 @@ export type FAQRobotikData = {
   title: string;
   content: string;
 };
+
+export interface DetailTimRobotik {
+  team_name: string;
+  team_code: string;
+  payment: {
+    payment_id: string;
+    payment_status: PaymentId;
+    payment_image: string;
+  };
+  team_member: Array<{
+    name: string;
+    ketua: 'KETUA' | 'MEMBER';
+    provinsi: string;
+    kabupaten: string;
+    id_line: string;
+    id_card_url: string;
+    follow_sosmed_url: string;
+    share_poster_url: string;
+  }>;
+}
+
+export interface RobotikVerification {
+  pembayaran_id: string;
+  status_pembayaran_id: 3 | 1;
+}

@@ -1,5 +1,5 @@
 import { AiOutlineRobot } from 'react-icons/ai';
-import { BsJournalMedical } from 'react-icons/bs';
+import { BsJournalMedical, BsSpeaker } from 'react-icons/bs';
 import { FaBullhorn } from 'react-icons/fa';
 import {
   FiDatabase,
@@ -11,7 +11,9 @@ import {
   FiUserPlus,
   FiUsers,
 } from 'react-icons/fi';
-import { MdOutlineEventAvailable } from 'react-icons/md';
+import { GiPartyPopper } from 'react-icons/gi';
+import { MdAlarmAdd, MdOutlineEventAvailable } from 'react-icons/md';
+import { TbMicroscope } from 'react-icons/tb';
 
 import { Navigation } from '@/types/navigate';
 
@@ -107,7 +109,12 @@ export const navigations: Navigation[] = [
     name: 'Manajemen Data',
     href: '#',
     icon: FiDatabase,
-    permissions: ['admin_jurnalistik.index', 'admin_jurnalistik.detail'],
+    permissions: [
+      'admin_jurnalistik.index',
+      'admin_jurnalistik.detail',
+      'admin_robotik.index',
+      'admin_robotik.detail',
+    ],
     children: [
       {
         name: 'Jurnalistik',
@@ -115,6 +122,20 @@ export const navigations: Navigation[] = [
         exactMatch: true,
         icon: FiList,
         permissions: ['admin_jurnalistik.index'],
+      },
+      {
+        name: 'KTI',
+        href: '/dashboard/admin/data-management/kti',
+        exactMatch: true,
+        icon: FiList,
+        permissions: ['admin_kti.index'],
+      },
+      {
+        name: 'Robotika',
+        href: '/dashboard/admin/data-management/robotika',
+        exactMatch: true,
+        icon: FiList,
+        permissions: ['admin_robotik.index'],
       },
     ],
   },
@@ -126,7 +147,6 @@ export const navigations: Navigation[] = [
     href: '/dashboard/my',
     exactMatch: true,
     icon: FiFileText,
-    permissions: ['dashboard_admin'],
   },
   {
     name: 'Pre Event',
@@ -151,17 +171,35 @@ export const navigations: Navigation[] = [
         name: 'KTI',
         href: '/dashboard/pre-event/kti',
         exactMatch: true,
-        icon: BsJournalMedical,
+        icon: TbMicroscope,
         permissions: ['kti.index', 'kti.store'],
       },
       {
         name: 'Robot In Action',
-        href: '/dashboard/pre-event/robotik',
+        href: '/dashboard/pre-event/robotika',
         exactMatch: true,
         icon: AiOutlineRobot,
-        permissions: ['robot_in_action.index', 'robot_in_action.store'],
+        permissions: ['robotik.index', 'robotik.store'],
+      },
+      {
+        name: 'Talkshow',
+        href: '/dashboard/pre-event/talkshow',
+        exactMatch: true,
+        icon: BsSpeaker,
       },
     ],
+  },
+  {
+    name: 'Main Event',
+    href: '#',
+    exactMatch: true,
+    icon: MdAlarmAdd,
+  },
+  {
+    name: 'Gebyar ITS Expo',
+    href: '#',
+    exactMatch: true,
+    icon: GiPartyPopper,
   },
   {
     name: 'Info Penting',

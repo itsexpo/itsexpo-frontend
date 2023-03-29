@@ -51,9 +51,8 @@ function Preevent() {
                   variant='b1'
                   className='font-secondary text-center text-discolored-500 mt-6'
                 >
-                  Selamat datang di ITS Expo 2023, acara teknologi terbesar di
-                  Indonesia yang menghadirkan inovasi dan solusi terbaru untuk
-                  dunia bisnis, pendidikan, dan masyarakat umum.
+                  Sebuah pengantar sebelum acara puncak yang akan menyajikan
+                  beragam ajang lomba dan acara menarik.
                 </Typography>
                 <div
                   onClick={() =>
@@ -84,7 +83,7 @@ function Preevent() {
           id='tentang pre event'
           className='relative w-full flex flex-col items-center bg-preevent-landing overflow-hidden'
         >
-          <div className='layout-pre-event my-24'>
+          <div className='layout mt-24'>
             <div className='relative grid grid-cols-3 max-w-6xl justify-center items-center mx-auto'>
               <div className='flex flex-col'>
                 <NextImage
@@ -92,15 +91,16 @@ function Preevent() {
                   alt='ornamen'
                   width={316}
                   height={204}
-                  className='absolute w-1/5 md:w-[15%] md:ml-16'
+                  className='absolute w-1/5 md:w-[12%] md:ml-28'
                 />
               </div>
 
               <div className='relative flex flex-col top-10 sm:top-6 md:top-12'>
                 <Typography
-                  variant='h4'
-                  as='h4'
-                  className='text-typo-white text-center font-primary md:-translate-y-3'
+                  variant='h3'
+                  as='h3'
+                  className='text-typo-white text-center md:-translate-y-3'
+                  font='upakarti'
                 >
                   tentang pre event
                 </Typography>
@@ -111,7 +111,7 @@ function Preevent() {
                   alt='ornamen'
                   width={316}
                   height={204}
-                  className='absolute w-1/5 md:w-[15%] right-0 md:mr-20'
+                  className='absolute w-1/5 md:w-[12%] right-0 md:mr-28'
                 />
               </div>
             </div>
@@ -122,22 +122,21 @@ function Preevent() {
                 as='t'
                 className='relative max-w-[1160px] text-typo-white text-base md:text-xl font-medium font-secondary text-center mt-20 mb-4 md:mb-10 mx-4 md:mx-10 lg:mx-auto'
               >
-                Pre-event ITS Expo 2023 akan menjadi ajang yang sangat dinanti
-                oleh banyak orang, baik itu pengunjung maupun para pelaku
-                industri dan akademisi di bidang teknologi. Acara pre-event ini
-                akan memberikan kesempatan bagi para pengunjung untuk
-                mendapatkan informasi awal tentang teknologi-teknologi terbaru
-                yang akan dipamerkan pada acara utama nanti. Selain itu,
-                pre-event ini juga akan menjadi ajang networking yang sangat
-                berharga bagi para pelaku industri dan akademisi, karena akan
-                ada banyak kesempatan untuk bertemu dengan para pemimpin dan
-                ahli di bidang teknologi.
+                Pre Event ITS Expo 2023 akan menyajikan beragam kompetisi dan
+                acara menarik sebagai pengantar sebelum puncak acara. Terdapat
+                ajang lomba seperti Journalistic yang mewadahi peserta untuk
+                menunjukkan kreativitas di bidang jurnalistik dan media online,
+                Robot in Action yang mengembangkan minat dan bakat siswa dalam
+                bidang robotika, dan Karya Tulis Ilmiah yang ditujukan untuk
+                mahasiswa S1/D4/Sederajat untuk menyalurkan inovasi dan
+                regenerasi budaya Indonesia. Selain itu, akan diadakan talkshow
+                inspiratif dengan public figure yang sukses dan penuh prestasi.
               </Typography>
             </div>
           </div>
 
           {/* jurnalistik */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='relative flex flex-col max-w-full'>
                 <Typography
@@ -145,7 +144,7 @@ function Preevent() {
                   as='h3'
                   className='text-typo-white text-6xl text-center md:text-left font-primary'
                 >
-                  Jurnalistik
+                  Journalistic
                 </Typography>
                 <NextImage
                   src='/preevent/jurnalistik-mobile.png'
@@ -158,25 +157,21 @@ function Preevent() {
                   variant='b1'
                   className='relative w-full text-typo-white text-base font-secondary text-justify -top-28 md:top-0 md:mt-10 mb-10'
                 >
-                  Tentang Lomba Jurnalistik di ITS Expo 2023, kamu akan diajak
-                  untuk mengikuti sebuah kompetisi menulis artikel yang
-                  berkualitas tinggi dan menarik. Dalam lomba ini, para peserta
-                  akan diminta untuk membuat karya tulis yang berisi liputan,
-                  analisis, dan opini tentang topik yang relevan dengan tema
-                  acara.
-                  <br />
-                  <br />
-                  Karya tulis jurnalistik akan dinilai berdasarkan kriteria
-                  seperti keakuratan dan kelengkapan informasi, kesan yang
-                  dihasilkan pada pembaca, dan kepatuhan terhadap etika
-                  jurnalistik. Dapatkan kesempatan untuk memenangkan penghargaan
-                  dan hadiah yang menarik serta kesempatan untuk dipublikasikan
-                  di media online terkait dengan acara ITS Expo 2023. Yuk,
-                  jangan lewatkan kesempatan ini untuk menunjukkan kemampuanmu
-                  dan mengembangkan keterampilan jurnalistikmu!
+                  Journalistic merupakan salah satu ajang lomba bergengsi dari
+                  cabang kompetisi ITS Expo 2023 yang mewadahi peserta untuk
+                  menuangkan kreativitasnya di bidang fotografi, videografi,
+                  penyiaran, dan penulisan. Terbagi menjadi dua kategori lomba,
+                  Liputan Televisi ditujukan untuk mahasiswa/umum dan Liputan
+                  Video Blogger (V-Log) ditujukan untuk pelajar SMA/SMK
+                  Sederajat. Digelar secara luring, peserta akan merasakan
+                  bagaimana meliput salah satu rangkaian kegiatan ITS Expo dari
+                  pre event hingga closing. Dengan gelora Sepuluh Nopember,
+                  kompetisi ini hadir untuk mengapresiasi perkembangan
+                  jurnalistik dan media online yang peduli terhadap seni,
+                  budaya, dan teknologi.
                 </Typography>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='/jurnalistik'
                   className='relative md:max-w-[215px] mt-10 -top-32 md:top-0'
                   variant='discolored'
                   size='large'
@@ -195,7 +190,7 @@ function Preevent() {
           </div>
 
           {/* robotics */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='flex flex-col'>
                 <NextImage
@@ -212,7 +207,7 @@ function Preevent() {
                   as='h3'
                   className='text-typo-white text-6xl text-center md:text-left font-primary'
                 >
-                  robotics
+                  robotika
                 </Typography>
                 <NextImage
                   src='/preevent/robotics.png'
@@ -225,28 +220,22 @@ function Preevent() {
                   variant='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-8 md:top-0 md:mt-10 mb-10'
                 >
-                  Lomba Robotik di ITS Expo 2023 akan menjadi ajang pertarungan
-                  robotik yang menakjubkan. Peserta dari seluruh dunia akan
-                  menampilkan robot-robot canggih dalam tantangan kreatif dan
-                  menarik yang memukau. Selain itu, Lomba Robotik ini juga akan
-                  menampilkan pertunjukan tarian dan atraksi robotik yang
-                  menggabungkan seni dan teknologi, menawarkan pengalaman
-                  menakjubkan bagi para teknologi dan robotikus, serta
-                  masyarakat umum yang ingin menikmati keajaiban teknologi
-                  modern.
-                  <br />
-                  <br />
-                  Bergabunglah dengan Lomba Robotik di ITS Expo 2023 dan
-                  saksikan pertunjukan robotik yang spektakuler! Anda akan
-                  dibawa ke dalam dunia masa depan dengan robot-robot canggih
-                  yang menakjubkan dan menampilkan serangkaian tantangan kreatif
-                  dan menarik yang akan membuat Anda terkagum-kagum. Jangan
-                  lewatkan kesempatan ini untuk merasakan pengalaman teknologi
-                  modern yang mengesankan. Ayo bergabung dan saksikan Lomba
-                  Robotik di ITS Expo 2023!
+                  Robot in Action merupakan salah satu cabang kompetisi dalam
+                  serangkaian Acara ITS EXPO 2023. Kompetisi ini merupakan wadah
+                  bagi siswa siswi SMP maupun SMA sederajat dalam mengembangkan
+                  minat dan bakatnya dibidang teknologi khusunya bidang
+                  robotika. Robot in Action terbagi menjadi dua kategori
+                  perlombaan, yakni kompetisi Robot Line Tracer dan Open
+                  Category (Robot Bentengan). Robot Line Tracer merupakan
+                  kompetisi membuat robot yang tidak menggunakan bahasa
+                  pemrograman atau menggunakan mikrokontroler. Sedangkan, Open
+                  Category merupakan kompetisi membuat robot manual untuk
+                  memenangkan permainan Bentengan dengan cara sebanyak mungkin
+                  menawan warga milik lawan. Rangkaian kegiatan kompetisi Robot
+                  in Action ini dilaksanakan secara luring.
                 </Typography>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='/robotika'
                   className='relative md:max-w-[215px] -top-14 md:top-0  mt-10'
                   variant='discolored'
                   size='large'
@@ -258,7 +247,7 @@ function Preevent() {
           </div>
 
           {/* kti */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='flex flex-col'>
                 <Typography
@@ -279,25 +268,23 @@ function Preevent() {
                   variant='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-16 md:top-0 md:mt-10 mb-10'
                 >
-                  ITS Expo 2023 akan menggelar Lomba Karya Tulis Ilmiah yang
-                  menantang dan menarik. Lomba ini akan menampilkan karya tulis
-                  ilmiah dari para peserta yang berkompetisi dalam
-                  mempresentasikan gagasan dan temuan baru dalam berbagai bidang
-                  ilmu pengetahuan.
-                  <br />
-                  <br />
-                  Lomba Karya Tulis Ilmiah di ITS Expo 2023 merupakan kesempatan
-                  yang sangat baik bagi para peneliti dan mahasiswa untuk
-                  memperlihatkan kecakapan mereka dalam meneliti dan menyajikan
-                  hasil penelitian. Lomba ini juga memberikan pengalaman yang
-                  bermanfaat bagi para peserta, memungkinkan mereka untuk
-                  berkomunikasi dengan para peneliti dan ahli di bidang yang
-                  sama. Ayo sertai Lomba Karya Tulis Ilmiah di ITS Expo 2023 dan
-                  jadilah bagian dari komunitas ilmu pengetahuan yang maju dan
-                  inovatif!
+                  Karya Tulis Ilmiah merupakan salah satu ajang lomba bergengsi
+                  dari cabang kompetisi ITS Expo 2023 yang ditujukan kepada
+                  mahasiswa S1/D4/Sederajat. Lomba KTI akan dilaksanakan secara
+                  luring sehingga peserta akan mendapatkan pengalaman untuk
+                  menyampaikan inovasinya di hadapan dewan juri dan peserta
+                  lain, serta kesempatan ini dapat dimanfaatkan untuk menambah
+                  relasi baru. Peserta juga dapat merasakan dan ikut serta dalam
+                  serangkaian acara ITS Expo 2023. Dengan adanya lomba KTI ITS
+                  Expo 2023 ini, diharapkan para peserta dapat menyalurkan
+                  inovasinya untuk regenerasi budaya Indonesia melalui
+                  implementasi bidang keilmuan yang ditekuni kepada masyarakat.
+                  LKTI ITS Expo 2023 memiliki tema “Peran Generasi Muda untuk
+                  Mendukung Regenerasi Budaya Nasional Melalui Pendekatan Ilmu
+                  Pengetahuan Interdisipliner Teknologi
                 </Typography>
                 <ButtonLink
-                  href='/coming-soon'
+                  href='/kti'
                   className='relative md:max-w-[215px] mt-10 -top-16 md:top-0'
                   variant='discolored'
                   size='large'
@@ -318,7 +305,7 @@ function Preevent() {
           </div>
 
           {/* talkshow */}
-          <div className='layout-pre-event my-12'>
+          <div className='layout mt-10'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='relative flex flex-col'>
                 <NextImage
@@ -348,23 +335,11 @@ function Preevent() {
                   variant='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-16 md:top-0 md:mt-10 mb-10'
                 >
-                  Talk Show di ITS Expo 2023 akan menjadi ajang diskusi yang
-                  sangat menarik. Para ahli dan praktisi dari berbagai bidang
-                  akan hadir untuk membahas topik-topik yang relevan dan
-                  menarik, memberikan wawasan dan pemahaman yang lebih dalam
-                  tentang berbagai isu yang dihadapi oleh masyarakat modern.
-                  <br />
-                  <br />
-                  Talk Show di ITS Expo 2023 merupakan kesempatan yang sangat
-                  baik bagi para peserta untuk memperluas wawasan mereka,
-                  mempelajari pandangan baru, dan mendengarkan pengalaman dari
-                  para ahli yang berpengalaman. Selain itu, talk show ini juga
-                  akan menjadi tempat yang tepat bagi peserta untuk bertanya dan
-                  berdiskusi dengan para ahli dan praktisi, sehingga mereka
-                  dapat memperoleh pemahaman yang lebih baik tentang berbagai
-                  topik yang dibahas. Ayo bergabung dengan Talk Show di ITS Expo
-                  2023 dan jadilah bagian dari diskusi yang menarik dan
-                  bermanfaat!
+                  Jangan lewatkan Talkshow spektakuler ITS EXPO 2023! Hadirkan
+                  inspirasi dan motivasi baru dengan public figure yang sukses
+                  dan penuh prestasi. Diskusi menarik yang akan merubah
+                  pandanganmu tentang masa depan Indonesia. Ayo, bergabunglah
+                  dengan kami dan jadilah bagian dari perubahan!
                 </Typography>
                 <ButtonLink
                   href='/coming-soon'

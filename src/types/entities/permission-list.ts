@@ -1,4 +1,7 @@
 enum PermissionEnum {
+  // General
+  'USER',
+  'ADMIN',
   'dashboard_admin',
   'dashboard_user',
   'login_user.store',
@@ -42,9 +45,15 @@ enum PermissionEnum {
   // KTI
   'kti.index',
   'kti.store',
+  'admin_kti.index',
+  'admin_kti.detail',
+  'pembayaran_kti.store',
+  'pembayaran_kti.index',
   // Robotik
-  'robot_in_action.index',
-  'robot_in_action.store',
+  'robotik.index',
+  'robotik.store',
+  'admin_robotik.index',
+  'admin_robotik.detail',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

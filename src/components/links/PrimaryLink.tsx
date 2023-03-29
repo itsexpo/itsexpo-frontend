@@ -7,7 +7,7 @@ import clsxm from '@/lib/clsxm';
 
 const PrimaryLinkSize = ['medium', 'small'] as const;
 const PrimaryLinkVariant = [
-  'primary',
+  'green',
   'secondary',
   'critical',
   'discolored',
@@ -26,7 +26,7 @@ const PrimaryLink = React.forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
       className,
       children,
       size = 'medium',
-      variant = 'primary',
+      variant = 'green',
       underline = true,
       ...rest
     },
@@ -43,13 +43,15 @@ const PrimaryLink = React.forwardRef<HTMLAnchorElement, PrimaryLinkProps>(
           'decoration-current hover:decoration-white/0 active:decoration-current disabled:hover:decoration-current',
           underline && 'underline',
           //*=========== Size ===========
-          size === 'medium' && 'text-md md:text-lg ',
+          size === 'medium' && 'text-md md:text-base ',
           size === 'small' && 'text-sm md:text-md',
           //*======== Size ===========
+
           //*=========== Variant ===========
-          variant === 'primary' && [
-            'text-primary-500 hover:text-primary-600 active:text-primary-700',
-            'focus-visible:ring-primary-400',
+          variant === 'green' && [
+            'text-success-600',
+            'hover:text-success-700',
+            'active:text-success-800',
           ],
           variant === 'secondary' && [
             'text-black', // color config?

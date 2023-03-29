@@ -11,12 +11,6 @@
   @apply mx-auto w-11/12;
   @apply pt-20;
 }
-.layout-pre-event {
-  max-width: 87.75rem;
-  /* margin-left: 28px;
-  margin-right: 28px; */
-  @apply mx-auto w-[93%];
-}
 /* Default font */
 body {
   @apply font-primary;
@@ -136,6 +130,10 @@ body {
     rgba(255, 255, 255, 0.05) 0.98%,
     rgba(255, 255, 255, 0.3) 102.39%
   );
+}
+
+.bg-about-jurnalistik {
+  background: linear-gradient(180deg, #dd8d00 0%, #c57b00 46.67%, #804400 100%);
 }
 
 /* #region  /**=========== Datepicker =========== */

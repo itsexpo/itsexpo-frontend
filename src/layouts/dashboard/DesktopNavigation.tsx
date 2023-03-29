@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import * as React from 'react';
 
+import UnstyledLink from '@/components/links/UnstyledLink';
 import Logo from '@/components/Logo';
 import NextImage from '@/components/NextImage';
 import Typography from '@/components/typography/Typography';
@@ -26,7 +27,9 @@ export default function DesktopNavigation() {
           className='absolute bottom-0 right-0 w-3/4 z-[-3]'
         />
         <div className='flex items-center justify-center'>
-          <Logo />
+          <UnstyledLink href='/'>
+            <Logo />
+          </UnstyledLink>
         </div>
 
         {/* Sidebar component */}
@@ -35,7 +38,7 @@ export default function DesktopNavigation() {
           <Navigation className='mt-6' />
         </div>
       </div>
-      <div className='hidden lg:fixed right-0 top-0 w-[calc(100%-16rem)] h-16 bg-white shadow-navbar-dashboard lg:flex justify-between z-[99]'>
+      <div className='hidden lg:fixed right-0 top-0 w-[calc(100%-16rem)] h-16 bg-white shadow-navbar-dashboard lg:flex justify-between z-20'>
         <Typography className='my-auto pl-10'>
           {format(new Date(), 'EEEE, dd MMMM yyyy')}
         </Typography>

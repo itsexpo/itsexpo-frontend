@@ -6,7 +6,7 @@ import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
 import Layout from '@/layouts/Layout';
-import api from '@/lib/api';
+import api, { setApiContext } from '@/lib/api';
 import { UserVerificationReturn } from '@/types/entities/user-verification';
 
 export default function AccountActivationPage({
@@ -127,7 +127,7 @@ export default function AccountActivationPage({
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const email = context.query.email as string;
   const token = context.query.token as string;
-
+  setApiContext(context);
   try {
     const res = await api.post(`/user_verification`, { email, token });
     return {
@@ -137,9 +137,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   } catch (e) {
     const error = e as AxiosError;
+    if (error.response?.data) {
+      return {
+        props: {
+          data: error.response?.data,
+        },
+      };
+    }
     return {
       props: {
-        data: error.response?.data,
+        data: {
+          success: false,
+          code: 500,
+          message: 'Internal Server Error',
+        },
       },
     };
   }

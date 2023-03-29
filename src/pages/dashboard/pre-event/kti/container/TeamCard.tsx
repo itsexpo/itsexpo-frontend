@@ -5,6 +5,7 @@ import Typography from '@/components/typography/Typography';
 import AnggotaButton from '@/pages/dashboard/pre-event/kti/components/dashboard/AnggotaButton';
 
 type CardProps = {
+  team_id: string;
   team_name: string;
   lead_name: string;
   payment: {
@@ -17,13 +18,14 @@ type CardProps = {
 } & React.ComponentPropsWithoutRef<'div'>;
 
 export default function TeamCard({
+  team_id,
   team_name,
   lead_name,
   payment,
   members,
 }: CardProps) {
   return (
-    <div className='p-6 rounded-xl border-typo-outline border-[1px] space-y-6'>
+    <div className='bg-white p-6 rounded-xl border-typo-outline border-[1px] space-y-6'>
       <div>
         <Typography
           as='p'
@@ -118,7 +120,7 @@ export default function TeamCard({
             <ButtonLink
               variant='green'
               className='w-fit'
-              href={`/dashboard/pre-event/kti`}
+              href={`/dashboard/pre-event/kti/pembayaran?code=${team_id}`}
             >
               Lakukan Pembayaran
             </ButtonLink>

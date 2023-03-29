@@ -17,7 +17,8 @@ enum TypographyVariant {
   'c',
 }
 
-enum TypographyColor {
+export enum TypographyColor {
+  'DEFAULT',
   'primary',
   'secondary',
   'tertiary',

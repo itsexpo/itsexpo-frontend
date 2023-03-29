@@ -16,6 +16,9 @@ export default function DeskripsiCard({
   closeDate,
   startDate,
 }: TampilanAwal) {
+  const isOpen =
+    new Date() < new Date(closeDate) && new Date() > new Date(startDate);
+
   return (
     <div className='flex flex-col-reverse md:flex-row gap-6'>
       <div
@@ -35,7 +38,7 @@ export default function DeskripsiCard({
           as='p'
           variant='b1'
           color='secondary'
-          className='text-center md:text-left'
+          className='text-justify'
         >
           Journalistic merupakan salah satu ajang lomba bergengsi dari cabang
           kompetisi ITS Expo 2023 yang mewadahi peserta untuk menuangkan
@@ -59,23 +62,16 @@ export default function DeskripsiCard({
       >
         {!isRegister ? (
           <>
-            <Typography
-              as='p'
-              variant='t'
-              className='font-semibold text-typo-primary'
-            >
-              Pendaftaran Ditutup
-            </Typography>
-
             <Countdown closeDate={closeDate} startDate={startDate} />
-
             <div className='w-full flex flex-col gap-4'>
-              <ButtonLink
-                variant='green'
-                href='/dashboard/pre-event/jurnalistik/pendaftaran'
-              >
-                Daftar Sekarang
-              </ButtonLink>
+              {isOpen && (
+                <ButtonLink
+                  variant='green'
+                  href='/dashboard/pre-event/jurnalistik/pendaftaran'
+                >
+                  Daftar Sekarang
+                </ButtonLink>
+              )}
               <ButtonLink
                 variant='discolored'
                 href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'

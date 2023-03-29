@@ -56,7 +56,7 @@ const createCustomToast = (options: ToastOptions) => {
 };
 
 const showToast = (message: string, options?: ToastOptions) => {
-  toast(message, options || DEFAULT_TOAST);
+  return toast(message, options || DEFAULT_TOAST);
 };
 
 export { createCustomToast, showToast };

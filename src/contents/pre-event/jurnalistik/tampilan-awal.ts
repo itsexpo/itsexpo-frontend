@@ -36,7 +36,7 @@ export const timelineJurnalistik: TimelineJurnalistikData[] = [
       width: '121',
       height: '66',
     },
-    date: '2 - 4 Juni 2023',
+    date: '1 - 4 Juni 2023',
     caption: 'Pelaksanaan Lomba 1',
   },
   {

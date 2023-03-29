@@ -64,7 +64,7 @@ export default function Footer() {
               >
                 <div>
                   <PrimaryLink
-                    href='/coming-soon'
+                    href='/robotics'
                     variant='discolored'
                     underline={false}
                     className='font-medium text-sm lg:text-base'
@@ -74,7 +74,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <PrimaryLink
-                    href='/coming-soon'
+                    href='/kti'
                     variant='discolored'
                     underline={false}
                     className='font-medium text-sm lg:text-base'
@@ -84,7 +84,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <PrimaryLink
-                    href='/coming-soon'
+                    href='/jurnalistik'
                     variant='discolored'
                     underline={false}
                     className='font-medium text-sm lg:text-base'
@@ -133,7 +133,7 @@ export default function Footer() {
                     underline={false}
                     className='font-medium text-sm lg:text-base'
                   >
-                    Opening{' '}
+                    Opening
                   </PrimaryLink>
                 </div>
                 <div>
@@ -143,7 +143,7 @@ export default function Footer() {
                     underline={false}
                     className='font-medium text-sm lg:text-base'
                   >
-                    Exhibition{' '}
+                    Exhibition
                   </PrimaryLink>
                 </div>
                 <div>
@@ -153,7 +153,7 @@ export default function Footer() {
                     underline={false}
                     className='font-medium text-sm lg:text-base'
                   >
-                    Closing{' '}
+                    Closing
                   </PrimaryLink>
                 </div>
               </div>

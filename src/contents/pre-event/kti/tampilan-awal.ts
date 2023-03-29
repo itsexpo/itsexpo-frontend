@@ -154,7 +154,7 @@ export const hadiahKTIContents: HadiahKTIData[] = [
       height: '160',
     },
     text: 'Juara 2',
-    prize: 'Rp1.500.000,-',
+    prize: 'Rp2.000.000,-',
   },
   {
     img: {

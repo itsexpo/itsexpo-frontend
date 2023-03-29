@@ -8,6 +8,7 @@ import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
+import clsxm from '@/lib/clsxm';
 import { ApiReturn } from '@/types/api';
 
 type ButtonProps = {
@@ -51,7 +52,12 @@ const AnggotaButton = ({
     }).then(() => deleteAnggota({ id_personal: id, code_team: id_team }));
   }
   return (
-    <div className='w-full rounded-xl p-4 border-typo-outline border-[1px] flex items-center justify-between'>
+    <div
+      className={clsxm(
+        `${ketua ? 'order-1' : 'order-2'}`,
+        `w-full rounded-xl p-4 border-typo-outline border-[1px] flex items-center justify-between`
+      )}
+    >
       <div className='space-y-2'>
         <Typography as='p' variant='c' className='font-medium text-typo-icon'>
           {ketua ? 'Ketua Tim' : 'Anggota'}

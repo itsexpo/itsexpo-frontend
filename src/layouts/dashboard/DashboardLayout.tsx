@@ -29,7 +29,7 @@ export default function DashboardLayout({
         <div className='bg-secondary-300 flex flex-col lg:pl-64'>
           <MobileNavigation />
 
-          <main className={clsx(className)} tabIndex={-1}>
+          <main className={clsx(className, 'bg-typo-surface')} tabIndex={-1}>
             {children}
           </main>
 

@@ -7,7 +7,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import TampilanAwal from '@/pages/dashboard/pre-event/jurnalistik/container/TampilanAwal';
 import useAuthStore from '@/store/useAuthStore';
 
-export default withAuth(JurnalistikDashboardPage, ['jurnalistik.index']);
+export default withAuth(JurnalistikDashboardPage, ['jurnalistik.index'], true);
 
 function JurnalistikDashboardPage() {
   const user = useAuthStore.useUser();
@@ -18,12 +18,12 @@ function JurnalistikDashboardPage() {
         <header className=''>
           <div className='flex justify-between items-center'>
             <Typography variant='h5' className='font-bold'>
-              Jurnalistik
+              Journalistic
             </Typography>
             <Breadcrumb crumbs={['/dashboard/pre-event/jurnalistik']} />
           </div>
         </header>
-        <main className='mt-8'>{user && <TampilanAwal user={user} />}</main>
+        <main className='my-8'>{user && <TampilanAwal user={user} />}</main>
       </div>
     </DashboardLayout>
   );

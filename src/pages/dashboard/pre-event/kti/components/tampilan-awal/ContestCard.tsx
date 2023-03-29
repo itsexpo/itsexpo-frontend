@@ -15,6 +15,8 @@ export default function ContestCard() {
             layout='fill'
             className='w-full h-full'
             imgClassName='object-cover rounded-xl'
+            useSkeleton
+            blurClassName='bg-typo-inline object-cover rounded-xl z-10'
           />
         </div>
         <div

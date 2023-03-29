@@ -148,7 +148,7 @@ function NavigationLink({
       href={navigation.href}
       className={clsxm(
         isActive ? 'bg-white/20 text-typo-white' : 'hover:bg-white/10',
-        'group my-0.5 flex items-center rounded-md px-2 py-4 text-sm font-medium',
+        'group my-0.5 flex items-center rounded-md px-2 py-[15px] text-sm font-medium',
         className
       )}
       aria-current={isActive ? 'page' : undefined}
