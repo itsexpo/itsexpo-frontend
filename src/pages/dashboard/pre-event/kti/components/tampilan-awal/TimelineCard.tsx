@@ -67,7 +67,6 @@ export default function TimelineCard() {
                   {content.date}
                 </Typography>
                 <Typography
-                  as='b1'
                   variant='b1'
                   color='secondary'
                   className='break-words'

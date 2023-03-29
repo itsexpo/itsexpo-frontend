@@ -156,7 +156,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative w-full text-typo-white text-base font-secondary text-justify -top-28 md:top-0 md:mt-10 mb-10'
                 >
                   Tentang Lomba Jurnalistik di ITS Expo 2023, kamu akan diajak
@@ -224,7 +223,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-8 md:top-0 md:mt-10 mb-10'
                 >
                   Lomba Robotik di ITS Expo 2023 akan menjadi ajang pertarungan
@@ -279,7 +277,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-16 md:top-0 md:mt-10 mb-10'
                 >
                   ITS Expo 2023 akan menggelar Lomba Karya Tulis Ilmiah yang
@@ -349,7 +346,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-16 md:top-0 md:mt-10 mb-10'
                 >
                   Talk Show di ITS Expo 2023 akan menjadi ajang diskusi yang

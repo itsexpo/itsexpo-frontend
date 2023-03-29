@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
-import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import { AiOutlinePlus } from 'react-icons/ai';
 
@@ -63,11 +62,6 @@ function AnnouncementDashboard() {
       accessorFn: (row) => EVENT_ID[Number(row.list_event_id)],
     },
     {
-      id: 'created_at',
-      accessorFn: (row) => format(new Date(row.created_at), "y'-'MM'-'dd"),
-      header: 'Created At',
-    },
-    {
       id: 'action',
       cell: (info) => {
         return (
@@ -118,7 +112,6 @@ function AnnouncementDashboard() {
             <section className='md:flex md:justify-between md:items-center'>
               <span>
                 <Typography
-                  as='b1'
                   variant='b1'
                   className='font-medium text-success-600'
                 >

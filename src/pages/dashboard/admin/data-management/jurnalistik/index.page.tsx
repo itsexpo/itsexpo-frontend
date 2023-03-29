@@ -103,11 +103,7 @@ function AdminJurnalistikDashboardPage() {
         <section className='dashboard-layout'>
           <div className='min-h-screen flex flex-col gap-6 pb-20'>
             <div>
-              <Typography
-                as='b1'
-                variant='b1'
-                className='font-medium text-success-600'
-              >
+              <Typography variant='b1' className='font-medium text-success-600'>
                 ITS EXPO 2023
               </Typography>
               <Typography

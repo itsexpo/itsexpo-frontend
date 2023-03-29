@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -16,9 +17,16 @@ import { CreateAnnouncement } from '@/types/entities/announcement';
 export default withAuth(AnnouncementCreate, ['pengumuman.store']);
 
 function AnnouncementCreate() {
+  const router = useRouter();
   const methods = useForm<CreateAnnouncement>();
   const { mutate, isLoading } = useMutationToast<void, CreateAnnouncement>(
-    useMutation((data) => api.post('/pengumuman', data))
+    useMutation((data) => api.post('/pengumuman', data), {
+      onSuccess: () => {
+        setTimeout(() => {
+          router.push('/dashboard/admin/announcement');
+        }, 1000);
+      },
+    })
   );
 
   const handleCreate = (data: CreateAnnouncement) => mutate(data);
