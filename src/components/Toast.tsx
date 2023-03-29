@@ -12,8 +12,8 @@ export default function Toast() {
         toastOptions={{
           style: {
             borderRadius: '8px',
-            background: '#333',
-            color: '#fff',
+            background: '#E8F0E0',
+            color: '#8AB364',
           },
         }}
       >

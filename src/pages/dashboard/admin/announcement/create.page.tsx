@@ -3,9 +3,11 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
+import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
+import TextArea from '@/components/forms/TextArea';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import { EVENT_ID } from '@/constant/event';
@@ -21,11 +23,7 @@ function AnnouncementCreate() {
   const methods = useForm<CreateAnnouncement>();
   const { mutate, isLoading } = useMutationToast<void, CreateAnnouncement>(
     useMutation((data) => api.post('/pengumuman', data), {
-      onSuccess: () => {
-        setTimeout(() => {
-          router.push('/dashboard/admin/announcement');
-        }, 1000);
-      },
+      onSuccess: () => router.push('/dashboard/admin/announcement'),
     })
   );
 
@@ -35,15 +33,14 @@ function AnnouncementCreate() {
       <main>
         <section className='dashboard-layout'>
           <div className='min-h-screen flex flex-col gap-6 pb-20'>
-            <section className='md:flex md:justify-between md:items-center'>
-              <span>
-                <Typography
-                  as='p'
-                  variant='b1'
-                  className='font-medium text-success-600'
-                >
-                  ITS EXPO 2023
-                </Typography>
+            <div className='md:flex md:justify-between md:items-center'>
+              <div>
+                <Breadcrumb
+                  crumbs={[
+                    '/dashboard/admin/announcement',
+                    '/dashboard/admin/announcement/buat',
+                  ]}
+                />
                 <Typography
                   as='h5'
                   variant='h5'
@@ -51,8 +48,8 @@ function AnnouncementCreate() {
                 >
                   Pengumuman
                 </Typography>
-              </span>
-            </section>
+              </div>
+            </div>
             <section>
               <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
                 <Typography
@@ -66,31 +63,37 @@ function AnnouncementCreate() {
                   <form onSubmit={methods.handleSubmit(handleCreate)}>
                     <div className='grid grid-cols-2 mt-3 gap-x-10 gap-y-6'>
                       <Input
-                        label='Title'
+                        label='Judul Pengumuman'
                         id='title'
-                        placeholder='Mountanus'
+                        placeholder='Judul Pengumuman'
+                        validation={{
+                          required: 'Judul Pengumuman tidak boleh kosong',
+                        }}
                         disabled={isLoading}
                       />
                       <SelectInput
                         label='Event'
                         id='event_id'
+                        placeholder='Pilih Event'
+                        validation={{
+                          required: 'Event tidak boleh kosong',
+                        }}
                         disabled={isLoading}
                       >
-                        <option value={11}>{EVENT_ID['11']}</option>
-                        <option value={12}>{EVENT_ID['12']}</option>
-                        <option value={13}>{EVENT_ID['13']}</option>
-                        <option value={21}>{EVENT_ID['21']}</option>
-                        <option value={22}>{EVENT_ID['22']}</option>
-                        <option value={31}>{EVENT_ID['31']}</option>
+                        {Object.entries(EVENT_ID).map(([key, value]) => (
+                          <option key={key} value={key}>
+                            {value}
+                          </option>
+                        ))}
                       </SelectInput>
                       <div className='col-span-2 w-full'>
-                        <Input
+                        <TextArea
                           label='Deskripsi'
                           id='description'
-                          placeholder='The mountains, so vast, rugged and grand,
-                          Are an embodiment of strength that will never end,
-                          I feel so small, yet so connected to all,
-                          In the midst of these towering natural walls.'
+                          placeholder='Deskripsi Pengumuman'
+                          validation={{
+                            required: 'Deskripsi Pengumuman tidak boleh kosong',
+                          }}
                           disabled={isLoading}
                         />
                       </div>

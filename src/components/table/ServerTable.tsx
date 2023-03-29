@@ -31,6 +31,7 @@ type ServerTableProps<T extends object> = {
   columns: ColumnDef<T>[];
   data: T[];
   header?: React.ReactNode;
+  isLoading?: boolean;
   meta: PaginatedApiResponse<T>['data']['meta'] | undefined;
   tableState: ServerTableState;
   setTableState: SetServerTableState;
@@ -44,6 +45,7 @@ export default function ServerTable<T extends object>({
   data,
   header: Header,
   meta,
+  isLoading,
   tableState,
   setTableState,
   omitSort = false,
@@ -108,7 +110,7 @@ export default function ServerTable<T extends object>({
                 ))}
               </colgroup>
               <THead table={table} omitSort={omitSort} />
-              <TBody table={table} />
+              <TBody table={table} isLoading={isLoading} />
             </table>
           </div>
         </div>

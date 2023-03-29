@@ -104,10 +104,11 @@ function AdminShortener() {
     tableState,
   });
 
-  const { data: queryData, refetch: refetchData } = useQuery<
-    PaginatedApiResponse<ShortenerColumn[]>,
-    Error
-  >([url], {
+  const {
+    data: queryData,
+    refetch: refetchData,
+    isLoading,
+  } = useQuery<PaginatedApiResponse<ShortenerColumn[]>, Error>([url], {
     keepPreviousData: true,
   });
   //#endregion  //*======== Fetch Data ===========
@@ -152,6 +153,7 @@ function AdminShortener() {
             </div>
             <ServerTable
               columns={columns}
+              isLoading={isLoading}
               data={queryData?.data.data_per_page ?? []}
               meta={queryData?.data.meta}
               tableState={tableState}

@@ -89,10 +89,11 @@ function AdminPermissions() {
     tableState,
   });
 
-  const { data: queryData, refetch: refetchData } = useQuery<
-    PaginatedApiResponse<PermissionResponse[]>,
-    Error
-  >([url], {
+  const {
+    data: queryData,
+    refetch: refetchData,
+    isLoading,
+  } = useQuery<PaginatedApiResponse<PermissionResponse[]>, Error>([url], {
     keepPreviousData: true,
   });
   //#endregion  //*=========== Fetch Data ===========
@@ -149,6 +150,7 @@ function AdminPermissions() {
             </div>
           </div>
           <ServerTable
+            isLoading={isLoading}
             columns={columns}
             data={queryData?.data.data_per_page ?? []}
             meta={queryData?.data.meta}

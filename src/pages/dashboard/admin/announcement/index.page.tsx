@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
+import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import { AiOutlinePlus } from 'react-icons/ai';
 
+import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import ServerTable from '@/components/table/ServerTable';
@@ -26,12 +28,12 @@ function AnnouncementDashboard() {
   });
 
   const dialog = useDialog();
-  function openWarningDelete({ id }: { id: string }) {
+  function openWarningDelete({ title, id }: { title: string; id: string }) {
     dialog({
       title: 'Apakah Anda Yakin!!!',
-      description: `Hapus Pengumuman dengan ID: ${id} ?`,
+      description: `Hapus Pengumuman dengan judul: ${title} ?`,
       submitText: 'Delete',
-      variant: 'warning',
+      variant: 'danger',
       catchOnCancel: true,
     })
       .then(() => api.delete(`/pengumuman/${id}`))
@@ -62,6 +64,18 @@ function AnnouncementDashboard() {
       accessorFn: (row) => EVENT_ID[Number(row.list_event_id)],
     },
     {
+      id: 'Dibuat Pada',
+      accessorKey: 'created_at',
+      header: 'Dibuat Pada',
+      accessorFn: (row) => format(new Date(row.created_at), 'dd MMMM yyyy'),
+    },
+    {
+      id: 'Diupdate Pada',
+      accessorKey: 'updated_at',
+      header: 'Diupdate Pada',
+      accessorFn: (row) => format(new Date(row.updated_at), 'dd MMMM yyyy'),
+    },
+    {
       id: 'action',
       cell: (info) => {
         return (
@@ -80,7 +94,12 @@ function AnnouncementDashboard() {
               variant='red'
               size='small'
               className='border-typo-icon text-white font-semibold'
-              onClick={() => openWarningDelete({ id: info.row.original.id })}
+              onClick={() =>
+                openWarningDelete({
+                  title: info.row.original.title,
+                  id: info.row.original.id,
+                })
+              }
             >
               Hapus
             </Button>
@@ -97,10 +116,11 @@ function AnnouncementDashboard() {
     tableState,
   });
 
-  const { data: queryData, refetch: refetchData } = useQuery<
-    PaginatedApiResponse<AnnouncementColumns[]>,
-    Error
-  >([url], {
+  const {
+    data: queryData,
+    refetch: refetchData,
+    isLoading,
+  } = useQuery<PaginatedApiResponse<AnnouncementColumns[]>, Error>([url], {
     keepPreviousData: true,
   });
 
@@ -109,14 +129,9 @@ function AnnouncementDashboard() {
       <main>
         <section className='dashboard-layout'>
           <div className='min-h-screen flex flex-col gap-6 pb-20'>
-            <section className='md:flex md:justify-between md:items-center'>
-              <span>
-                <Typography
-                  variant='b1'
-                  className='font-medium text-success-600'
-                >
-                  ITS EXPO 2023
-                </Typography>
+            <div className='md:flex md:justify-between md:items-center'>
+              <div>
+                <Breadcrumb crumbs={['/dashboard/admin/announcement']} />
                 <Typography
                   as='h5'
                   variant='h5'
@@ -124,21 +139,21 @@ function AnnouncementDashboard() {
                 >
                   Pengumuman
                 </Typography>
-              </span>
+              </div>
               <div className='mt-7 w-full md:w-auto'>
                 <Button
                   leftIcon={AiOutlinePlus}
                   variant='green'
-                  size='large'
                   className='w-full'
                   onClick={() => router.push(`announcement/create`)}
                 >
                   Buat Pengumuman Baru
                 </Button>
               </div>
-            </section>
+            </div>
             <div className='mx-4 md:mx-0'>
               <ServerTable
+                isLoading={isLoading}
                 columns={columns}
                 data={queryData?.data.data_per_page ?? []}
                 meta={queryData?.data.meta}

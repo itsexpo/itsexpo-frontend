@@ -1,13 +1,14 @@
 import { useMutation } from '@tanstack/react-query';
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
-import { serialize } from 'object-to-formdata';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
+import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
+import TextArea from '@/components/forms/TextArea';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import { EVENT_ID } from '@/constant/event';
@@ -26,12 +27,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   setApiContext(context);
   const id = context.params?.id;
   const url = `/pengumuman?id=${id}`;
-  const res = await api.get<ApiReturn<AnnouncementColumns>>(url);
-  return {
-    props: {
-      res: res.data.data,
-    },
-  };
+
+  try {
+    const res = await api.get<ApiReturn<AnnouncementColumns>>(url);
+    return {
+      props: {
+        res: res.data.data,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }
 
 function AnnouncementUpdate({
@@ -39,15 +47,20 @@ function AnnouncementUpdate({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
   const { id } = router.query;
-  const methods = useForm<UpdateAnnouncement>();
+  const methods = useForm<UpdateAnnouncement>({
+    defaultValues: {
+      event_id: res.list_event_id,
+      title: res.title,
+      description: res.description,
+    },
+  });
   const {
     formState: { isDirty },
   } = methods;
 
   const { mutate, isLoading } = useMutationToast<void, UpdateAnnouncement>(
-    useMutation({
-      mutationFn: (data) => api.put(`/pengumuman/${id}`, serialize(data)),
-      onSuccess: () => router.push(router.asPath),
+    useMutation((data) => {
+      return api.put(`/pengumuman/${id}`, data);
     })
   );
 
@@ -66,15 +79,14 @@ function AnnouncementUpdate({
       <main>
         <section className='dashboard-layout'>
           <div className='min-h-screen flex flex-col gap-6 pb-20'>
-            <section className='md:flex md:justify-between md:items-center'>
-              <span>
-                <Typography
-                  as='p'
-                  variant='b1'
-                  className='font-medium text-success-600'
-                >
-                  ITS EXPO 2023
-                </Typography>
+            <div className='md:flex md:justify-between md:items-center'>
+              <div>
+                <Breadcrumb
+                  crumbs={[
+                    '/dashboard/admin/announcement',
+                    '/dashboard/admin/announcement/detail',
+                  ]}
+                />
                 <Typography
                   as='h5'
                   variant='h5'
@@ -82,8 +94,8 @@ function AnnouncementUpdate({
                 >
                   Pengumuman
                 </Typography>
-              </span>
-            </section>
+              </div>
+            </div>
             <section>
               <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
                 <Typography
@@ -107,15 +119,14 @@ function AnnouncementUpdate({
                         id='event_id'
                         disabled={isLoading}
                       >
-                        <option value={11}>{EVENT_ID['11']}</option>
-                        <option value={12}>{EVENT_ID['12']}</option>
-                        <option value={13}>{EVENT_ID['13']}</option>
-                        <option value={21}>{EVENT_ID['21']}</option>
-                        <option value={22}>{EVENT_ID['22']}</option>
-                        <option value={31}>{EVENT_ID['31']}</option>
+                        {Object.entries(EVENT_ID).map(([key, value]) => (
+                          <option key={key} value={key}>
+                            {value}
+                          </option>
+                        ))}
                       </SelectInput>
                       <div className='col-span-2 w-full'>
-                        <Input
+                        <TextArea
                           label='Deskripsi'
                           id='description'
                           placeholder={res.description}

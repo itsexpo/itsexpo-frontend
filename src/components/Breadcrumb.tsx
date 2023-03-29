@@ -20,6 +20,11 @@ const breadcrumbs = {
   '/dashboard/admin/data-management/robotika': 'Robotika',
   '/dashboard/admin/data-management/robotika/detail': 'Detail',
 
+  // Pengumuman
+  '/dashboard/admin/announcement': 'Pengumuman',
+  '/dashboard/admin/announcement/detail': 'Detail',
+  '/dashboard/admin/announcement/buat': 'Buat',
+
   // User
   '/dashboard/pre-event/jurnalistik': 'Journalistic',
   '/dashboard/pre-event/jurnalistik/main': 'Dashboard',

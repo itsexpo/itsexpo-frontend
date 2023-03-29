@@ -150,10 +150,11 @@ function User() {
     additionalParam: { filter: levelFilter },
   });
 
-  const { data: queryData, refetch: refetchData } = useQuery<
-    PaginatedApiResponse<UserColumn[]>,
-    Error
-  >([url], {
+  const {
+    data: queryData,
+    refetch: refetchData,
+    isLoading,
+  } = useQuery<PaginatedApiResponse<UserColumn[]>, Error>([url], {
     keepPreviousData: true,
   });
   //#endregion  //*=========== Fetch Data ===========
@@ -172,6 +173,7 @@ function User() {
           </div>
           <ServerTable
             columns={columns}
+            isLoading={isLoading}
             data={queryData?.data.data_per_page ?? []}
             meta={queryData?.data.meta}
             tableState={tableState}

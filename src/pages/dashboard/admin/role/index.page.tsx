@@ -93,10 +93,11 @@ function AdminRoles() {
     baseUrl: '/roles',
     tableState,
   });
-  const { data: queryData, refetch: refetchData } = useQuery<
-    PaginatedApiResponse<RoleResponse[]>,
-    Error
-  >([url], {
+  const {
+    data: queryData,
+    refetch: refetchData,
+    isLoading,
+  } = useQuery<PaginatedApiResponse<RoleResponse[]>, Error>([url], {
     keepPreviousData: true,
   });
   //#endregion  //*=========== Fetch Data ===========
@@ -153,6 +154,7 @@ function AdminRoles() {
             </div>
           </div>
           <ServerTable
+            isLoading={isLoading}
             columns={columns}
             data={queryData?.data.data_per_page ?? []}
             meta={queryData?.data.meta}

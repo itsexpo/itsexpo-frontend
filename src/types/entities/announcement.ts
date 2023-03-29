@@ -4,6 +4,7 @@ export type AnnouncementColumns = {
   description: string;
   list_event_id: string;
   created_at: string;
+  updated_at: string;
 };
 
 export type CreateAnnouncement = {

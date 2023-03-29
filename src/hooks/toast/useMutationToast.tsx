@@ -3,12 +3,7 @@ import { AxiosError, AxiosResponse } from 'axios';
 import * as React from 'react';
 import toast from 'react-hot-toast';
 
-import {
-  DANGER_TOAST,
-  showToast,
-  SUCCESS_TOAST,
-  WARNING_TOAST,
-} from '@/components/Toast';
+import { DANGER_TOAST, showToast, SUCCESS_TOAST } from '@/components/Toast';
 import { DEFAULT_TOAST_MESSAGE } from '@/constant/toast';
 import { ApiError, ApiReturn } from '@/types/api';
 
@@ -48,7 +43,7 @@ export default function useMutationToast<T, K>(
       );
       toastStatus.current = 'done';
     } else if (isLoading) {
-      toastStatus.current = showToast(toastMessage.loading, WARNING_TOAST);
+      toastStatus.current = toast.loading(toastMessage.loading);
     } else if (data) {
       showToast(
         typeof toastMessage.success === 'string'

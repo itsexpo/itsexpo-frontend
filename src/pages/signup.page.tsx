@@ -7,6 +7,7 @@ import Input from '@/components/forms/Input';
 import PasswordInput from '@/components/forms/PasswordInput';
 import SelectInput from '@/components/forms/SelectInput';
 import withAuth from '@/components/hoc/withAuth';
+import PrimaryLink from '@/components/links/PrimaryLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
@@ -107,7 +108,10 @@ function SignupPage() {
               imgClassName='object-contain'
             />
           </div>
-          <div className='w-full md:w-5/12 md:min-w-[400px] min-h-screen py-16 px-4 md:p-16 flex justify-center items-center bg-typo-white md:float-right'>
+          <div className='w-full md:w-5/12 md:min-w-[400px] min-h-screen py-16 px-4 md:p-16 flex flex-col justify-center items-center bg-typo-white md:float-right'>
+            <div className='w-full md:mb-10 mb-6'>
+              <PrimaryLink href='/'>Ke Halaman Awal</PrimaryLink>
+            </div>
             {email && (
               <div className='w-full flex flex-col space-y-10'>
                 {/* Activate account view */}

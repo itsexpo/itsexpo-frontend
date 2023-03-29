@@ -93,7 +93,7 @@ function LoginPage() {
 
           {/* Form Section */}
           <div className='w-full md:w-5/12 md:min-w-[400px] min-h-screen float-right px-4 md:px-16 py-16 flex flex-col justify-center items-center bg-typo-white'>
-            <div className='w-full mb-10'>
+            <div className='w-full md:mb-10 mb-6'>
               <PrimaryLink href='/'>Ke Halaman Awal</PrimaryLink>
             </div>
             <FormProvider {...methods}>
