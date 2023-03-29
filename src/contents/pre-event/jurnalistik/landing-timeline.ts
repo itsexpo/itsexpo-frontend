@@ -35,8 +35,8 @@ const jurnalistikTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '2 - 4 Juni 2023',
-    caption: 'Pelaksanaan Lomba1',
+    date: '1 - 4 Juni 2023',
+    caption: 'Pelaksanaan Lomba 1',
   },
   {
     img: {
