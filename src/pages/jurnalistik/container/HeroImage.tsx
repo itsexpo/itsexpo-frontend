@@ -7,22 +7,14 @@ import NextImage from '@/components/NextImage';
 export const HeroImage = () => {
   return (
     <div className='layout flex flex-col w-full h-full'>
-      <div className='relative flex'>
+      <div className='relative flex justify-end'>
         <NextImage
-          src='/jurnalistik/hero-img1.png'
-          alt='hero left background'
-          width='584'
-          height='696'
+          src='/jurnalistik/hero-mascot.png'
+          alt='hero-mascot'
+          width='814'
+          height='860'
           priority={true}
-          className='w-full md:w-1/2 left-0 mx-2 md:mt-10 z-0'
-        />
-        <NextImage
-          src='/jurnalistik/hero-img2.png'
-          alt='hero right background'
-          width='584'
-          height='696'
-          priority={true}
-          className='w-full md:w-1/2 right-0 mx-2 md:mt-16 z-0'
+          className='w-full md:w-2/3 mx-2 mt-8 md:mt-0 z-0'
         />
       </div>
     </div>

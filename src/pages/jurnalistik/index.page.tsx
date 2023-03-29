@@ -22,10 +22,7 @@ import {
   AboutPattern,
 } from '@/pages/jurnalistik/container/AboutBackground';
 import { GuidebookBackgroundjurnalistik } from '@/pages/jurnalistik/container/GuidebookBg';
-import {
-  HeroBackground,
-  HeroPattern,
-} from '@/pages/jurnalistik/container/HeroBackground';
+import { HeroBackground } from '@/pages/jurnalistik/container/HeroBackground';
 import { HeroImage } from '@/pages/jurnalistik/container/HeroImage';
 import { RewardTV } from '@/pages/jurnalistik/container/Reward';
 import { RewardVideo } from '@/pages/jurnalistik/container/RewardVideo';
@@ -48,7 +45,7 @@ export default function Home() {
         {/* Hero Section */}
         <section
           id='hero'
-          className='relative w-full flex flex-col justify-center items-center bg-tainted-100 pt-16'
+          className='relative w-full flex flex-col justify-center items-center bg-tainted-100 pt-16 pb-6'
         >
           <HeroBackground />
 
@@ -96,7 +93,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <HeroPattern />
         </section>
 
         {/* About Section */}
@@ -105,6 +101,22 @@ export default function Home() {
           id='about-jurnalistik'
           className='relative w-full bg-about-jurnalistik'
         >
+          <NextImage
+            src='/jurnalistik/hero-bottom.png'
+            alt='pattern illustration'
+            width='1440'
+            height='163'
+            className='min-w-full absolute -top-6 hidden sm:block sm:-top-10 md:-top-14 lg:-top-[3.5rem] xl:-top-[5.5rem] 2xl:-top-[7rem]'
+            priority={true}
+          />
+          <NextImage
+            src='/jurnalistik/hero-bottom-mobile.png'
+            alt='pattern illustration'
+            width='586'
+            height='116'
+            className='min-w-full absolute -top-8 xs:-top-14 block sm:hidden'
+            priority={true}
+          />
           <div className='w-full h-full relative pb-5 md:pb-20'>
             <AboutBackground />
 
