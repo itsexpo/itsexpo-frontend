@@ -65,48 +65,18 @@ export const HeroBackground = () => {
           alt='hero right figure'
           width='222'
           height='92'
-          className='absolute hidden md:block w-1/12 right-80 top-0 mt-16'
+          className='absolute hidden md:block w-1/12 right-48 top-0 mt-16'
           data-aos='fade-right'
           data-aos-delay='700'
         />
         <NextImage
-          src='/jurnalistik/hero-particles.png'
+          src='/jurnalistik/hero-particles1.png'
           alt='hero particles'
-          width='1570'
-          height='1123'
-          className='absolute hidden md:block w-1/2 left-40 bottom-44'
-        />
-        <NextImage
-          src='/jurnalistik/burung-hero.png'
-          alt='hero bird'
-          width='315'
-          height='445'
-          className='absolute hidden md:block w-1/12 xl:right-[4%] 2xl:right-[6%] right-[4.1%] mt-32 z-[1]'
+          width='2283'
+          height='968'
+          className='absolute hidden md:block w-[70%] mx-auto left-48 top-32'
         />
       </div>
-    </div>
-  );
-};
-
-export const HeroPattern = () => {
-  return (
-    <div className='w-full relative z-[1] translate-y-1/2 md:translate-y-0'>
-      <NextImage
-        src='/jurnalistik/hero-pattern.png'
-        alt='hero pattern'
-        width='2880'
-        height='328'
-        className='w-full md:block hidden'
-        priority={true}
-      />
-      <NextImage
-        src='/jurnalistik/hero-pattern-mobile.png'
-        alt='hero pattern'
-        width='586'
-        height='116'
-        className='w-full block md:hidden'
-        priority={true}
-      />
     </div>
   );
 };
