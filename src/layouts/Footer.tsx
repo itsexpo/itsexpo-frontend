@@ -40,7 +40,7 @@ export default function Footer() {
               salam seni, ilmu, dan budaya
             </Typography>
           </div>
-          <div className='flex flex-col md:flex-row space-y-5 md:space-y-0 space-x-0 md:space-x-6 lg:space-x-[60px] items-start justify-center mx-auto md:mx-0 mt-10 md:mt-0'>
+          <div className='flex flex-col md:flex-row space-y-5 md:space-y-0 text-left space-x-0 md:space-x-6 lg:space-x-[60px] items-center sm:items-start justify-center mx-auto md:mx-0 mt-10 md:mt-0'>
             {/* Pre Event Start */}
             <div className='flex flex-col'>
               <button
@@ -109,7 +109,7 @@ export default function Footer() {
             <div className='flex flex-col justify-center items-center'>
               <button
                 onClick={toggleShowMainEvent}
-                className='mx-auto flex items-center md:mx-0 text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] cursor-pointer gap-5 md:cursor-default'
+                className='mx-auto flex items-start md:mx-0 text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] cursor-pointer gap-5 md:cursor-default'
               >
                 Main Event
                 <AiFillCaretDown
@@ -160,14 +160,14 @@ export default function Footer() {
             </div>
             {/* Main Event End */}
             {/* Social Media Start */}
-            <div className='flex flex-col items-center justify-center'>
+            <div className='flex flex-col md:items-center items-center sm:items-start justify-center'>
               <Typography
                 className=' font-bold text-white text-[16px] md:text-[18px] lg:text-[20px]'
                 variant='t'
               >
                 Social Media
               </Typography>
-              <div className='flex flex-col lg:flex-row items-center justify-between space-y-5 space-x-0 lg:space-y-0 text-discolored-300 lg:space-x-5 mt-5'>
+              <div className='flex flex-row items-center justify-between text-discolored-300 space-x-5 mt-5'>
                 <PrimaryLink
                   variant='discolored'
                   href='https://www.instagram.com/its_expo/?hl=en'
@@ -199,7 +199,7 @@ export default function Footer() {
         <div>
           <Typography
             variant='b2'
-            className='text-discolored-700 font-semibold text-[14px] md:text-[16px] mt-3 pb-3 md:mt-5 md:pb-10'
+            className='text-discolored-700 font-semibold text-center sm:text-left text-[14px] md:text-[16px] mt-3 pb-3 md:mt-5 md:pb-10'
           >
             &copy; 2023 ITS EXPO. All rights reserved.
           </Typography>
