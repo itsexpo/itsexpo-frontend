@@ -15,6 +15,7 @@ export default function TampilanAwal({ user }: TampilanAwal) {
   return (
     <div className='flex flex-col gap-y-6'>
       <DeskripsiCard
+        role={user.role}
         isRegistered={user.pre_event[2].RobotInAction.status}
         startDate={user.pre_event[2].RobotInAction.start_date}
         closeDate={user.pre_event[2].RobotInAction.close_date}
