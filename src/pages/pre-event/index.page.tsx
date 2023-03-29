@@ -155,7 +155,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative w-full text-typo-white text-base font-secondary text-justify -top-28 md:top-0 md:mt-10 mb-10'
                 >
                   Journalistic merupakan salah satu ajang lomba bergengsi dari
@@ -219,7 +218,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-8 md:top-0 md:mt-10 mb-10'
                 >
                   Robot in Action merupakan salah satu cabang kompetisi dalam
@@ -268,7 +266,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-16 md:top-0 md:mt-10 mb-10'
                 >
                   Karya Tulis Ilmiah merupakan salah satu ajang lomba bergengsi
@@ -336,7 +333,6 @@ function Preevent() {
                 />
                 <Typography
                   variant='b1'
-                  as='b1'
                   className='relative text-typo-white text-base font-secondary text-justify -top-16 md:top-0 md:mt-10 mb-10'
                 >
                   Jangan lewatkan Talkshow spektakuler ITS EXPO 2023! Hadirkan

@@ -14,7 +14,7 @@ export function JurnalistikDataRecap({
     <div className='grid md:grid-cols-3 grid-cols-2 grid-flow-row gap-6'>
       {/* Total Tim */}
       <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
-        <Typography as='b1' variant='b1' className='text-typo-icon'>
+        <Typography variant='b1' className='text-typo-icon'>
           Total Tim
         </Typography>
         <div className='flex flex-1 flex-row gap-2 items-center'>
@@ -33,7 +33,7 @@ export function JurnalistikDataRecap({
 
       {/* Menunggu Pembayaran */}
       <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
-        <Typography as='b1' variant='b1' className='text-typo-icon'>
+        <Typography variant='b1' className='text-typo-icon'>
           Menunggu Pembayaran:
         </Typography>
         <div className='flex flex-row gap-2 flex-1 items-center'>
@@ -52,7 +52,7 @@ export function JurnalistikDataRecap({
 
       {/* Pembayaran Gagal */}
       <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
-        <Typography as='b1' variant='b1' className='text-typo-icon'>
+        <Typography variant='b1' className='text-typo-icon'>
           Pembayaran Gagal:
         </Typography>
         <div className='flex flex-row gap-2 flex-1 items-center'>
@@ -71,7 +71,7 @@ export function JurnalistikDataRecap({
 
       {/* Pembayaran Revisi */}
       <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
-        <Typography as='b1' variant='b1' className='text-typo-icon'>
+        <Typography variant='b1' className='text-typo-icon'>
           Pembayaran Revisi:
         </Typography>
         <div className='flex flex-row gap-2 flex-1 items-center'>
@@ -90,7 +90,7 @@ export function JurnalistikDataRecap({
 
       {/* Menunggu Verifikasi */}
       <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
-        <Typography as='b1' variant='b1' className='text-typo-icon'>
+        <Typography variant='b1' className='text-typo-icon'>
           Menunggu Verifikasi:
         </Typography>
         <div className='flex flex-row gap-2 flex-1 items-center'>
@@ -109,7 +109,7 @@ export function JurnalistikDataRecap({
 
       {/* Pembayaran Berhasil */}
       <div className='flex flex-col gap-2 p-4 rounded-xl shadow-pendaftaran bg-typo-white'>
-        <Typography as='b1' variant='b1' className='text-typo-icon'>
+        <Typography variant='b1' className='text-typo-icon'>
           Pembayaran Berhasil:
         </Typography>
         <div className='flex flex-row gap-2 flex-1 items-center'>
