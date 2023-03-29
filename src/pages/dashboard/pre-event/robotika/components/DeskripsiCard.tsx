@@ -2,17 +2,21 @@ import * as React from 'react';
 
 import Countdown from '@/components/countdown/Countdown';
 import ButtonLink from '@/components/links/ButtonLink';
+import PrimaryLink from '@/components/links/PrimaryLink';
 import Typography from '@/components/typography/Typography';
 import { deskripsiRobotik } from '@/contents/pre-event/robotik/tampilan-awal';
 import clsxm from '@/lib/clsxm';
+import { User } from '@/types/entities/user';
 
 type TampilanAwal = {
+  role: User['role'];
   isRegistered: boolean;
   startDate: Date;
   closeDate: Date;
 } & React.ComponentPropsWithoutRef<'div'>;
 
 export default function DeskripsiCard({
+  role,
   isRegistered,
   startDate,
   closeDate,
@@ -58,7 +62,15 @@ export default function DeskripsiCard({
                   Daftar Sekarang
                 </ButtonLink>
               )}
-              <ButtonLink variant='discolored' href='#' target='_blank'>
+              <ButtonLink
+                variant='discolored'
+                href={
+                  role === 'SMA/Sederajat'
+                    ? 'https://its.id/m/GuidebookOpenCategory'
+                    : 'https://its.id/m/GuidebookLineTracer'
+                }
+                target='_blank'
+              >
                 Unduh Guidebook
               </ButtonLink>
             </div>
@@ -89,6 +101,17 @@ export default function DeskripsiCard({
               >
                 Lihat Dashboard
               </ButtonLink>
+              <PrimaryLink
+                className='w-full mt-4'
+                size='small'
+                href={
+                  role === 'SMA/Sederajat'
+                    ? 'https://its.id/m/GuidebookOpenCategory'
+                    : 'https://its.id/m/GuidebookLineTracer'
+                }
+              >
+                Lihat Guidebook
+              </PrimaryLink>
             </div>
           </>
         )}

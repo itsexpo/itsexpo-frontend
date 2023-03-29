@@ -10,13 +10,13 @@ const config: DefaultSeoProps = {
     siteName: 'ITS Expo 2023',
   },
   twitter: {
-    handle: '@handle',
-    site: '@site',
+    handle: '@ITS_EXPO',
+    site: 'https://twitter.com/ITS_EXPO',
     cardType: 'summary_large_image',
   },
   titleTemplate: '%s | ITS EXPO 2023',
   description:
-    "Rangkaian Kreativitas Keluarga Mahasiswa ITS dalam Acara 'Salam Seni, Ilmu, dan Budaya'",
+    'Sebuah acara yang mewadahi seluruh Keluarga Mahasiswa ITS untuk mempertunjukan hasil pemikirannya kepada masyarakat umum yang diharapkan membawa kebermanfaatan nyata untuk masyarakat.',
   defaultTitle: 'ITS EXPO 2023',
   additionalLinkTags: [
     {
