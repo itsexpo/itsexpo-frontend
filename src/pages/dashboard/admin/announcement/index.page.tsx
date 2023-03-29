@@ -34,7 +34,7 @@ function AnnouncementDashboard() {
       variant: 'warning',
       catchOnCancel: true,
     })
-      .then(() => api.delete(`/pengumuman?id=${id}`))
+      .then(() => api.delete(`/pengumuman/${id}`))
       .then(() => refetchData());
   }
 
@@ -71,7 +71,7 @@ function AnnouncementDashboard() {
               size='small'
               className='border-typo-icon !text-typo-secondary font-semibold'
               onClick={() =>
-                router.push(`announcement/update/${info.row.original.id}`)
+                router.push(`announcement/${info.row.original.id}`)
               }
             >
               Update

@@ -37,14 +37,18 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 function AnnouncementUpdate({
   res,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const { id } = useRouter().query;
-
+  const router = useRouter();
+  const { id } = router.query;
   const methods = useForm<UpdateAnnouncement>();
   const {
     formState: { isDirty },
   } = methods;
+
   const { mutate, isLoading } = useMutationToast<void, UpdateAnnouncement>(
-    useMutation((data) => api.put(`/pengumuman/${id}`, serialize(data)))
+    useMutation({
+      mutationFn: (data) => api.put(`/pengumuman/${id}`, serialize(data)),
+      onSuccess: () => router.push(router.asPath),
+    })
   );
 
   const handleUpdate = (data: UpdateAnnouncement) => {
