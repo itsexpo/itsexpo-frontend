@@ -79,7 +79,7 @@ export default function Footer() {
                     underline={false}
                     className='font-medium text-sm lg:text-base'
                   >
-                    karya Tulis Ilmiah
+                    Karya Tulis Ilmiah
                   </PrimaryLink>
                 </div>
                 <div>
@@ -106,7 +106,7 @@ export default function Footer() {
             </div>
             {/* Pre Event End */}
             {/* Main Event Start */}
-            <div className='flex flex-col justify-center items-center'>
+            <div className='flex flex-col'>
               <button
                 onClick={toggleShowMainEvent}
                 className='mx-auto flex items-start md:mx-0 text-white font-bold text-[16px] md:text-[18px] lg:text-[20px] cursor-pointer gap-5 md:cursor-default'
