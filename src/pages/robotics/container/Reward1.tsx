@@ -2,7 +2,7 @@ import 'aos/dist/aos.css';
 
 import * as React from 'react';
 
-import HadiahCard from '@/pages/robotika/components/HadiahCard';
+import HadiahCard from '@/pages/robotics/components/HadiahCard';
 const HadiahState = [
   {
     img: '/robotics/juara1.png',

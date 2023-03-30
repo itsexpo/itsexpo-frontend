@@ -367,7 +367,7 @@ export default function Home() {
                   variant='yellow'
                   href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
                   size='base'
-                  className='w-full mt-4 md:min-h-[48px]'
+                  className='w-full mt-4 md:min-h-[48px] font-bold'
                 >
                   Download Guidebook
                 </ButtonLink>
@@ -414,20 +414,22 @@ export default function Home() {
           <div className='relative layout space-y-2 pt-20'>
             <Typography
               variant='h2'
-              className='font-primary my-10 text-center sm:block hidden'
+              as='h2'
+              className='my-14 text-center sm:block hidden'
+              font='upakarti'
               data-aos='fade-up'
             >
               frequently asked question
             </Typography>
             <Typography
-              variant='h5'
-              className='font-primary my-8 sm:my-16 2xl:my-20 text-center text-[32px] block sm:hidden'
+              variant='h3'
+              className='my-8 sm:my-16 2xl:my-20 text-center text-[32px] block sm:hidden'
+              font='upakarti'
               data-aos='fade-up'
             >
               frequently
               <br /> asked question
             </Typography>
-
             <div
               className='grid grid-cols-1 max-w-[310px] md:max-w-[953px] bg-white rounded-lg p-4 md:p-8 mt-8 mx-auto '
               data-aos='fade-up'
