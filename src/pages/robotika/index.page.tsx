@@ -3,11 +3,12 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 
 import AOS from 'aos';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
-import { BiChevronDown } from 'react-icons/bi';
+import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { IoIosArrowDown } from 'react-icons/io';
 
+import Button from '@/components/buttons/Button';
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
@@ -31,6 +32,16 @@ export default function Home() {
   }, []);
 
   const aboutRef = React.useRef<HTMLElement>(null);
+
+  const [numFAQ, setNumFAQ] = useState(5);
+
+  const handleShowMore = () => {
+    setNumFAQ(numFAQ + 5);
+  };
+
+  const handleShowLess = () => {
+    setNumFAQ(5);
+  };
 
   return (
     <Layout>
@@ -389,18 +400,30 @@ export default function Home() {
                 data-aos='fade-up'
               >
                 <div className='sm:mt-6 flex flex-col'>
-                  {FAQRobotikContents.slice(0, 5).map((faq, index) => (
+                  {FAQRobotikContents.slice(0, numFAQ).map((faq, index) => (
                     <AccordionRobotik {...faq} key={index} />
                   ))}
+                  {numFAQ < FAQRobotikContents.length && (
+                    <Button
+                      variant='discolored'
+                      size='large'
+                      className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
+                      onClick={handleShowMore}
+                    >
+                      Lihat Lebih Lanjut <BiChevronDown />
+                    </Button>
+                  )}
+                  {numFAQ > 5 && (
+                    <Button
+                      variant='discolored'
+                      size='large'
+                      className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
+                      onClick={handleShowLess}
+                    >
+                      Tampilkan Lebih Sedikit <BiChevronUp />
+                    </Button>
+                  )}
                 </div>
-                <ButtonLink
-                  variant='discolored'
-                  size='large'
-                  href='/'
-                  className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
-                >
-                  Lihat Lebih Lanjut <BiChevronDown />
-                </ButtonLink>
               </div>
             </div>
           </div>
