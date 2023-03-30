@@ -5,9 +5,10 @@ import 'swiper/css/autoplay';
 import AOS from 'aos';
 import { useEffect } from 'react';
 import React from 'react';
-import { BiChevronDown } from 'react-icons/bi';
 import { IoIosArrowDown } from 'react-icons/io';
 
+import Accordion from '@/components/disclosure/Accordion';
+import ShowMoreAccordion from '@/components/disclosure/ShowMoreAccordion';
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
@@ -16,7 +17,6 @@ import landingTimelineKtiContents from '@/contents/pre-event/kti/landing-timelin
 import { FAQKTIContents } from '@/contents/pre-event/kti/tampilan-awal';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
-import AccordionKti from '@/pages/kti/components/AccordionKti';
 import { AboutBackgroundKti } from '@/pages/kti/container/AboutBackgroundKti';
 import { GuideKtiBackground } from '@/pages/kti/container/GuidebookBackgroundKti';
 import { HadiahKtiBackground } from '@/pages/kti/container/HadiahKtiBackground';
@@ -485,19 +485,71 @@ export default function Home() {
                 className='p-6 shadow-pendaftaran rounded-xl bg-typo-white max-w-4xl w-full '
                 data-aos='fade-up'
               >
-                <div className='sm:mt-6 flex flex-col'>
+                <div className='space-y-4'>
                   {FAQKTIContents.slice(0, 5).map((faq, index) => (
-                    <AccordionKti {...faq} key={index} />
+                    <Accordion
+                      key={index}
+                      title={faq.title}
+                      className='bg-tainted-300 text-tainted-900'
+                    >
+                      <Typography
+                        variant='b2'
+                        className='text-tainted-800 text-sm md:text-base'
+                      >
+                        {faq.content}
+                        {faq.winner_prize?.map((prizes, index) => (
+                          <li
+                            key={index}
+                            className='list-item list-disc ml-4 pb-2 text-tainted-800 text-sm md:text-base'
+                          >
+                            <Typography
+                              variant='b2'
+                              className='text-tainted-800 text-sm md:text-base pl-2'
+                            >
+                              {prizes}
+                            </Typography>
+                          </li>
+                        ))}
+                      </Typography>
+                    </Accordion>
                   ))}
+
+                  <ShowMoreAccordion
+                    openTitle='Tampilkan Lebih Sedikit'
+                    closedTitle='Tampilkan Lebih Banyak'
+                    titleClassName='px-6 py-4 rounded-lg bg-tainted-900 text-tainted-100 fill-tainted-100'
+                  >
+                    <div className='space-y-4'>
+                      {FAQKTIContents.slice(5).map((faq, index) => (
+                        <Accordion
+                          key={index}
+                          title={faq.title}
+                          className='bg-tainted-300 text-tainted-900'
+                        >
+                          <Typography
+                            variant='b2'
+                            className='text-tainted-800 text-sm md:text-base'
+                          >
+                            {faq.content}
+                            {faq.winner_prize?.map((prizes, index) => (
+                              <li
+                                key={index}
+                                className='list-item list-disc ml-4 pb-2 text-tainted-800 text-sm md:text-base'
+                              >
+                                <Typography
+                                  variant='b2'
+                                  className='text-tainted-800 text-sm md:text-base pl-2'
+                                >
+                                  {prizes}
+                                </Typography>
+                              </li>
+                            ))}
+                          </Typography>
+                        </Accordion>
+                      ))}
+                    </div>
+                  </ShowMoreAccordion>
                 </div>
-                <ButtonLink
-                  variant='discolored'
-                  size='large'
-                  href='/'
-                  className='w-full text-tainted-100 text-center bg-tainted-900'
-                >
-                  Lihat Lebih Lanjut <BiChevronDown />
-                </ButtonLink>
               </div>
             </div>
           </div>

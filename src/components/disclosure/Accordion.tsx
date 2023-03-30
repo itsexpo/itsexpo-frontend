@@ -22,7 +22,7 @@ export default function Accordion({
       {({ open }) => (
         <div
           className={clsxm(
-            'p-4 space-y-2 rounded-lg bg-typo-surface',
+            'p-4 space-y-2 rounded-lg bg-typo-surface text-typo-primary',
             className
           )}
         >
@@ -30,7 +30,7 @@ export default function Accordion({
             <Typography
               as='h6'
               variant='b2'
-              className='text-left font-bold md:font-medium text-sm md:text-base text-typo-primary'
+              className='text-left font-bold md:font-medium text-sm md:text-base text-inherit'
             >
               {title}
             </Typography>
