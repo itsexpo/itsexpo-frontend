@@ -3,7 +3,8 @@ import 'aos/dist/aos.css';
 import React from 'react';
 
 import NextImage from '@/components/NextImage';
-function HeroBackground() {
+export const HeroBackground = () => {
+  // function HeroBackground() {
   return (
     <div>
       <NextImage
@@ -42,44 +43,45 @@ function HeroBackground() {
         data-aos='fade-right'
         data-aos-delay='600'
       />
-
-      {/* Hero bottom clouds and mountain */}
-      <div className='absolute flex w-full bottom-0'>
-        <NextImage
-          width={544}
-          height={644}
-          className='relative w-[45%] sm:w-[45%] md:w-[35%] lg:w-[20%]'
-          src='/preevent/hero-bg-left1.png'
-          alt='hero bg left'
-          data-aos='fade-up'
-          data-aos-delay='600'
-        />
-        <NextImage
-          width={805}
-          height={837}
-          className='right-16 md:w-[35%] lg:w-[22%] hidden md:block md:bottom-1/4 lg:bottom-1/3 absolute'
-          src='/preevent/hero-bg-right.png'
-          alt='hero bg right'
-          data-aos='fade-up'
-          data-aos-delay='600'
-        />
-        <NextImage
-          className='bottom-0 md:left-0 w-[180vw] md:w-full hidden md:block absolute'
-          alt='hero pattern'
-          width={2880}
-          height={268}
-          src='/preevent/hero-pattern.png'
-        />
-        <NextImage
-          className='bottom-0 md:left-0 w-full block md:hidden absolute'
-          alt='hero pattern'
-          width={780}
-          height={254}
-          src='/preevent/hero-pattern-mobile.png'
-        />
-      </div>
     </div>
   );
-}
+};
 
-export { HeroBackground };
+export const HeroBackground2 = () => {
+  return (
+    <div>
+      <NextImage
+        width={544}
+        height={644}
+        className='absolute bottom-0 w-[45%] xs:w-[40%] sm:w-[45%] md:w-[30%] lg:w-[20%]'
+        src='/preevent/hero-bg-left1.png'
+        alt='hero bg left'
+        data-aos='fade-up'
+        data-aos-delay='600'
+      />
+      <NextImage
+        width={805}
+        height={837}
+        className='right-16 md:w-[30%] lg:w-[22%] hidden md:block md:bottom-24 lg:bottom-24 absolute'
+        src='/preevent/hero-bg-right.png'
+        alt='hero bg right'
+        data-aos='fade-up'
+        data-aos-delay='600'
+      />
+      <NextImage
+        className='bottom-0 md:left-0 w-[180vw] md:w-full hidden md:block absolute'
+        alt='hero pattern'
+        width={2880}
+        height={268}
+        src='/preevent/hero-pattern.png'
+      />
+      <NextImage
+        className=' absolute bottom-0 md:left-0 w-full block md:hidden'
+        alt='hero pattern'
+        width={780}
+        height={254}
+        src='/preevent/hero-pattern-mobile.png'
+      />
+    </div>
+  );
+};

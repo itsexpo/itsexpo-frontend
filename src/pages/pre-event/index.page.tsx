@@ -13,7 +13,10 @@ import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
-import { HeroBackground } from '@/pages/pre-event/container/HeroBackground';
+import {
+  HeroBackground,
+  HeroBackground2,
+} from '@/pages/pre-event/container/HeroBackground';
 function Preevent() {
   useEffect(() => {
     AOS.init();
@@ -28,53 +31,53 @@ function Preevent() {
         description='Selamat datang di ITS Expo 2023, acara teknologi terbesar di Indonesia yang menghadirkan inovasi dan solusi terbaru untuk dunia bisnis, pendidikan, dan masyarakat umum.'
       />
       <main className='flex flex-col bg-tainted-100 scroll-smooth'>
-        <section id='Hero'>
+        <section id='Hero' className='relative overflow-hidden min-h-screen'>
           <HeroBackground />
-          <div className='relative overflow-hidden min-h-screen'>
-            <div className='justify-center w-fit mx-auto items-center pt-24 z-10 md:pt-32'>
-              <div className='flex-col max-w-lg pt-28 relative flex'>
-                <Typography
-                  variant='h1'
-                  as='h1'
-                  className='font-primary text-center'
-                  data-aos='fade-up'
-                >
-                  Pre event
-                </Typography>
-                <Typography
-                  variant='h6'
-                  className='font-secondary text-center font-semibold text-critical-600'
-                >
-                  ITS Expo 2023
-                </Typography>
-                <Typography
-                  variant='b1'
-                  className='font-secondary text-center text-discolored-500 mt-6'
-                >
-                  Sebuah pengantar sebelum acara puncak yang akan menyajikan
-                  beragam ajang lomba dan acara menarik.
-                </Typography>
-                <div
-                  onClick={() =>
-                    scrollBy({
-                      top:
-                        (aboutRef.current?.getBoundingClientRect()?.top ?? 0) -
-                        100,
-                      behavior: 'smooth',
-                    })
-                  }
-                  className={clsxm(
-                    'mt-10 w-10 h-10 flex mx-auto justify-center items-center rounded-full bg-critical-600 cursor-pointer',
-                    'animate-bounce'
-                  )}
-                  data-aos='fade-up'
-                  data-aos-delay='200'
-                >
-                  <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
-                </div>
+
+          <div className='justify-center w-fit mx-auto items-center pt-24 z-10 md:pt-32'>
+            <div className='flex-col max-w-lg pt-28 relative flex'>
+              <Typography
+                variant='h1'
+                as='h1'
+                className='font-primary text-center'
+                data-aos='fade-up'
+              >
+                Pre event
+              </Typography>
+              <Typography
+                variant='h6'
+                className='font-secondary text-center font-semibold text-critical-600'
+              >
+                ITS Expo 2023
+              </Typography>
+              <Typography
+                variant='b1'
+                className='font-secondary text-center text-discolored-500 mt-6'
+              >
+                Sebuah pengantar sebelum acara puncak yang akan menyajikan
+                beragam ajang lomba dan acara menarik.
+              </Typography>
+              <div
+                onClick={() =>
+                  scrollBy({
+                    top:
+                      (aboutRef.current?.getBoundingClientRect()?.top ?? 0) -
+                      100,
+                    behavior: 'smooth',
+                  })
+                }
+                className={clsxm(
+                  'mt-10 w-10 h-10 flex mx-auto justify-center items-center rounded-full bg-critical-600 cursor-pointer',
+                  'animate-bounce'
+                )}
+                data-aos='fade-up'
+                data-aos-delay='200'
+              >
+                <IoIosArrowDown className='fill-warning-100 w-5 h-5' />
               </div>
             </div>
           </div>
+          <HeroBackground2 />
         </section>
 
         {/* tentang pre event */}
@@ -91,7 +94,7 @@ function Preevent() {
                   alt='ornamen'
                   width={316}
                   height={204}
-                  className='absolute w-1/5 md:w-[12%] md:ml-28'
+                  className='absolute w-1/5 sm:w-[18%] md:w-[12%] md:ml-28 sm:top-1/4 md:top-1/3'
                 />
               </div>
 
@@ -111,7 +114,7 @@ function Preevent() {
                   alt='ornamen'
                   width={316}
                   height={204}
-                  className='absolute w-1/5 md:w-[12%] right-0 md:mr-28'
+                  className='absolute w-1/5 sm:w-[18%] md:w-[12%] right-0 md:mr-28 sm:top-1/4 md:top-1/3'
                 />
               </div>
             </div>
@@ -136,7 +139,7 @@ function Preevent() {
           </div>
 
           {/* jurnalistik */}
-          <div className='layout mt-10'>
+          <div className='layout mt-28'>
             <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className='relative flex flex-col max-w-full'>
                 <Typography
