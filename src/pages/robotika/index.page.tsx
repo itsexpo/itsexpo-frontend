@@ -355,7 +355,7 @@ export default function Home() {
                   variant='yellow'
                   href='/'
                   size='base'
-                  className='w-full mt-4'
+                  className='w-full mt-4 min-h-[25px] md:min-h-[48px]'
                 >
                   Download Guidebook
                 </ButtonLink>
