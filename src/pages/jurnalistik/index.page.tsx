@@ -3,12 +3,12 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 
 import AOS from 'aos';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { IoIosArrowDown } from 'react-icons/io';
 
-import Button from '@/components/buttons/Button';
+import Accordion from '@/components/disclosure/Accordion';
+import ShowMoreAccordion from '@/components/disclosure/ShowMoreAccordion';
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
@@ -17,7 +17,6 @@ import landingTimelineContents from '@/contents/pre-event/jurnalistik/landing-ti
 import { FAQJurnalistikContents } from '@/contents/pre-event/jurnalistik/tampilan-awal';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
-import AccordionJurnalistik from '@/pages/jurnalistik/component/AccordionJurnalistik';
 import {
   AboutBackground,
   AboutPattern,
@@ -38,16 +37,6 @@ export default function Home() {
   }, []);
 
   const aboutRef = React.useRef<HTMLElement>(null);
-
-  const [numFAQ, setNumFAQ] = useState(5);
-
-  const handleShowMore = () => {
-    setNumFAQ(numFAQ + 5);
-  };
-
-  const handleShowLess = () => {
-    setNumFAQ(5);
-  };
 
   return (
     <Layout>
@@ -436,30 +425,44 @@ export default function Home() {
               className='grid grid-cols-1 max-w-[310px] md:max-w-[953px] bg-white rounded-lg p-4 md:p-8 mt-8 mx-auto '
               data-aos='fade-up'
             >
-              <div className='sm:mt-6 flex flex-col'>
-                {FAQJurnalistikContents.slice(0, numFAQ).map((faq, index) => (
-                  <AccordionJurnalistik {...faq} key={index} />
+              <div className='space-y-4'>
+                {FAQJurnalistikContents.slice(0, 5).map((faq, index) => (
+                  <Accordion
+                    key={index}
+                    title={faq.title}
+                    className='bg-tainted-300 text-tainted-900'
+                  >
+                    <Typography
+                      variant='b2'
+                      className='text-tainted-800 text-sm md:text-base'
+                    >
+                      {faq.content}
+                    </Typography>
+                  </Accordion>
                 ))}
-                {numFAQ < FAQJurnalistikContents.length && (
-                  <Button
-                    variant='discolored'
-                    size='large'
-                    className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
-                    onClick={handleShowMore}
-                  >
-                    Lihat Lebih Lanjut <BiChevronDown />
-                  </Button>
-                )}
-                {numFAQ > 5 && (
-                  <Button
-                    variant='discolored'
-                    size='large'
-                    className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
-                    onClick={handleShowLess}
-                  >
-                    Tampilkan Lebih Sedikit <BiChevronUp />
-                  </Button>
-                )}
+
+                <ShowMoreAccordion
+                  openTitle='Tampilkan Lebih Sedikit'
+                  closedTitle='Tampilkan Lebih Banyak'
+                  titleClassName='px-6 py-4 rounded-lg bg-tainted-900 text-tainted-100 fill-tainted-100'
+                >
+                  <div className='space-y-4'>
+                    {FAQJurnalistikContents.slice(5).map((faq, index) => (
+                      <Accordion
+                        key={index}
+                        title={faq.title}
+                        className='bg-tainted-300 text-tainted-900'
+                      >
+                        <Typography
+                          variant='b2'
+                          className='text-tainted-800 text-sm md:text-base'
+                        >
+                          {faq.content}
+                        </Typography>
+                      </Accordion>
+                    ))}
+                  </div>
+                </ShowMoreAccordion>
               </div>
             </div>
           </div>

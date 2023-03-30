@@ -224,7 +224,7 @@ export const FAQKTIContents: FAQKTIData[] = [
   },
   {
     title:
-      'Dimana kita bisa mendapatkan informasi lebih lengkap mengenai tiap perlombaan di journalistic ITS Expo 2023?',
+      'Dimana kita bisa mendapatkan informasi lebih lengkap mengenai tiap perlombaan di Karya Tulis Ilmiah ITS Expo 2023?',
     content:
       'Anda dapat membuka guidebook pada masing-masing kategori lomba di website ITS Expo atau pada link berikut (https://www.expo-its.com/).',
   },

@@ -3,12 +3,12 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 
 import AOS from 'aos';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import { IoIosArrowDown } from 'react-icons/io';
 
-import Button from '@/components/buttons/Button';
+import Accordion from '@/components/disclosure/Accordion';
+import ShowMoreAccordion from '@/components/disclosure/ShowMoreAccordion';
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
 import SEO from '@/components/SEO';
@@ -17,7 +17,6 @@ import landingTimelineKtiContents from '@/contents/pre-event/kti/landing-timelin
 import { FAQKTIContents } from '@/contents/pre-event/kti/tampilan-awal';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
-import AccordionKti from '@/pages/kti/components/AccordionKti';
 import { AboutBackgroundKti } from '@/pages/kti/container/AboutBackgroundKti';
 import { GuideKtiBackground } from '@/pages/kti/container/GuidebookBackgroundKti';
 import { HadiahKtiBackground } from '@/pages/kti/container/HadiahKtiBackground';
@@ -30,16 +29,6 @@ export default function Home() {
   }, []);
 
   const aboutRef = React.useRef<HTMLElement>(null);
-
-  const [numFAQ, setNumFAQ] = useState(5);
-
-  const handleShowMore = () => {
-    setNumFAQ(numFAQ + 5);
-  };
-
-  const handleShowLess = () => {
-    setNumFAQ(5);
-  };
 
   return (
     <Layout>
@@ -496,30 +485,70 @@ export default function Home() {
                 className='p-6 shadow-pendaftaran rounded-xl bg-typo-white max-w-4xl w-full '
                 data-aos='fade-up'
               >
-                <div className='sm:mt-6 flex flex-col'>
-                  {FAQKTIContents.slice(0, numFAQ).map((faq, index) => (
-                    <AccordionKti {...faq} key={index} />
+                <div className='space-y-4'>
+                  {FAQKTIContents.slice(0, 5).map((faq, index) => (
+                    <Accordion
+                      key={index}
+                      title={faq.title}
+                      className='bg-tainted-300 text-tainted-900'
+                    >
+                      <Typography
+                        variant='b2'
+                        className='text-tainted-800 text-sm md:text-base'
+                      >
+                        {faq.content}
+                        {faq.winner_prize?.map((prizes, index) => (
+                          <li
+                            key={index}
+                            className='list-item list-disc ml-4 pb-2 text-tainted-800 text-sm md:text-base'
+                          >
+                            <Typography
+                              variant='b2'
+                              className='text-tainted-800 text-sm md:text-base pl-2'
+                            >
+                              {prizes}
+                            </Typography>
+                          </li>
+                        ))}
+                      </Typography>
+                    </Accordion>
                   ))}
-                  {numFAQ < FAQKTIContents.length && (
-                    <Button
-                      variant='discolored'
-                      size='large'
-                      className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
-                      onClick={handleShowMore}
-                    >
-                      Lihat Lebih Lanjut <BiChevronDown />
-                    </Button>
-                  )}
-                  {numFAQ > 5 && (
-                    <Button
-                      variant='discolored'
-                      size='large'
-                      className='w-full text-tainted-100 text-center text-[10px] md:text-[20px] bg-tainted-900'
-                      onClick={handleShowLess}
-                    >
-                      Tampilkan Lebih Sedikit <BiChevronUp />
-                    </Button>
-                  )}
+
+                  <ShowMoreAccordion
+                    openTitle='Tampilkan Lebih Sedikit'
+                    closedTitle='Tampilkan Lebih Banyak'
+                    titleClassName='px-6 py-4 rounded-lg bg-tainted-900 text-tainted-100 fill-tainted-100'
+                  >
+                    <div className='space-y-4'>
+                      {FAQKTIContents.slice(5).map((faq, index) => (
+                        <Accordion
+                          key={index}
+                          title={faq.title}
+                          className='bg-tainted-300 text-tainted-900'
+                        >
+                          <Typography
+                            variant='b2'
+                            className='text-tainted-800 text-sm md:text-base'
+                          >
+                            {faq.content}
+                            {faq.winner_prize?.map((prizes, index) => (
+                              <li
+                                key={index}
+                                className='list-item list-disc ml-4 pb-2 text-tainted-800 text-sm md:text-base'
+                              >
+                                <Typography
+                                  variant='b2'
+                                  className='text-tainted-800 text-sm md:text-base pl-2'
+                                >
+                                  {prizes}
+                                </Typography>
+                              </li>
+                            ))}
+                          </Typography>
+                        </Accordion>
+                      ))}
+                    </div>
+                  </ShowMoreAccordion>
                 </div>
               </div>
             </div>
