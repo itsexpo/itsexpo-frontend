@@ -17,13 +17,13 @@ import landingTimelineRoboticsContents from '@/contents/pre-event/robotik/landin
 import { FAQRobotikContents } from '@/contents/pre-event/robotik/tampilan-awal';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
-import { AboutBackgroundRobotics } from '@/pages/robotika/container/AboutBackgroundRobotics';
-import { GuidebookBackgroundrobotics } from '@/pages/robotika/container/GuidebookBackgroundrobotics';
-import { HadiahRobotikBackground } from '@/pages/robotika/container/HadiahRobotikBackground';
-import { HeroBackgroundrobotics } from '@/pages/robotika/container/HeroBackgroundrobotics';
-import { Reward1 } from '@/pages/robotika/container/Reward1';
-import { Reward2 } from '@/pages/robotika/container/Reward2';
-import { TimelineBackground } from '@/pages/robotika/container/TimelineBackgroundRobotics';
+import { AboutBackgroundRobotics } from '@/pages/robotics/container/AboutBackgroundRobotics';
+import { GuidebookBackgroundrobotics } from '@/pages/robotics/container/GuidebookBackgroundrobotics';
+import { HadiahRobotikBackground } from '@/pages/robotics/container/HadiahRobotikBackground';
+import { HeroBackgroundrobotics } from '@/pages/robotics/container/HeroBackgroundrobotics';
+import { Reward1 } from '@/pages/robotics/container/Reward1';
+import { Reward2 } from '@/pages/robotics/container/Reward2';
+import { TimelineBackground } from '@/pages/robotics/container/TimelineBackgroundRobotics';
 
 export default function Home() {
   useEffect(() => {
@@ -355,7 +355,7 @@ export default function Home() {
                   variant='yellow'
                   href='/'
                   size='base'
-                  className='w-full mt-4 min-h-[25px] md:min-h-[48px]'
+                  className='w-full mt-4 md:min-h-[48px] font-bold'
                 >
                   Download Guidebook
                 </ButtonLink>
