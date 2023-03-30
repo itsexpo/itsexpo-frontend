@@ -350,7 +350,7 @@ export default function Home() {
                 }
                 onClick={() => setPreEvent(2)}
               >
-                Jurnalistik
+                Journalistic
               </Button>
               <Button
                 variant='green'
@@ -520,7 +520,7 @@ export default function Home() {
                   data-aos-delay='300'
                   className='py-3'
                 >
-                  Jurnalistik
+                  Journalistic
                 </ButtonLink>
                 <ButtonLink
                   href='/coming-soon'

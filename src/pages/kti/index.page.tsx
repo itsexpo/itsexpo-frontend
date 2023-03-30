@@ -105,7 +105,7 @@ export default function Home() {
             alt='pattern illustration'
             width='1440'
             height='163'
-            className='min-w-full absolute -top-6 sm:-top-10 md:-top-14 lg:-top-[3.5rem] xl:-top-[5.5rem] 2xl:-top-[7.5rem]'
+            className='min-w-full absolute -top-5 sm:-top-10 md:-top-14 lg:-top-[3.5rem] xl:-top-[5.5rem] 2xl:-top-[7rem]'
             priority={true}
           />
           <div className='relative w-full'>
@@ -452,7 +452,7 @@ export default function Home() {
                   variant='yellow'
                   href='/'
                   size='base'
-                  className='w-full mt-4'
+                  className='w-full mt-4 min-h-[25px] md:min-h-[48px]'
                 >
                   Download Guidebook
                 </ButtonLink>

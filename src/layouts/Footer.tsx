@@ -89,7 +89,7 @@ export default function Footer() {
                     underline={false}
                     className='font-medium text-sm lg:text-base'
                   >
-                    Jurnalistik
+                    Journalistic
                   </PrimaryLink>
                 </div>
                 <div>

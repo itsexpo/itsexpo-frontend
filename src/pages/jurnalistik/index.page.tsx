@@ -367,7 +367,7 @@ export default function Home() {
                   variant='yellow'
                   href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
                   size='base'
-                  className='w-full mt-4'
+                  className='w-full mt-4 md:min-h-[48px]'
                 >
                   Download Guidebook
                 </ButtonLink>
@@ -413,12 +413,19 @@ export default function Home() {
           />
           <div className='relative layout space-y-2 pt-20'>
             <Typography
-              variant='h1'
-              as='h1'
-              className='font-primary text-center leading-none my-9'
+              variant='h2'
+              className='font-primary my-10 text-center sm:block hidden'
               data-aos='fade-up'
             >
-              Frequently Asked Question
+              frequently asked question
+            </Typography>
+            <Typography
+              variant='h5'
+              className='font-primary my-8 sm:my-16 2xl:my-20 text-center text-[32px] block sm:hidden'
+              data-aos='fade-up'
+            >
+              frequently
+              <br /> asked question
             </Typography>
 
             <div

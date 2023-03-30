@@ -48,7 +48,7 @@ export const GuideKtiBackground = () => {
         alt='guide illustration'
         width='1440'
         height='510'
-        className='min-w-full xl:w-full absolute -bottom-[11rem] xs:-bottom-[12.9rem] sm:-bottom-[21.2rem] md:-bottom-[24rem] lg:-bottom-[25rem] xl:-bottom-[30rem] 2xl:-bottom-[35rem] z-10'
+        className='min-w-full xl:w-full absolute -bottom-[11rem] xs:-bottom-[12.9rem] sm:-bottom-[21.2rem] md:-bottom-[24.50rem] lg:-bottom-[27rem] xl:-bottom-[30rem] 2xl:-bottom-[33rem] z-10'
         priority={true}
       />
     </div>
