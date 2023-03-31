@@ -11,6 +11,7 @@ import Accordion from '@/components/disclosure/Accordion';
 import ShowMoreAccordion from '@/components/disclosure/ShowMoreAccordion';
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
+import PDFFlipBook from '@/components/PdfFlipBook';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
 import landingTimelineContents from '@/contents/pre-event/jurnalistik/landing-timeline';
@@ -40,7 +41,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <SEO title='Jurnalistik' description='This is Jurnalistik page' />
+      <SEO title='Journalistic' description='This is Jurnalistik page' />
       <main className='scroll-smooth bg-tainted-100'>
         {/* Hero Section */}
         <section
@@ -361,17 +362,32 @@ export default function Home() {
                   data-aos='fade-left'
                 />
               </div>
-              <div className='w-full max-w-[47rem] z-50' data-aos='fade-up'>
-                <div className='w-full min-h-[514px] rounded-xl bg-white'></div>
-                <ButtonLink
-                  variant='yellow'
-                  href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
-                  size='base'
-                  className='w-full mt-4 md:min-h-[48px] font-bold'
+              <div className='grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-[72px] '>
+                <div
+                  className='w-full min-w-[294px] lg:w-[25rem] z-50'
+                  data-aos='fade-up'
                 >
-                  Download Guidebook
-                </ButtonLink>
+                  <div className='w-full min-h-[400px] lg:h-[600px] rounded-xl'>
+                    <PDFFlipBook pdfUrl='/pdf/journalistic/blogger.pdf' />
+                  </div>
+                </div>
+                <div
+                  className='w-full min-w-[294px] lg:w-[25rem] z-50'
+                  data-aos='fade-up'
+                >
+                  <div className='w-full min-h-[400px] lg:h-[600px] rounded-xl'>
+                    <PDFFlipBook pdfUrl='/pdf/journalistic/televisi.pdf' />
+                  </div>
+                </div>
               </div>
+              <ButtonLink
+                variant='yellow'
+                href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
+                size='base'
+                className='w-full mt-4 md:min-h-[48px] font-bold md:max-w-2xl max-w-md'
+              >
+                Download Guidebook
+              </ButtonLink>
             </div>
           </div>
         </section>

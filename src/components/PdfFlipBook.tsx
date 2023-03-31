@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import * as React from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import { Document, Page as ReactPdfPage, pdfjs } from 'react-pdf';
+import { Document, Page as ReactPdfPage } from 'react-pdf';
 
 import Loading from '@/components/Loading';
 import api from '@/lib/api';
@@ -9,36 +9,38 @@ import { base64FiletoBlob, ConstructBase64File } from '@/lib/buildFile';
 
 type PdfFlipBookProps = {
   pdfUrl: string;
-  fromServer: boolean;
+  fromServer?: boolean;
 } & React.ComponentPropsWithoutRef<'div'>;
 
 const Page = React.forwardRef<
   HTMLDivElement,
-  { pageNumber: number; page: number }
->(({ pageNumber: number }, ref) => {
-  let width = 315;
-  const _width = window.innerWidth * 0.4;
-  if (_width < 315) {
-    width = 315;
-  } else {
-    width = 400;
-  }
-
+  { pageNumber: number; page: number; isDesktop: boolean }
+>(({ pageNumber: number, isDesktop }, ref) => {
   return (
-    <div ref={ref} className='relative'>
-      <ReactPdfPage pageNumber={number} width={width} />
+    <div ref={ref} className='md:!w-[400px] !w-[290px]'>
+      <ReactPdfPage pageNumber={number} width={isDesktop ? 400 : 276} />
     </div>
   );
 });
-export default function PDFFlipBook({ pdfUrl, fromServer }: PdfFlipBookProps) {
+
+export default function PDFFlipBook({
+  pdfUrl,
+  fromServer = false,
+}: PdfFlipBookProps) {
+  // State
   const [fileData, setfileData] = React.useState<string>();
   const [numPages, setNumPages] = React.useState<number>();
-  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+  const [isDesktop, setIsDesktop] = React.useState<boolean>(false);
+
   const maxPages = React.useRef<number>(1);
+
+  // OnLoadSuccess
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(1);
     maxPages.current = numPages;
   };
+
+  // Callbacks
   const getImageURL = React.useCallback(async ({ url }: { url: string }) => {
     api
       .get(url, {
@@ -52,18 +54,34 @@ export default function PDFFlipBook({ pdfUrl, fromServer }: PdfFlipBookProps) {
       });
   }, []);
 
+  // Effects
   React.useEffect(() => {
     if (pdfUrl) {
       if (fromServer) getImageURL({ url: `/stream_image?path=${pdfUrl}` });
       else setfileData(pdfUrl);
     }
+    if (window.innerWidth > 768) setIsDesktop(true);
   }, [fromServer, getImageURL, pdfUrl]);
+
+  React.useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) setIsDesktop(true);
+      else setIsDesktop(false);
+    });
+
+    return () => {
+      window.removeEventListener('resize', () => {
+        if (window.innerWidth > 768) setIsDesktop(true);
+        else setIsDesktop(false);
+      });
+    };
+  }, []);
 
   return (
     <div>
       <Document
         file={fileData}
-        className='relative overflow-hidden'
+        className='relative flex items-center justify-center overflow-hidden'
         onLoadSuccess={onDocumentLoadSuccess}
         loading={
           <div className='flex justify-center items-center'>
@@ -77,9 +95,9 @@ export default function PDFFlipBook({ pdfUrl, fromServer }: PdfFlipBookProps) {
           size='stretch'
           minWidth={315}
           maxWidth={1000}
-          minHeight={600}
+          minHeight={isDesktop ? 600 : 400}
           maxHeight={1533}
-          className='absolute top-0 left-0 !w-[400px]'
+          className='md:w-[400px] w-[320px]'
           startPage={0}
           drawShadow={false}
           flippingTime={300}
@@ -98,7 +116,14 @@ export default function PDFFlipBook({ pdfUrl, fromServer }: PdfFlipBookProps) {
         >
           {numPages &&
             _.times(maxPages.current, (i) => {
-              return <Page pageNumber={i + 1} key={i} page={numPages} />;
+              return (
+                <Page
+                  pageNumber={i + 1}
+                  key={i}
+                  page={numPages}
+                  isDesktop={isDesktop}
+                />
+              );
             })}
         </HTMLFlipBook>
       </Document>

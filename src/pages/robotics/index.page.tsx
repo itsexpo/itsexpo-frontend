@@ -11,6 +11,7 @@ import Accordion from '@/components/disclosure/Accordion';
 import ShowMoreAccordion from '@/components/disclosure/ShowMoreAccordion';
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
+import PDFFlipBook from '@/components/PdfFlipBook';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
 import landingTimelineRoboticsContents from '@/contents/pre-event/robotik/landing-timeline';
@@ -354,10 +355,12 @@ export default function Home() {
                   className='w-full min-w-[294px] lg:w-[25rem] z-50'
                   data-aos='fade-up'
                 >
-                  <div className='w-full min-h-[388px] lg:h-[550px] rounded-xl bg-white'></div>
+                  <div className='w-full min-h-[400px] lg:h-[600px] rounded-xl'>
+                    <PDFFlipBook pdfUrl='/pdf/robotika/line-tracer.pdf' />
+                  </div>
                   <ButtonLink
                     variant='yellow'
-                    href='http://its.id/m/GuidebookLineTracer'
+                    href='https://its.id/m/GuidebookLineTracer'
                     size='base'
                     className='w-full mt-4 md:min-h-[48px] font-bold'
                   >
@@ -368,10 +371,12 @@ export default function Home() {
                   className='w-full min-w-[294px] lg:w-[25rem] z-50'
                   data-aos='fade-up'
                 >
-                  <div className='w-full min-h-[388px] lg:h-[550px] rounded-xl bg-white'></div>
+                  <div className='w-full min-h-[400px] lg:h-[600px] rounded-xl'>
+                    <PDFFlipBook pdfUrl='/pdf/robotika/open-category.pdf' />
+                  </div>
                   <ButtonLink
                     variant='yellow'
-                    href='http://its.id/m/GuidebookOpenCategory'
+                    href='https://its.id/m/GuidebookOpenCategory'
                     size='base'
                     className='w-full mt-4 md:min-h-[48px] font-bold'
                   >

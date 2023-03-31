@@ -10,6 +10,7 @@ import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import nProgress from 'nprogress';
+import { pdfjs } from 'react-pdf';
 
 import Toast from '@/components/Toast';
 import api from '@/lib/api';
@@ -32,6 +33,7 @@ const queryClient = new QueryClient({
     },
   },
 });
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
