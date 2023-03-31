@@ -349,16 +349,35 @@ export default function Home() {
                   data-aos='fade-left'
                 />
               </div>
-              <div className='w-full max-w-[47rem] z-50' data-aos='fade-up'>
-                <div className='w-full min-h-[514px] rounded-xl bg-white'></div>
-                <ButtonLink
-                  variant='yellow'
-                  href='/'
-                  size='base'
-                  className='w-full mt-4 md:min-h-[48px] font-bold'
+              <div className='grid grid-cols-1 lg:grid-cols-2 gap-y-12 lg:gap-x-[72px] '>
+                <div
+                  className='w-full min-w-[294px] lg:w-[25rem] z-50'
+                  data-aos='fade-up'
                 >
-                  Download Guidebook
-                </ButtonLink>
+                  <div className='w-full min-h-[388px] lg:h-[550px] rounded-xl bg-white'></div>
+                  <ButtonLink
+                    variant='yellow'
+                    href='http://its.id/m/GuidebookLineTracer'
+                    size='base'
+                    className='w-full mt-4 md:min-h-[48px] font-bold'
+                  >
+                    Download Guidebook Line Tracer
+                  </ButtonLink>
+                </div>
+                <div
+                  className='w-full min-w-[294px] lg:w-[25rem] z-50'
+                  data-aos='fade-up'
+                >
+                  <div className='w-full min-h-[388px] lg:h-[550px] rounded-xl bg-white'></div>
+                  <ButtonLink
+                    variant='yellow'
+                    href='http://its.id/m/GuidebookOpenCategory'
+                    size='base'
+                    className='w-full mt-4 md:min-h-[48px] font-bold'
+                  >
+                    Download Guidebook Open Category
+                  </ButtonLink>
+                </div>
               </div>
             </div>
           </div>

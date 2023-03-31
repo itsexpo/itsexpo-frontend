@@ -48,7 +48,7 @@ export const GuidebookBackgroundrobotics = () => {
         alt='guide illustration'
         width='1440'
         height='510'
-        className='min-w-full xl:w-full absolute hidden md:block md:-bottom-[22.25rem] lg:-bottom-[25rem] xl:-bottom-[28rem] 2xl:-bottom-[30rem] z-[1]'
+        className='min-w-full xl:w-full absolute hidden md:block md:-bottom-[22.25rem] lg:-bottom-[25rem] xl:-bottom-[28rem] 2xl:-bottom-[34rem] z-[1]'
         priority={true}
       />
       <NextImage
