@@ -238,7 +238,7 @@ function Preevent() {
                   in Action ini dilaksanakan secara luring.
                 </Typography>
                 <ButtonLink
-                  href='/robotika'
+                  href='/robotics'
                   className='relative md:max-w-[215px] -top-14 md:top-0  mt-10'
                   variant='discolored'
                   size='large'
