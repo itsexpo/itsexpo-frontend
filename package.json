@@ -47,6 +47,7 @@
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "react-image-lightbox": "^5.1.4",
+    "react-pageflip": "^2.0.3",
     "react-pdf": "^6.2.2",
     "request-ip": "^3.3.0",
     "sharp": "^0.31.3",
