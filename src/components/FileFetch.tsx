@@ -5,6 +5,7 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import Modal from '@/components/modal/Modal';
 import PDFViewer from '@/components/PdfViewer';
 import api from '@/lib/api';
+import { base64FiletoBlob, ConstructBase64File } from '@/lib/buildFile';
 
 type FileFetchProps = {
   filePath: string;
@@ -30,33 +31,10 @@ const FileFetch = ({
         responseType: 'arraybuffer',
       })
       .then((res) => {
-        const base64string = Buffer.from(
-          new Uint8Array(res.data).reduce(function (data, byte) {
-            return data + String.fromCharCode(byte);
-          }, ''),
-          'binary'
-        ).toString('base64');
-
-        const contentType = res.headers['content-type'];
-        return {
-          data: `data:${contentType};base64,${base64string}`,
-        };
+        return ConstructBase64File(res);
       })
       .then((res) => {
-        const base64WithoutPrefix = res.data.replace(
-          /^data:application\/pdf;base64,/,
-          ''
-        );
-        const bytes = atob(base64WithoutPrefix);
-        let length = bytes.length;
-        const out = new Uint8Array(length);
-        while (length--) {
-          out[length] = bytes.charCodeAt(length);
-        }
-        const blob = new Blob([out], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-
-        setfileData(url);
+        setfileData(base64FiletoBlob(res));
       });
   }, []);
 
