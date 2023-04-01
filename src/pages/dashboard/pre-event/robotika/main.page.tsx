@@ -8,6 +8,7 @@ import Typography from '@/components/typography/Typography';
 import PengumumanEventCard from '@/container/PengumumanEventCard';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
+import DashboardContactPerson from '@/pages/dashboard/pre-event/components/ContactCard';
 import DataDiriCard from '@/pages/dashboard/pre-event/robotika/components/dashboard/DataDiriCard';
 import TeamCard from '@/pages/dashboard/pre-event/robotika/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
@@ -41,6 +42,7 @@ function DashboardRobotikLineTracer({
           <TeamCard {...data.data} />
           <DataDiriCard data={data.data.personal} />
         </div>
+        <DashboardContactPerson eventCategory='ROBOTIK' contactType='WA' />
       </main>
     </DashboardLayout>
   );

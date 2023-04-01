@@ -8,6 +8,7 @@ import Typography from '@/components/typography/Typography';
 import PengumumanEventCard from '@/container/PengumumanEventCard';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
+import DashboardContactPerson from '@/pages/dashboard/pre-event/components/ContactCard';
 import DataDiriCard from '@/pages/dashboard/pre-event/jurnalistik/components/dashboard/DataDiriCard';
 import TeamCard from '@/pages/dashboard/pre-event/jurnalistik/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
@@ -43,6 +44,10 @@ function DashboardJurnalistik({
           <TeamCard {...data.data} />
           <DataDiriCard data={data.data.personal} />
         </div>
+        <DashboardContactPerson
+          eventCategory={data.data.category_jurnalistik}
+          contactType='LINE'
+        />
       </main>
     </DashboardLayout>
   );

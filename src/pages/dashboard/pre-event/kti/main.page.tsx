@@ -8,6 +8,7 @@ import Typography from '@/components/typography/Typography';
 import PengumumanEventCard from '@/container/PengumumanEventCard';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import api, { setApiContext } from '@/lib/api';
+import DashboardContactPerson from '@/pages/dashboard/pre-event/components/ContactCard';
 import DokumenKTICard from '@/pages/dashboard/pre-event/kti/components/dashboard/DokumenKTICard';
 import TeamCard from '@/pages/dashboard/pre-event/kti/container/TeamCard';
 import { ApiError, ApiReturn } from '@/types/api';
@@ -40,6 +41,7 @@ function DashboardKTI({
           <TeamCard {...data.data} />
           <DokumenKTICard data={data.data} />
         </div>
+        <DashboardContactPerson eventCategory='KTI' contactType='LINEWA' />
       </main>
     </DashboardLayout>
   );
