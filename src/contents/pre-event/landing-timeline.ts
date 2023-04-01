@@ -25,7 +25,7 @@ const landingTimelineContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '2 - 11 Juni 2023',
+    date: '1 - 11 Juni 2023',
     caption: 'Jurnalistic Competition',
   },
   {
