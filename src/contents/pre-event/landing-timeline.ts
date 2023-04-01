@@ -26,7 +26,7 @@ const landingTimelineContents: Timeline[] = [
       height: '66',
     },
     date: '1 - 11 Juni 2023',
-    caption: 'Jurnalistic Competition',
+    caption: 'Journalistic Competition',
   },
   {
     img: {
@@ -36,7 +36,7 @@ const landingTimelineContents: Timeline[] = [
       height: '66',
     },
     date: '2 Juni 2023',
-    caption: 'Robotic Competition',
+    caption: 'Robotics Competition',
   },
   {
     img: {
