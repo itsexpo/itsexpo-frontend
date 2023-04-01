@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import ButtonLink from '@/components/links/ButtonLink';
 import Typography from '@/components/typography/Typography';
 import AnggotaButton from '@/pages/dashboard/pre-event/kti/components/dashboard/AnggotaButton';
 
@@ -18,9 +17,11 @@ type CardProps = {
 } & React.ComponentPropsWithoutRef<'div'>;
 
 export default function TeamCard({
+  // eslint-disable-next-line unused-imports/no-unused-vars
   team_id,
   team_name,
   lead_name,
+  // eslint-disable-next-line unused-imports/no-unused-vars
   payment,
   members,
 }: CardProps) {
@@ -60,7 +61,7 @@ export default function TeamCard({
           </Typography>
         </div>
       </div>
-      <div className='space-y-2'>
+      {/* <div className='space-y-2'>
         <Typography
           as='p'
           variant='caption'
@@ -105,7 +106,7 @@ export default function TeamCard({
             </Typography>
           </div>
         )}
-      </div>
+      </div> */}
       <div className='space-y-4'>
         <Typography as='p' variant='caption' className='text-typo-icon'>
           Anggota Tim
@@ -114,7 +115,7 @@ export default function TeamCard({
           <AnggotaButton key={index} {...member} lead_name={lead_name} />
         ))}
       </div>
-      {payment.payment_status !== 'AWAITING VERIFICATION' &&
+      {/* {payment.payment_status !== 'AWAITING VERIFICATION' &&
         payment.payment_status !== 'SUCCESS' && (
           <div className='flex justify-end'>
             <ButtonLink
@@ -125,7 +126,7 @@ export default function TeamCard({
               Lakukan Pembayaran
             </ButtonLink>
           </div>
-        )}
+        )} */}
     </div>
   );
 }
