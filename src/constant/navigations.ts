@@ -117,7 +117,7 @@ export const navigations: Navigation[] = [
     ],
     children: [
       {
-        name: 'Jurnalistik',
+        name: 'Journalistic',
         href: '/dashboard/admin/data-management/jurnalistik',
         exactMatch: true,
         icon: FiList,
@@ -194,17 +194,20 @@ export const navigations: Navigation[] = [
     href: '#',
     exactMatch: true,
     icon: MdAlarmAdd,
+    permissions: ['dashboard_user'],
   },
   {
     name: 'Gebyar ITS Expo',
     href: '#',
     exactMatch: true,
+    permissions: ['dashboard_user'],
     icon: GiPartyPopper,
   },
   {
     name: 'Info Penting',
     href: '/dashboard/announcement',
     exactMatch: true,
+    permissions: ['dashboard_user'],
     icon: FaBullhorn,
   },
   //! END USER

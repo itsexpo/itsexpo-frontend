@@ -121,7 +121,7 @@ function AdminJurnalistikDashboardPage() {
                 variant='h5'
                 className='font-bold text-typo-primary'
               >
-                Data Management
+                Journalistic
               </Typography>
             </div>
 
