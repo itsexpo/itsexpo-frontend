@@ -384,7 +384,7 @@ export default function Home() {
                 variant='yellow'
                 href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
                 size='base'
-                className='w-full mt-4 md:min-h-[48px] font-bold md:max-w-2xl max-w-md'
+                className='relative z-[99] w-full mt-4 md:min-h-[48px] font-bold md:max-w-2xl max-w-md'
               >
                 Download Guidebook
               </ButtonLink>
