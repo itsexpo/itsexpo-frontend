@@ -1,7 +1,7 @@
 export const PreEventBannerContent = [
   {
-    title: 'Jurnalistik',
-    participant: 'SMA/SMK Sederajat',
+    title: 'Journalistic',
+    participant: 'SMA/SMK/Mahasiswa/Umum ',
     img: '/dashboard/pre-event/user/tampilan-awal/preevent-jurnalistik.png',
     url: '/dashboard/pre-event/jurnalistik',
   },
