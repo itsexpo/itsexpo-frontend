@@ -267,7 +267,7 @@ export default function Home() {
             </div>
           </div>
 
-          <ButtonLink
+          {/* <ButtonLink
             href='/about-us'
             size='large'
             variant='green'
@@ -275,7 +275,7 @@ export default function Home() {
             data-aos='fade-up'
           >
             Lihat Selengkapnya
-          </ButtonLink>
+          </ButtonLink> */}
 
           {/* Timeline Illustration */}
           <TimelineBackground2 />
