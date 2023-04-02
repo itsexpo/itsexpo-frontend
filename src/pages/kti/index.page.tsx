@@ -447,7 +447,7 @@ export default function Home() {
                   data-aos='fade-left'
                 />
               </div>
-              <div className='w-full max-w-[47rem]' data-aos='fade-up'>
+              <div className='w-full max-w-[47rem] z-[2]' data-aos='fade-up'>
                 <div className=''>
                   <PDFFlipBook pdfUrl='/pdf/kti.pdf' />
                 </div>
