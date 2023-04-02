@@ -12,14 +12,14 @@ export const GuideKtiBackground = () => {
           alt='pattern illustration'
           width='541'
           height='908'
-          className='absolute right-0 top-7 md:block hidden'
+          className='absolute right-0 -bottom-36 md:block hidden w-[33%]'
         />
         <NextImage
           src='/kti/guide-right-pattern.png'
           alt='pattern illustration'
           width='541'
           height='908'
-          className='absolute left-0 top-4 md:block hidden'
+          className='absolute left-0 -bottom-36 md:block hidden w-[33%]'
         />
         <NextImage
           src='/kti/guide-mobile-right-flower.png'
@@ -48,7 +48,7 @@ export const GuideKtiBackground = () => {
         alt='guide illustration'
         width='1440'
         height='510'
-        className='min-w-full xl:w-full absolute -bottom-[11rem] xs:-bottom-[12.9rem] sm:-bottom-[21.2rem] md:-bottom-[24.50rem] lg:-bottom-[27rem] xl:-bottom-[30rem] 2xl:-bottom-[33rem] z-10'
+        className='min-w-full xl:w-full absolute -bottom-[11rem] xs:-bottom-[12.9rem] sm:-bottom-[21.2rem] md:-bottom-[24.50rem] lg:-bottom-[27rem] xl:-bottom-[30rem] 2xl:-bottom-[33rem] z-[1]'
         priority={true}
       />
     </div>
