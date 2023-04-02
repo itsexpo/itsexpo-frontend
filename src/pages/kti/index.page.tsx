@@ -11,6 +11,7 @@ import Accordion from '@/components/disclosure/Accordion';
 import ShowMoreAccordion from '@/components/disclosure/ShowMoreAccordion';
 import ButtonLink from '@/components/links/ButtonLink';
 import NextImage from '@/components/NextImage';
+import PDFFlipBook from '@/components/PdfFlipBook';
 import SEO from '@/components/SEO';
 import Typography from '@/components/typography/Typography';
 import landingTimelineKtiContents from '@/contents/pre-event/kti/landing-timeline';
@@ -447,10 +448,12 @@ export default function Home() {
                 />
               </div>
               <div className='w-full max-w-[47rem]' data-aos='fade-up'>
-                <div className='w-full min-h-[514px] rounded-xl bg-white'></div>
+                <div className=''>
+                  <PDFFlipBook pdfUrl='/pdf/kti.pdf' />
+                </div>
                 <ButtonLink
                   variant='yellow'
-                  href='/'
+                  href='https://its.id/m/SPCITSExpo'
                   size='base'
                   className='w-full mt-4 md:min-h-[48px] font-bold'
                 >

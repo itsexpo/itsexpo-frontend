@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Countdown from '@/components/countdown/Countdown';
 import ButtonLink from '@/components/links/ButtonLink';
+import PrimaryLink from '@/components/links/PrimaryLink';
 import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
 
@@ -76,7 +77,7 @@ export default function DeskripsiCard({
               )}
               <ButtonLink
                 variant='discolored'
-                href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
+                href='https://drive.google.com/drive/folders/1Zwwh5P7JW0ZmoNgiAVff5R6Y7AowDhbd'
                 target='_blank'
               >
                 Unduh Guidebook
@@ -111,6 +112,12 @@ export default function DeskripsiCard({
               >
                 Lihat Dashboard
               </ButtonLink>
+              <PrimaryLink
+                className='w-full mt-4'
+                href='https://drive.google.com/drive/folders/1Zwwh5P7JW0ZmoNgiAVff5R6Y7AowDhbd'
+              >
+                Lihat Guidebook
+              </PrimaryLink>
             </div>
           </>
         )}
