@@ -36,19 +36,6 @@ export default function DetailTimCard({
         </Typography>
       </div>
 
-      <div>
-        <Typography as='c' variant='c' className='font-medium text-typo-icon'>
-          Jenis Kegiatan
-        </Typography>
-        <Typography
-          as='h6'
-          variant='h6'
-          className='font-bold text-typo-primary'
-        >
-          Kegiatan KTI
-        </Typography>
-      </div>
-
       <div className='flex justify-between gap-4'>
         <div>
           <Typography as='c' variant='c' className='font-medium text-typo-icon'>
