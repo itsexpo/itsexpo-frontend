@@ -23,12 +23,17 @@ const Page = React.forwardRef<
   );
 });
 
+/**
+ * Shows a flipbook from a PDF file
+ * @param file URL within public folder
+ * @param fromServer Fetch url path from the server
+ */
 export default function PDFFlipBook({
   pdfUrl,
   fromServer = false,
 }: PdfFlipBookProps) {
   // State
-  const [fileData, setfileData] = React.useState<string>();
+  const [fileData, setFileData] = React.useState<string>(pdfUrl);
   const [numPages, setNumPages] = React.useState<number>();
   const [isDesktop, setIsDesktop] = React.useState<boolean>(false);
 
@@ -38,30 +43,25 @@ export default function PDFFlipBook({
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(1);
     maxPages.current = numPages;
+    if (window.innerWidth > 768) setIsDesktop(true);
   };
 
   // Callbacks
   const getImageURL = React.useCallback(async ({ url }: { url: string }) => {
-    api
+    const response = api
       .get(url, {
         responseType: 'arraybuffer',
       })
-      .then((res) => {
-        return ConstructBase64File(res);
-      })
-      .then((res) => {
-        setfileData(base64FiletoBlob(res));
-      });
+      .then((response) => ConstructBase64File(response))
+      .then((response) => setFileData(base64FiletoBlob(response)));
+    return response;
   }, []);
 
-  // Effects
   React.useEffect(() => {
-    if (pdfUrl) {
-      if (fromServer) getImageURL({ url: `/stream_image?path=${pdfUrl}` });
-      else setfileData(pdfUrl);
+    if (fromServer) {
+      getImageURL({ url: `/stream_image?path=${pdfUrl}` });
     }
-    if (window.innerWidth > 768) setIsDesktop(true);
-  }, [fromServer, getImageURL, pdfUrl]);
+  }, [pdfUrl, fromServer, getImageURL]);
 
   React.useEffect(() => {
     window.addEventListener('resize', () => {
@@ -99,12 +99,12 @@ export default function PDFFlipBook({
           maxHeight={1533}
           className='md:w-[400px] w-[320px]'
           startPage={0}
-          drawShadow={false}
-          flippingTime={300}
+          drawShadow={true}
+          flippingTime={800}
           usePortrait={true}
           startZIndex={20}
           autoSize={false}
-          maxShadowOpacity={0}
+          maxShadowOpacity={0.1}
           showCover={false}
           mobileScrollSupport={true}
           clickEventForward={true}
