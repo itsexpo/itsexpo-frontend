@@ -21,6 +21,7 @@ import landingSwiperContents from '@/contents/pre-event/landing-swiper';
 import landingTimelineContents from '@/contents/pre-event/landing-timeline';
 import Layout from '@/layouts/Layout';
 import clsxm from '@/lib/clsxm';
+import ContactPersonModal from '@/pages/landing/component/ContactPersonModal';
 import MainEventCard from '@/pages/landing/component/MainEventCard';
 import PreEventCard from '@/pages/landing/component/PreEventCard';
 import { HeroBackground } from '@/pages/landing/container/HeroBackground';
@@ -486,54 +487,71 @@ export default function Home() {
                 Pre Event
               </Typography>
               <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
-                <ButtonLink
-                  href='#'
-                  variant='discolored'
-                  size='base'
-                  leftIcon={FiGlobe}
-                  leftIconClassName='text-black'
-                  data-aos='fade-up'
-                  data-aos-delay='100'
-                  className='py-3'
-                >
-                  Robot in Action
-                </ButtonLink>
-                <ButtonLink
-                  href='#'
-                  variant='discolored'
-                  size='base'
-                  leftIcon={FiGlobe}
-                  leftIconClassName='text-black'
-                  data-aos='fade-up'
-                  data-aos-delay='200'
-                  className='py-3'
-                >
-                  Karya Tulis Ilmiah
-                </ButtonLink>
-                <ButtonLink
-                  href='#'
-                  variant='discolored'
-                  size='base'
-                  leftIcon={FiGlobe}
-                  leftIconClassName='text-black'
-                  data-aos='fade-up'
-                  data-aos-delay='300'
-                  className='py-3'
-                >
-                  Journalistic
-                </ButtonLink>
-                <ButtonLink
-                  href='/coming-soon'
-                  variant='discolored'
-                  size='base'
-                  leftIcon={FiGlobe}
-                  leftIconClassName='text-black'
-                  data-aos='fade-up'
-                  data-aos-delay='400'
-                  className='py-3'
-                >
-                  Talkshow
-                </ButtonLink>
+                <ContactPersonModal contactType='robot'>
+                  {({ openModal }) => (
+                    <Button
+                      variant='discolored'
+                      size='base'
+                      leftIcon={FiGlobe}
+                      leftIconClassName='text-black'
+                      data-aos='fade-up'
+                      data-aos-delay='100'
+                      className='py-3'
+                      onClick={() => openModal()}
+                    >
+                      Robot in Action
+                    </Button>
+                  )}
+                </ContactPersonModal>
+
+                <ContactPersonModal contactType='kti'>
+                  {({ openModal }) => (
+                    <Button
+                      variant='discolored'
+                      size='base'
+                      leftIcon={FiGlobe}
+                      leftIconClassName='text-black'
+                      data-aos='fade-up'
+                      data-aos-delay='200'
+                      className='py-3'
+                      onClick={() => openModal()}
+                    >
+                      Karya Tulis Ilmiah
+                    </Button>
+                  )}
+                </ContactPersonModal>
+                <ContactPersonModal contactType='journalistic'>
+                  {({ openModal }) => (
+                    <Button
+                      variant='discolored'
+                      size='base'
+                      leftIcon={FiGlobe}
+                      leftIconClassName='text-black'
+                      data-aos='fade-up'
+                      data-aos-delay='300'
+                      className='py-3'
+                      onClick={() => openModal()}
+                    >
+                      Journalistic
+                    </Button>
+                  )}
+                </ContactPersonModal>
+                <ContactPersonModal contactType='coming-soon'>
+                  {({ openModal }) => (
+                    <Button
+                      variant='discolored'
+                      size='base'
+                      leftIcon={FiGlobe}
+                      leftIconClassName='text-black'
+                      data-aos='fade-up'
+                      data-aos-delay='400'
+                      className='py-3'
+                      onClick={() => openModal()}
+                    >
+                      Talkshow
+                    </Button>
+                  )}
+                </ContactPersonModal>
               </div>
             </div>
             <div className='mt-7 flex flex-col items-center justify-center'>
@@ -556,42 +574,54 @@ export default function Home() {
                 main event
               </Typography>
               <div className='flex flex-col space-y-5 w-11/12 md:w-4/5 text-center'>
-                <ButtonLink
-                  href='#'
-                  variant='discolored'
-                  size='base'
-                  leftIcon={FiGlobe}
-                  leftIconClassName='text-black'
-                  data-aos='fade-up'
-                  data-aos-delay='100'
-                  className='py-3'
-                >
-                  Opening ITS EXPO
-                </ButtonLink>
-                <ButtonLink
-                  href='#'
-                  variant='discolored'
-                  size='base'
-                  leftIcon={FiGlobe}
-                  leftIconClassName='text-black'
-                  data-aos='fade-up'
-                  data-aos-delay='200'
-                  className='py-3'
-                >
-                  Exhibition ITS EXPO
-                </ButtonLink>
-                <ButtonLink
-                  href='#'
-                  variant='discolored'
-                  size='base'
-                  leftIcon={FiGlobe}
-                  leftIconClassName='text-black'
-                  data-aos='fade-up'
-                  data-aos-delay='300'
-                  className='py-3'
-                >
-                  Gebyar ITS EXPO
-                </ButtonLink>
+                <ContactPersonModal contactType='coming-soon'>
+                  {({ openModal }) => (
+                    <Button
+                      variant='discolored'
+                      size='base'
+                      leftIcon={FiGlobe}
+                      leftIconClassName='text-black'
+                      data-aos='fade-up'
+                      data-aos-delay='100'
+                      className='py-3'
+                      onClick={() => openModal()}
+                    >
+                      Opening ITS EXPO
+                    </Button>
+                  )}
+                </ContactPersonModal>
+                <ContactPersonModal contactType='coming-soon'>
+                  {({ openModal }) => (
+                    <Button
+                      variant='discolored'
+                      size='base'
+                      leftIcon={FiGlobe}
+                      leftIconClassName='text-black'
+                      data-aos='fade-up'
+                      data-aos-delay='200'
+                      className='py-3'
+                      onClick={() => openModal()}
+                    >
+                      Exhibition ITS EXPO
+                    </Button>
+                  )}
+                </ContactPersonModal>
+                <ContactPersonModal contactType='coming-soon'>
+                  {({ openModal }) => (
+                    <Button
+                      variant='discolored'
+                      size='base'
+                      leftIcon={FiGlobe}
+                      leftIconClassName='text-black'
+                      data-aos='fade-up'
+                      data-aos-delay='300'
+                      className='py-3'
+                      onClick={() => openModal()}
+                    >
+                      Gebyar ITS EXPO
+                    </Button>
+                  )}
+                </ContactPersonModal>
               </div>
             </div>
           </div>
