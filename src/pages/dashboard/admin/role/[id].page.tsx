@@ -46,7 +46,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 function DetailRolePage({
   res,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const { id } = useRouter().query;
+  const { id, name } = useRouter().query;
   const url = `/roles/${id}`;
   const { data: queryData, refetch: refetchData } = useQuery<
     ApiReturn<RoleDetail>
@@ -144,8 +144,8 @@ function DetailRolePage({
     const formData = serialize(data, { indices: true });
     assignPermission(formData);
   };
-  //#endregion  //*=========== OnSubmit ===========
 
+  //#endregion  //*=========== OnSubmit ===========
   return (
     <DashboardLayout>
       <div className='bg-surface-background py-5'>
@@ -162,7 +162,7 @@ function DetailRolePage({
         >
           <section id='user-permission'>
             <Typography variant='h5' className='font-bold pb-4'>
-              User Data
+              {name} Data
             </Typography>
             <Typography variant='b2' className='font-semibold'>
               PERMISSION
@@ -232,7 +232,7 @@ function DetailRolePage({
           </section>
           <section className='pt-10'>
             <Typography variant='b2' className='pb-4 font-semibold'>
-              ASSIGN PERMISSION TO USER
+              ASSIGN PERMISSION TO {name}
             </Typography>
             <FormProvider {...methodsAssign}>
               <form onSubmit={handleSubmitAssign(OnSubmit)}>
