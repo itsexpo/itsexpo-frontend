@@ -78,7 +78,7 @@ function AdminRoles() {
             <IconLink
               variant='green'
               target='_self'
-              href={`role/${info.row.original.id}`}
+              href={`role/${info.row.original.id}?name=${info.row.original.role}`}
               icon={FiEye}
             />
           </div>
@@ -127,7 +127,6 @@ function AdminRoles() {
       .then(() => refetchData());
   }
   //#region  //*=========== Delete Dialog ===========
-
   return (
     <DashboardLayout>
       <section>
