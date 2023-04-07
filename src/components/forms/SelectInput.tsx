@@ -67,7 +67,7 @@ export default function SelectInput({
               ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
               : 'bg-surface-base focus:border-success-500 focus:ring-success-500 border-none',
             'block w-full rounded-md',
-            { 'text-gray-500': value === '' }
+            (value === '' || value === undefined) && 'text-gray-500'
           )}
           aria-describedby={id}
         >

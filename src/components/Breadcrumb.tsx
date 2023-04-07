@@ -44,6 +44,10 @@ const breadcrumbs = {
   '/dashboard/pre-event/kti/main': 'Dashboard',
   '/dashboard/pre-event/kti/pendaftaran': 'Pendaftaran',
   '/dashboard/pre-event/kti/pembayaran': 'Pembayaran',
+
+  // Whana Seni
+  '/dashboard/main-event/wahana-seni': 'Wahana Seni',
+  '/dashboard/main-event/wahana-seni/pendaftaran-3d': 'Pendaftaran',
 };
 type BreadcrumbProps = {
   crumbs: Array<keyof typeof breadcrumbs>;
