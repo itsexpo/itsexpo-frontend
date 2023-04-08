@@ -167,14 +167,14 @@ function DetailRolePage({
             <Typography variant='b2' className='font-semibold'>
               PERMISSION
             </Typography>
-            <div className='flex justify-between flex-col gap-y-4 md:flex-row pt-4'>
-              <div className='rounded-xl grid gap-y-2 md:grid-cols-2 md:gap-x-6 lg:grid-cols-2 xl:grid-cols-3'>
+            <div className='flex justify-between flex-col gap-4 md:flex-row pt-4'>
+              <div className='rounded-xl grid gap-3 md:grid-cols-1 xl:grid-cols-2 w-full'>
                 {queryData?.data.permission.map(({ routes }, index) => (
                   <div
                     key={index}
-                    className='flex items-center gap-x-6 md:gap-x-3 '
+                    className='flex items-center gap-x-6 md:gap-x-3 cols-span-1'
                   >
-                    <BsCheckCircle className='text-green-500' />
+                    <BsCheckCircle className='text-green-500 w-4 flex-none' />
                     <Typography variant='title'>{routes}</Typography>
                   </div>
                 ))}
@@ -221,7 +221,7 @@ function DetailRolePage({
             <Typography variant='b2' className='font-semibold pb-4'>
               ALL ROLES
             </Typography>
-            <div className='grid md:grid-cols-2 gap-y-2 lg:grid-cols-3'>
+            <div className='grid md:grid-cols-2 gap-y-2 '>
               {unselectedRoles.map(({ routes }, index) => (
                 <div className='flex items-center gap-x-6' key={index}>
                   <BsCheckCircle className='text-slate-300' />
@@ -236,7 +236,7 @@ function DetailRolePage({
             </Typography>
             <FormProvider {...methodsAssign}>
               <form onSubmit={handleSubmitAssign(OnSubmit)}>
-                <div className='grid md:grid-cols-2 gap-2 lg:grid-cols-3'>
+                <div className='rounded-xl grid gap-3 md:grid-cols-2 w-full'>
                   {unselectedRoles.map(({ id, routes }) => (
                     <Checkbox key={id} name='id' label={routes} value={id} />
                   ))}
