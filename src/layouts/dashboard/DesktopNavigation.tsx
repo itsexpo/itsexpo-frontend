@@ -27,7 +27,7 @@ export default function DesktopNavigation() {
           className='absolute bottom-0 right-0 w-3/4 z-[-3]'
         />
         <div className='flex items-center justify-center'>
-          <UnstyledLink href='/'>
+          <UnstyledLink href='/dashboard/my'>
             <Logo />
           </UnstyledLink>
         </div>

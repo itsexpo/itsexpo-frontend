@@ -113,7 +113,7 @@ export default function withAuth<T>(
             } else {
               if (routePermission !== 'auth') {
                 showToast(
-                  'Anda tidak memiliki akses ke halaman tersebut',
+                  'Anda belum memiliki akses halaman tersebut. Mohon cek kembali guidebook perlombaan.',
                   WARNING_TOAST
                 );
               }

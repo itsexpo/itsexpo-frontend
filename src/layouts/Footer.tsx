@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AiFillCaretDown } from 'react-icons/ai';
-import { FaInstagram, FaTiktok, FaYoutube } from 'react-icons/fa';
-import { SiLine } from 'react-icons/si';
+import { FaInstagram, FaTiktok, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 import PrimaryLink from '@/components/links/PrimaryLink';
 import NextImage from '@/components/NextImage';
@@ -182,12 +181,15 @@ export default function Footer() {
                 </PrimaryLink>
                 <PrimaryLink
                   variant='discolored'
-                  href='https://www.youtube.com/@ITSEXPO2021'
+                  href='https://www.youtube.com/@ITSEXPO2023'
                 >
                   <FaYoutube className='w-6 md:w-fit' size={28} />
                 </PrimaryLink>
-                <PrimaryLink variant='discolored' href='#'>
-                  <SiLine className='w-6 md:w-fit' size={28} />
+                <PrimaryLink
+                  variant='discolored'
+                  href='https://twitter.com/ITS_EXPO'
+                >
+                  <FaTwitter className='w-6 md:w-fit' size={28} />
                 </PrimaryLink>
               </div>
             </div>
