@@ -45,7 +45,7 @@ export default function Accordion({
           </Disclosure.Button>
 
           <Transition
-            className='transition-all duration-300 overflow-hidden'
+            className='transition-all duration-300 overflow-y-auto overflow-x-hidden'
             enterFrom='opacity-0 max-h-0'
             enterTo='opacity-100 max-h-96'
             leaveFrom='opacity-100 max-h-96'
