@@ -1,6 +1,7 @@
 import NextImage from '@/components/NextImage';
 import { FileWithPreview } from '@/types/dropzone';
 import { PaymentId } from '@/types/entities/pembayaran';
+import { Payment } from '@/types/entities/pre-event/jurnalistik';
 import { ExtractProps } from '@/types/helper';
 
 export interface KTIPendaftaranForm {
@@ -95,11 +96,7 @@ export interface DetailAdminTimKTI {
   twibbon: string;
   abstrak: string;
 
-  payment: {
-    payment_id: string;
-    payment_status: PaymentId;
-    payment_image: string;
-  };
+  payment: Payment;
 
   team_member: Array<{
     name: string;

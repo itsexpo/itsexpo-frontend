@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import * as React from 'react';
 import { get, RegisterOptions, useFormContext } from 'react-hook-form';
 import { IconType } from 'react-icons';
@@ -29,6 +28,7 @@ export type InputProps = {
   hideError?: boolean;
   leftIcon?: IconType;
   rightIcon?: IconType;
+  inputClassName?: string;
   leftIconClassName?: string;
   rightIconClassName?: string;
   /** Manual validation using RHF, it is encouraged to use yup resolver instead */
@@ -45,6 +45,7 @@ export default function Input({
   hideError = false,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
+  inputClassName,
   leftIconClassName,
   rightIconClassName,
   validation,
@@ -70,13 +71,14 @@ export default function Input({
           name={id}
           id={id}
           readOnly={readOnly}
-          className={clsx(
+          className={clsxm(
             readOnly
               ? 'bg-typo-surface focus:ring-0 cursor-not-allowed border-none text-typo-icon'
               : error
               ? 'bg-critical-100 focus:ring-red-500 border-red-500 focus:border-red-500'
               : 'bg-surface-base focus:ring-success-500 border-none focus:border-success-500',
             'block w-full rounded-md',
+            inputClassName,
 
             LeftIcon && 'pl-9',
             RightIcon && 'pr-8'
