@@ -46,7 +46,6 @@ function DetailTimKTI() {
             {queryData && uuid && (
               <BuktiPembayaranCard
                 tim={queryData.data}
-                payment_id={queryData.data.payment.payment_id}
                 onSuccess={refetchData}
                 className='h-fit'
               />

@@ -117,11 +117,7 @@ export interface DetailPendaftarJurnalistik {
 export interface DetailTimJurnalistik {
   team_name: string;
   team_code: string;
-  payment: {
-    payment_id: string;
-    payment_status: PaymentId;
-    payment_image: string;
-  };
+  payment: Payment;
   team_member: Array<{
     name: string;
     ketua: 'KETUA' | 'MEMBER';
@@ -137,4 +133,13 @@ export interface DetailTimJurnalistik {
 export interface JurnalistikVerification {
   pembayaran_id: string;
   status_pembayaran_id: 3 | 1;
+}
+
+export interface Payment {
+  payment_id: PaymentId;
+  payment_status: string;
+  payment_image: string;
+  payment_atas_nama: string;
+  payment_bank: string;
+  payment_harga: number;
 }

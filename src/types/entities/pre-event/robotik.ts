@@ -1,6 +1,7 @@
 import NextImage from '@/components/NextImage';
 import { FileWithPreview } from '@/types/dropzone';
 import { PaymentId } from '@/types/entities/pembayaran';
+import { Payment } from '@/types/entities/pre-event/jurnalistik';
 import { ExtractProps } from '@/types/helper';
 
 export interface RobotikPendaftaranForm {
@@ -83,11 +84,7 @@ export type FAQRobotikData = {
 export interface DetailTimRobotik {
   team_name: string;
   team_code: string;
-  payment: {
-    payment_id: string;
-    payment_status: PaymentId;
-    payment_image: string;
-  };
+  payment: Payment;
   team_member: Array<{
     name: string;
     ketua: 'KETUA' | 'MEMBER';
