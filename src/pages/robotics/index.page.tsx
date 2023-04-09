@@ -25,6 +25,7 @@ import { HeroBackgroundrobotics } from '@/pages/robotics/container/HeroBackgroun
 import { Reward1 } from '@/pages/robotics/container/Reward1';
 import { Reward2 } from '@/pages/robotics/container/Reward2';
 import { TimelineBackground } from '@/pages/robotics/container/TimelineBackgroundRobotics';
+import { VideoBackgroundRobotics } from '@/pages/robotics/container/VideoBackgroundRobotics';
 
 export default function Home() {
   useEffect(() => {
@@ -246,6 +247,67 @@ export default function Home() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Video Section */}
+        <section id='video' className='relative bg-tainted-100'>
+          <div className='relative w-full pt-12 pb-16 md:pb-40'>
+            <VideoBackgroundRobotics />
+            <div className='flex flex-col md:gap-10 gap-4'>
+              <Typography
+                variant='h2'
+                className='font-primary text-center text-[32px] sm:text-5xl'
+                data-aos='fade-up'
+              >
+                line tracer
+              </Typography>
+              <div
+                data-aos='zoom-in'
+                className='z-50 relative mx-auto max-w-[1100px] aspect-video w-[75%]'
+              >
+                <NextImage
+                  alt='video-flower'
+                  width='40'
+                  height='40'
+                  className='absolute -bottom-8 hidden md:block -z-10 left-[30%]'
+                  src='/robotics/video-flower.png'
+                />
+                <iframe
+                  src='https://www.youtube.com/embed/hJrR9mFgtF0'
+                  title='YouTube video player'
+                  className='mx-auto w-full z-10 h-full rounded-2xl'
+                  allow='fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                />
+              </div>
+            </div>
+            <div className='flex flex-col gap-4 md:gap-10 md:pt-20 pt-10'>
+              <Typography
+                variant='h2'
+                className='font-primary text-center text-[32px] sm:text-5xl'
+                data-aos='fade-up'
+              >
+                open category
+              </Typography>
+              <div
+                data-aos='zoom-in'
+                className='mx-auto aspect-video z-50 relative max-w-[1100px] w-[75%]'
+              >
+                <NextImage
+                  alt='video-flower'
+                  width='40'
+                  height='40'
+                  className='absolute -bottom-4 right-64 -z-10 hidden md:block'
+                  src='/robotics/video-flower.png'
+                />
+                <iframe
+                  src='https://www.youtube.com/embed/GnKHHGZbHgY'
+                  title='YouTube video player'
+                  className='mx-auto w-full h-full z-10 rounded-2xl'
+                  allow='fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                />
+              </div>
             </div>
           </div>
         </section>
