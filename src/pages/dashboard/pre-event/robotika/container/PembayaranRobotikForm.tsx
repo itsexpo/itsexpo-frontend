@@ -120,9 +120,9 @@ export default function PembayaranRobotikForm({
             label='Transfer Dari'
             validation={{ required: 'Bank tidak boleh kosong' }}
           >
-            {Object.entries(Bank).map(([key, value]) => (
-              <option key={key} value={value}>
-                {key}
+            {Bank.map((bank) => (
+              <option key={bank.id} value={bank.id}>
+                {bank.name}
               </option>
             ))}
           </SelectInput>

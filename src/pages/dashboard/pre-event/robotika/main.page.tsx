@@ -65,7 +65,7 @@ export const getServerSideProps = async (
     if ((err as AxiosError<ApiError>)?.response?.data?.code === 6060) {
       return {
         redirect: {
-          destination: '/dashboard/pre-event/robotika/join',
+          destination: '/dashboard/pre-event/robotik/join',
           permanent: false,
         },
       };
