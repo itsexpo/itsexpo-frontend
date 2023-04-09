@@ -17,6 +17,10 @@ import useMutationToast from '@/hooks/toast/useMutationToast';
 import Layout from '@/layouts/Layout';
 import api from '@/lib/api';
 import { SignUp } from '@/types/entities/signup';
+import {
+  setResendEmailCookies,
+  validateResendEmailCookies,
+} from '@/utility/resend-email';
 
 export default withAuth(SignupPage, 'auth');
 
@@ -43,7 +47,10 @@ function SignupPage() {
 
   const doCreateUser = (data: SignUp) => {
     createUser(data, {
-      onSuccess: () => setEmail(data.email),
+      onSuccess: () => {
+        setEmail(data.email);
+        setResendEmailCookies();
+      },
       onError: (error) => {
         if (error.response?.data.code == 1022) {
           setEmail(data.email);
@@ -53,7 +60,12 @@ function SignupPage() {
   };
 
   const doResendVerification = (data: string) => {
-    resendVerification(data);
+    if (!validateResendEmailCookies()) return false;
+    resendVerification(data, {
+      onSuccess: () => {
+        setResendEmailCookies();
+      },
+    });
   };
 
   return (

@@ -2,6 +2,7 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
+// Login
 export const getToken = (): string => {
   return cookies.get('@itsexpo/token');
 };
@@ -17,3 +18,4 @@ export const removeToken = () => {
     path: '/',
   });
 };
+// Login
