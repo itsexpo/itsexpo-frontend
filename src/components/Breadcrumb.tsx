@@ -48,6 +48,7 @@ const breadcrumbs = {
   // Whana Seni
   '/dashboard/main-event/wahana-seni': 'Wahana Seni',
   '/dashboard/main-event/wahana-seni/pendaftaran-3d': 'Pendaftaran',
+  '/dashboard/main-event/wahana-seni/pendaftaran-2d': 'Pendaftaran',
 };
 type BreadcrumbProps = {
   crumbs: Array<keyof typeof breadcrumbs>;
