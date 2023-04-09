@@ -16,7 +16,7 @@ export default withAuth(DetailTimRobotik, ['admin_robotik.detail']);
 
 function DetailTimRobotik() {
   const { uuid } = useRouter().query;
-  const url = `/admin/robotika/${uuid}`;
+  const url = `/admin/robotik/${uuid}`;
   const { data: queryData, refetch: refetchData } = useQuery<
     ApiReturn<DetailTimRobotik>
   >([url]);

@@ -82,7 +82,7 @@ export default function PembayaranJurnalistikForm({
     const body = {
       atas_nama: data.atas_nama,
       bukti_pembayaran: data.bukti_pembayaran[0],
-      bank_id: 1,
+      bank_id: data.bank_id,
       jurnalistik_team_id: code as string,
       harga: harga,
     };
@@ -115,13 +115,13 @@ export default function PembayaranJurnalistikForm({
             }}
           />
           <SelectInput
-            id='nama_bank'
+            id='bank_id'
             label='Transfer Dari'
             validation={{ required: 'Bank tidak boleh kosong' }}
           >
-            {Object.entries(Bank).map(([key, value]) => (
-              <option key={key} value={value}>
-                {key}
+            {Bank.map((bank) => (
+              <option key={bank.id} value={bank.id}>
+                {bank.name}
               </option>
             ))}
           </SelectInput>
