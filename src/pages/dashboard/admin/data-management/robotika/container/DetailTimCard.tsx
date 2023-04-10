@@ -63,7 +63,7 @@ export default function DetailTimCard({
         </div>
       </div>
 
-      <StatusPembayaranCard status={tim.payment.payment_status} />
+      <StatusPembayaranCard size='large' status={tim.payment.payment_status} />
 
       <div className='space-y-4'>
         <Typography as='c' variant='c' className='font-medium text-typo-icon'>

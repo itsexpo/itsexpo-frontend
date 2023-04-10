@@ -3,11 +3,10 @@ import * as React from 'react';
 import Countdown from '@/components/countdown/Countdown';
 import ButtonLink from '@/components/links/ButtonLink';
 import PrimaryLink from '@/components/links/PrimaryLink';
-import { TagColor } from '@/components/tag/Tag';
+import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import { CPWahanaSeni } from '@/contents/main-event/wahana-seni/tampilan-awal';
 import clsxm from '@/lib/clsxm';
-import { PaymentText } from '@/types/entities/pembayaran';
 
 type TampilanAwal = {
   isRegister: {
@@ -20,63 +19,18 @@ type TampilanAwal = {
 
 const CONTESTS = ['2d', '3d'] as const;
 
-const statusPembayaran: Record<
-  string,
-  {
-    color: keyof typeof TagColor;
-    background: string;
-    border: string;
-    text: PaymentText;
-    description: string;
-  }
-> = {
-  DEFAULT: {
-    color: 'DEFAULT',
-    background: 'bg-gray-100',
-    border: 'border border-gray-300',
-    text: 'Tidak Diketahui',
-    description: 'Status pembayaran tidak diketahui',
-  },
-  'AWAITING PAYMENT': {
-    color: 'purple',
-    background: 'bg-purple-100',
-    border: 'border border-purple-300',
-    text: 'Menunggu Pembayaran',
-    description:
-      'Mohon melakukan pembayaran supaya pendaftaranmu dapat diverifikasi. Untuk bantuan, peserta dapat menghubungi cp di bawah ini (Line only):',
-  },
-  'AWAITING VERIFICATION': {
-    color: 'warning',
-    background: 'bg-warning-100',
-    border: 'border border-warning-200',
-    text: 'Pendaftaran Sedang Diverifikasi',
-    description:
-      'Mohon menunggu proses verifikasi. Apabila dalam waktu 3x24 jam masih belum terproses, peserta dapat menghubungi cp di bawah ini (Line only):',
-  },
-  REVISI: {
-    color: 'skyblue',
-    background: 'bg-blue-100',
-    border: 'border border-blue-300',
-    text: 'Pendaftaran Perlu Direvisi',
-    description:
-      'Mohon upload ulang bukti pembayaran supaya pendaftaranmu dapat diverifikasi. Untuk bantuan, peserta dapat menghubungi cp di bawah ini (Line only):',
-  },
-  GAGAL: {
-    color: 'danger',
-    background: 'bg-critical-100',
-    border: 'border border-critical-300',
-    text: 'Pendaftaran Tidak Dapat Diverifikasi',
-    description:
-      'Mohon menghubungi cp di bawah ini agar pendaftaranmu dapat terverifikasi (Line only):',
-  },
-  SUCCESS: {
-    color: 'success',
-    background: 'bg-success-100',
-    border: 'border border-success-300',
-    text: 'Pembayaran Berhasil',
-    description:
-      'Pendaftaran peserta telah berhasil. Silakan melihat dashboard dan menunggu event pada timeline',
-  },
+const pembayaranDescription: Record<string, string> = {
+  DEFAULT: 'Status pembayaran tidak diketahui',
+  'AWAITING PAYMENT':
+    'Mohon melakukan pembayaran supaya pendaftaranmu dapat diverifikasi. Untuk bantuan, peserta dapat menghubungi cp di bawah ini (Line only):',
+  'AWAITING VERIFICATION':
+    'Mohon menunggu proses verifikasi. Apabila dalam waktu 3x24 jam masih belum terproses, peserta dapat menghubungi cp di bawah ini (Line only):',
+  REVISI:
+    'Mohon upload ulang bukti pembayaran supaya pendaftaranmu dapat diverifikasi. Untuk bantuan, peserta dapat menghubungi cp di bawah ini (Line only):',
+  GAGAL:
+    'Mohon menghubungi cp di bawah ini agar pendaftaranmu dapat terverifikasi (Line only):',
+  SUCCESS:
+    'Pendaftaran peserta telah berhasil. Silakan melihat dashboard dan menunggu event pada timeline',
 };
 
 // Static
@@ -226,37 +180,13 @@ export default function DeskripsiCard({
             </div>
           </>
         ) : (
-          <div className='space-y-4 w-72'>
-            <div
-              className={clsxm(
-                'w-full rounded-lg flex justify-center items-center text-center p-1.5',
-                statusPembayaran[
-                  main_event.wahana_seni[selectedContest].payment.payment_status
-                ].background,
-                statusPembayaran[
-                  main_event.wahana_seni[selectedContest].payment.payment_status
-                ].border
-              )}
-            >
-              <Typography
-                as='p'
-                variant='c'
-                color={
-                  statusPembayaran[
-                    main_event.wahana_seni[selectedContest].payment
-                      .payment_status
-                  ].color
-                }
-                className='font-semibold'
-              >
-                {
-                  statusPembayaran[
-                    main_event.wahana_seni[selectedContest].payment
-                      .payment_status
-                  ].text
-                }
-              </Typography>
-            </div>
+          <div className='space-y-4 min-w-72 md:w-72'>
+            <StatusPembayaranCard
+              status={
+                main_event.wahana_seni[selectedContest].payment.payment_status
+              }
+              size='small'
+            />
 
             <Typography
               as='p'
@@ -264,9 +194,9 @@ export default function DeskripsiCard({
               className='text-typo-secondary text-justify'
             >
               {
-                statusPembayaran[
+                pembayaranDescription[
                   main_event.wahana_seni[selectedContest].payment.payment_status
-                ].description
+                ]
               }
             </Typography>
 

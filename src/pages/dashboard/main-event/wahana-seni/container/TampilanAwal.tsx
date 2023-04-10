@@ -13,7 +13,7 @@ const user = {
           '3d': false,
         },
         start_date: new Date('2023-04-13'),
-        close_date: new Date('2023-04-29'),
+        close_date: new Date('2023-04-30'),
       },
     },
   ],
