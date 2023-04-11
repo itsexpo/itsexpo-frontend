@@ -40,3 +40,12 @@ export interface WahanaSeniPendaftaranForm {
     ktm: FileWithPreview[];
   }>;
 }
+
+export interface WahanaSeniPendaftaran2D {
+  name: string;
+  nrp: string;
+  departemen_id: number;
+  kontak: string;
+  ktm: FileWithPreview[];
+  bukti_pembayaran: FileWithPreview[];
+}
