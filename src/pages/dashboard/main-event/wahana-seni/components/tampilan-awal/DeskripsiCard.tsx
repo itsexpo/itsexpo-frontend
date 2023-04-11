@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Countdown from '@/components/countdown/Countdown';
 import ButtonLink from '@/components/links/ButtonLink';
-import PrimaryLink from '@/components/links/PrimaryLink';
 import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import { CPWahanaSeni } from '@/contents/main-event/wahana-seni/tampilan-awal';
@@ -214,7 +213,7 @@ export default function DeskripsiCard({
                 {CPWahanaSeni.map((person, index) => (
                   <div
                     className={clsxm(
-                      'border border-typo-outline rounded-md',
+                      'border border-outline-base rounded-md',
                       'px-3 py-2'
                     )}
                     key={index}
@@ -235,13 +234,14 @@ export default function DeskripsiCard({
                 ))}
               </div>
             )}
-            <PrimaryLink
-              className='w-full mt-4'
-              size='small'
-              href='https://drive.google.com/drive/folders/1cAtrcBbxzwdKceifgtDChEt7BCFYSUT_'
+            <ButtonLink
+              variant='outline'
+              href='https://drive.google.com/file/d/1I8RuwhjdO8OPeKK7bYS4GOwbjTO3s7Ly/view'
+              target='_blank'
+              className='w-full'
             >
-              Lihat Guidebook
-            </PrimaryLink>
+              Unduh Guidebook
+            </ButtonLink>
           </div>
         )}
       </div>

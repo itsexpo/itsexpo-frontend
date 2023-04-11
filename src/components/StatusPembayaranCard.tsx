@@ -50,21 +50,25 @@ enum StatusPembayaranCardSize {
 type StatusPembayaranCardProps = {
   status: PaymentId;
   size?: keyof typeof StatusPembayaranCardSize;
+  withHeader?: boolean;
 };
 
 export default function StatusPembayaranCard({
   status,
+  withHeader = false,
   size = 'base',
 }: StatusPembayaranCardProps) {
   return (
     <div className='space-y-2'>
-      <Typography
-        as='p'
-        variant='caption'
-        className='text-typo-icon font-medium'
-      >
-        Status Pembayaran
-      </Typography>
+      {withHeader && (
+        <Typography
+          as='p'
+          variant='caption'
+          className='text-typo-icon font-medium'
+        >
+          Status Pembayaran
+        </Typography>
+      )}
       <div
         className={clsxm(
           'rounded-lg flex justify-center items-center text-center',

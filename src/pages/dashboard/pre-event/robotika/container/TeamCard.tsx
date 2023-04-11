@@ -64,7 +64,7 @@ export default function TeamCard({
           </div>
         </div>
       </div>
-      <StatusPembayaranCard status={payment.status} />
+      <StatusPembayaranCard size='large' status={payment.status} withHeader />
       <div>
         <Typography as='p' variant='caption' className='text-typo-icon'>
           Deskripsi Karya
