@@ -1,6 +1,6 @@
 import { createSelectorHooks } from 'auto-zustand-selectors-hook';
 import produce from 'immer';
-import create from 'zustand';
+import { create } from 'zustand';
 
 import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
 
@@ -10,7 +10,9 @@ type Store2DType = {
     WahanaSeniPendaftaran2D,
     'name' | 'nrp' | 'departemen_id' | 'kontak' | 'ktm'
   >;
-  setBioData: (data: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran'>) => void;
+  setBioData: (
+    data: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'ktm'>
+  ) => void;
   setPaymentData: (
     data: Omit<
       WahanaSeniPendaftaran2D,

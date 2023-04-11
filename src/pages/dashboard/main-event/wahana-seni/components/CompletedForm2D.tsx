@@ -25,7 +25,10 @@ const CompletedForm2D = () => {
           Pendaftaranmu sedang <br />
           diproses oleh panitia!{' '}
         </Typography>
-        <Typography variant='b1' className='font-light text-typo-secondary mt-4 md:mt-6'>
+        <Typography
+          variant='b1'
+          className='font-light text-typo-secondary mt-4 md:mt-6'
+        >
           Mohon menunggu proses verifikasi. Apabila dalam waktu 3x24 jam masih
           belum terproses, peserta dapat menghubungi cp dibawah ini (Line only):
         </Typography>

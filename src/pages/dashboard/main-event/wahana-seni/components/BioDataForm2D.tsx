@@ -5,6 +5,7 @@ import Button from '@/components/buttons/Button';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
+import withAuth from '@/components/hoc/withAuth';
 import use2DStore from '@/store/use2DStore';
 import { FileWithPreview } from '@/types/dropzone';
 import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
@@ -14,26 +15,35 @@ type PembayaranForm2D = {
   nrp: string;
   departemen_id: number;
   kontak: string;
-  ktm: FileWithPreview[];
+  ktm: FileWithPreview;
 };
 
-const BioDataForm2D = ({
+export type Biodata2DForm = Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran'>;
+
+export default withAuth(BioDataForm2D, []);
+
+function BioDataForm2D({
   departemen,
   setStep,
 }: {
   departemen: Array<{ id: number; name: string }>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
-}) => {
+}) {
+  // State
   const bioData = use2DStore.useBioData();
   const setBioData = use2DStore.useSetBioData();
-  const methods = useForm<Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran'>>({
+  // State
+
+  // Form handle
+  const methods = useForm<Biodata2DForm>({
     defaultValues: bioData,
   });
-  const { handleSubmit } = methods;
 
-  const onSubmit = (
-    _data: PembayaranForm2D
-  ) => {
+  const { handleSubmit } = methods;
+  // Form handle
+
+  // Handle Submit
+  const onSubmit = (_data: Biodata2DForm) => {
     const data: PembayaranForm2D = {
       name: _data.name,
       nrp: _data.nrp,
@@ -44,6 +54,7 @@ const BioDataForm2D = ({
     setBioData(data);
     setStep(2);
   };
+  // Handle Submit
 
   return (
     <FormProvider {...methods}>
@@ -87,9 +98,8 @@ const BioDataForm2D = ({
           label='Upload Dokumen Scan KTM/FRS'
           accept={{
             'image/*': ['.jpg', '.jpeg', '.png'],
-            'application/pdf': ['.pdf'],
           }}
-          acceptTypes='JPG / JPEG / PNG / PDF'
+          acceptTypes='JPG / JPEG / PNG'
           validation={{
             required: 'Dokumen Scan KTM/FRS tidak boleh kosong',
           }}
@@ -105,6 +115,4 @@ const BioDataForm2D = ({
       </form>
     </FormProvider>
   );
-};
-
-export default BioDataForm2D;
+}

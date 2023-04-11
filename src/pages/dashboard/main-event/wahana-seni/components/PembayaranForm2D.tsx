@@ -8,6 +8,7 @@ import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
+import { Biodata2DForm } from '@/pages/dashboard/main-event/wahana-seni/components/BioDataForm2D';
 import use2DStore from '@/store/use2DStore';
 import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
 
@@ -29,11 +30,12 @@ const PembayaranForm2D = ({
       })
     );
 
+  // Merge bioData and paymentData
   const finalData = ({
     bioData,
     paymentData,
   }: {
-    bioData: WahanaSeniPendaftaran2D;
+    bioData: Biodata2DForm;
     paymentData: WahanaSeniPendaftaran2D;
   }): WahanaSeniPendaftaran2D => {
     const finalData = {
@@ -42,6 +44,7 @@ const PembayaranForm2D = ({
     };
     return finalData;
   };
+  //
 
   function openWarningSubmit({
     finalData,
@@ -82,28 +85,32 @@ const PembayaranForm2D = ({
             label='Upload Bukti Transfer'
             accept={{
               'image/*': ['.jpg', '.jpeg', '.png'],
-              'application/pdf': ['.pdf'],
             }}
-            acceptTypes='JPG / JPEG / PNG / PDF'
-            helperText={
-              'Format nama file: Nama_Kategori_Pembayaran'
-            }
+            acceptTypes='JPG / JPEG / PNG'
+            helperText={'Format nama file: Nama_Kategori_Pembayaran'}
             validation={{
               required: 'Bukti Transfer tidak boleh kosong',
             }}
           />
-          <Typography variant='c' className='text-typo-secondary text-[11.5px] font-secondary -translate-y-4'>
+          <Typography
+            variant='c'
+            className='text-typo-secondary text-[11.5px] font-secondary -translate-y-4'
+          >
             Contoh : Astridea Hasni_2D_Pembayaran
           </Typography>
-          <Button
-            size='large'
-            variant='green'
-            className='flex ml-auto'
-            type='submit'
-            isLoading={submit2DFormDataIsLoading}
-          >
-            Upload Sekarang
-          </Button>
+          <div className='flex gap-x-2 justify-end'>
+            <Button size='large' variant='red'>
+              Kembali
+            </Button>
+            <Button
+              size='large'
+              variant='green'
+              type='submit'
+              isLoading={submit2DFormDataIsLoading}
+            >
+              Upload Sekarang
+            </Button>
+          </div>
         </form>
       </FormProvider>
     </div>
