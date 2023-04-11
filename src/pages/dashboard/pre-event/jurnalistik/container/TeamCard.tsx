@@ -111,7 +111,11 @@ export default function TeamCard({
           </div>
         </div>
       </div>
-      <StatusPembayaranCard status={status.pembayaran} />
+      <StatusPembayaranCard
+        size='large'
+        status={status.pembayaran}
+        withHeader
+      />
       <div className='space-y-4'>
         <div>
           <Typography as='p' variant='caption' className='text-typo-icon'>
