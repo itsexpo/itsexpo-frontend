@@ -54,6 +54,11 @@ enum PermissionEnum {
   'robotik.store',
   'admin_robotik.index',
   'admin_robotik.detail',
+  // Wahana Seni
+  'wahana_seni.index',
+  'wahana_3d.store',
+  'wahana_2d.store',
+  'admin_wahana_seni.index',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

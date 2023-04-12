@@ -195,6 +195,15 @@ export const navigations: Navigation[] = [
     exactMatch: true,
     icon: MdAlarmAdd,
     permissions: ['dashboard_user'],
+    children: [
+      {
+        name: 'Sayembara Karya Mahasiswa',
+        href: '/dashboard/main-event/wahana-seni',
+        exactMatch: true,
+        icon: BsJournalMedical,
+        permissions: ['wahana_seni.index'],
+      },
+    ],
   },
   {
     name: 'Gebyar ITS Expo',

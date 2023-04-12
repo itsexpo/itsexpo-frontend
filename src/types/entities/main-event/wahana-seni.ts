@@ -30,13 +30,24 @@ export interface FAQWahanaSeniData {
   content: string[];
 }
 
-export interface WahanaSeniPendaftaranForm {
+/** POST main-event/3d */
+export interface WahanaSeniPendaftaran3DForm {
   team_name: string;
+  deskripsi_karya: string;
+
+  // Lead
+  name: string;
+  nrp: string;
+  kontak: string;
+  departemen_id: number;
+  ktm: FileWithPreview[];
+
+  // Member
   team_member: Array<{
     nama: string;
     nrp: string;
-    departemen: number;
-    kontak_aktif: string;
+    departemen_id: number;
+    kontak: string;
     ktm: FileWithPreview[];
   }>;
 }
