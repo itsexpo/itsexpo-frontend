@@ -5,7 +5,7 @@ import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
 import BioDataForm2D from '@/pages/dashboard/main-event/wahana-seni/components/BioDataForm2D';
 import CompletedForm2D from '@/pages/dashboard/main-event/wahana-seni/components/CompletedForm2D';
-import PembayaranForm2D from '@/pages/dashboard/main-event/wahana-seni/components/PembayaranForm2D';
+import PembayaranForm2D from '@/pages/dashboard/main-event/wahana-seni/components/Pembayaran2DForm';
 import TimelineStep from '@/pages/dashboard/main-event/wahana-seni/components/TimelineStep';
 import { ApiReturn } from '@/types/api';
 
@@ -44,7 +44,7 @@ export default function FormPendaftaran3D() {
               <ul className='list-disc'>
                 <li>
                   <Typography variant='b1' className='font-medium'>
-                    Bank Mandiri 1400019841544 a.n. Astridea Hasni Aurelita
+                    Bank Mandiri 1400019841544 a/n Astridea Hasni Aurelita
                   </Typography>
                 </li>
                 <li>
