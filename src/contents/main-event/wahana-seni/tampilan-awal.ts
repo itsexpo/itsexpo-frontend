@@ -45,7 +45,7 @@ export const timelineWahanaSeni: TimelineWahanaSeniData[] = [
       width: '121',
       height: '66',
     },
-    date: '-',
+    date: '20 Mei - 1 Juni 2023',
     caption: 'Seleksi Berkas',
   },
   {
@@ -65,7 +65,7 @@ export const timelineWahanaSeni: TimelineWahanaSeniData[] = [
       width: '121',
       height: '66',
     },
-    date: '-',
+    date: '4 Juni 2023',
     caption: 'Pengumuman Karya Terpilih',
   },
   {
@@ -75,7 +75,7 @@ export const timelineWahanaSeni: TimelineWahanaSeniData[] = [
       width: '121',
       height: '66',
     },
-    date: '-',
+    date: '9 - 10 Juni 2023',
     caption: 'Exhibition ITS EXPO 2023',
   },
 ];
@@ -122,7 +122,7 @@ export const hadiahWahanaSeniContents: HadiahWahanaSeniData[] = [
       height: '160',
     },
     text: 'Karya Favorit',
-    prize: 'Rp?.???.???,-',
+    prize: '',
   },
   {
     img: {
@@ -132,7 +132,7 @@ export const hadiahWahanaSeniContents: HadiahWahanaSeniData[] = [
       height: '160',
     },
     text: 'Runner-Up',
-    prize: 'Rp1.000.000,-',
+    prize: 'Rp500.000,-',
   },
   {
     img: {
@@ -142,7 +142,7 @@ export const hadiahWahanaSeniContents: HadiahWahanaSeniData[] = [
       height: '160',
     },
     text: 'Honorable Mention',
-    prize: 'Rp?.???.???,-',
+    prize: '',
   },
 ];
 

@@ -3,30 +3,29 @@ import FAQCard from '@/pages/dashboard/main-event/wahana-seni/components/tampila
 import HadiahCard from '@/pages/dashboard/main-event/wahana-seni/components/tampilan-awal/HadiahCard';
 import SubContestCard from '@/pages/dashboard/main-event/wahana-seni/components/tampilan-awal/SubContestCard';
 import TimelineCard from '@/pages/dashboard/main-event/wahana-seni/components/tampilan-awal/TimelineCard';
-
-const user = {
-  main_event: [
-    {
-      WahanaSeni: {
-        status: {
-          '2d': true,
-          '3d': false,
-        },
-        start_date: new Date('2023-04-13'),
-        close_date: new Date('2023-04-30'),
-      },
-    },
-  ],
-};
+import useAuthStore from '@/store/useAuthStore';
 
 export default function TampilanAwal() {
+  const user = useAuthStore.useUser();
+
+  const buildWahanSeni = {
+    status: {
+      '2d': user?.main_event[0].Wahana2D.status || false,
+      '3d': user?.main_event[1].Wahana3D.status || false,
+    },
+    start_date: new Date(user?.main_event[0].Wahana2D.start_date || ''),
+    close_date: new Date(user?.main_event[0].Wahana2D.close_date || ''),
+  };
+
   return (
     <div className='flex flex-col gap-y-6'>
-      <DeskripsiCard
-        isRegister={user.main_event[0].WahanaSeni.status}
-        closeDate={user.main_event[0].WahanaSeni.close_date}
-        startDate={user.main_event[0].WahanaSeni.start_date}
-      ></DeskripsiCard>
+      {buildWahanSeni && (
+        <DeskripsiCard
+          isRegister={buildWahanSeni.status}
+          closeDate={buildWahanSeni.close_date}
+          startDate={buildWahanSeni.start_date}
+        />
+      )}
       <TimelineCard />
       <SubContestCard />
       <HadiahCard />

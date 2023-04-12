@@ -1,11 +1,14 @@
+import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
 
 import Countdown from '@/components/countdown/Countdown';
 import ButtonLink from '@/components/links/ButtonLink';
+import Loading from '@/components/Loading';
 import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import { CPWahanaSeni } from '@/contents/main-event/wahana-seni/tampilan-awal';
 import clsxm from '@/lib/clsxm';
+import { WahanaSeniData } from '@/types/entities/main-event/wahana-seni';
 
 type TampilanAwal = {
   isRegister: {
@@ -33,53 +36,6 @@ const pembayaranDescription: Record<string, string> = {
 };
 
 // Static
-const main_event = {
-  wahana_seni: {
-    '2d': {
-      id: '994b32d8-9518-465a-b336-4287abeb381a',
-      nama: 'Testing',
-      nrp: '5025211108',
-      departemen: 'Desain Produk Industri',
-      kontak: 'testing',
-      ktm: 'wahana_2d/ktm/ktm_M2MzOTU4YTMtNTEwMi00MWM3LTkwMzUtNzE0Y2JlOWZlZmM0',
-      status: false,
-      payment: {
-        payment_id: '5a5a7368-ac63-49a2-81c7-b9ec48756a3d',
-        payment_status: 'AWAITING VERIFICATION',
-      },
-    },
-    '3d': {
-      id: 'bb40121f-13a3-4c74-adb8-90155b4deb6d',
-      team_name: 'Testing',
-      team_code: 'WHNSENI_3D_001',
-      deskripsi_karya: 'Testing',
-      payment: {
-        payment_id: 'e16ec672-a802-4404-993b-43190227d78d',
-        payment_status: 'AWAITING PAYMENT',
-      },
-      member: [
-        {
-          name: 'testing',
-          ketua: false,
-          nrp: '5025211108',
-          departemen: 'Desain Produk Industri',
-          kontak: 'testing',
-          ktm_url:
-            'wahana_3d/ktm/ktm_M2MzOTU4YTMtNTEwMi00MWM3LTkwMzUtNzE0Y2JlOWZlZmM0',
-        },
-        {
-          name: 'Testing',
-          ketua: true,
-          nrp: '5025211109',
-          departemen: 'Desain Produk Industri',
-          kontak: 'testing',
-          ktm_url:
-            'wahana_3d/ktm/ktm_M2MzOTU4YTMtNTEwMi00MWM3LTkwMzUtNzE0Y2JlOWZlZmM0',
-        },
-      ],
-    },
-  },
-};
 
 export default function DeskripsiCard({
   isRegister,
@@ -91,6 +47,10 @@ export default function DeskripsiCard({
 
   const isOpen =
     new Date() < new Date(closeDate) && new Date() > new Date(startDate);
+
+  const { data } = useQuery<WahanaSeniData>(['/main-event/wahana_seni']);
+
+  if (!data) return <Loading />;
 
   return (
     <div className='flex flex-col-reverse md:flex-row gap-6 font-secondary'>
@@ -182,7 +142,8 @@ export default function DeskripsiCard({
           <div className='space-y-4 min-w-72 md:w-72'>
             <StatusPembayaranCard
               status={
-                main_event.wahana_seni[selectedContest].payment.payment_status
+                data.main_event.wahana_seni[selectedContest].payment
+                  .payment_status
               }
               size='small'
             />
@@ -194,13 +155,14 @@ export default function DeskripsiCard({
             >
               {
                 pembayaranDescription[
-                  main_event.wahana_seni[selectedContest].payment.payment_status
+                  data.main_event.wahana_seni[selectedContest].payment
+                    .payment_status
                 ]
               }
             </Typography>
 
-            {main_event.wahana_seni[selectedContest].payment.payment_status ===
-            'SUCCESS' ? (
+            {data.main_event.wahana_seni[selectedContest].payment
+              .payment_status === 'SUCCESS' ? (
               <ButtonLink
                 className='w-full'
                 variant='green'

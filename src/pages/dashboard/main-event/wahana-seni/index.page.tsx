@@ -5,7 +5,11 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import clsxm from '@/lib/clsxm';
 import TampilanAwal from '@/pages/dashboard/main-event/wahana-seni/container/TampilanAwal';
 
-export default withAuth(WahanaSeniDashboardPage, [], true);
+export default withAuth(
+  WahanaSeniDashboardPage,
+  ['wahana_seni.index', 'wahana_2d.store', 'wahana_3d.store'],
+  true
+);
 
 function WahanaSeniDashboardPage() {
   return (
