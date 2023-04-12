@@ -5,13 +5,13 @@ import { create } from 'zustand';
 import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
 
 type Store2DType = {
-  bioData: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran'>;
+  bioData: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'bank_id' | 'atas_nama'>;
   paymentData: Omit<
     WahanaSeniPendaftaran2D,
     'name' | 'nrp' | 'departemen_id' | 'kontak' | 'ktm'
   >;
   setBioData: (
-    data: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'ktm'>
+    data: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'bank_id' | 'atas_nama' | 'ktm'>
   ) => void;
   setPaymentData: (
     data: Omit<
@@ -30,6 +30,8 @@ const use2DStoreBase = create<Store2DType>((set) => ({
     ktm: [],
   },
   paymentData: {
+    bank_id: 0,
+    atas_nama: '',
     bukti_pembayaran: [],
   },
 

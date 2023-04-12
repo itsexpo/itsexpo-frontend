@@ -4,19 +4,31 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import Button from '@/components/buttons/Button';
 import DropzoneInput from '@/components/forms/DropzoneInput';
+import Input from '@/components/forms/Input';
+import SelectInput from '@/components/forms/SelectInput';
+import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
+import { Bank } from '@/constant/bank';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
 import { Biodata2DForm } from '@/pages/dashboard/main-event/wahana-seni/components/BioDataForm2D';
 import use2DStore from '@/store/use2DStore';
+import { FileWithPreview } from '@/types/dropzone';
 import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
 
-const PembayaranForm2D = ({
+type RawPembayaranForm2D = {
+  atas_nama: string;
+  bank_id: number;
+  bukti_pembayaran: FileWithPreview[];
+};
+
+export default withAuth(PembayaranForm2D, []);
+function PembayaranForm2D({
   setStep,
 }: {
   setStep: React.Dispatch<React.SetStateAction<number>>;
-}) => {
+}) {
   const bioData = use2DStore.useBioData();
   const methods = useForm<WahanaSeniPendaftaran2D>();
   const dialog = useDialog();
@@ -36,12 +48,15 @@ const PembayaranForm2D = ({
     paymentData,
   }: {
     bioData: Biodata2DForm;
-    paymentData: WahanaSeniPendaftaran2D;
+    paymentData: RawPembayaranForm2D;
   }): WahanaSeniPendaftaran2D => {
     const finalData = {
       ...bioData,
       ...paymentData,
+      ktm: bioData.ktm,
+      bukti_pembayaran: paymentData.bukti_pembayaran,
     };
+    console.log(finalData)
     return finalData;
   };
   //
@@ -64,7 +79,12 @@ const PembayaranForm2D = ({
     });
   }
 
-  const onSubmit = (data: WahanaSeniPendaftaran2D) => {
+  const onSubmit = (_data: WahanaSeniPendaftaran2D) => {
+    const data = {
+      bank_id: Number(_data.bank_id),
+      atas_nama: _data.atas_nama,
+      bukti_pembayaran: _data.bukti_pembayaran[0],
+    };
     openWarningSubmit({ finalData: finalData({ bioData, paymentData: data }) });
   };
 
@@ -80,6 +100,25 @@ const PembayaranForm2D = ({
       </div>
       <FormProvider {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-4 mt-4'>
+          <Input
+            id='atas_nama'
+            label='Atas Nama'
+            placeholder='Atas nama'
+            validation={{
+              required: 'Atas nama tidak boleh kosong',
+            }}
+          />
+          <SelectInput
+            id='bank_id'
+            label='Transfer Dari'
+            validation={{ required: 'Bank tidak boleh kosong' }}
+          >
+            {Bank.map((bank) => (
+              <option key={bank.id} value={bank.id}>
+                {bank.name}
+              </option>
+            ))}
+          </SelectInput>
           <DropzoneInput
             id='bukti_pembayaran'
             label='Upload Bukti Transfer'
@@ -115,6 +154,4 @@ const PembayaranForm2D = ({
       </FormProvider>
     </div>
   );
-};
-
-export default PembayaranForm2D;
+}

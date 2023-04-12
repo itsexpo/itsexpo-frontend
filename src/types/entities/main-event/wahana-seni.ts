@@ -57,6 +57,8 @@ export interface WahanaSeniPendaftaran2D {
   nrp: string;
   departemen_id: number;
   kontak: string;
+  atas_nama: string;
+  bank_id: number;
   ktm: FileWithPreview[];
   bukti_pembayaran: FileWithPreview[];
 }

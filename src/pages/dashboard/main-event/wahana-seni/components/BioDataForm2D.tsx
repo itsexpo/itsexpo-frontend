@@ -10,7 +10,7 @@ import use2DStore from '@/store/use2DStore';
 import { FileWithPreview } from '@/types/dropzone';
 import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
 
-type PembayaranForm2D = {
+type RawBioDataForm2D = {
   name: string;
   nrp: string;
   departemen_id: number;
@@ -18,7 +18,7 @@ type PembayaranForm2D = {
   ktm: FileWithPreview;
 };
 
-export type Biodata2DForm = Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran'>;
+export type Biodata2DForm = Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'bank_id' | 'atas_nama'>;
 
 export default withAuth(BioDataForm2D, []);
 
@@ -44,7 +44,7 @@ function BioDataForm2D({
 
   // Handle Submit
   const onSubmit = (_data: Biodata2DForm) => {
-    const data: PembayaranForm2D = {
+    const data: RawBioDataForm2D = {
       name: _data.name,
       nrp: _data.nrp,
       departemen_id: _data.departemen_id,

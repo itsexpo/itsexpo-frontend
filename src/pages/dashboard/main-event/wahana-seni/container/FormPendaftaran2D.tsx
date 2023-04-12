@@ -44,7 +44,7 @@ export default function FormPendaftaran3D() {
               <ul className='list-disc'>
                 <li>
                   <Typography variant='b1' className='font-medium'>
-                    Bank Mandiri 1400019841544 a.n. Astridea Hasni Aurelita
+                    Bank Mandiri 1400019841544 a/n Astridea Hasni Aurelita
                   </Typography>
                 </li>
                 <li>
