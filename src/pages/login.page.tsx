@@ -43,6 +43,7 @@ function LoginPage() {
         permissions: permissions.routes,
         token: token,
         pre_event: user.data.data.pre_event,
+        main_event: user.data.data.main_event,
       });
 
       return res;

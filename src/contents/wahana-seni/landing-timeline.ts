@@ -35,7 +35,7 @@ const landingTimelineWahanaContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '2 Mei 2040',
+    date: '29 Mei - 1 Juni 2023',
     caption: 'Seleksi Berkas',
   },
   {
@@ -55,7 +55,7 @@ const landingTimelineWahanaContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '13-22 Mei 2040',
+    date: '4 Juni 2023',
     caption: 'Pengumuman Karya Terpilih',
   },
   {
@@ -65,7 +65,7 @@ const landingTimelineWahanaContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '23-27 Mei 2040',
+    date: '9 - 10 Juni 2023',
     caption: 'Exhibition ITS EXPO 2023',
   },
 ];

@@ -65,3 +65,47 @@ export interface WahanaSeniPendaftaran2D {
   kontak: string;
   ktm: FileWithPreview[];
 }
+
+/**
+ * GET main-event/wahana_seni
+ */
+
+export interface WahanaSeniData {
+  main_event: {
+    wahana_seni: {
+      '2d': {
+        id: string;
+        nama: string;
+        nrp: string;
+        departemen: string;
+        kontak: string;
+        ktm: string;
+        status: boolean;
+        payment: {
+          payment_id: string;
+          payment_status: string;
+        };
+      };
+      '3d': {
+        id: string;
+        team_name: string;
+        team_code: string;
+        deskripsi_karya: string;
+        payment: {
+          payment_id: string;
+          payment_status: string;
+        };
+        member: Array<AnggotaWahanaSeni>;
+      };
+    };
+  };
+}
+
+type AnggotaWahanaSeni = {
+  name: string;
+  ketua: boolean;
+  nrp: string;
+  departemen: string;
+  kontak: string;
+  ktm_url: string;
+};

@@ -71,6 +71,7 @@ export default function withAuth<T>(
             token: token,
             permissions: permissions.routes,
             pre_event: res.data.data.pre_event,
+            main_event: res.data.data.main_event,
           });
         } catch (err) {
           removeToken();

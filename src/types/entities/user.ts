@@ -1,3 +1,4 @@
+import { MainEvent } from '@/types/entities/main-event';
 import { PermissionList } from '@/types/entities/permission-list';
 import { PreEvent } from '@/types/entities/pre-event';
 import { Level } from '@/types/entities/role';
@@ -12,6 +13,7 @@ export type User = {
 
   // Pre Event
   pre_event: PreEvent[];
+  main_event: MainEvent[];
 };
 
 export type LoginRespond = {
@@ -25,6 +27,7 @@ export type LoginRespond = {
 
   // Pre Event
   pre_event: PreEvent[];
+  main_event: MainEvent[];
 };
 
 // User page
