@@ -52,13 +52,16 @@ export interface WahanaSeniPendaftaran3DForm {
   }>;
 }
 
+export interface PembayaranWahanaSeniData {
+  bukti_bayar: FileWithPreview[];
+  atas_nama: string;
+  bank_id: number;
+}
+
 export interface WahanaSeniPendaftaran2D {
   name: string;
   nrp: string;
   departemen_id: number;
   kontak: string;
-  atas_nama: string;
-  bank_id: number;
   ktm: FileWithPreview[];
-  bukti_pembayaran: FileWithPreview[];
 }

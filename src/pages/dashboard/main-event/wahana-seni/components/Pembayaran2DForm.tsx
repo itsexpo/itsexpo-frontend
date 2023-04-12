@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { serialize } from 'object-to-formdata';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -12,16 +13,8 @@ import { Bank } from '@/constant/bank';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
-import { Biodata2DForm } from '@/pages/dashboard/main-event/wahana-seni/components/BioDataForm2D';
 import use2DStore from '@/store/use2DStore';
-import { FileWithPreview } from '@/types/dropzone';
-import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
-
-type RawPembayaranForm2D = {
-  atas_nama: string;
-  bank_id: number;
-  bukti_pembayaran: FileWithPreview[];
-};
+import { PembayaranWahanaSeniData } from '@/types/entities/main-event/wahana-seni';
 
 export default withAuth(PembayaranForm2D, []);
 function PembayaranForm2D({
@@ -30,42 +23,28 @@ function PembayaranForm2D({
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const bioData = use2DStore.useBioData();
-  const methods = useForm<WahanaSeniPendaftaran2D>();
+  const payment = use2DStore.usePaymentData();
+  const setPayment = use2DStore.useSetPaymentData();
+
+  const methods = useForm<PembayaranWahanaSeniData>({
+    defaultValues: payment,
+  });
   const dialog = useDialog();
   const { handleSubmit } = methods;
 
   const { mutate: submit2DFormData, isLoading: submit2DFormDataIsLoading } =
-    useMutationToast<void, WahanaSeniPendaftaran2D>(
+    useMutationToast<void, FormData>(
       useMutation((data) => {
-        const res = api.post('/main-event/2d', data);
+        const res = api.post('/main-event/2d', data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
         return res;
       })
     );
 
-  // Merge bioData and paymentData
-  const finalData = ({
-    bioData,
-    paymentData,
-  }: {
-    bioData: Biodata2DForm;
-    paymentData: RawPembayaranForm2D;
-  }): WahanaSeniPendaftaran2D => {
-    const finalData = {
-      ...bioData,
-      ...paymentData,
-      ktm: bioData.ktm,
-      bukti_pembayaran: paymentData.bukti_pembayaran,
-    };
-    console.log(finalData)
-    return finalData;
-  };
-  //
-
-  function openWarningSubmit({
-    finalData,
-  }: {
-    finalData: WahanaSeniPendaftaran2D;
-  }) {
+  function openWarningSubmit({ finalData }: { finalData: FormData }) {
     dialog({
       title: 'Apakah Anda Yakin Data Yang Anda Masukan Sudah Benar!!!',
       description: `Cek Kembali apakah data yang anda masukan sudah benar, jika sudah benar silahkan klik tombol kirim.`,
@@ -79,13 +58,25 @@ function PembayaranForm2D({
     });
   }
 
-  const onSubmit = (_data: WahanaSeniPendaftaran2D) => {
-    const data = {
-      bank_id: Number(_data.bank_id),
+  const onSubmit = (_data: PembayaranWahanaSeniData) => {
+    setPayment(_data);
+
+    const finalData = {
+      nrp: bioData.nrp,
+      name: bioData.name,
+      departemen_id: bioData.departemen_id,
+      kontak: bioData.kontak,
+      ktm: bioData.ktm[0],
+
+      bank_id: _data.bank_id,
       atas_nama: _data.atas_nama,
-      bukti_pembayaran: _data.bukti_pembayaran[0],
+      bukti_bayar: _data.bukti_bayar[0],
     };
-    openWarningSubmit({ finalData: finalData({ bioData, paymentData: data }) });
+    const formdata = serialize(finalData, {
+      indices: true,
+    });
+
+    openWarningSubmit({ finalData: formdata });
   };
 
   return (
@@ -120,7 +111,7 @@ function PembayaranForm2D({
             ))}
           </SelectInput>
           <DropzoneInput
-            id='bukti_pembayaran'
+            id='bukti_bayar'
             label='Upload Bukti Transfer'
             accept={{
               'image/*': ['.jpg', '.jpeg', '.png'],
@@ -138,7 +129,7 @@ function PembayaranForm2D({
             Contoh : Astridea Hasni_2D_Pembayaran
           </Typography>
           <div className='flex gap-x-2 justify-end'>
-            <Button size='large' variant='red'>
+            <Button size='large' variant='red' onClick={() => setStep(1)}>
               Kembali
             </Button>
             <Button

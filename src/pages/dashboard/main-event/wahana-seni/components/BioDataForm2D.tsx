@@ -5,24 +5,15 @@ import Button from '@/components/buttons/Button';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
-import withAuth from '@/components/hoc/withAuth';
 import use2DStore from '@/store/use2DStore';
-import { FileWithPreview } from '@/types/dropzone';
 import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
 
-type RawBioDataForm2D = {
-  name: string;
-  nrp: string;
-  departemen_id: number;
-  kontak: string;
-  ktm: FileWithPreview;
-};
+export type Biodata2DForm = Omit<
+  WahanaSeniPendaftaran2D,
+  'bukti_pembayaran' | 'bank_id' | 'atas_nama'
+>;
 
-export type Biodata2DForm = Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'bank_id' | 'atas_nama'>;
-
-export default withAuth(BioDataForm2D, []);
-
-function BioDataForm2D({
+export default function BioDataForm2D({
   departemen,
   setStep,
 }: {
@@ -43,14 +34,7 @@ function BioDataForm2D({
   // Form handle
 
   // Handle Submit
-  const onSubmit = (_data: Biodata2DForm) => {
-    const data: RawBioDataForm2D = {
-      name: _data.name,
-      nrp: _data.nrp,
-      departemen_id: _data.departemen_id,
-      kontak: _data.kontak,
-      ktm: _data.ktm[0],
-    };
+  const onSubmit = (data: Biodata2DForm) => {
     setBioData(data);
     setStep(2);
   };

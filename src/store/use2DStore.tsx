@@ -2,23 +2,16 @@ import { createSelectorHooks } from 'auto-zustand-selectors-hook';
 import produce from 'immer';
 import { create } from 'zustand';
 
-import { WahanaSeniPendaftaran2D } from '@/types/entities/main-event/wahana-seni';
+import {
+  PembayaranWahanaSeniData,
+  WahanaSeniPendaftaran2D,
+} from '@/types/entities/main-event/wahana-seni';
 
 type Store2DType = {
-  bioData: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'bank_id' | 'atas_nama'>;
-  paymentData: Omit<
-    WahanaSeniPendaftaran2D,
-    'name' | 'nrp' | 'departemen_id' | 'kontak' | 'ktm'
-  >;
-  setBioData: (
-    data: Omit<WahanaSeniPendaftaran2D, 'bukti_pembayaran' | 'bank_id' | 'atas_nama' | 'ktm'>
-  ) => void;
-  setPaymentData: (
-    data: Omit<
-      WahanaSeniPendaftaran2D,
-      'name' | 'nrp' | 'departemen_id' | 'kontak' | 'ktm'
-    >
-  ) => void;
+  bioData: WahanaSeniPendaftaran2D;
+  paymentData: PembayaranWahanaSeniData;
+  setBioData: (data: WahanaSeniPendaftaran2D) => void;
+  setPaymentData: (data: PembayaranWahanaSeniData) => void;
 };
 
 const use2DStoreBase = create<Store2DType>((set) => ({
@@ -32,7 +25,7 @@ const use2DStoreBase = create<Store2DType>((set) => ({
   paymentData: {
     bank_id: 0,
     atas_nama: '',
-    bukti_pembayaran: [],
+    bukti_bayar: [],
   },
 
   setBioData: (data) =>

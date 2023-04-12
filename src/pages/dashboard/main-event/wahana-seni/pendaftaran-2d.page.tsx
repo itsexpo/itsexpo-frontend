@@ -1,11 +1,12 @@
 import * as React from 'react';
 
 import Breadcrumb from '@/components/Breadcrumb';
+import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import FormPendaftaran2D from '@/pages/dashboard/main-event/wahana-seni/container/FormPendaftaran2D';
+import FormPendaftaran2D from '@/pages/dashboard/main-event/wahana-seni/container/Pendaftaran2DForm';
 
-export default PendaftaranWahanaSeni3DPage;
+export default withAuth(PendaftaranWahanaSeni3DPage, ['wahana_2d.store']);
 
 function PendaftaranWahanaSeni3DPage() {
   return (

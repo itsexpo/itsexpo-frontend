@@ -5,7 +5,7 @@ import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
 import BioDataForm2D from '@/pages/dashboard/main-event/wahana-seni/components/BioDataForm2D';
 import CompletedForm2D from '@/pages/dashboard/main-event/wahana-seni/components/CompletedForm2D';
-import PembayaranForm2D from '@/pages/dashboard/main-event/wahana-seni/components/PembayaranForm2D';
+import PembayaranForm2D from '@/pages/dashboard/main-event/wahana-seni/components/Pembayaran2DForm';
 import TimelineStep from '@/pages/dashboard/main-event/wahana-seni/components/TimelineStep';
 import { ApiReturn } from '@/types/api';
 
