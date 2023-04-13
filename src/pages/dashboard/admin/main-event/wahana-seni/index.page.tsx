@@ -112,7 +112,7 @@ function AdminWahanaSeniDashboardPage() {
                 variant='basic'
                 onClick={() => setKaryaSeni(0)}
                 className={clsx([
-                  karyaSeni === 0 && 'border border-outline-base bg-white',
+                  karyaSeni === 0 && 'border shadow-sm bg-white',
                   'w-full text-typo-primary hover:bg-white font-secondary',
                 ])}
               >
@@ -122,7 +122,7 @@ function AdminWahanaSeniDashboardPage() {
                 variant='basic'
                 onClick={() => setKaryaSeni(1)}
                 className={clsx([
-                  karyaSeni === 1 && 'border border-outline-base bg-white',
+                  karyaSeni === 1 && 'border shadow-sm bg-white',
                   ' w-full text-typo-primary hover:bg-white font-secondary',
                 ])}
               >
@@ -133,20 +133,20 @@ function AdminWahanaSeniDashboardPage() {
               <Typography variant='b1' className='font-medium text-success-600'>
                 ITS EXPO 2023
               </Typography>
-              <div className='flex justify-between items-center'>
+              <div className='flex justify-between md:flex-row flex-col items-center'>
                 <Typography
                   as='h5'
                   variant='h5'
-                  className='font-bold text-typo-primary'
+                  className='font-bold text-typo-primary mr-auto'
                 >
                   {karyaSeni === 0 ? 'Karya Seni 2D' : 'Karya Seni 3D'}
                 </Typography>
-                <div className='flex gap-x-4'>
+                <div className='flex gap-x-4 w-full md:w-[405px]'>
                   <Button
                     variant='outline'
                     leftIcon={BsFileSpreadsheet}
                     leftIconClassName='text-typo-secondary'
-                    className='bg-white'
+                    className='bg-white w-1/2'
                   >
                     Download as Excel
                   </Button>
@@ -154,7 +154,7 @@ function AdminWahanaSeniDashboardPage() {
                     variant='outline'
                     leftIconClassName='text-typo-secondary'
                     leftIcon={BiFileBlank}
-                    className='bg-white '
+                    className='bg-white w-1/2'
                   >
                     Download as PDF
                   </Button>

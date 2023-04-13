@@ -108,7 +108,7 @@ export type AnggotaWahanaSeni = {
   departemen: string;
   kontak: string;
   ktm_url: string;
-}
+};
 
 export type AdminWahanaSeniColumn = {
   name: string;
