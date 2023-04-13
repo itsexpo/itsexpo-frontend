@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
 import * as React from 'react';
-import { BiChevronDown } from 'react-icons/bi';
+import { BiChevronDown, BiChevronRight } from 'react-icons/bi';
 import { FaTimes } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
@@ -17,7 +17,11 @@ const links = [
     children: [
       { href: '/pre-event', label: 'Pre Event' },
       { href: '/coming-soon', label: 'Opening' },
-      { href: '/coming-soon', label: 'Main Event' },
+      {
+        href: '/coming-soon',
+        label: 'Main Event',
+        children: [{ href: '/coming-soon', label: 'Wahana Seni' }],
+      },
       { href: '/coming-soon', label: 'Gebyar ITS EXPO' },
     ],
   },
@@ -95,27 +99,70 @@ export default function Navbar() {
                       leaveFrom='transform opacity-100 scale-100'
                       leaveTo='transform opacity-0 scale-95'
                     >
-                      <Menu.Items className='absolute w-max bg-tainted-200 rounded-b-md p-2 mt-2 -translate-x-5'>
-                        {children.map(({ href, label }) => (
-                          <Menu.Item
-                            key={`${href}${label}`}
-                            as='a'
-                            className='py-2 text-discolored-1000 font-medium'
-                          >
-                            {({ active }) => (
-                              <UnstyledLink
-                                href={href}
-                                className={`${
-                                  active
-                                    ? 'bg-tainted-400 text-typo'
-                                    : 'text-discolored-1000'
-                                } group flex w-full items-center rounded-md px-2 py-2 text-sm  mt-1`}
+                      <Menu.Items className='absolute w-max bg-tainted-200 rounded-b-md py-2 mt-2 -translate-x-5'>
+                        {children.map(({ href, label, children }) => {
+                          if (children) {
+                            return (
+                              <Menu.Item
+                                key={`${href}${label}`}
+                                as='div'
+                                className='py-2 text-discolored-1000 font-medium group px-0'
                               >
-                                {label}
-                              </UnstyledLink>
-                            )}
-                          </Menu.Item>
-                        ))}
+                                <Menu.Button className='group-hover:text-discolored-500 flex items-center gap-1 text-discolored-1000 font-medium transition duration-200'>
+                                  <div className='px-2'>
+                                    <UnstyledLink
+                                      href={href}
+                                      className={`flex w-full items-center rounded-md px-2 py-2 text-sm mt-1`}
+                                    >
+                                      {label} <BiChevronRight size={18} />
+                                    </UnstyledLink>
+                                  </div>
+                                </Menu.Button>
+                                <Menu.Items className='absolute w-max bg-tainted-300 rounded-md p-1 mt-2 -translate-x-[7.5rem]  md:-translate-x-[7.4rem] -translate-y-12 hidden group-hover:block'>
+                                  {children.map(({ href, label }) => {
+                                    return (
+                                      <Menu.Item
+                                        key={`${href}${label}`}
+                                        as='a'
+                                        className='font-medium'
+                                      >
+                                        <UnstyledLink
+                                          href={href}
+                                          className={`group flex w-full items-center rounded-md px-2 py-2 text-sm  text-discolored-1000 hover:bg-tainted-400 hover:text-typo`}
+                                        >
+                                          {label}
+                                        </UnstyledLink>
+                                      </Menu.Item>
+                                    );
+                                  })}
+                                </Menu.Items>
+                              </Menu.Item>
+                            );
+                          } else {
+                            return (
+                              <Menu.Item
+                                key={`${href}${label}`}
+                                as='a'
+                                className='font-medium'
+                              >
+                                {({ active }) => (
+                                  <div className='px-2'>
+                                    <UnstyledLink
+                                      href={href}
+                                      className={`${
+                                        active
+                                          ? 'bg-tainted-400 text-typo'
+                                          : 'text-discolored-1000'
+                                      } group flex w-full items-center rounded-md px-2 py-2 text-sm  mt-1`}
+                                    >
+                                      {label}
+                                    </UnstyledLink>
+                                  </div>
+                                )}
+                              </Menu.Item>
+                            );
+                          }
+                        })}
                       </Menu.Items>
                     </Transition>
                   </Menu>
