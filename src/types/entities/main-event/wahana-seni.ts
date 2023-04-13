@@ -108,4 +108,27 @@ export type AnggotaWahanaSeni = {
   departemen: string;
   kontak: string;
   ktm_url: string;
+}
+
+export type AdminWahanaSeniColumn = {
+  name: string;
+  id_tim: string;
+  created_at: string;
+  status_pembayaran:
+    | 'REVISI'
+    | 'GAGAL'
+    | 'SUCCESS'
+    | 'AWAITING VERIFICATION'
+    | 'AWAITING PAYMENT';
+};
+
+export type WahanaSeniDataRecapType = {
+  total_tim?: number;
+  pembayaran?: {
+    revisi: number;
+    gagal: number;
+    success: number;
+    awaiting_verification: number;
+    awaiting_payment: number;
+  };
 };

@@ -139,6 +139,21 @@ export const navigations: Navigation[] = [
       },
     ],
   },
+  {
+    name: 'Main Event',
+    href: '#',
+    icon: FiDatabase,
+    permissions: ['admin_kti.index'],
+    children: [
+      {
+        name: 'Sayembara',
+        href: '/dashboard/admin/main-event/sayembara',
+        exactMatch: true,
+        icon: FiList,
+        permissions: [],
+      },
+    ],
+  },
   //! END ADMIN
 
   //! USER
