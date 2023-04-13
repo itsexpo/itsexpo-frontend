@@ -23,9 +23,9 @@ type Pengumuman = {
 };
 
 export default function PengumumanEventCard({ id }: PengumumanEventCardProps) {
-  const { data: pengumumanData } = useQuery<ApiReturn<Pengumuman[]>>([
-    `/pengumuman?event_id=${id}`,
-  ]);
+  const { data: pengumumanData, isLoading } = useQuery<ApiReturn<Pengumuman[]>>(
+    [`/pengumuman?event_id=${id}`]
+  );
 
   return (
     <div
@@ -44,6 +44,11 @@ export default function PengumumanEventCard({ id }: PengumumanEventCardProps) {
             : 'grid-cols-1'
         )}
       >
+        {isLoading && (
+          <Typography as='p' variant='p' className='text-typo-primary'>
+            Memuat...
+          </Typography>
+        )}
         {pengumumanData && pengumumanData.data.length > 0 ? (
           pengumumanData.data.map(
             ({ title, description, created_at, updated_at }, index) => (

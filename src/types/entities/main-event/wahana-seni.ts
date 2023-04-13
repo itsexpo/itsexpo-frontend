@@ -101,7 +101,7 @@ export interface WahanaSeniData {
   };
 }
 
-type AnggotaWahanaSeni = {
+export type AnggotaWahanaSeni = {
   name: string;
   ketua: boolean;
   nrp: string;
