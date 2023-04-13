@@ -8,6 +8,7 @@ import {
   CpKTI,
   CpRobotik,
   CpTalkshow,
+  CpWahanaSeni,
 } from '@/contents/dashboard/ContactPerson';
 
 type DashboardContactPersonProps = {
@@ -36,6 +37,9 @@ const DashboardContactPerson = ({
       break;
     case 'TALKSHOW':
       eventCp = CpTalkshow;
+      break;
+    case 'WAHANA_SENI':
+      eventCp = CpWahanaSeni;
       break;
     default:
       eventCp = CpJurnalisticBlogger;

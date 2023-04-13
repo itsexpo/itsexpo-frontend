@@ -86,7 +86,7 @@ export default function Anggota3DArrayField({
         </div>
       ))}
       <div className='flex justify-end gap-6'>
-        {fields.length < 3 && (
+        {fields.length < 2 && (
           <Button
             variant='outline'
             leftIcon={AiOutlinePlus}

@@ -68,10 +68,24 @@ const CpTalkshow = [
   },
 ];
 
+const CpWahanaSeni = [
+  {
+    name: 'Vika',
+    contact: 'vikaputri353',
+    contactMedia: 'LINE',
+  },
+  {
+    name: 'Zuma',
+    contact: 'miftahazuma_',
+    contactMedia: 'LINE',
+  },
+];
+
 export {
   CpJurnalisticBlogger,
   CpJurnalisticTelevisi,
   CpKTI,
   CpRobotik,
   CpTalkshow,
+  CpWahanaSeni,
 };

@@ -8,6 +8,7 @@ import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import { CPWahanaSeni } from '@/contents/main-event/wahana-seni/tampilan-awal';
 import clsxm from '@/lib/clsxm';
+import { ApiReturn } from '@/types/api';
 import { WahanaSeniData } from '@/types/entities/main-event/wahana-seni';
 
 type TampilanAwal = {
@@ -48,7 +49,9 @@ export default function DeskripsiCard({
   const isOpen =
     new Date() < new Date(closeDate) && new Date() > new Date(startDate);
 
-  const { data } = useQuery<WahanaSeniData>(['/main-event/wahana_seni']);
+  const { data } = useQuery<ApiReturn<WahanaSeniData>>([
+    'main-event/wahana_seni',
+  ]);
 
   if (!data) return <Loading />;
 
@@ -142,8 +145,10 @@ export default function DeskripsiCard({
           <div className='space-y-4 min-w-72 md:w-72'>
             <StatusPembayaranCard
               status={
-                data.main_event.wahana_seni[selectedContest].payment
-                  .payment_status
+                data.data.main_event.wahana_seni[selectedContest]
+                  ? data.data.main_event.wahana_seni[selectedContest].payment
+                      .payment_status
+                  : 'AWAITING PAYMENT'
               }
               size='small'
             />
@@ -155,18 +160,20 @@ export default function DeskripsiCard({
             >
               {
                 pembayaranDescription[
-                  data.main_event.wahana_seni[selectedContest].payment
-                    .payment_status
+                  data.data.main_event.wahana_seni[selectedContest]
+                    ? data.data.main_event.wahana_seni[selectedContest].payment
+                        .payment_status
+                    : 'AWAITING PAYMENT'
                 ]
               }
             </Typography>
 
-            {data.main_event.wahana_seni[selectedContest].payment
+            {data.data.main_event.wahana_seni[selectedContest].payment
               .payment_status === 'SUCCESS' ? (
               <ButtonLink
                 className='w-full'
                 variant='green'
-                href='/dashboard/main-event/wahana-seni/main'
+                href={`/dashboard/main-event/wahana-seni/main?contest=${selectedContest}`}
               >
                 Lihat Dashboard
               </ButtonLink>

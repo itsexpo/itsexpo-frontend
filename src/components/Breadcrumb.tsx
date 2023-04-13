@@ -47,6 +47,7 @@ const breadcrumbs = {
 
   // Whana Seni
   '/dashboard/main-event/wahana-seni': 'Wahana Seni',
+  '/dashboard/main-event/wahana-seni/main': 'Dashboard',
   '/dashboard/main-event/wahana-seni/pendaftaran-3d': 'Pendaftaran',
   '/dashboard/main-event/wahana-seni/pendaftaran-2d': 'Pendaftaran',
 };
