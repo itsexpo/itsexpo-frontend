@@ -143,14 +143,14 @@ export const navigations: Navigation[] = [
     name: 'Main Event',
     href: '#',
     icon: FiDatabase,
-    permissions: ['admin_kti.index'],
+    permissions: ['admin_wahana_seni.index'],
     children: [
       {
-        name: 'Sayembara',
-        href: '/dashboard/admin/main-event/sayembara',
+        name: 'Wahana Seni',
+        href: '/dashboard/admin/main-event/wahana-seni',
         exactMatch: true,
         icon: FiList,
-        permissions: [],
+        permissions: ['admin_wahana_seni.index'],
       },
     ],
   },
