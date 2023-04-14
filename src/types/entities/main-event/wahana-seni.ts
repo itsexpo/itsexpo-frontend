@@ -128,3 +128,9 @@ export type WahanaSeniDataRecapType = {
     awaiting_payment: number;
   };
 };
+
+export type PengumpulanKaryaData = {
+  upload_karya: FileWithPreview[];
+  deskripsi: FileWithPreview[];
+  form_keaslian: FileWithPreview[];
+};
