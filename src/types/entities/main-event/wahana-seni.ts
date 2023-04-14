@@ -1,5 +1,6 @@
 import NextImage from '@/components/NextImage';
 import { FileWithPreview } from '@/types/dropzone';
+import { PaymentId } from '@/types/entities/pembayaran';
 import { ExtractProps } from '@/types/helper';
 
 export interface CPWahanaSeniData {
@@ -114,12 +115,7 @@ export type AdminWahanaSeniColumn = {
   name: string;
   id_tim: string;
   created_at: string;
-  status_pembayaran:
-    | 'REVISI'
-    | 'GAGAL'
-    | 'SUCCESS'
-    | 'AWAITING VERIFICATION'
-    | 'AWAITING PAYMENT';
+  status_pembayaran: PaymentId;
 };
 
 export type WahanaSeniDataRecapType = {

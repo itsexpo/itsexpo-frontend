@@ -1,106 +1,18 @@
-import { useQuery } from '@tanstack/react-query';
-import { ColumnDef } from '@tanstack/react-table';
 import clsx from 'clsx';
-import { format } from 'date-fns';
-import { useRouter } from 'next/router';
 import * as React from 'react';
 import { BiFileBlank } from 'react-icons/bi';
 import { BsFileSpreadsheet } from 'react-icons/bs';
 
 import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
-import WahanaSeniFilterPopup from '@/components/shared/PembayaranFilterPopup';
-import ServerTable from '@/components/table/ServerTable';
-import PaymentTag from '@/components/tag/PaymentTag';
 import Typography from '@/components/typography/Typography';
-import useServerTable from '@/hooks/useServerTable';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import { buildPaginatedTableURL } from '@/lib/table';
-import { PaginatedApiResponse } from '@/types/api';
-import {
-  AdminWahanaSeniColumn,
-  WahanaSeniDataRecapType,
-} from '@/types/entities/main-event/wahana-seni';
-
-import { WahanaSeniDataRecap } from '../components/WahanaSeniDataRecap';
+import { TableWahanaSeni } from '@/pages/dashboard/admin/main-event/wahana-seni/components/TableWahanaSeni';
 
 export default withAuth(AdminWahanaSeniDashboardPage, []);
 
 function AdminWahanaSeniDashboardPage() {
-  const router = useRouter();
   const [karyaSeni, setKaryaSeni] = React.useState(0);
-  const { tableState, setTableState } = useServerTable<AdminWahanaSeniColumn>({
-    pageSize: 10,
-  });
-
-  const columns: ColumnDef<AdminWahanaSeniColumn>[] = [
-    {
-      id: 'index',
-      cell: (info) => info.row.index + 1,
-      header: 'No.',
-      size: 50,
-    },
-    {
-      id: 'name',
-      accessorKey: 'name',
-      header: 'Nama',
-      size: 100,
-    },
-    {
-      id: 'created_at',
-      accessorFn: (row) => format(new Date(row.created_at), "y'-'MM'-'dd"),
-      header: 'Created At',
-    },
-    {
-      id: 'status_pembayaran',
-      header: 'Status Pembayaran',
-      cell: (info) => (
-        <PaymentTag color={info.row.original.status_pembayaran} />
-      ),
-      size: 350,
-    },
-    {
-      id: 'detail_tim',
-      cell: (info) => {
-        return (
-          <div className='flex flex-row justify-center'>
-            <Button
-              variant='outline'
-              size='small'
-              className='border-typo-icon !text-typo-icon font-semibold'
-              onClick={() =>
-                router.push(`wahanaseni/${info.row.original.id_tim}`)
-              }
-            >
-              Lihat Detail
-            </Button>
-          </div>
-        );
-      },
-      header: 'Detail Peserta',
-      size: 150,
-    },
-  ];
-
-  const [pembayaranFilter, setPembayaranFilter] = React.useState<string[]>([]);
-
-  const url = buildPaginatedTableURL({
-    baseUrl: '/admin/wahanaseni',
-    tableState,
-    additionalParam: {
-      filter: pembayaranFilter,
-    },
-    option: {
-      arrayFormat: 'index',
-    },
-  });
-
-  const { data: queryData } = useQuery<
-    PaginatedApiResponse<AdminWahanaSeniColumn[]>,
-    Error
-  >([url], {
-    keepPreviousData: true,
-  });
 
   return (
     <DashboardLayout className='bg-typo-surface '>
@@ -161,23 +73,12 @@ function AdminWahanaSeniDashboardPage() {
                 </div>
               </div>
             </div>
-            <WahanaSeniDataRecap
-              {...(queryData?.data.meta as unknown as WahanaSeniDataRecapType)}
-            />
-            <ServerTable
-              columns={columns}
-              data={queryData?.data.data_per_page ?? []}
-              meta={queryData?.data.meta}
-              tableState={tableState}
-              setTableState={setTableState}
-              header={
-                <WahanaSeniFilterPopup
-                  setPembayaranFilter={setPembayaranFilter}
-                />
-              }
-              withFilter={true}
-              className='text-center text-typo-primary font-secondary'
-            />
+            {karyaSeni === 0 && (
+              <TableWahanaSeni baseURL='/admin/wahanaseni/2d' />
+            )}
+            {karyaSeni === 1 && (
+              <TableWahanaSeni baseURL='/admin/wahanaseni/3d' />
+            )}
           </div>
         </section>
       </main>
