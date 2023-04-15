@@ -7,7 +7,8 @@ import Button from '@/components/buttons/Button';
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
-import { TableWahanaSeni } from '@/pages/dashboard/admin/main-event/wahana-seni/components/TableWahanaSeni';
+import { TableWahanaSeni2D } from '@/pages/dashboard/admin/main-event/wahana-seni/components/TableWahanaSeni2D';
+import { TableWahanaSeni3D } from '@/pages/dashboard/admin/main-event/wahana-seni/components/TableWahanaSeni3D';
 
 export default withAuth(AdminWahanaSeniDashboardPage, []);
 
@@ -74,10 +75,10 @@ function AdminWahanaSeniDashboardPage() {
               </div>
             </div>
             {karyaSeni === 0 && (
-              <TableWahanaSeni baseURL='/admin/wahanaseni/2d' />
+              <TableWahanaSeni2D baseURL='/admin/2d' contest='2d' />
             )}
             {karyaSeni === 1 && (
-              <TableWahanaSeni baseURL='/admin/wahanaseni/3d' />
+              <TableWahanaSeni3D baseURL='/admin/3d' contest='3d' />
             )}
           </div>
         </section>

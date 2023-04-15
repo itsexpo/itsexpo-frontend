@@ -1,10 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { ColumnDef } from '@tanstack/react-table';
 import { format } from 'date-fns';
-import { useRouter } from 'next/router';
 import React from 'react';
 
-import Button from '@/components/buttons/Button';
+import ButtonLink from '@/components/links/ButtonLink';
 import WahanaSeniFilterPopup from '@/components/shared/PembayaranFilterPopup';
 import ServerTable from '@/components/table/ServerTable';
 import PaymentTag from '@/components/tag/PaymentTag';
@@ -13,34 +12,41 @@ import { buildPaginatedTableURL } from '@/lib/table';
 import { WahanaSeniDataRecap } from '@/pages/dashboard/admin/main-event/wahana-seni/components/WahanaSeniDataRecap';
 import { PaginatedApiResponse } from '@/types/api';
 import {
-  AdminWahanaSeniColumn,
+  AdminWahanaSeni3DColumn,
   WahanaSeniDataRecapType,
 } from '@/types/entities/main-event/wahana-seni';
 
-export const TableWahanaSeni = ({ baseURL }: { baseURL: string }) => {
-  const router = useRouter();
-  const { tableState, setTableState } = useServerTable<AdminWahanaSeniColumn>({
-    pageSize: 10,
-  });
+export const TableWahanaSeni3D = ({
+  baseURL,
+  contest,
+}: {
+  baseURL: string;
+  contest: '2d' | '3d';
+}) => {
+  const { tableState, setTableState } = useServerTable<AdminWahanaSeni3DColumn>(
+    {
+      pageSize: 10,
+    }
+  );
 
-  const columns: ColumnDef<AdminWahanaSeniColumn>[] = [
+  const columns: ColumnDef<AdminWahanaSeni3DColumn>[] = [
     {
       id: 'index',
       cell: (info) => info.row.index + 1,
       header: 'No.',
-      size: 50,
+      size: 10,
     },
     {
-      id: 'name',
-      accessorKey: 'name',
+      id: contest === '3d' ? 'ketua_tim' : 'nama',
+      accessorKey: contest === '3d' ? 'ketua_tim' : 'nama',
       header: 'Nama',
-      size: 125,
+      size: 40,
     },
     {
       id: 'created_at',
       accessorFn: (row) => format(new Date(row.created_at), "y'-'MM'-'dd"),
-      header: 'Created At',
-      size: 150,
+      header: 'Dibuat',
+      size: 10,
     },
     {
       id: 'status_pembayaran',
@@ -48,28 +54,27 @@ export const TableWahanaSeni = ({ baseURL }: { baseURL: string }) => {
       cell: (info) => (
         <PaymentTag color={info.row.original.status_pembayaran} />
       ),
-      size: 350,
+      size: 20,
     },
     {
       id: 'detail_tim',
       cell: (info) => {
         return (
           <div className='flex flex-row justify-center'>
-            <Button
+            <ButtonLink
               variant='outline'
               size='small'
               className='border-typo-icon !text-typo-icon font-semibold'
-              onClick={() =>
-                router.push(`wahanaseni/${info.row.original.id_tim}`)
-              }
+              href={`wahana-seni/${contest}/${info.row.original.id_tim}`}
+              openNewTab={true}
             >
               Lihat Detail
-            </Button>
+            </ButtonLink>
           </div>
         );
       },
       header: 'Detail Peserta',
-      size: 125,
+      size: 10,
     },
   ];
 
@@ -86,12 +91,13 @@ export const TableWahanaSeni = ({ baseURL }: { baseURL: string }) => {
     },
   });
 
-  const { data: queryData } = useQuery<
-    PaginatedApiResponse<AdminWahanaSeniColumn[]>,
+  const { data: queryData, isLoading } = useQuery<
+    PaginatedApiResponse<AdminWahanaSeni3DColumn[]>,
     Error
   >([url], {
     keepPreviousData: true,
   });
+
   return (
     <div>
       <WahanaSeniDataRecap
@@ -106,6 +112,7 @@ export const TableWahanaSeni = ({ baseURL }: { baseURL: string }) => {
         header={
           <WahanaSeniFilterPopup setPembayaranFilter={setPembayaranFilter} />
         }
+        isLoading={isLoading}
         withFilter={true}
         className='pt-10 text-center text-typo-primary font-secondary'
       />

@@ -29,3 +29,18 @@ export function base64FiletoBlob(res: { data: string }) {
   const url = URL.createObjectURL(blob);
   return url;
 }
+export function base64ZiptoBlob(res: { data: string }) {
+  const base64WithoutPrefix = res.data.replace(
+    /^data:application\/zip;base64,/,
+    ''
+  );
+  const bytes = Buffer.from(base64WithoutPrefix, 'base64').toString('binary');
+  let length = bytes.length;
+  const out = new Uint8Array(length);
+  while (length--) {
+    out[length] = bytes.charCodeAt(length);
+  }
+  const blob = new Blob([out], { type: 'application/zip' });
+  const url = URL.createObjectURL(blob);
+  return url;
+}

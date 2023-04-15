@@ -58,7 +58,10 @@ enum PermissionEnum {
   'wahana_seni.index',
   'wahana_3d.store',
   'wahana_2d.store',
-  'admin_wahana_seni.index',
+  'admin_2d.index',
+  'admin_2d.detail',
+  'admin_3d.index',
+  'admin_3d.detail',
 }
 
 export type PermissionList = Array<keyof typeof PermissionEnum>;

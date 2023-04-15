@@ -19,6 +19,9 @@ const breadcrumbs = {
   '/dashboard/admin/data-management/kti/detail': 'Detail',
   '/dashboard/admin/data-management/robotika': 'Robotika',
   '/dashboard/admin/data-management/robotika/detail': 'Detail',
+  '/dashboard/admin/main-event/wahana-seni': 'Wahana Seni',
+  '/dashboard/admin/main-event/wahana-seni/2d': '2D',
+  '/dashboard/admin/main-event/wahana-seni/3d': '3D',
 
   // Pengumuman
   '/dashboard/admin/announcement': 'Pengumuman',
