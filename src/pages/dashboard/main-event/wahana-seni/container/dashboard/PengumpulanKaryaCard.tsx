@@ -6,11 +6,13 @@ import { PaymentStatusWahanaSeni } from '@/pages/dashboard/main-event/wahana-sen
 
 export default function PengumpulanKaryaCard({
   payment,
+  contest,
 }: {
+  contest: '2d' | '3d';
   payment: PaymentStatusWahanaSeni;
 }) {
   return (
-    <div className='mt-6 bg-white rounded-2xl border-[1px] border-typo-outline p-6'>
+    <div>
       <Typography as='h6' variant='h6' className={'font-bold'}>
         Pengumpulan Karya
       </Typography>
@@ -22,7 +24,7 @@ export default function PengumpulanKaryaCard({
             </Typography>
             <div className='mt-4 flex justify-end'>
               <ButtonLink
-                href='/dashboard/main-event/pengumpulan-karya'
+                href={`/dashboard/main-event/wahana-seni/karya-${contest}`}
                 variant='green'
               >
                 Lakukan Pengumpulan

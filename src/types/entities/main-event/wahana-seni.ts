@@ -82,6 +82,7 @@ export interface WahanaSeniData {
         kontak: string;
         ktm: string;
         status: boolean;
+        status_pengumpulan: boolean;
         payment: {
           payment_id: string;
           payment_status: string;
@@ -92,6 +93,7 @@ export interface WahanaSeniData {
         team_name: string;
         team_code: string;
         deskripsi_karya: string;
+        status_pengumpulan: boolean;
         payment: {
           payment_id: string;
           payment_status: string;
@@ -111,9 +113,15 @@ export type AnggotaWahanaSeni = {
   ktm_url: string;
 };
 
-export type AdminWahanaSeniColumn = {
+export type AdminWahanaSeni3DColumn = {
   name: string;
   id_tim: string;
+  created_at: string;
+  status_pembayaran: PaymentId;
+};
+export type AdminWahanaSeni2DColumn = {
+  name: string;
+  id: string;
   created_at: string;
   status_pembayaran: PaymentId;
 };
@@ -127,6 +135,42 @@ export type WahanaSeniDataRecapType = {
     awaiting_verification: number;
     awaiting_payment: number;
   };
+};
+
+/** GET /admin/3d */
+export interface TeamDataWahanaSeni3D {
+  team_name: string;
+  team_code: string;
+  payment: PaymentWahanaSeni;
+  team_member: TeamMember[];
+}
+type PaymentWahanaSeni = {
+  payment_id: string;
+  payment_status: string;
+  payment_image: string;
+  payment_atas_nama: string;
+  payment_bank: string;
+  payment_harga: string;
+};
+
+/** GET /admin/2d */
+export type TeamDataWahanaSeni2D = {
+  bukti_upload_ktm: string;
+  department: string;
+  deskripsi_url: string;
+  form_keaslian_url: string;
+  kontak: string;
+  name: string;
+  nrp: string;
+  payment: PaymentWahanaSeni;
+  status: string;
+  upload_karya_url: string;
+};
+
+type TeamMember = {
+  name: string;
+  ketua: boolean;
+  bukti_upload_ktm: string;
 };
 
 export type PengumpulanKaryaData = {

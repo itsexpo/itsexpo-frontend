@@ -29,9 +29,19 @@ export default function DashboardWahanaSeni({
           selectedContest={selectedContest}
         />
         {data.main_event.wahana_seni[selectedContest] ? (
-          <PengumpulanKaryaCard
-            payment={data.main_event.wahana_seni[selectedContest].payment}
-          />
+          <div className='mt-6 bg-white rounded-2xl border-[1px] border-typo-outline p-6'>
+            {data.main_event.wahana_seni[selectedContest].status_pengumpulan ? (
+              <Typography as='p' variant='p' className='text-center'>
+                Karya mu sudah terkumpul di sistem, silahkan tunggu hasilnya.
+                Terima kasih
+              </Typography>
+            ) : (
+              <PengumpulanKaryaCard
+                contest={selectedContest}
+                payment={data.main_event.wahana_seni[selectedContest].payment}
+              />
+            )}
+          </div>
         ) : (
           <div>
             <Typography as='p' variant='p' className='text-center'>
