@@ -15,6 +15,7 @@ type DropzoneInputProps = {
   acceptTypes?: string;
   maxFiles?: number;
   readOnly?: boolean;
+  maxSize?: number;
   validation?: Record<string, unknown>;
 };
 
@@ -24,6 +25,7 @@ export default function DropzoneInput({
   acceptTypes = 'JPG / JPEG / PNG',
   id,
   label,
+  maxSize = 1000000,
   maxFiles = 1,
   validation,
   readOnly,
@@ -121,10 +123,10 @@ export default function DropzoneInput({
   };
 
   function sizeValidation(file: File) {
-    if (file.size > 1000000) {
+    if (file.size > maxSize) {
       return {
         code: 'file-too-large',
-        message: 'File Terlalu Besar, Maksimal 1MB',
+        message: `File Terlalu Besar, Maksimal ${maxSize / 1000000} MB`,
       };
     }
     return null;

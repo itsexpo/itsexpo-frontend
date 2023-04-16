@@ -34,19 +34,25 @@ export const TableWahanaSeni3D = ({
       id: 'index',
       cell: (info) => info.row.index + 1,
       header: 'No.',
-      size: 10,
+      size: 5,
     },
     {
       id: contest === '3d' ? 'ketua_tim' : 'nama',
       accessorKey: contest === '3d' ? 'ketua_tim' : 'nama',
       header: 'Nama',
-      size: 40,
+      size: 30,
+    },
+    {
+      id: 'kode_tim',
+      accessorKey: 'kode_tim',
+      header: 'Kode Tim',
+      size: 15,
     },
     {
       id: 'created_at',
       accessorFn: (row) => format(new Date(row.created_at), "y'-'MM'-'dd"),
       header: 'Dibuat',
-      size: 10,
+      size: 5,
     },
     {
       id: 'status_pembayaran',
@@ -54,7 +60,7 @@ export const TableWahanaSeni3D = ({
       cell: (info) => (
         <PaymentTag color={info.row.original.status_pembayaran} />
       ),
-      size: 20,
+      size: 10,
     },
     {
       id: 'detail_tim',

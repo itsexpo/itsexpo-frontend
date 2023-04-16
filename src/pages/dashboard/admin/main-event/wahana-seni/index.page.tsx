@@ -10,7 +10,12 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import { TableWahanaSeni2D } from '@/pages/dashboard/admin/main-event/wahana-seni/components/TableWahanaSeni2D';
 import { TableWahanaSeni3D } from '@/pages/dashboard/admin/main-event/wahana-seni/components/TableWahanaSeni3D';
 
-export default withAuth(AdminWahanaSeniDashboardPage, []);
+export default withAuth(AdminWahanaSeniDashboardPage, [
+  'admin_2d.detail',
+  'admin_2d.index',
+  'admin_3d.detail',
+  'admin_2d.index',
+]);
 
 function AdminWahanaSeniDashboardPage() {
   const [karyaSeni, setKaryaSeni] = React.useState(0);

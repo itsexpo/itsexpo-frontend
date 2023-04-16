@@ -5,7 +5,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import clsxm from '@/lib/clsxm';
 import PengumpulanKarya3D from '@/pages/dashboard/main-event/wahana-seni/container/PengumpulanKarya3D';
 
-export default withAuth(WahanaSeniKarya3DPage, []);
+export default withAuth(WahanaSeniKarya3DPage, ['wahana_3d.store']);
 
 function WahanaSeniKarya3DPage() {
   return (

@@ -54,16 +54,15 @@ export default function DokumenCard({
           </div>
         ))}
       </div>
-
-      <DokumenPendukungCard
-        imgPath={tim?.team_member[selected].bukti_upload_ktm || ''}
-        title='Foto KTM'
-        caption={`Foto KTM ${
-          tim?.team_member[selected].ketua === true
-            ? 'Ketua Tim'
-            : `Anggota ${selected}`
-        }`}
-      />
+      {tim?.team_member.map((member, index) => (
+        <div key={index} className={clsxm(selected !== index && 'hidden')}>
+          <DokumenPendukungCard
+            imgPath={member.bukti_upload_ktm || ''}
+            title='Foto KTM'
+            caption={`Foto KTM ${member.name}`}
+          />
+        </div>
+      ))}
     </section>
   );
 }
