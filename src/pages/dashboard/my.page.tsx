@@ -2,8 +2,10 @@ import * as React from 'react';
 
 import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
+import { MainEventBannerContent } from '@/contents/dashboard/main-event/TampilanAwal';
 import { PreEventBannerContent } from '@/contents/dashboard/TampilanAwal';
 import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
+import MainEventBanner from '@/pages/dashboard/main-event/components/MainEventBanner';
 import PreEventBanner from '@/pages/dashboard/pre-event/components/PreEventBanner';
 
 export default withAuth(DashboardUserPage, 'USER');
@@ -30,6 +32,18 @@ function DashboardUserPage() {
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-6'>
               {PreEventBannerContent.map(({ ...v }, i) => (
                 <PreEventBanner {...v} key={i} />
+              ))}
+            </div>
+          </div>
+        </main>
+        <main className='mt-6 mb-4'>
+          <div className='bg-typo-white w-full p-4 rounded-xl'>
+            <Typography variant='h6' className='font-bold'>
+              Main Event
+            </Typography>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mt-6'>
+              {MainEventBannerContent.map(({ ...v }, i) => (
+                <MainEventBanner {...v} key={i} />
               ))}
             </div>
           </div>
