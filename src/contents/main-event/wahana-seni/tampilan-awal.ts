@@ -121,8 +121,8 @@ export const hadiahWahanaSeniContents: HadiahWahanaSeniData[] = [
       width: '500',
       height: '160',
     },
-    text: 'Karya Favorit',
-    prize: '',
+    text: '',
+    prize: 'Karya Favorit',
   },
   {
     img: {
@@ -141,8 +141,8 @@ export const hadiahWahanaSeniContents: HadiahWahanaSeniData[] = [
       width: '500',
       height: '160',
     },
-    text: 'Honorable Mention',
-    prize: '',
+    text: '',
+    prize: 'Honorable Mention',
   },
 ];
 

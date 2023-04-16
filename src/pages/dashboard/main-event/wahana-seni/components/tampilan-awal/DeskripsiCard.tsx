@@ -1,15 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
 
 import Countdown from '@/components/countdown/Countdown';
 import ButtonLink from '@/components/links/ButtonLink';
-import Loading from '@/components/Loading';
-import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
-import { CPWahanaSeni } from '@/contents/main-event/wahana-seni/tampilan-awal';
 import clsxm from '@/lib/clsxm';
-import { ApiReturn } from '@/types/api';
-import { WahanaSeniData } from '@/types/entities/main-event/wahana-seni';
 
 type TampilanAwal = {
   isRegister: {
@@ -22,22 +16,6 @@ type TampilanAwal = {
 
 const CONTESTS = ['2d', '3d'] as const;
 
-const pembayaranDescription: Record<string, string> = {
-  DEFAULT: 'Status pembayaran tidak diketahui',
-  'AWAITING PAYMENT':
-    'Mohon melakukan pembayaran supaya pendaftaranmu dapat diverifikasi. Untuk bantuan, peserta dapat menghubungi cp di bawah ini (Line only):',
-  'AWAITING VERIFICATION':
-    'Mohon menunggu proses verifikasi. Apabila dalam waktu 3x24 jam masih belum terproses, peserta dapat menghubungi cp di bawah ini (Line only):',
-  REVISI:
-    'Mohon upload ulang bukti pembayaran supaya pendaftaranmu dapat diverifikasi. Untuk bantuan, peserta dapat menghubungi cp di bawah ini (Line only):',
-  GAGAL:
-    'Mohon menghubungi cp di bawah ini agar pendaftaranmu dapat terverifikasi (Line only):',
-  SUCCESS:
-    'Pendaftaran peserta telah berhasil. Silakan melihat dashboard dan menunggu event pada timeline',
-};
-
-// Static
-
 export default function DeskripsiCard({
   isRegister,
   closeDate,
@@ -48,12 +26,6 @@ export default function DeskripsiCard({
 
   const isOpen =
     new Date() < new Date(closeDate) && new Date() > new Date(startDate);
-
-  const { data } = useQuery<ApiReturn<WahanaSeniData>>([
-    'main-event/wahana_seni',
-  ]);
-
-  if (!data) return <Loading />;
 
   return (
     <div className='flex flex-col-reverse md:flex-row gap-6 font-secondary'>
@@ -143,66 +115,23 @@ export default function DeskripsiCard({
           </>
         ) : (
           <div className='space-y-4 min-w-72 md:w-72'>
-            <StatusPembayaranCard
-              status={
-                data.data.main_event.wahana_seni[selectedContest]
-                  ? data.data.main_event.wahana_seni[selectedContest].payment
-                      .payment_status
-                  : 'AWAITING PAYMENT'
-              }
-              size='small'
-            />
-
             <Typography
               as='p'
               variant='c'
               className='text-typo-secondary text-justify'
             >
-              {
-                pembayaranDescription[
-                  data.data.main_event.wahana_seni[selectedContest]
-                    ? data.data.main_event.wahana_seni[selectedContest].payment
-                        .payment_status
-                    : 'AWAITING PAYMENT'
-                ]
-              }
+              Terimakasih telah berpartisipasi pada lomba Sayembara Karya{' '}
+              {selectedContest}. Jangan terlewatkan pengumuman lomba ini dan
+              segera lengkapi tim kamu
             </Typography>
 
-            {data.data.main_event.wahana_seni[selectedContest].payment
-              .payment_status === 'SUCCESS' ? (
-              <ButtonLink
-                className='w-full'
-                variant='green'
-                href={`/dashboard/main-event/wahana-seni/main?contest=${selectedContest}`}
-              >
-                Lihat Dashboard
-              </ButtonLink>
-            ) : (
-              <div className='grid grid-cols-2 gap-5'>
-                {CPWahanaSeni.map((person, index) => (
-                  <div
-                    className={clsxm(
-                      'border border-outline-base rounded-md',
-                      'px-3 py-2'
-                    )}
-                    key={index}
-                  >
-                    <Typography
-                      variant='c'
-                      className='!text-xs font-semibold text-typo-icon'
-                    >
-                      {person.name}
-                    </Typography>
-                    <Typography
-                      variant='c'
-                      className='font-semibold text-typo-primary'
-                    >
-                      {person.id_line}
-                    </Typography>
-                  </div>
-                ))}
-              </div>
-            )}
+            <ButtonLink
+              variant='green'
+              href={`/dashboard/main-event/wahana-seni/main?contest=${selectedContest}`}
+              className='w-full'
+            >
+              Lihat Dashboard
+            </ButtonLink>
             <ButtonLink
               variant='outline'
               href='https://drive.google.com/file/d/1I8RuwhjdO8OPeKK7bYS4GOwbjTO3s7Ly/view'

@@ -340,7 +340,7 @@ export default function Home() {
                       variant='h5'
                       className='font-secondary text-white font-semibold text-base sm:text-3xl'
                     >
-                      Rp 1.000.000,-
+                      Rp 500.000,-
                     </Typography>
                   </div>
                 </div>
