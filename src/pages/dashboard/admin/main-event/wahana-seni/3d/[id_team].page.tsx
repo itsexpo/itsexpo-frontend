@@ -12,7 +12,10 @@ import DokumenCard from '@/pages/dashboard/admin/main-event/wahana-seni/componen
 import { ApiReturn } from '@/types/api';
 import { TeamDataWahanaSeni3D } from '@/types/entities/main-event/wahana-seni';
 
-export default withAuth(DetailWahanaSeniPage, ['admin_jurnalistik.detail']);
+export default withAuth(DetailWahanaSeniPage, [
+  'admin_3d.detail',
+  'admin_3d.index',
+]);
 
 function DetailWahanaSeniPage() {
   const { id_team } = useRouter().query;

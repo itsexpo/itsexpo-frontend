@@ -11,7 +11,10 @@ import DetailTimCard from '@/pages/dashboard/admin/main-event/wahana-seni/compon
 import { ApiReturn } from '@/types/api';
 import { TeamDataWahanaSeni2D } from '@/types/entities/main-event/wahana-seni';
 
-export default withAuth(DetailWahanaSeniPage, ['admin_jurnalistik.detail']);
+export default withAuth(DetailWahanaSeniPage, [
+  'admin_2d.index',
+  'admin_2d.detail',
+]);
 
 function DetailWahanaSeniPage() {
   const { id } = useRouter().query;

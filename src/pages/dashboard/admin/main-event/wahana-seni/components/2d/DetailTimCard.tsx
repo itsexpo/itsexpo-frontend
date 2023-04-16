@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import FileFetch from '@/components/FileFetch';
 import Loading from '@/components/Loading';
+import DokumenPendukungCard from '@/components/shared/DokumenPendukungCard';
 import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
 import ZipDownload from '@/components/ZipDownload';
@@ -93,30 +94,37 @@ export default function DetailTimCard({
         status={tim.payment.payment_status}
         withHeader
       />
-      <div className='w-full'>
-        <FileFetch
-          filePath={tim.form_keaslian_url}
-          alt=''
-          label='Form Keaslian'
-        />
-      </div>
-      <div className='w-full'>
-        <FileFetch
-          filePath={tim.deskripsi_url}
-          alt=''
-          label='Deskripsi Karya'
-        />
-      </div>
+      <DokumenPendukungCard
+        imgPath={tim.bukti_upload_ktm}
+        title='KTM'
+        caption={tim.name}
+      />
       <div className='w-full'>
         {tim.upload_karya_url ? (
-          <ZipDownload url={tim.upload_karya_url} label='Karya 2D' />
+          <div className='space-y-2'>
+            <div className='w-full'>
+              <FileFetch
+                filePath={tim.form_keaslian_url}
+                alt=''
+                label='Form Keaslian'
+              />
+            </div>
+            <div className='w-full'>
+              <FileFetch
+                filePath={tim.deskripsi_url}
+                alt=''
+                label='Deskripsi Karya'
+              />
+            </div>
+            <ZipDownload url={tim.upload_karya_url} label='Karya 2D' />
+          </div>
         ) : (
           <Typography
             as='h6'
             variant='h6'
             className='font-bold text-typo-primary'
           >
-            Belum Upload Karya (Zip)
+            Belum Mengunggah Karya
           </Typography>
         )}
       </div>

@@ -112,8 +112,9 @@ export default function PengumpulanKarya3D() {
                   id='upload_karya'
                   label='Upload Karya'
                   accept={{
-                    'application/zip': ['.zip', '.rar', '.7z'],
+                    'application/zip': ['.zip'],
                   }}
+                  maxSize={15000000}
                   acceptTypes='.zip'
                   validation={{
                     required: 'Upload Karya tidak boleh kosong',

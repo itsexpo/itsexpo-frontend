@@ -1,10 +1,12 @@
 import * as React from 'react';
 
+import FileFetch from '@/components/FileFetch';
 import Loading from '@/components/Loading';
 import StatusPembayaranCard from '@/components/StatusPembayaranCard';
 import Typography from '@/components/typography/Typography';
+import ZipDownload from '@/components/ZipDownload';
 import clsxm from '@/lib/clsxm';
-import AnggotaCard from '@/pages/dashboard/admin/data-management/jurnalistik/components/AnggotaCard';
+import AnggotaCard from '@/pages/dashboard/admin/main-event/wahana-seni/components/3d/AnggotaCard';
 import { TeamDataWahanaSeni3D } from '@/types/entities/main-event/wahana-seni';
 
 export default function DetailTimCard({
@@ -62,12 +64,49 @@ export default function DetailTimCard({
           </Typography>
         </div>
       </div>
+      <div>
+        <Typography as='c' variant='c' className='font-medium text-typo-icon'>
+          Deskripsi Karya
+        </Typography>
+        <Typography as='p' variant='p' className='font-bold'>
+          {tim?.deskripsi_karya}
+        </Typography>
+      </div>
 
       <StatusPembayaranCard
         size='large'
         status={tim.payment.payment_status}
         withHeader
       />
+      <div className='w-full'>
+        {tim.upload_karya_url ? (
+          <div className='space-y-2'>
+            <div className='w-full'>
+              <FileFetch
+                filePath={tim.form_keaslian_url}
+                alt=''
+                label='Form Keaslian'
+              />
+            </div>
+            <div className='w-full'>
+              <FileFetch
+                filePath={tim.deskripsi_karya_url}
+                alt=''
+                label='Deskripsi Karya'
+              />
+            </div>
+            <ZipDownload url={tim.upload_karya_url} label='Karya 3D' />
+          </div>
+        ) : (
+          <Typography
+            as='h6'
+            variant='h6'
+            className='font-bold text-typo-primary'
+          >
+            Belum Mengunggah Karya
+          </Typography>
+        )}
+      </div>
 
       <div className='space-y-4'>
         <Typography as='c' variant='c' className='font-medium text-typo-icon'>
@@ -77,6 +116,8 @@ export default function DetailTimCard({
           return (
             <AnggotaCard
               key={index}
+              nrp={member.nrp}
+              departemen={member.department}
               jabatan={member.ketua === true ? 'Ketua Tim' : `Anggota ${index}`}
               nama={member.name}
             />

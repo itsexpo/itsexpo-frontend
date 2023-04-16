@@ -140,6 +140,10 @@ export type WahanaSeniDataRecapType = {
 /** GET /admin/3d */
 export interface TeamDataWahanaSeni3D {
   team_name: string;
+  deskripsi_karya: string;
+  deskripsi_karya_url: string;
+  upload_karya_url: string;
+  form_keaslian_url: string;
   team_code: string;
   payment: PaymentWahanaSeni;
   team_member: TeamMember[];
@@ -170,6 +174,9 @@ export type TeamDataWahanaSeni2D = {
 type TeamMember = {
   name: string;
   ketua: boolean;
+  nrp: string;
+  department: string;
+  kontak: string;
   bukti_upload_ktm: string;
 };
 
