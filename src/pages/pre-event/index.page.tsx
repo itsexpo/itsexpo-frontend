@@ -175,7 +175,7 @@ function Preevent() {
                 </Typography>
                 <ButtonLink
                   href='/jurnalistik'
-                  className='relative md:max-w-[215px] mt-10 -top-32 md:top-0'
+                  className='relative md:max-w-[215px] mt-10 -top-32 md:top-0 z-10'
                   variant='discolored'
                   size='large'
                 >
@@ -239,7 +239,7 @@ function Preevent() {
                 </Typography>
                 <ButtonLink
                   href='/robotics'
-                  className='relative md:max-w-[215px] -top-14 md:top-0  mt-10'
+                  className='relative md:max-w-[215px] -top-14 md:top-0 mt-10 z-10'
                   variant='discolored'
                   size='large'
                 >
@@ -288,7 +288,7 @@ function Preevent() {
                 </Typography>
                 <ButtonLink
                   href='/kti'
-                  className='relative md:max-w-[215px] mt-10 -top-16 md:top-0'
+                  className='relative md:max-w-[215px] mt-10 -top-16 md:top-0 z-10'
                   variant='discolored'
                   size='large'
                 >
@@ -346,7 +346,7 @@ function Preevent() {
                 </Typography>
                 <ButtonLink
                   href='/coming-soon'
-                  className='relative md:max-w-[215px] mt-10 -top-20 md:top-0'
+                  className='relative md:max-w-[215px] mt-10 -top-20 md:top-0 z-10'
                   variant='discolored'
                   size='large'
                 >
