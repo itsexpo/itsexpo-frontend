@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <Layout>
       <SEO
-        title='Karya tulis ilmiah'
+        title='Karya Tulis Ilmiah'
         description='Karya Tulis Ilmiah merupakan salah satu ajang lomba bergengsi dari cabang kompetisi ITS Expo 2023 yang ditujukan kepada mahasiswa S1/D4/Sederajat.'
       />
       <main className='flex flex-col scroll-smooth bg-[#fdeeca]'>
@@ -249,7 +249,7 @@ export default function Home() {
             <div className='flex flex-col w-full justify-center items-center text-center px-4 sm:px-8'>
               <Typography
                 variant='h2'
-                className='font-primary text-3xl sm:text-5xl'
+                className='font-primary text-3xl sm:text-5xl mb-5 sm:mb-0'
                 data-aos='fade-up'
               >
                 hadiah pemenang
@@ -269,9 +269,9 @@ export default function Home() {
                 <NextImage
                   src='/kti/hadiah-mobile-icon.png'
                   alt='pattern illustration'
-                  width='232'
+                  width='223'
                   height='126'
-                  className='absolute -top-[4.4rem] block sm:hidden z-10'
+                  className='absolute -top-[6rem] block sm:hidden z-10'
                   priority={true}
                 />
                 <div

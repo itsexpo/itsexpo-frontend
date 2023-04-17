@@ -20,7 +20,7 @@ const links = [
       {
         href: '/coming-soon',
         label: 'Main Event',
-        children: [{ href: '/coming-soon', label: 'Wahana Seni' }],
+        children: [{ href: '/wahana-seni', label: 'Wahana Seni' }],
       },
       { href: '/coming-soon', label: 'Gebyar ITS EXPO' },
     ],
