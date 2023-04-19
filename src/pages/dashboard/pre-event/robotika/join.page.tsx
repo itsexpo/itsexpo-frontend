@@ -6,6 +6,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import Breadcrumb from '@/components/Breadcrumb';
 import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
+import withAuth from '@/components/hoc/withAuth';
 import Typography from '@/components/typography/Typography';
 import useMutationToast from '@/hooks/toast/useMutationToast';
 import useDialog from '@/hooks/useDialog';
@@ -16,8 +17,8 @@ import PengumumanCard from '@/pages/dashboard/pre-event/jurnalistik/components/d
 type JoinTeamRobotikProps = {
   code_team: string;
 };
-
-export default function JoinTeamRobotik() {
+export default withAuth(JoinTeamRobotik, ['robotik_join.store']);
+function JoinTeamRobotik() {
   const dialog = useDialog();
   const router = useRouter();
 

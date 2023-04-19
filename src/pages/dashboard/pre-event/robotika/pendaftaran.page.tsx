@@ -9,7 +9,7 @@ import DashboardLayout from '@/layouts/dashboard/DashboardLayout';
 import FormPendaftaran from '@/pages/dashboard/pre-event/robotika/container/PendaftaranForm';
 import useAuthStore from '@/store/useAuthStore';
 
-export default withAuth(PendaftaranRobotikDashboardPage, []);
+export default withAuth(PendaftaranRobotikDashboardPage, ['robotik.store']);
 
 function PendaftaranRobotikDashboardPage() {
   const user = useAuthStore.useUser();

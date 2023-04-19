@@ -15,7 +15,10 @@ import PembayaranRobotikForm from '@/pages/dashboard/pre-event/robotika/containe
 import { ApiError, ApiReturn } from '@/types/api';
 import { PembayaranPreEvent } from '@/types/entities/pre-event/pembayaran';
 
-export default withAuth(PembayaranRobotik, ['pembayaran_jurnalistik.store']);
+export default withAuth(PembayaranRobotik, [
+  'pembayaran_robotik.index',
+  'pembayaran_robotik.store',
+]);
 
 function PembayaranRobotik({
   data,

@@ -52,8 +52,11 @@ enum PermissionEnum {
   // Robotik
   'robotik.index',
   'robotik.store',
+  'robotik_join.store',
   'admin_robotik.index',
   'admin_robotik.detail',
+  'pembayaran_robotik.index',
+  'pembayaran_robotik.store',
   // Wahana Seni
   'wahana_seni.index',
   'wahana_3d.store',
