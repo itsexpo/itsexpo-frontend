@@ -1,18 +1,36 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 
-const ConvertToCSV = ({ url }: { url: string }) => {
-  const [csvData, setCsvData] = useState<string>('');
+import Button from '@/components/buttons/Button';
+import api from '@/lib/api';
 
-  React.useEffect(() => {
-    // fetch with axios
-    axios.get(url).then((response) => {
-      setCsvData(JSON.stringify(response.data));
-    });
-  }, [url]);
+enum ButtonVariant {
+  'red',
+  'yellow',
+  'green',
+  'outline',
+  'basic',
+  'discolored',
+}
+enum ButtonSize {
+  'small',
+  'base',
+  'large',
+}
+
+type ButtonProps = {
+  url: string;
+  size: keyof typeof ButtonSize;
+  variant: keyof typeof ButtonVariant;
+} & React.ComponentPropsWithRef<'button'>;
+
+const ConvertToCSV = ({ url, size = 'base', variant = 'red' }: ButtonProps) => {
+  const [csvData, setCsvData] = useState<string>('');
 
   const handleDownload = () => {
     try {
+      api.get(url).then((response) => {
+        setCsvData(JSON.stringify(response.data));
+      });
       const jsonArray = JSON.parse(csvData);
       // ... rest of the CSV conversion code
       const headers = Object.keys(jsonArray[0]);
@@ -42,7 +60,11 @@ const ConvertToCSV = ({ url }: { url: string }) => {
   };
 
   // return button to download CSV
-  return <button onClick={() => handleDownload()}>Download CSV</button>;
+  return (
+    <Button size={size} variant={variant} onClick={() => handleDownload()}>
+      Download CSV
+    </Button>
+  );
 };
 
 export default ConvertToCSV;
