@@ -49,7 +49,7 @@ export default function DokumenCard({
                 'transition-colors duration-200 ease-out'
               )}
             >
-              {member.ketua === 'KETUA' ? 'Ketua Tim' : `Anggota ${index}`}
+              {member.ketua ? 'Ketua Tim' : `Anggota ${index}`}
             </Typography>
           </div>
         ))}
