@@ -77,9 +77,7 @@ export default function DetailTimCard({
           return (
             <AnggotaCard
               key={index}
-              jabatan={
-                member.ketua === 'KETUA' ? 'Ketua Tim' : `Anggota ${index}`
-              }
+              jabatan={member.ketua ? 'Ketua Tim' : `Anggota ${index}`}
               nama={member.name}
             />
           );
