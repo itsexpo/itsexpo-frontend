@@ -15,7 +15,7 @@ const landingTimelineRoboticsContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '01 April - 30 April 2023',
+    date: '01 April - 15 Mei 2023',
     caption: 'Masa Pendaftaran',
   },
   {
