@@ -16,6 +16,13 @@ export default function DetailTimCard({
 }) {
   if (!tim) <Loading />;
 
+  // Sort team members so KETUA is first in array
+  tim.team_member.sort((a, b) => {
+    if (a.ketua === 'KETUA' && b.ketua === 'MEMBER') return -1;
+    else if (a.ketua === 'MEMBER' && b.ketua === 'KETUA') return 1;
+    else return 0;
+  });
+
   return (
     <section
       className={clsxm(
