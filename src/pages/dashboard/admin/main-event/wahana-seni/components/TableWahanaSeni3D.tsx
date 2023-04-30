@@ -7,6 +7,7 @@ import ButtonLink from '@/components/links/ButtonLink';
 import WahanaSeniFilterPopup from '@/components/shared/PembayaranFilterPopup';
 import ServerTable from '@/components/table/ServerTable';
 import PaymentTag from '@/components/tag/PaymentTag';
+import Tag from '@/components/tag/Tag';
 import useServerTable from '@/hooks/useServerTable';
 import { buildPaginatedTableURL } from '@/lib/table';
 import { WahanaSeniDataRecap } from '@/pages/dashboard/admin/main-event/wahana-seni/components/WahanaSeniDataRecap';
@@ -53,6 +54,21 @@ export const TableWahanaSeni3D = ({
       accessorFn: (row) => format(new Date(row.created_at), "y'-'MM'-'dd"),
       header: 'Dibuat',
       size: 5,
+    },
+    {
+      id: 'status_pengumpulan',
+      header: 'Status Pengumpulan',
+      cell: (info) => (
+        <Tag
+          color={info.row.original.status_pengumpulan ? 'success' : 'danger'}
+          className='!text-base'
+        >
+          {info.row.original.status_pengumpulan
+            ? 'Sudah Dikumpulkan'
+            : 'Belum Dikumpulkan'}
+        </Tag>
+      ),
+      size: 20,
     },
     {
       id: 'status_pembayaran',

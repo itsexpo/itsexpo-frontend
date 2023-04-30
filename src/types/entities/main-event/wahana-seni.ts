@@ -117,12 +117,14 @@ export type AdminWahanaSeni3DColumn = {
   name: string;
   id_tim: string;
   created_at: string;
+  status_pengumpulan: boolean;
   status_pembayaran: PaymentId;
 };
 export type AdminWahanaSeni2DColumn = {
   name: string;
   id: string;
   created_at: string;
+  status_pengumpulan: boolean;
   status_pembayaran: PaymentId;
 };
 
