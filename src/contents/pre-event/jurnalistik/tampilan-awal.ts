@@ -16,7 +16,7 @@ export const timelineJurnalistik: TimelineJurnalistikData[] = [
       width: '121',
       height: '66',
     },
-    date: '1 April - 15 Mei 2023',
+    date: '1 April - 16 Mei 2023',
     caption: 'Masa Pendaftaran',
   },
   {

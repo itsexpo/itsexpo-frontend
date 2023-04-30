@@ -15,7 +15,7 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '1 April - 15 Mei 2023',
+    date: '1 - 15 Mei 2023',
     caption: 'Masa Pendaftaran dan Pengumpulan Abstrak',
   },
   {
@@ -25,7 +25,7 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '30 April 2023',
+    date: '15 Mei 2023',
     caption: 'Deadline Pengumpulan Abstrak',
   },
   {
@@ -35,7 +35,7 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '2 Mei 2023',
+    date: '16 Mei 2023',
     caption: 'Pengumuman Lolos Abstrak',
   },
   {
@@ -45,7 +45,7 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '3-12 Mei 2023',
+    date: '17-24 Mei 2023',
     caption: 'Full Paper Gelombang 1',
   },
   {
@@ -55,7 +55,7 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '13-22 Mei 2023',
+    date: '25-29 Mei 2023',
     caption: 'Full Paper Gelombang 2',
   },
   {
@@ -65,8 +65,8 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '23-27 Mei 2023',
-    caption: 'Penjurian Full Paper',
+    date: '30 Mei 2023',
+    caption: 'Pengumuman Full Paper',
   },
   {
     img: {
@@ -75,8 +75,8 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '28 Mei 2023',
-    caption: 'Pengumuman Finalis 10 Besar',
+    date: '31 Mei 2023',
+    caption: 'Technical Meeting',
   },
   {
     img: {
@@ -85,19 +85,8 @@ const landingTimelineKtiContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '29 Mei 2023',
-    caption: 'Technical Meeting Pra Presentasi',
-  },
-  {
-    img: {
-      src: '/landing/timeline-1.png',
-      alt: 'timeline illustration 1',
-      width: '121',
-      height: '66',
-    },
     date: '2 Juni 2023',
-    caption:
-      'Pelaksanaan Presentasi serta Pengumuman Juara dan Penyerahan Hadiah',
+    caption: 'Final',
   },
 ];
 
