@@ -13,7 +13,7 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '1 April - 15 Mei 2023',
+    date: '1 - 15 Mei 2023',
     caption: 'Masa Pendaftaran dan Pengumpulan Berkas',
   },
   {
@@ -29,7 +29,7 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '30 April 2023',
+    date: '15 Mei 2023',
     caption: 'Deadline Pengumpulan Berkas',
   },
   {
@@ -45,8 +45,8 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '2 Mei 2023',
-    caption: 'Pengumpulan Lolos Abstrak',
+    date: '16 Mei 2023',
+    caption: 'Pengumuman Lolos Abstrak',
   },
   {
     img: {
@@ -61,7 +61,7 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '3-12 Mei 2023',
+    date: '17-24 Mei 2023',
     caption: 'Full Paper Gelombang 1',
   },
   {
@@ -77,7 +77,7 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '13-22 Mei 2023',
+    date: '25-29 Mei 2023',
     caption: 'Full Paper Gelombang 2',
   },
   {
@@ -87,8 +87,8 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '23-27 Mei 2023',
-    caption: 'Penjurian Full Paper',
+    date: '30 Mei 2023',
+    caption: 'Pengumuman Full Paper',
   },
   {
     img: {
@@ -103,8 +103,8 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '28 Mei 2023',
-    caption: 'Pengumuman Finalis 10 Besar',
+    date: '31 Mei 2023',
+    caption: 'Technical Meeting',
   },
   {
     img: {
@@ -119,8 +119,8 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '29 Mei 2023',
-    caption: 'Technical Meeting Pra Presentasi',
+    date: '2 Juni 2023',
+    caption: 'Final',
   },
   {
     img: {
@@ -129,9 +129,8 @@ export const timelineKTI: TimelineKTIData[] = [
       width: '121',
       height: '66',
     },
-    date: '2 Juni 2023',
-    caption:
-      'Pelaksanaan Presentasi serta Pengumuman Juara dan Penyerahan Hadiah',
+    date: '11 Juni 2023',
+    caption: 'Pengumuman',
   },
 ];
 

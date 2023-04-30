@@ -17,7 +17,7 @@ export const timelineRobotik: TimelineRobotikData[] = [
       width: '121',
       height: '66',
     },
-    date: '01 April - 15 Mei 2023',
+    date: '01 - 15 Mei 2023',
     caption: 'Masa Pendaftaran',
   },
   {
@@ -27,7 +27,7 @@ export const timelineRobotik: TimelineRobotikData[] = [
       width: '121',
       height: '66',
     },
-    date: '01 - 15 Mei 2023',
+    date: '01 - 20 Mei 2023',
     caption: 'Pengumpulan Video',
   },
   {
@@ -37,8 +37,8 @@ export const timelineRobotik: TimelineRobotikData[] = [
       width: '121',
       height: '66',
     },
-    date: '20 Mei 2023',
-    caption: 'Pengumpulan Seleksi',
+    date: '25 Mei 2023',
+    caption: 'Pengumuman Seleksi',
   },
   {
     img: {
