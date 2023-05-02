@@ -15,7 +15,7 @@ const landingTimelineWahanaContents: Timeline[] = [
       width: '121',
       height: '66',
     },
-    date: '13 April - 30 April 2023',
+    date: '13 April - 7 Mei 2023',
     caption: 'Masa Pendaftaran',
   },
   {
