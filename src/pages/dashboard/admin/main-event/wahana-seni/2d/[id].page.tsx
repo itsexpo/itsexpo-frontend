@@ -41,7 +41,7 @@ function DetailWahanaSeniPage() {
         </header>
 
         <main className='space-y-6'>
-          <div className='flex gap-x-6'>
+          <div className='flex flex-col md:flex-row gap-6'>
             {queryData && (
               <DetailTimCard tim={queryData.data} className='flex-1' />
             )}

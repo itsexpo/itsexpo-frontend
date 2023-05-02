@@ -24,6 +24,13 @@ function DetailWahanaSeniPage() {
     ApiReturn<TeamDataWahanaSeni3D>
   >([url]);
 
+  // Sort team members based on if member is ketua
+  queryData?.data.team_member.sort((a, b) => {
+    if (a.ketua > b.ketua) return -1;
+    else if (a.ketua < b.ketua) return 1;
+    else return 0;
+  });
+
   return (
     <DashboardLayout className='bg-typo-surface'>
       <div className='dashboard-layout min-h-screen space-y-6'>
@@ -42,7 +49,7 @@ function DetailWahanaSeniPage() {
         </header>
 
         <main className='space-y-6'>
-          <div className='flex gap-x-6'>
+          <div className='flex flex-col md:flex-row gap-6'>
             {queryData && (
               <DetailTimCard tim={queryData.data} className='flex-1' />
             )}
