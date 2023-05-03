@@ -15,7 +15,6 @@ export default function DetailTimCard({
   className?: string;
 }) {
   if (!tim) <Loading />;
-
   return (
     <section
       className={clsxm(
@@ -79,6 +78,7 @@ export default function DetailTimCard({
               key={index}
               jabatan={member.ketua ? 'Ketua Tim' : `Anggota ${index}`}
               nama={member.name}
+              phone_number={member.no_telp}
             />
           );
         })}

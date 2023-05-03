@@ -15,7 +15,6 @@ export default function DetailTimCard({
   className?: string;
 }) {
   if (!tim) <Loading />;
-
   return (
     <section
       className={clsxm(

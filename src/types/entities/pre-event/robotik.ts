@@ -88,6 +88,7 @@ export interface DetailTimRobotik {
   team_member: Array<{
     name: string;
     ketua: 'KETUA' | 'MEMBER';
+    no_telp: string;
     provinsi: string;
     kabupaten: string;
     id_line: string;
