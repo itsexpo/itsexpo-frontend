@@ -114,8 +114,8 @@ export default function PengumpulanKarya2D() {
                   accept={{
                     'application/zip': ['.zip'],
                   }}
-                  // maxsize 15 mb
-                  maxSize={15000000}
+                  // maxsize 30 mb
+                  maxSize={30000000}
                   acceptTypes='.zip'
                   validation={{
                     required: 'Upload Karya tidak boleh kosong',
