@@ -69,7 +69,7 @@ export default function Input({
           {...rest}
           type={type}
           name={id}
-          id={id}
+          id={'name'}
           readOnly={readOnly}
           className={clsxm(
             readOnly

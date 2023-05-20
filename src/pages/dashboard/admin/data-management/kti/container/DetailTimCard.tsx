@@ -88,6 +88,7 @@ export default function DetailTimCard({
                 member.ketua === 'KETUA' ? 'Ketua Tim' : `Anggota ${index}`
               }
               nama={member.name}
+              no_telp={member.no_telp}
             />
           );
         })}
