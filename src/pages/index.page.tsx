@@ -638,7 +638,7 @@ export default function Home() {
           />
         </section>
 
-        {/* <section id='sponsor' className={clsxm('relative bg-[#00587A] pb-44')}>
+        <section id='sponsor' className={clsxm('relative bg-[#00587A] pb-44')}>
           <NextImage
             src='/landing/sponsor-bg-left.png'
             alt='about sponsor-bg-left'
@@ -664,11 +664,54 @@ export default function Home() {
               sponsor
             </Typography>
             <div
-              className='grid md:grid-cols-1 grid-cols-1 z-[1] min-h-[500px] bg-tainted-100 rounded-lg p-8 mt-8'
+              className='grid grid-cols-1 z-[1] min-h-[500px] bg-tainted-100 rounded-lg p-8 mt-8'
               data-aos='fade-up'
-            ></div>
+            >
+              <div className='grid grid-cols-1 md:grid-cols-3 w-full justify-center items-center'>
+                <NextImage
+                  src='/sponsor/HK.png'
+                  alt='sponsor'
+                  width='2210'
+                  height='1345'
+                  className='w-[70%] mx-auto my-4'
+                />
+
+                <NextImage
+                  src='/sponsor/DMP.jpg'
+                  alt='sponsor'
+                  width='648'
+                  height='595'
+                  className='w-[70%] mx-auto my-4'
+                />
+
+                <NextImage
+                  src='/sponsor/Konveksi.jpg'
+                  alt='sponsor'
+                  width='1080'
+                  height='1080'
+                  className='w-[70%] mx-auto my-4'
+                />
+              </div>
+              <div className='grid grid-cols-1 md:grid-cols-2 w-full justify-center items-center'>
+                <NextImage
+                  src='/sponsor/print&print.png'
+                  alt='sponsor'
+                  width='480'
+                  height='296'
+                  className='w-[56%] mx-auto my-4'
+                />
+
+                <NextImage
+                  src='/sponsor/badak.png'
+                  alt='sponsor'
+                  width='8583'
+                  height='8393'
+                  className='w-[56%] mx-auto my-4'
+                />
+              </div>
+            </div>
           </div>
-        </section> */}
+        </section>
       </main>
     </Layout>
   );
