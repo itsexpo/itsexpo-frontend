@@ -70,9 +70,12 @@ export default function FormPembayaranKTI() {
     });
   }
   //#region  //*=========== Bayar Dialog ===========
+
+  // Random number 1 - 100
+
   const data = {
-    kode_unik: '123',
-    harga: '100000',
+    kode_unik: '0',
+    harga: new Date() > new Date('2023-05-25') ? '150000' : '130000',
   };
 
   const harga = parseInt(data.harga) + parseInt(data.kode_unik);
@@ -121,6 +124,7 @@ export default function FormPembayaranKTI() {
             accept={{
               'application/pdf': ['.pdf'],
             }}
+            acceptTypes='PDF'
             // Max File 10 mb
             maxSize={10000000}
             validation={{ required: 'Full Paper tidak boleh kosong' }}
