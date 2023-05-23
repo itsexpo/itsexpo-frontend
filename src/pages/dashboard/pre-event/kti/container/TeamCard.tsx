@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import ButtonLink from '@/components/links/ButtonLink';
 import Typography from '@/components/typography/Typography';
 import AnggotaButton from '@/pages/dashboard/pre-event/kti/components/dashboard/AnggotaButton';
 
@@ -61,7 +62,7 @@ export default function TeamCard({
           </Typography>
         </div>
       </div>
-      {/* <div className='space-y-2'>
+      <div className='space-y-2'>
         <Typography
           as='p'
           variant='caption'
@@ -71,16 +72,18 @@ export default function TeamCard({
         </Typography>
         {payment.payment_status !== 'AWAITING VERIFICATION' &&
           payment.payment_status !== 'SUCCESS' && (
-            <div className='w-full h-11 rounded-lg bg-critical-100 flex justify-center items-center text-center p-6 sm:p-0'>
-              <Typography
-                as='p'
-                variant='b1'
-                color='danger'
-                className='font-medium'
-              >
-                Belum Melakukan Pembayaran
-              </Typography>
-            </div>
+            <>
+              <div className='w-full h-11 rounded-lg bg-critical-100 flex justify-center items-center text-center p-6 sm:p-0'>
+                <Typography
+                  as='p'
+                  variant='b1'
+                  color='danger'
+                  className='font-medium'
+                >
+                  Belum Melakukan Pembayaran
+                </Typography>
+              </div>
+            </>
           )}
         {payment.payment_status === 'AWAITING VERIFICATION' && (
           <div className='w-full h-11 rounded-lg bg-warning-100 flex justify-center items-center text-center p-6 sm:p-0'>
@@ -106,7 +109,7 @@ export default function TeamCard({
             </Typography>
           </div>
         )}
-      </div> */}
+      </div>
       <div className='space-y-4'>
         <Typography as='p' variant='caption' className='text-typo-icon'>
           Anggota Tim
@@ -115,7 +118,7 @@ export default function TeamCard({
           <AnggotaButton key={index} {...member} lead_name={lead_name} />
         ))}
       </div>
-      {/* {payment.payment_status !== 'AWAITING VERIFICATION' &&
+      {payment.payment_status !== 'AWAITING VERIFICATION' &&
         payment.payment_status !== 'SUCCESS' && (
           <div className='flex justify-end'>
             <ButtonLink
@@ -123,10 +126,10 @@ export default function TeamCard({
               className='w-fit'
               href={`/dashboard/pre-event/kti/pembayaran?code=${team_id}`}
             >
-              Lakukan Pembayaran
+              Lakukan Pembayaran & Pengumpulan
             </ButtonLink>
           </div>
-        )} */}
+        )}
     </div>
   );
 }

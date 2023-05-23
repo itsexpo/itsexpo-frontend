@@ -28,6 +28,21 @@ export default function DokumenKTICard({ data }: { data: DetailTimKTI }) {
           caption='Twibbon KTI ITS Expo 2023'
         />
         <FileFetch filePath={data.abstrak} label='Abstrak' alt='Abstak' />
+        {data.full_paper ? (
+          <FileFetch
+            filePath={data.full_paper}
+            label='Full Paper'
+            alt='Full Paper'
+          />
+        ) : (
+          <Typography
+            as='p'
+            variant='caption'
+            className='font-medium text-typo-icon'
+          >
+            Full Paper belum diunggah
+          </Typography>
+        )}
       </div>
     </div>
   );

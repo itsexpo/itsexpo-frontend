@@ -70,6 +70,7 @@ export interface DetailTimKTI {
   asal_instansi: string;
   lead_name: string;
   no_telp: string;
+  full_paper: string;
 
   payment: {
     payment_id: string;

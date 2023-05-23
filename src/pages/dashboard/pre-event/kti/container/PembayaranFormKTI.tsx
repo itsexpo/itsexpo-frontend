@@ -5,7 +5,6 @@ import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import Button from '@/components/buttons/Button';
-import PaymentCountdown from '@/components/countdown/PaymentCountdown';
 import DropzoneInput from '@/components/forms/DropzoneInput';
 import Input from '@/components/forms/Input';
 import SelectInput from '@/components/forms/SelectInput';
@@ -16,7 +15,6 @@ import useDialog from '@/hooks/useDialog';
 import api from '@/lib/api';
 import { formatToRupiah } from '@/lib/currency';
 import { FileWithPreview } from '@/types/dropzone';
-import { PembayaranPreEvent } from '@/types/entities/pre-event/pembayaran';
 
 type CreatePembayaranJurnalistik = {
   atas_nama: string;
@@ -24,13 +22,10 @@ type CreatePembayaranJurnalistik = {
   bukti_pembayaran: FileWithPreview[];
   kti_team_id: string;
   harga: number;
+  full_paper: FileWithPreview[];
 };
 
-export default function FormPembayaranKTI({
-  data,
-}: {
-  data: PembayaranPreEvent;
-}) {
+export default function FormPembayaranKTI() {
   const methods = useForm<CreatePembayaranJurnalistik>();
   const router = useRouter();
   const { code } = router.query;
@@ -75,6 +70,10 @@ export default function FormPembayaranKTI({
     });
   }
   //#region  //*=========== Bayar Dialog ===========
+  const data = {
+    kode_unik: '123',
+    harga: '100000',
+  };
 
   const harga = parseInt(data.harga) + parseInt(data.kode_unik);
 
@@ -84,8 +83,9 @@ export default function FormPembayaranKTI({
       kti_team_id: code as string,
       bukti_pembayaran: data.bukti_pembayaran[0],
       bank_id: data.bank_id,
-      jurnalistik_team_id: code as string,
+      robot_in_action_team_id: code as string,
       harga: harga,
+      full_paper: data.full_paper[0],
     };
     const formdata = serialize(body);
     openWarningBayar({ harga, formdata });
@@ -104,7 +104,7 @@ export default function FormPembayaranKTI({
               />
             </div>
             <div className='!text-end'>
-              <PaymentCountdown closeDate={data.tanggal_pembayaran} />
+              {/* <PaymentCountdown closeDate={data.tanggal_pembayaran} /> */}
             </div>
           </div>
           <Input
@@ -115,6 +115,17 @@ export default function FormPembayaranKTI({
               required: 'Atas nama tidak boleh kosong',
             }}
           />
+          <DropzoneInput
+            id='full_paper'
+            label='Full Paper'
+            accept={{
+              'application/pdf': ['.pdf'],
+            }}
+            // Max File 10 mb
+            maxSize={10000000}
+            validation={{ required: 'Full Paper tidak boleh kosong' }}
+          />
+
           <SelectInput
             id='bank_id'
             label='Transfer Dari'
@@ -129,6 +140,9 @@ export default function FormPembayaranKTI({
           <DropzoneInput
             id='bukti_pembayaran'
             label='Upload Bukti Transfer'
+            accept={{
+              'image/*': ['.png', '.jpg', '.jpeg'],
+            }}
             validation={{ required: 'Bukti Transfer tidak boleh kosong' }}
           />
 
