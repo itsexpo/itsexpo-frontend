@@ -35,16 +35,13 @@ function PembayaranKTI() {
               </Typography>
               <br />
               <Typography variant='p' className='font-normal text-navy-800'>
-                BRI: 0908 0104 5864 532 (Navisa Salsabila)
+                BCA: 0882336547 (Nur Azizah)
               </Typography>
               <Typography variant='p' className='font-normal text-navy-800'>
-                BNI: 1299871140 (Navisa Salsabila)
+                MANDIRI: 1400020290830 (Adam Alzakky)
               </Typography>
               <Typography variant='p' className='font-normal text-navy-800'>
-                Shopeepay: 087871529729(Navisa Salsabila)
-              </Typography>
-              <Typography variant='p' className='font-normal text-navy-800'>
-                Dana: 087871529729 (Navisa Salsabila)
+                GOPAY: 085259659337 (Arika Nur Indrayani)
               </Typography>
             </div>
           </div>
