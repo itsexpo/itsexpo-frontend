@@ -29,6 +29,7 @@ export default function DokumenCard({
 
       {tim && (
         <DokumenPendukung
+          fullPaper={tim.fullpaper}
           uploadTwibbon={tim.twibbon}
           buktiRepost={tim.bukti_repost}
           followSosmed={tim.follow_sosmed}

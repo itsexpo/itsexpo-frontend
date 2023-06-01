@@ -96,6 +96,7 @@ export interface DetailAdminTimKTI {
   bukti_repost: string;
   twibbon: string;
   abstrak: string;
+  fullpaper: string;
 
   payment: Payment;
 

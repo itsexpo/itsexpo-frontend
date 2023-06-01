@@ -1,5 +1,6 @@
 import FileFetch from '@/components/FileFetch';
 import DokumenPendukungCard from '@/components/shared/DokumenPendukungCard';
+import Typography from '@/components/typography/Typography';
 import clsxm from '@/lib/clsxm';
 
 export default function DokumenPendukung({
@@ -7,12 +8,14 @@ export default function DokumenPendukung({
   buktiRepost,
   followSosmed,
   fileAbstrak,
+  fullPaper,
   className,
 }: {
   uploadTwibbon: string;
   buktiRepost: string;
   followSosmed: string;
   fileAbstrak: string;
+  fullPaper: string;
 } & React.ComponentPropsWithRef<'div'>) {
   return (
     <div className={clsxm('grid grid-cols-3 gap-4', className)}>
@@ -32,6 +35,17 @@ export default function DokumenPendukung({
         caption='09/03/2023 23:59'
       />
       <FileFetch filePath={fileAbstrak} label='File Abstrak' alt='Abstrak' />
+      {fullPaper === '' ? (
+        <Typography className='text-center'>
+          Full Paper Belum diupload
+        </Typography>
+      ) : (
+        <FileFetch
+          filePath={fullPaper}
+          label='File Full Paper'
+          alt='Full Paper'
+        />
+      )}
     </div>
   );
 }
