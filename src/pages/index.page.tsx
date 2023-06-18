@@ -24,6 +24,7 @@ import clsxm from '@/lib/clsxm';
 import ContactPersonModal from '@/pages/landing/component/ContactPersonModal';
 import MainEventCard from '@/pages/landing/component/MainEventCard';
 import PreEventCard from '@/pages/landing/component/PreEventCard';
+import SponsorModal from '@/pages/landing/component/SponsorModal';
 import { HeroBackground } from '@/pages/landing/container/HeroBackground';
 import {
   TimelineBackground1,
@@ -35,6 +36,7 @@ export default function Home() {
     AOS.init();
   }, []);
 
+  const [openSponsor, setOpenSponsor] = React.useState(false);
   const [preEvent, setPreEvent] = useState<number>(0);
 
   const aboutRef = React.useRef<HTMLElement>(null);
@@ -664,54 +666,80 @@ export default function Home() {
               sponsor
             </Typography>
             <div
-              className='grid grid-cols-1 z-[1] min-h-[500px] bg-tainted-100 rounded-lg p-8 mt-8'
+              className='grid grid-cols-1 min-h-[500px] bg-tainted-100 rounded-lg p-8 mt-8 space-y-4'
               data-aos='fade-up'
             >
               <div className='grid grid-cols-1 md:grid-cols-3 w-full justify-center items-center'>
-                <NextImage
-                  src='/sponsor/HK.png'
-                  alt='sponsor'
-                  width='2210'
-                  height='1345'
-                  className='w-[70%] mx-auto my-4'
-                />
-
+                <div className='md:col-span-3 grid md:grid-cols-2 grid-cols-1 items-center justify-center'>
+                  <NextImage
+                    src='/sponsor/HK.png'
+                    alt='sponsor'
+                    width='2210'
+                    height='1345'
+                    className='w-[85%] mx-auto my-4'
+                  />
+                  <NextImage
+                    src='/sponsor/pembangunan-perumahan.png'
+                    alt='sponsor'
+                    width='648'
+                    height='595'
+                    className='w-[85%] mx-auto my-4'
+                  />
+                </div>
                 <NextImage
                   src='/sponsor/DMP.jpg'
                   alt='sponsor'
                   width='648'
                   height='595'
-                  className='w-[70%] mx-auto my-4'
+                  className='md:w-[80%] w-[60%] mx-auto my-4'
                 />
 
-                <NextImage
-                  src='/sponsor/Konveksi.jpg'
-                  alt='sponsor'
-                  width='1080'
-                  height='1080'
-                  className='w-[70%] mx-auto my-4'
-                />
+                <div className='md:grid md:grid-cols-3 md:col-span-2 flex flex-col items-center justify-center'>
+                  <NextImage
+                    src='/sponsor/dwipari.jpg'
+                    alt='sponsor'
+                    width='1080'
+                    height='1080'
+                    className='md:w-[75%] w-[40%] mx-auto my-4'
+                  />
+                  <NextImage
+                    src='/sponsor/btn.png'
+                    alt='sponsor'
+                    width='1280'
+                    height='406'
+                    className='md:w-[75%] w-[40%] mx-auto my-4'
+                  />
+                  <NextImage
+                    src='/sponsor/badak.png'
+                    alt='sponsor'
+                    width='8583'
+                    height='8393'
+                    className='md:w-[75%] w-[40%] mx-auto my-4'
+                  />
+                </div>
               </div>
-              <div className='grid grid-cols-1 md:grid-cols-2 w-full justify-center items-center'>
+              <div className='flex w-full justify-center items-center'>
                 <NextImage
                   src='/sponsor/print&print.png'
                   alt='sponsor'
                   width='480'
                   height='296'
-                  className='w-[56%] mx-auto my-4'
+                  className='md:w-[10%] w-[20%] mx-auto my-4'
                 />
-
                 <NextImage
-                  src='/sponsor/badak.png'
+                  src='/sponsor/Konveksi.jpg'
                   alt='sponsor'
-                  width='8583'
-                  height='8393'
-                  className='w-[56%] mx-auto my-4'
+                  width='1080'
+                  height='1080'
+                  className='md:w-[10%] w-[20%] mx-auto my-4'
                 />
               </div>
             </div>
           </div>
         </section>
+        {openSponsor && (
+          <SponsorModal open={openSponsor} setOpen={setOpenSponsor} />
+        )}
       </main>
     </Layout>
   );
