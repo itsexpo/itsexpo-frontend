@@ -27,7 +27,7 @@
     "@types/react-table": "^7.7.14",
     "aos": "^2.3.4",
     "auto-zustand-selectors-hook": "^2.0.0",
-    "axios": "^1.2.1",
+    "axios": "^1.6.0",
     "clsx": "^1.2.1",
     "cssnano": "^5.1.14",
     "date-fns": "^2.29.3",
